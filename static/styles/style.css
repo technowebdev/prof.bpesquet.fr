@@ -1,0 +1,23 @@
+body {
+    padding-top: 40px;
+}
+
+.footer {
+    width: 100%;
+    border-top: 1px solid #ccc;
+    padding-top: 10px;
+}
+
+/* all images in a Bootstrap row */
+.row img {
+    /* 3D border */
+    border-radius: 7px; 
+    box-shadow: 1px 1px 10px #555;
+    /* centered */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    /* responsive (http://getbootstrap.com/css/#images-responsive)
+    max-width: 100%;
+    height: auto; */
+}

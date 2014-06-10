@@ -1,0 +1,11 @@
+{{ template "includes/header.html" . }}
+
+Bienvenue ! Vous trouverez ici des ressources relatives à mon activité professionnelle d'enseignant en informatique.
+
+<ul>
+    {{ range .Data.Pages }}
+        <li><a href="{{ .Permalink}}">{{ .LinkTitle }}</a></li>
+    {{ end }}
+  </ul>
+
+{{ template "includes/footer.html" . }}

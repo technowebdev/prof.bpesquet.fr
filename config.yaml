@@ -1,0 +1,12 @@
+---
+contentdir: "content"
+layoutdir: "layouts"
+publishdir: "public"
+builddrafts: false
+indexes:
+   category: "categories"
+   tag: "tags"
+baseurl: http://test.bpesquet.fr
+canonifyurls: true
+disqusShortname: "bpesquet@gmail.com"
+---
