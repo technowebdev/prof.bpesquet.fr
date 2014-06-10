@@ -1,11 +1,17 @@
-{{ template "includes/header.html" . }}
+{{ template "partials/header.html" . }}
 
+<p>
 Bienvenue ! Vous trouverez ici des ressources relatives à mon activité professionnelle d'enseignant en informatique.
+</p>
+
+<a href="site/">A propos de ce site</a>
+
+<h2>Modules d'informatique</h2>
 
 <ul>
-    {{ range .Data.Pages }}
-        <li><a href="{{ .Permalink}}">{{ .LinkTitle }}</a></li>
+    {{ range .Site.Menus.modules }}
+        <li><a href="{{ .Url }}"> {{ .Name }} </a></li>
     {{ end }}
-  </ul>
+</ul>
 
-{{ template "includes/footer.html" . }}
+{{ template "partials/footer.html" . }}

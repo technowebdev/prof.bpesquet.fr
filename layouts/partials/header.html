@@ -32,9 +32,16 @@
             </div>
 
             <div class="collapse navbar-collapse nav-collapse">
-                <!--ul class="nav navbar-nav">
-                    <li><a href="#">Link</a></li>
-                </ul-->
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Modules <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            {{ range .Site.Menus.modules }}
+                                <li><a href="{{ .Url }}"> {{ .Name }} </a></li>
+                            {{ end }}
+                        </ul>
+                    </li>
+                </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="mailto:bpesquet@gmail.com" title="Contact"><i class="fa fa-envelope"></i></a></li>
                     <li><a href="https://twitter.com/bpesquet" title="Twitter"><i class="fa fa-twitter"></i></a></li>

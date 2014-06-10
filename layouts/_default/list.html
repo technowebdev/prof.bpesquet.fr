@@ -1,0 +1,16 @@
+{{ template "partials/header.html" . }}
+
+<div class="row">
+
+    <div class="col-md-12">
+        <ul id="list">
+            {{ range .Data.Pages }}
+                <li><a href="{{ .Permalink }}">{{ .LinkTitle }}</a></li>
+            {{ end }}
+        </ul>
+    </div>
+    
+</div>
+
+{{ template "partials/footer.html" . }}
+

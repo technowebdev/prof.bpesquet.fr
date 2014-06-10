@@ -1,6 +1,6 @@
 ---
 title: "Gestion des objets en mémoire"
-slug: gestion-objets-memoire
+modules: "slam2"
 ---
 
 L’objectif de ce chapitre est de découvrir les spécificités des variables de type objet, ainsi que la notion de référence.
