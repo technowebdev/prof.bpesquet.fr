@@ -1,3 +1,4 @@
+/* Add space for fixed-to-top navbar */
 body {
     padding-top: 40px;
 }
@@ -8,16 +9,26 @@ body {
     padding-top: 10px;
 }
 
-/* all images in a Bootstrap row */
-.row img {
-    /* 3D border */
-    border-radius: 7px; 
-    box-shadow: 1px 1px 10px #555;
+#TableOfContents {
+    padding-left: 0;
+}
+
+.pageTitle {
+    font-size: 42px;
+}
+
+/* images with classes "content" and "centered" */
+img.content.centered {
     /* centered */
     display: block;
     margin-left: auto;
     margin-right: auto;
-    /* responsive (http://getbootstrap.com/css/#images-responsive)
-    max-width: 100%;
-    height: auto; */
+    /* Images are being made responsive via JavaScript */
+}
+
+/* images with classes "content" and "bordered" */
+img.content.bordered {
+    /* 3D border */
+    border-radius: 7px; 
+    box-shadow: 1px 1px 10px #555;
 }

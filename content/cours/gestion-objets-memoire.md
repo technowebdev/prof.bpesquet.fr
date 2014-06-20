@@ -6,11 +6,11 @@ modules: "slam2"
 L’objectif de ce chapitre est de découvrir les spécificités des variables de type objet, ainsi que la notion de référence.
 
 Préambule
----------
+=========
 
 Ce chapitre utilise une classe *Cercle* définie de la manière suivante.
 
-![Classe Cercle](/images/cours/gestion_objets_memoire/uml_cercle.jpg)
+{{% image src="uml_cercle.jpg" class="centered" %}}
 
 ```c#
 // modélise un cercle mathématique
@@ -40,7 +40,7 @@ public class Cercle
 ```
 
 Création d’un nouvel objet
---------------------------
+============================
 
 Nous savons déjà (TODO) que la création d’un nouvel objet se fait en deux étapes :
 
