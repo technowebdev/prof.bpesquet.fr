@@ -18,10 +18,15 @@
 
     <script>
         $("img").addClass("img-responsive");
+        
         $("table").addClass("table");
-        $("#TableOfContents").addClass("well");
+        
         $("#TableOfContents ul").addClass("nav");
         $("#TableOfContents").affix();
+
+        <!-- Dirty hack to prevent fixed-to-top navbar from hiding anchor targets -->
+        <!-- Taken from https://github.com/twbs/bootstrap/issues/1768 -->
+        window.addEventListener("hashchange", function() { scrollBy(0, -60) })
     </script>
 </body>
 </html>

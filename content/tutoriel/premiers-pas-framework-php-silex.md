@@ -3,7 +3,7 @@ title: "Premiers pas avec le framework PHP Silex"
 date: 2014-06-20
 ---
 
-Cet article vise à se familiariser avec le framework PHP [Silex](http://silex.sensiolabs.org/) au travers de l'écriture d'une application Web basique.
+Ce tutoriel vise à se familiariser avec le framework PHP [Silex](http://silex.sensiolabs.org/) au travers de l'écriture d'une application Web basique.
 
 {{% image src="silex-logo.png" class="centered" %}}
 
@@ -17,9 +17,9 @@ Cet article vise à se familiariser avec le framework PHP [Silex](http://silex.s
 
 [Silex](http://silex.sensiolabs.org/) est un micro-framework PHP développé par la société française [Sensio Labs](http://sensiolabs.com/), créatrice du framework [Symfony](http://symfony.com/). Silex est en quelque sorte le petit frère de Symfony et les deux frameworks reposent sur les mêmes composants.
 
-Contrairement à Symfony qui fournit (et impose) une architecture complète (*full stack*), Silex est un framework minimaliste qui laisse beaucoup de liberté au développeur. C'est pourquoi on peut le qualifier de **micro-framework**. Il fournit un ensemble réduit de services au-dessus desquels on peut développer une application Web. Son minimalisme le rend idéal pour s'initier en douceur au fonctionnement d'un framework PHP.
+Contrairement à Symfony qui fournit (et impose) une architecture complète (dite *full stack*), Silex est un framework minimaliste qui laisse beaucoup de liberté au développeur. C'est pourquoi on peut le qualifier de **micro-framework**. Il fournit un ensemble réduit de services au-dessus desquels on peut développer une application Web. Son minimalisme le rend idéal pour s'initier en douceur au fonctionnement d'un framework PHP.
 
-Silex dispose d'une [documentation](http://silex.sensiolabs.org/documentation) assez complète. Dans cet article, nous allons nous contenter d'utiliser Silex pour afficher le message "Hello world" à l'utilisateur.
+Silex dispose d'une [documentation en ligne](http://silex.sensiolabs.org/documentation) assez complète. Dans ce turoriel, nous allons nous contenter de l'utiliser pour afficher un simple message "Hello world" à l'utilisateur.
 
 
 # Installation de Silex
@@ -97,7 +97,7 @@ $app->run();
 ?>
 ```
 
-Le fichier `vendor/autoload.php` est généré automatiquement par Composer. En l'incluant dans notre fichier source au moyen de l'instruction PHP [require_once](http://php.net/manual/fr/function.require-once.php), on peut ensuite utiliser tous les éléments PHP définis dans les sous-répertoires de `vendor`. [Cet article](https://igor.io/2013/09/04/composer-vendor-directory.html) explique l'intérêt de cette pratique.
+Le fichier `vendor/autoload.php` est généré automatiquement par Composer. En l'incluant dans notre fichier source au moyen de l'instruction PHP [require_once](http://php.net/manual/fr/function.require-once.php), on peut ensuite utiliser tous les éléments PHP définis dans les sous-répertoires de `vendor`. L'intérêt de cette pratique est expliqué dans [cet article](https://igor.io/2013/09/04/composer-vendor-directory.html).
 
 Le reste du code source de `index.php` instancie un objet nommé `$app`, puis définit ce qu'on appelle une **route**.
 

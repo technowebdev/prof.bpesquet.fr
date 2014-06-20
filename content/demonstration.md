@@ -31,7 +31,7 @@ Et voici une liste ordonnée :
 Code source
 ===========
 
-Les extraits de code source sont mise en valeur selon le langage.
+Les extraits de code source sont mis en valeur selon le langage.
 
 ```php
 // PHP
