@@ -1,6 +1,5 @@
 ---
 title: "Gestion des objets en mémoire"
-modules: "slam2"
 ---
 
 L’objectif de ce chapitre est de découvrir les spécificités des variables de type objet, ainsi que la notion de référence.
@@ -8,7 +7,7 @@ L’objectif de ce chapitre est de découvrir les spécificités des variables d
 Préambule
 =========
 
-Ce chapitre utilise une classe *Cercle* définie de la manière suivante.
+Ce chapitre utilise une classe `Cercle définie de la manière suivante.
 
 {{% image src="uml_cercle.jpg" class="centered" %}}
 
@@ -40,14 +39,14 @@ public class Cercle
 ```
 
 Création d’un nouvel objet
-============================
+==========================
 
 Nous savons déjà (TODO) que la création d’un nouvel objet se fait en deux étapes :
 
 1.  **déclaration** de l’objet
 2.  **instanciation** de l’objet
 
-Le code ci-dessous crée un nouvel objet *monCercle* de la classe *Cercle*.
+Le code ci-dessous crée un nouvel objet `monCercle` de la classe `Cercle`.
 
 ```c#
 Cercle monCercle;             // déclaration
@@ -84,7 +83,7 @@ Console.WriteLine("nombre1 = " + nombre1);
 Console.WriteLine("nombre2 = " + nombre2);
 ```
 
-A la fin de son exécution, la variable *nombre1* vaut *10* et la variable *nombre2* vaut *5*. Pas de surprise ici.
+A la fin de son exécution, la variable `nombre1` vaut `10` et la variable `nombre2` vaut `5. Pas de surprise ici.
 
 Ecrivons un code similaire, mais qui utilise cette fois deux variables objets.
 
@@ -100,9 +99,9 @@ Console.WriteLine("cercle1.Rayon = " + cercle1.Rayon);
 Console.WriteLine("cercle2.Rayon = " + cercle2.Rayon);
 ```
 
-![image](images/affectation_objets.png)
+{{% img affectation_objets.png %}}
 
-A la fin de l'exécution, le rayon du *cercle1* vaut *10* et celui du *cercle2* vaut... *10*.
+A la fin de l'exécution, le rayon de `cercle1` vaut `10` et celui de `cercle2` vaut... `10`.
 
 ![image](images/omg.jpg)
 
