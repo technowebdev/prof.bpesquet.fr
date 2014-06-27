@@ -164,20 +164,22 @@ Ouvrez ce fichier avec un éditeur de texte puis ajoutez le contenu ci-dessous �
 
 Le premier hôte virtuel redéfinit `localhost`, ce qui est nécessaire quand on rajoute des hôtes virtuels sous Apache. Le second crée un hôte virtuel associé au nom `hello-world-silex` et dont la racine est le répertoire `hello-world-silex/web`.
 
-{{% remark %}}Pour que la nouvelle configuration soit prise en compte, il faut redémarrer le serveur Web Apache.{{% /remark %}}
+{{% remark %}}
+Pour que la nouvelle configuration soit prise en compte, il faut redémarrer le serveur Web Apache.
+{{% /remark %}}
 
 Dans un second temps, il faut ajouter une information au fichier `hosts` local pour que la résolution DNS pointe sur la machine locale (127.0.0.1). Là encore, l'emplacement de ce fichier dépend de votre système : 
 
 * `C:\Windows\System32\drivers\etc\hosts` sous Windows.
 * `/private/etc/hosts`sous Mac.
 
-Editez ce fichier afin d'y ajouter la ligne ci-dessous.
-
-    127.0.0.1   hello-world-silex
-
 {{% remark %}}
 La modification de ce fichier nécessite des droits d'administrateur.
 {{% /remark %}}
+
+Editez ce fichier afin d'y ajouter la ligne ci-dessous.
+
+    127.0.0.1   hello-world-silex
 
 Une fois le fichier `hosts` modifié et Apache redémarré, l'application doit répondre à l'URL http://hello-world-silex avec le message "Hello world".
 

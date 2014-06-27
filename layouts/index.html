@@ -4,14 +4,11 @@
 Bienvenue ! Vous trouverez ici des ressources relatives à mon activité professionnelle d'enseignant en informatique.
 </p>
 
-<a href="site/">A propos de ce site</a>
-
-<h1>Modules d'informatique</h1>
+<h1>Articles et tutoriels</h1>
 
 <ul>
-    {{ range .Site.Menus.modules }}
-        <li><a href="{{ .Url }}"> {{ .Name }} </a></li>
-    {{ end }}
+    <li><a href="http://bpesquet.developpez.com/tutoriels/php/evoluer-architecture-mvc/"> Evoluer vers une architecture MVC en PHP </a> (developpez.com)</li>
+    <li><a href="/tutoriel/premiers-pas-framework-php-silex"> Premiers pas avec le framework PHP Silex </a></li>
 </ul>
 
 {{ template "partials/footer.html" . }}
