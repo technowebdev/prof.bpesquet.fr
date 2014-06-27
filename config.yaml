@@ -8,5 +8,5 @@ indexes:
    tag: "tags"
 baseurl: http://test.bpesquet.fr
 canonifyurls: true
-disqusShortname: "bpesquet@gmail.com"
+disqusShortname: "baptistepesquet"
 ---

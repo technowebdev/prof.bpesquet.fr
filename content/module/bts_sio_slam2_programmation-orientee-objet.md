@@ -1,6 +1,6 @@
 ---
 title: "Programmation orientée objet"
-menu: "modules"
+menu: modules
 weight: 2
 ---
 

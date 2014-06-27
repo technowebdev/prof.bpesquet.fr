@@ -33,30 +33,27 @@ Code source
 
 Les extraits de code source sont mis en valeur selon le langage.
 
-```php
-// PHP
-<?php
-echo("Bonjour le monde.");
-?>
-```
+Du PHP :
 
-```c#
-// C#
-class Program {
-    static void Main(string[] args) {
-        Console.WriteLine("Bonjour le monde.");
-    }
-}
-```
+    <?php
+    echo("Bonjour le monde.");
+    ?>
 
-```java
-// Java
-public class Program {
-    public static void main(String[] args) {
-        System.out.println("Bonjour le monde.");
+Du C# :
+
+    class Program {
+        static void Main(string[] args) {
+            Console.WriteLine("Bonjour le monde.");
+        }
     }
-}
-```
+
+Du Java :
+
+    public class Program {
+        public static void main(String[] args) {
+            System.out.println("Bonjour le monde.");
+        }
+    }
 
 Liens vers des ressources
 =========================
