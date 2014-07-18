@@ -1,6 +1,7 @@
 ---
 title: "Premiers pas avec le framework PHP Silex"
 date: 2014-06-20
+showInMenus: true
 ---
 
 Ce tutoriel vise à se familiariser avec le framework PHP [Silex](http://silex.sensiolabs.org/) au travers de l'écriture d'une application Web basique.
@@ -19,7 +20,7 @@ Ce tutoriel vise à se familiariser avec le framework PHP [Silex](http://silex.s
 
 Contrairement à Symfony qui fournit (et impose) une architecture complète (dite *full stack*), Silex est un framework minimaliste qui laisse beaucoup de liberté au développeur. C'est pourquoi on peut le qualifier de **micro-framework**. Il fournit un ensemble réduit de services au-dessus desquels on peut développer une application Web. Son minimalisme le rend idéal pour s'initier en douceur au fonctionnement d'un framework PHP.
 
-Silex dispose d'une [documentation en ligne](http://silex.sensiolabs.org/documentation) assez complète. Dans ce turoriel, nous allons nous contenter de l'utiliser pour afficher un simple message "Hello world" à l'utilisateur.
+Silex dispose d'une [documentation en ligne](http://silex.sensiolabs.org/documentation) assez complète. Dans ce turoriel, nous allons nous contenter d'utiliser Silex pour afficher le classique message "Hello world" à l'utilisateur.
 
 
 # Installation de Silex

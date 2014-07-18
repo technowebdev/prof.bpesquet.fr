@@ -3,10 +3,11 @@ contentdir: "content"
 layoutdir: "layouts"
 publishdir: "public"
 builddrafts: false
-indexes:
-   category: "categories"
-   tag: "tags"
-baseurl: http://test.bpesquet.fr
+taxonomies:
+    tag: "tags"
+    category: "categories"
+    series: "series"
+baseurl: http://bpesquet.fr
 canonifyurls: true
-disqusShortname: "baptistepesquet"
+disqusShortname: "bpesquet"
 ---

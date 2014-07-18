@@ -17,16 +17,19 @@
     <script>hljs.initHighlightingOnLoad();</script>
 
     <script>
+        <!-- Make images responsive -->
         $("img").addClass("img-responsive");
         
+        <!-- Render tables via Bootstrap -->
         $("table").addClass("table");
         
+        <!-- Render TOC via Bootstrap -->
         $("#TableOfContents ul").addClass("nav");
         $("#TableOfContents").affix();
 
         <!-- Dirty hack to prevent fixed-to-top navbar from hiding anchor targets -->
         <!-- Taken from https://github.com/twbs/bootstrap/issues/1768 -->
-        window.addEventListener("hashchange", function() { scrollBy(0, -60) })
-    </script>
+        window.addEventListener("hashchange", function() { scrollBy(0, -60) });
+  </script>
 </body>
 </html>
