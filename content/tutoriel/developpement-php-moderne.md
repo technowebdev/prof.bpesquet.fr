@@ -160,7 +160,7 @@ Créez dans ce répertoire un sous-répertoire nommé `MicroCMS` qui sera le ré
             </article>
         <?php endforeach; ?>
         <footer class="footer">
-            <a href="https://github.com/bpesquet/MicroCMS">MicroCMS</a> is a minimalist CMS built as a showcase for modern PHP development.
+            <a href="https://github.com/bpesquet/MicroCMS">MicroCMS</a> is a minimalistic CMS built as a showcase for modern PHP development.
         </footer>
     </body>
     </html>
@@ -254,7 +254,7 @@ Une première amélioration consiste à séparer le code d'accès aux données d
             </article>
         <?php endforeach; ?>
         <footer class="footer">
-            <a href="https://github.com/bpesquet/MicroCMS">MicroCMS</a> is a minimalist CMS built as a showcase for modern PHP development.
+            <a href="https://github.com/bpesquet/MicroCMS">MicroCMS</a> is a minimalistic CMS built as a showcase for modern PHP development.
         </footer>
     </body>
     </html>
@@ -281,7 +281,7 @@ On peut aller plus loin dans le découplage en regroupant le code d'affichage pr
             </article>
         <?php endforeach; ?>
         <footer class="footer">
-            <a href="https://github.com/bpesquet/MicroCMS">MicroCMS</a> is a minimalist CMS built as a showcase for modern PHP development.
+            <a href="https://github.com/bpesquet/MicroCMS">MicroCMS</a> is a minimalistic CMS built as a showcase for modern PHP development.
         </footer>
     </body>
     </html>
