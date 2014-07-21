@@ -64,9 +64,10 @@ Référence | Description
 ----------|------------
 Tech_01 | L'application utilise une base de données relationnelle pour stocker ses données persistantes.
 Tech_02 | L'application respecte une architecture de type MVC (Modèle-Vue-Contrôleur).
-Tech_03 | L'application utilise un *framework*.
-Tech_04 | L'application est protégée contre le risque d'injection de code SQL dans la base de données.
-Tech_05 | L'application est protégée contre le risque d'injection de code dans les pages Web affichées.
+Tech_03 | L'architecture de l'application se base sur un *framework* PHP.
+Tech_04 | Les données métier de l'application font l'objet d'une modélisation orientée objet.
+Tech_05 | L'application est protégée contre le risque d'injection de code SQL dans la base de données.
+Tech_06 | L'application est protégée contre le risque d'injection de code dans les pages Web affichées.
 
 {{% remark %}}
 Il existe un [débat](http://www.areyouagile.com/2013/03/pourquoi-une-user-story-technique-est-un-aveu-dechec/) concernant le bien-fondé de l'ajout de récits strictements techniques à un projet agile. Comme la valeur créée par notre projet d'exemple (apprendre à développer en PHP de manière moderne) est avant tout d'ordre technique, cela me paraît légitime ici.
@@ -389,7 +390,7 @@ Voici la liste des éléments du *backlog* réalisés dans cette itération.
 
 Référence | Description
 ----------|------------
-Tech_03 | L'application utilise un *framework*.
+Tech_03 | L'architecture de l'application se base sur un *framework* PHP.
 
 ## Avantages apportés par un framework
 
@@ -506,9 +507,307 @@ Le code source associé à cette itération est disponible sur une [branche du d
 
 ## Conclusion
 
-Nous avons refactorisé notre application Web pour intégrer le micro-framework Silex et posé les bases d'une architecture robuste. Cependant, notre application profite encore peu des services que Silex peut fournir. Les prochaines itérations y remédieront.
+Nous avons refactorisé notre application Web pour intégrer le framework Silex et posé les bases d'une architecture robuste. Cependant, notre application profite encore peu des services que Silex peut fournir. Les prochaines itérations y remédieront.
 
 
+# Itération 4 : refactorisation de l'accès aux données
 
+Le but de cette itération est d'améliorer la partie Modèle de notre application Web.
 
+Voici la liste des éléments du *backlog* réalisés dans cette itération.
 
+Référence | Description
+----------|------------
+Tech_04 | Les données métier de l'application font l'objet d'une modélisation orientée objet.
+Tech_05 | L'application est protégée contre le risque d'injection de code SQL dans la base de données.
+
+## Modélisation objet du domaine
+
+Actuellement, la partie Modèle de notre application Web est écrite de manière simpliste. Voici pour rappel le fichier source `model.php`.
+
+    <?php
+    
+    // Return all articles
+    function getArticles() {
+        $bdd = new PDO('mysql:host=localhost;dbname=microcms;charset=utf8', 'microcms_user', 'secret');
+        $articles = $bdd->query('select * from t_article order by art_id desc');
+        return $articles;
+    }
+
+L'ajout futur de nouveaux services similaire risque de rendre la partie Modèle difficile à utiliser. Nous allons restructurer cette partie en introduisant une modélisation orientée objet des données métier. Pour l'instant, nos seules données métier sont les articles, qui se caractérisent pas un identifiant, un titre et un contenu. Nous allons modéliser un article sous la forme d'une classe nommée `Article` dont voici le diagramme UML. 
+
+{{% image src="microcms_uml_article.jpeg" class="centered" %}}
+
+la classe `Article` est ce qu'on appelle parfois (sans peur du ridicule) un POPO, ou *Plain Old PHP Objet* par analogie avec les [POJO](http://fr.wikipedia.org/wiki/Plain_Old_Java_Object) du monde Java. Autrement dit, cette classe ne contient rien de complexe : uniquement les propriétés et accesseurs nécessaires pour représenter un article.
+
+Ecrivons maintenant cette classe en PHP. Si vous n'avez jamais utilisé PHP de manière orientée objet, je vous conseille les tutoriels des sites [openclassrooms](http://fr.openclassrooms.com/informatique/cours/programmez-en-oriente-objet-en-php) et [codecamedy](http://www.codecademy.com/fr/tracks/php).
+
+    <?php
+    
+    namespace MicroCMS\Domain;
+    
+    class Article 
+    {
+        /**
+         * Article id.
+         *
+         * @var integer
+         */
+        private $id;
+
+        /**
+         * Article title.
+         *
+         * @var string
+         */
+        rivate $title;
+
+        /**
+         * Article content.
+         *
+         * @var string
+         */
+        private $content;
+    
+        public function getId() {
+            return $this->id;
+        }
+    
+        public function setId($id) {
+            $this->id = $id;
+        }
+    
+        public function getTitle() {
+            return $this->title;
+        }
+    
+        public function setTitle($title) {
+            $this->title = $title;
+        }
+    
+        public function getContent() {
+            return $this->content;
+        }
+    
+        public function setContent($content) {
+            $this->content = $content;
+        }
+    }
+
+Vous aurez peut-être remarqué que cette classe est définie dans un **espace de noms** (instruction PHP `namespace` au début du fichier). En PHP comme dans les autres langages qui les supportent, un espace de noms permet d'éviter les conflits de nommage des éléments (exemple : deux classes portant le même nom) en regroupant ces éléments dans des espaces dédiés. Ainsi, le nom complet de notre classe `Article` est `MicroCMS\Domain\Article`. Pour plus d'informations sur les espaces de noms en PHP, consultez la [documentation du langage](http://php.net//manual/fr/language.namespaces.php) ou ce [tutoriel](http://fr.openclassrooms.com/informatique/cours/les-espaces-de-noms-en-php).
+
+Afin de permettre un chargement automatisé de la classe `Article`, le fichier source `Article.php` associé doit se trouver dans le répertoire correspondant à son espace de noms. Créez dans le répertoire `src` du projet le sous-répertoire `MicroCMS`, puis le sous-répertoire `Domain` dans `MicroCMS`. Enfin, créez le fichier `Article.php` et copiez/collez-y le contenu ci-dessus.
+
+{{% danger %}}
+Veillez à bien respecter les distinctions majuscules/minuscules dans les noms des répertoires et des fichiers source.
+{{% /danger %}}
+
+## Remplacement de PDO par DBAL
+
+Il faut maintenant transformer notre partie Modèle afin qu'elle renvoie une liste d'objets de la classe `Article`. Nous allons en profiter pour changer de technologie d'accès à la base de données en remplaçant PDO par [DBAL](http://www.doctrine-project.org/projects/dbal.html). 
+
+Comme son nom l'indique, DBAL est une couche d'abstraction de base de données. Tout comme PDO, DBAL fournit des services de connexion et d'exécution de requêtes SQL indépendants du SGBDR utilisé : le même code pourra interagir avec MySQL, ORACLE ou encore PostgreSQL. Par rapport à PDO, DBAL fournit des services additionnels comme la gestion avancée des transactions et des types. Le remplacement de PDO par DBAL va également permettre d'illustrer le mécanisme d'ajout de services proposé par le framework Silex.
+
+### Mise à jour de l'accès aux données
+
+Ecrivons le nouveau code d'accès aux données utilisant DBAL. Nous allons continuer à utiliser la POO en définissant ce code dans la classe `ArticleDAO`.
+
+    <?php
+    
+    namespace MicroCMS\DAO;
+    
+    use Doctrine\DBAL\Connection;
+    use MicroCMS\Domain\Article;
+    
+    class ArticleDAO
+    {
+        /**
+         * Database connection
+         *
+         * @var \Doctrine\DBAL\Connection
+         */
+        private $db;
+    
+        /**
+         * Constructor
+         *
+         * @param \Doctrine\DBAL\Connection The database connection object
+         */
+        public function __construct(Connection $db) {
+            $this->db = $db;
+        }
+    
+        /**
+         * Return a list of all articles, sorted by date (most recent first).
+         *
+         * @return array A list of all articles.
+         */
+        public function findAll() {
+            $sql = "select * from t_article order by art_id desc";
+            $result = $this->db->fetchAll($sql);
+            
+            // Convert query result to an array of Article objects
+            $articles = array();
+            foreach ($result as $row) {
+                $articleId = $row['art_id'];
+                $articles[$articleId] = $this->buildArticle($row);
+            }
+            return $articles;
+        }
+    
+        /**
+         * Creates an Article object based on a DB row.
+         *
+         * @param array $row The DB row containing Article data.
+         * @return \MicroCMS\Domain\Article
+         */
+        private function buildArticle($row) {
+            $article = new Article();
+            $article->setId($row['art_id']);
+            $article->setTitle($row['art_title']);
+            $article->setContent($row['art_content']);
+            return $article;
+        }
+    }
+
+Cette classe est définie dans l'espace de noms `MicroCMS\DAO` et utilise (instruction PHP `use`) les classes `Doctrine\DBAL\Connection` et `MicroCMS\Domain\Article`. Elle mémorise l'objet de connexion à la BD dans sa propriété `$db`, définie par son constructeur. L'ancienne fonction `getArticles` est remplacée par la méthode `findAll` qui renvoie la liste de tous les articles sous forme d'objets de la classe `Article`. La classe `ArticleDAO` dispose également d'une méthode interne `buildArticle` qui instancie un objet de la classe `Article` à partir d'une ligne de résultat SQL.
+
+L'acronyme DAO signifie *Data Access Object*, ou objet d'accès aux données. Il s'agit d'un modèle de conception (*design pattern*) qui propose de regrouper le code d'accès aux données d'une application dans des classes dédiées. C'est le cas de notre classe `ArticleDAO`.
+
+Créez le fichier source `ArticleDAO.php` dans le répertoire `src/MicroCMS/DAO` (à créer) et ajoutez-lui le code source de la classe. Ensuite, supprimez le fichier `src/model.php` devenu inutile.
+
+### Mise à jour de l'application
+
+Plusieurs étapes sont à réaliser avant de pouvoir utiliser le nouveau code d'accès aux données.
+
+Tout d'abord, il faut indiquer à Composer que notre projet dépend maintenant de DBAL. Modifiez le fichier `composer.json` comme indiqué ci-dessous.
+
+    {
+        "require": {
+            "silex/silex": "~1.2",
+            "doctrine/dbal": "~2.4"
+        },
+        "autoload": {
+            "psr-0": {"MicroCMS": "src/"}
+        }
+    }
+
+La nouvelle entrée `autoload` dans ce fichier permet d'ajouter notre propre code source, défini dans le répertoire `src`, au mécanisme de chargement automatique (*autoloading*) géré par Composer. Finies les instructions `require` partout dans le code ! Pour que cela fonctionne, il faut que notre code source respecte le standard [PSR-0](http://www.php-fig.org/psr/psr-0/) - c'est le cas ici.
+
+Lancez ensuite la commande ci-dessous pour récupérer les fichiers du projet DBAL et mettre à jour le fichier `vendor/autoload.php` géré par Composer.
+
+    $ composer update
+
+Ensuite, créez dans le répertoire `app` du projet un nouveau fichier nommé `app.php`. Ce fichier va contenir le paramétrage de l'application Silex. Ajoutez dans ce fichier le code ci-dessous.
+
+    <?php
+    
+    // Register global error and exception handlers
+    use Symfony\Component\Debug\ErrorHandler;
+    ErrorHandler::register();
+    use Symfony\Component\Debug\ExceptionHandler;
+    ExceptionHandler::register();
+    
+    // Register service providers.
+    $app->register(new Silex\Provider\DoctrineServiceProvider());
+    
+    // Register services.
+    $app['dao.article'] = $app->share(function ($app) {
+        return new MicroCMS\DAO\ArticleDAO($app['db']);
+    });
+
+La première partie de ce fichier configure Silex pour gérer les erreurs PHP qui pourraient se produire pendant l'exécution de l'application. Cela permet d'obtenir des messages d'erreur explicites. Vous trouverez plus d'explications dans la [documentation du framework](http://silex.sensiolabs.org/doc/cookbook/error_handler.html).
+
+La deuxième partie du fichier enregistre le [fournisseur de services](http://silex.sensiolabs.org/doc/providers.html) associé à DBAL, [DoctrineServiceProvider](http://silex.sensiolabs.org/doc/providers/doctrine.html).
+
+Enfin, la troisième partie enregistre un nouveau [service](http://silex.sensiolabs.org/doc/services.html) nommé `dao.article` sous la forme d'une instance partagée de la classe `ArticleDAO`. Une fois le service enregistré, l'appel `$app['dao.article']` renverra cette instance.
+
+{{% remark %}}
+Le service `$app['db']` est défini automatiquement lors de l'enregistrement du fournisseur `DoctrineServiceProvider`.
+{{% /remark %}}
+
+Nous allons également améliorer la configuration de l'application. Pour cela, créez le fichier `prod.php` dans le sous-répertoire `app/config` du projet. Ce fichier contient les options de configuration liés à la mise en production de notre application. Ajoutez-lui le contenu ci-dessous.
+
+    <?php
+    
+    // Doctrine (db)
+    $app['db.options'] = array(
+        'driver'   => 'pdo_mysql',
+        'charset'  => 'utf8',
+        'host'     => 'localhost',
+        'port'     => '3306',
+        'dbname'   => 'microcms',
+        'user'     => 'microcms_user',
+        'password' => 'secret',
+    );
+
+Il s'agit du paramétrage de la connexion à la base de données via DBAL.
+
+Créez le fichier `dev.php` dans le sous-répertoire `app/config` du projet. Ce fichier contient les options de configuration liés au développement de notre application. Ajoutez-lui le contenu ci-dessous.
+
+    <?php
+    
+    // include the prod configuration
+    require __DIR__.'/prod.php';
+    
+    // enable the debug mode
+    $app['debug'] = true;
+
+Ce fichier inclut la configuration de production puis paramètre Silex pour afficher des informations de débogage détaillées en cas d'erreur, ce qui est utile pendant la phase de développement.
+
+A présent, modifiez le fichier `routes.php` du répertoire `app` comme indiqué ci-dessous.
+
+    <?php
+    
+    // Return all articles
+    $app->get('/', function () use ($app) {
+        $articles = $app['dao.article']->findAll();
+    
+        ob_start();                  // start buffering HTML output
+        require '../views/view.php';
+        $view = ob_get_clean();      // assign HTML output to $view
+        return $view;
+    });
+
+L'appel à la fonction `getArticles` est remplacé par l'utilisation du service `dao.article` enregistré dans `app.php`. `$app['dao.article']` renvoie un objet de la classe `ArticleDAO`dont on utilise ensuite la méthode `findAll` pour récupérer la liste des articles.
+
+La variable `$articles` utilisée dans ce fichier source contient à présent un tableau d'objets de la classe `Article`. Il faut donc modifier une partie de la vue `views/view.php` en conséquence.
+
+    // ...
+    <?php foreach ($articles as $article): ?>
+        <article>
+            <h2><?= $article->getTitle() ?></h2>
+            <p><?= $article->getContent() ?></p>
+        </article>
+    <?php endforeach; ?>
+    // ...
+
+Chaque élément `$article` du tableau `$articles` est un objet de la classe `Article`, et non plus un tableau associatif. A l'intérieur de la boucle `foreach` qui parcourt la liste des articles, on utilise les méthodes `getTitle` et `getContent` de cette classe afin d'accéder aux données de l'article.
+
+Il ne nous reste plus qu'à modifier le contrôleur frontal `web/index.php` afin d'inclure les fichiers de paramétrage de l'application.
+
+    <?php
+    
+    require_once __DIR__.'/../vendor/autoload.php';
+    
+    $app = new Silex\Application();
+    
+    require __DIR__.'/../app/config/dev.php';
+    require __DIR__.'/../app/app.php';
+    require __DIR__.'/../app/routes.php';
+    
+    $app->run();
+
+La structure de notre application est maintenant la suivante.
+
+{{% img microcms_arborescence_dbal.png %}}
+
+C'est le moment de tester notre refactorisation en accédant à l'URL http://microcms. Si tout va bien, le résultat affiché reste le même !
+
+Le code source associé à cette itération est disponible sur une [branche du dépôt GitHub](https://github.com/bpesquet/MicroCMS/tree/iteration-04).
+
+## Conclusion
+
+Cette itération nous a permis d'introduire une modélisation orientée objet du domaine et de l'accès aux données. Au passage, nous avons découvert comment Silex facilite l'inclusion de nouveaux services dans une application Web. C'est l'un des avantages de l'utilisation d'un framework.
+
+Dans cette itération, nous avons surtout travaillé dans les parties Modèle et Contrôleur de notre application. L'itération suivante va s'intéresser à la partie Vue.
