@@ -1,4 +1,4 @@
-    </div>
+    </div> <!-- container opened in header.html -->
 
     <footer class="footer">
         <div class="container">
@@ -6,7 +6,7 @@
                 Créé avec <a href="http://hugo.spf13.com">Hugo</a> et <a href="http://getbootstrap.com">Bootstrap</a>.
             </p>
             <p>
-                <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/fr/"><img src="/images/by-nc-sa.png" /></a>
+                <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/fr/"><img src="/images/by-nc-sa.png" alt="Creative Commons logo" /></a>
             </p>
         </div>
     </footer>
@@ -17,19 +17,20 @@
     <script>hljs.initHighlightingOnLoad();</script>
 
     <script>
-        <!-- Make images responsive -->
+        // Make images responsive
         $("img").addClass("img-responsive");
         
-        <!-- Render tables via Bootstrap -->
+        // Render tables via Bootstrap
         $("table").addClass("table");
         
-        <!-- Render TOC via Bootstrap -->
+        // Render TOC via Bootstrap
         $("#TableOfContents ul").addClass("nav");
+        $("#TableOfContents > ul").addClass("sidenav");
         $("#TableOfContents").affix();
 
-        <!-- Dirty hack to prevent fixed-to-top navbar from hiding anchor targets -->
-        <!-- Taken from https://github.com/twbs/bootstrap/issues/1768 -->
+        // Dirty hack to prevent fixed-to-top navbar from hiding anchor targets
+        // Taken from https://github.com/twbs/bootstrap/issues/1768
         window.addEventListener("hashchange", function() { scrollBy(0, -60) });
-  </script>
+    </script>
 </body>
 </html>

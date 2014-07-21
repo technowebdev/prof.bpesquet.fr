@@ -18,7 +18,7 @@ Ce tutoriel vise à se familiariser avec le framework PHP [Silex](http://silex.s
 
 [Silex](http://silex.sensiolabs.org/) est un micro-framework PHP développé par la société française [Sensio Labs](http://sensiolabs.com/), créatrice du framework [Symfony](http://symfony.com/). Silex est en quelque sorte le petit frère de Symfony et les deux frameworks reposent sur les mêmes composants.
 
-Contrairement à Symfony qui fournit (et impose) une architecture complète (dite *full stack*), Silex est un framework minimaliste qui laisse beaucoup de liberté au développeur. C'est pourquoi on peut le qualifier de **micro-framework**. Il fournit un ensemble réduit de services au-dessus desquels on peut développer une application Web. Son minimalisme le rend idéal pour s'initier en douceur au fonctionnement d'un framework PHP.
+Contrairement à Symfony qui fournit (et impose) une architecture complète (dite *full stack*), Silex est un framework minimaliste qui laisse beaucoup de liberté au développeur. C'est pourquoi on peut le qualifier de **micro-framework**. Il fournit un ensemble réduit de services au-dessus desquels on peut développer une application Web. 
 
 Silex dispose d'une [documentation en ligne](http://silex.sensiolabs.org/documentation) assez complète. Dans ce turoriel, nous allons nous contenter d'utiliser Silex pour afficher le classique message "Hello world" à l'utilisateur.
 
@@ -115,7 +115,6 @@ Afin de contrôler que notre exemple fonctionne, vérifiez que votre serveur Web
 
 Vous devriez obtenir l'affichage du texte "Hello world" dans le navigateur.
 
-
 ## Initiation au routage avec Silex
 
 Pour l'instant, notre application Web ne dispose que d'un point d'entrée. Ajoutons-en un autre en définissant une nouvelle route dans le fichier `index.php`.
@@ -123,7 +122,8 @@ Pour l'instant, notre application Web ne dispose que d'un point d'entrée. Ajout
     // ...
     $app->get('/hello/{name}', function ($name) use ($app) {
         return 'Hello ' . $app->escape($name);
-    
+    });
+
     $app->run();
 
 Cette nouvelle route correspond à une URL de type `/hello/nom`. La partie de l'URL située après `/hello/` est passée à l'action sous la forme d'un paramètre nommé `$name`.

@@ -1,12 +1,8 @@
 <ul>
     <li><a href="http://bpesquet.developpez.com/tutoriels/php/evoluer-architecture-mvc/"> Evoluer vers une architecture MVC en PHP </a> (developpez.com)</li>
-    {{ range .Data.Pages.ByTitle }}
+    {{ range .Data.Pages.ByDate }}
         {{ if eq .Type "tutoriel" }}
-            {{ $link := .Permalink }}
-            {{ $title := .LinkTitle }}
-            {{ with .Params.showinmenus }}
-                <li><a href="{{ $link }}">{{ $title }}</a></li>
-            {{ end }}
+            <li><a href="{{ .Permalink }}">{{ .LinkTitle }}</a></li>
         {{ end }}   
     {{ end }}
 </ul>

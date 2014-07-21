@@ -3,9 +3,7 @@ contentdir: "content"
 layoutdir: "layouts"
 publishdir: "public"
 builddrafts: false
-taxonomies:
-    tag: "tags"
-    category: "categories"
+Taxonomies:
     series: "series"
 baseurl: http://bpesquet.fr
 canonifyurls: true
