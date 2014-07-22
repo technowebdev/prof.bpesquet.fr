@@ -361,14 +361,14 @@ La partie Contrôleur gère la dynamique de l'application. Elle fait le lien ent
 
 ### Interactions entre les composants
 
-Le diagramme ci-dessous résume les relations entre les composants d'une architecture MVC.
+Le diagramme ci-dessous (extrait de la documentation du framework Symfony) résume les relations entre les composants d'une architecture MVC.
 
 {{% img mvc_symfony2.png %}}
 
-La demande de l'utilisateur (exemple : requête HTTP) est reçue et interprétée par le contrôleur. Celui-ci utilise les services du modèle afin de préparer les données à afficher. Ensuite, le Contrôleur fournit ces données à la vue, qui les présente à l'utilisateur (par exemple sous la forme d'une page HTML).
+La demande de l'utilisateur (exemple : requête HTTP) est reçue et interprétée par le Contrôleur. Celui-ci utilise les services du Modèle afin de préparer les données à afficher. Ensuite, le Contrôleur fournit ces données à la Vue, qui les présente à l'utilisateur (par exemple sous la forme d'une page HTML).
 
 {{% remark %}}
-On peut trouver des variations de cette architecture dans lesquels la vue interagit directement avec le modèle afin de récupérer les données dont elle a besoin.
+On peut trouver des variantes moins "pures" de cette architecture dans lesquelles la Vue interagit directement avec le Modèle afin de récupérer les données dont elle a besoin.
 {{% /remark %}}
 
 ### Avantages et inconvénients
