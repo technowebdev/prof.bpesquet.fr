@@ -1,6 +1,6 @@
 ---
 title: "Développement PHP moderne"
-date: 2014-07-20
+date: 2014-07-22
 ---
 
 Découvrez comment bâtir une application Web fonctionnelle et sûre en tirant le meilleur du langage PHP.
@@ -965,3 +965,114 @@ Le code source associé à cette itération est disponible sur une [branche du d
 ## Conclusion
 
 la partie Présentation de notre application Web est maintenant gérée par le moteur de remplates Twig. Cependant, le rendu utilisateur n'a pas évolué depuis l'initialisation de l'application et il reste sommaire. La prochaine itération va améliorer cela.
+
+# Itération 6 : amélioration de la présentation
+
+Le but de cette itération est de rendre l'affichage de notre application plus conforme aux standards actuels.
+
+Voici la liste des éléments du *backlog* réalisés dans cette itération.
+
+Référence | Description
+----------|------------
+User_U02 | En tant que visiteur anonyme, je peux accéder à l'application depuis un terminal fixe ou mobile et obtenir un affichage toujours adapté.
+
+## Introduction au design Web adaptatif
+
+Commençons avec une image qui vaut mieux qu'un long discours.
+
+{{% img this_is_the_web.png %}}
+
+De nos jours, un site Web a plus de chances d'être consulté depuis un terminal mobile (*smartphone*, tablette, etc) que depuis un classique poste fixe. Cette (r)évolution doit absolument est prise en compte pour qu'un utilisateur de terminal mobile puisse consulter et utiliser le site dans de bonnes conditions.
+
+Il existe plusieurs réponses complémentaires à cette problématique, comme par exemple la création d'une version mobile d'un site ou encore le développement d'applications dédiées à chaque écosystème mobile (iOS, Android, Windows Phone...). La solution la moins coûteuse consiste à adapter l'affichage en détectant les caractéristiques du terminal client. C'est ce qu'on appelle le **design Web adaptatif**, traduction de l'anglais *responsive (Web) design*. Pour une introduction générale à ce concept, consultez [Wikipedia](http://fr.wikipedia.org/wiki/Site_web_adaptatif).
+
+Il existe plusieurs manières d'obtenir un design Web adaptatif. On peut le réaliser "à la main" en utilisant des [media queries](http://www.alsacreations.com/article/lire/930-css3-media-queries.html) (fournies par la norme CSS3) pour adapter la mise en page à l'environnement détecté. il existe également des frameworks qui facilitent la mise en page adaptative. Nous allons utiliser le plus populaire d'entre eux : [Bootstrap](http://getbootstrap.com/).
+
+## Premiers pas avec Bootstrap
+
+Pour une introduction générale au fonctionnement de Bootstrap, consultez le tutoriel [Premiers pas avec le framework Bootstrap](/tutoriel/premiers-pas-framework-bootstrap/).
+
+## Installation de Bootstrap et de jQuery
+
+Les fichiers de Bootstrap sont nécessaires au navigateur client pour afficher les pages HTML de notre application. Nous allons donc les installer dans le répertoire `web`. Dans ce répertoire, créez un sous-répertoire `lib` puis un sous-répertoire `bootstrap` dans `lib`. Téléchargez Bootstrap sur [cette page](http://getbootstrap.com/getting-started/#download) puis décompressez le contenu de l'archive dans le répertoire `bootstrap`. 
+
+Pour fonctionner totalement, Bootstrap nécessite l'inclusion de la librairie JavaScript [jQuery](http://jquery.com/). Créez dans le répertoire `web/lib` un sous-répertoire `jquery`. Ensuite, téléchargez la version "production" de jQuery sur [cette page](http://jquery.com/download/) puis copiez le fichier JavaScript téléchargé dans le répertoire `jquery`.
+
+Afin de clarifier l'organisation de `web`, créez dans ce répertoire un sous-répertoire `css` puis déplacez-y le fichier `microcms.css`.
+
+Vous devez obtenir dans `web` une arborescence de la forme suivante.
+
+{{% img microcms_arborescence_bootstrap.png %}}
+
+## Réécriture de la vue avec Bootstrap
+
+Nous allons modifier la vue `index.html.twig` pour y intégrer Bootstrap. Au passage, nous allons en profiter pour ajouter à l'application une barre de navigation fixée en haut de la fenêtre. Voici son nouveau code source.
+
+    <!doctype html>
+    <html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="{{ app.request.basepath }}/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="{{ app.request.basepath }}/css/microcms.css" rel="stylesheet">
+        <title>MicroCMS - Home</title>
+    </head>
+    <body>
+        <div class="container">
+            <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-target">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="/">MicroCMS</a>
+                    </div>
+                    <div class="collapse navbar-collapse" id="navbar-collapse-target">
+                    </div>
+                </div><!-- /.container -->
+            </nav>
+            {% autoescape %}
+            {% for article in articles %}
+                <article>
+                    <h2>{{ article.title }}</h2>
+                    <p>{{ article.content }}</p>
+                </article>
+            {% endfor %}
+            {% endautoescape %}
+            <footer class="footer">
+                <a href="https://github.com/bpesquet/MicroCMS">MicroCMS</a> is a minimalistic CMS built as a showcase for modern PHP development.
+            </footer>
+        </div>
+    </body>
+    </html>
+
+Dans la partie `<head>` de cette page, nous avons ajouté les liens vers les feuilles de style de l'application et de Boostrap en préfixant ces liens par la variable `app.request.basepath` de Silex. Cela permet de gérer tous les scenarii possibles de déploiement de l'application ([plus de détails](http://silex.sensiolabs.org/doc/cookbook/assets.html)).
+
+Dans le corps de cette page, nous avons introduit une barre de navigation (`navbar`) fixée en haut de la fenêtre (`navbar-fixed-top`). Tous les éléments du corps sont inclus dans un conteneur Boostrap (`container`).
+
+Le fait de fixer la barre de navigation en haut de la fenêtre nécessite de décaler la balise `<body>`. Il faut donc modifier la feuille style `microcms.css` ainsi :
+
+    body { 
+        padding-top: 40px; 
+    }
+    
+    .footer {
+        border-top: 1px solid #ccc;
+        padding-top: 10px;
+        text-align: center;
+    }
+
+Accédez à l'URL http://microcms depuis votre navigateur Web. Vous obtenez à présent un résultat plus flatteur.
+
+{{% image src="microcms_articles_bootstrap.png" class="centered" %}}
+
+Le code source associé à cette itération est disponible sur une [branche du dépôt GitHub](https://github.com/bpesquet/MicroCMS/tree/iteration-06).
+
+## Conclusion
+
+Grâce à l'intégration de Bootstrap, les vues gérant l'affichage de notre application ont un aspect plus actuel et peuvent être écrites de manière adaptative. Leur rendu sera optimal quel que soit le terminal client utilisé.
+
+Cette itération et les précédentes ont consisté en des améliorations techniques de l'application. La prochaine itération va (enfin !) lui ajouter une nouvelle fonctionnalité métier.

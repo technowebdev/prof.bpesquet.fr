@@ -1,10 +1,9 @@
 ---
 title: "Premiers pas avec le framework PHP Silex"
 date: 2014-06-20
-showInMenus: true
 ---
 
-Ce tutoriel vise à se familiariser avec le framework PHP [Silex](http://silex.sensiolabs.org/) au travers de l'écriture d'une application Web basique.
+Apprenez à utiliser le framework PHP [Silex](http://silex.sensiolabs.org/) par la pratique.
 
 {{% image src="silex-logo.png" class="centered" %}}
 
