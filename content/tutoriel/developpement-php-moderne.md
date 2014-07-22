@@ -453,6 +453,10 @@ Déplacez le fichier `view.php` dans le sous-répertoire `views`, puis déplacez
 
 Ce fichier constitue le **contrôleur frontal** de notre application Web. Il centralise la gestion des requêtes HTTP entrantes. Dans ce fichier, on instancie l'objet Silex principal `$app` puis on inclut la définitions des routes de l'application (fichier `routes.php`).
 
+{{% remark %}}
+`__DIR__` est une [constante magique](http://php.net/manual/fr/language.constants.predefined.php) PHP qui contient le dossier du fichier courant.
+{{% /remark %}}
+
 Toujours dans `web`, créez un nouveau fichier texte nommé `.htaccess` contenant le texte ci-dessous. Ce fichier permet de rediriger toutes les requêtes entrantes vers `index.php`.
 
     # Redirect incoming URLs to index.php
@@ -560,7 +564,7 @@ Ecrivons maintenant cette classe en PHP. Si vous n'avez jamais utilisé PHP de m
          *
          * @var string
          */
-        rivate $title;
+        private $title;
 
         /**
          * Article content.
@@ -802,7 +806,7 @@ La structure de notre application est maintenant la suivante.
 
 {{% img microcms_arborescence_dbal.png %}}
 
-C'est le moment de tester notre refactorisation en accédant à l'URL http://microcms. Si tout va bien, le résultat affiché reste le même !
+C'est le moment de tester notre refactorisation en accédant à l'URL http://microcms. Si tout va bien, le résultat affiché reste le même.
 
 Le code source associé à cette itération est disponible sur une [branche du dépôt GitHub](https://github.com/bpesquet/MicroCMS/tree/iteration-04).
 
@@ -811,3 +815,153 @@ Le code source associé à cette itération est disponible sur une [branche du d
 Cette itération nous a permis d'introduire une modélisation orientée objet du domaine et de l'accès aux données. Au passage, nous avons découvert comment Silex facilite l'inclusion de nouveaux services dans une application Web. C'est l'un des avantages de l'utilisation d'un framework.
 
 Dans cette itération, nous avons surtout travaillé dans les parties Modèle et Contrôleur de notre application. L'itération suivante va s'intéresser à la partie Vue.
+
+
+# Itération 5 : refactorisation de la présentation
+
+Le but de cette itération est d'améliorer la technologie d'affichage de notre application.
+
+Voici la liste des éléments du *backlog* réalisés dans cette itération.
+
+Référence | Description
+----------|------------
+Tech_06 | L'application est protégée contre le risque d'injection de code dans les pages Web affichées.
+
+## Critique de l'application existante
+
+La partie Présentation de notre application actuelle correspond au répertoire `views`, dans lequel on définit un fichier PHP/HTML par vue affichée. Voici pour mémoire le contenu du fichier `view.php` affichant la liste des articles.
+
+    <!doctype html>
+    <html>
+    <head>
+        <meta charset="utf-8" />
+        <link href="microcms.css" rel="stylesheet" />
+        <title>MicroCMS - Home</title>
+    </head>
+    <body>
+        <header>
+            <h1>MicroCMS</h1>
+        </header>
+        <?php foreach ($articles as $article): ?>
+            <article>
+                <h2><?= $article->getTitle() ?></h2>
+                <p><?= $article->getContent() ?></p>
+            </article>
+        <?php endforeach; ?>
+        <footer class="footer">
+            <a href="https://github.com/bpesquet/MicroCMS">MicroCMS</a> is a minimalistic CMS built as a showcase for modern PHP development.
+        </footer>
+    </body>
+    </html>
+
+L'évolution de l'application va impliquer l'écriture de nouvelles vues (détails sur un article, formulaire de connexion, etc). Toutes les vues auront cependant des éléments communs (partie `<head>`, pied de page, etc). On aimerait pouvoir définir un squelette de vue commun et ne définir dans chaque vue que ses éléments spécifiques.
+
+Un autre problème de notre application tient à la sécurité. Actuellement, notre vue n'est pas protégée contre les [injections de code](http://fr.wikipedia.org/wiki/Injection_de_code_dans_les_applications_web) sur la page HTML générée. Ici, si `$article->getTitle()` contient un code malicieux (par exemple du JavaScript), la page HTML générée par cette vue exécutera ce code JavaScript non désiré.
+
+Le mécanisme standard de défense contre les injections de code dans du HTML consiste à **échapper** (*escape*) toutes les données dynamiques incluses dans le code HTML. La technique classique est de faire appel à la fonction PHP [htmlspecialchars](http://php.net//manual/fr/function.htmlspecialchars.php) qui transforme certains caractères tels que `<` ou `>`, ce qui désactive l'interprétation des balises comme `<script>`. Silex fournit ce mécanisme sous la forme de la méthode [escape](http://silex.sensiolabs.org/api/Silex/Application.html#method_escape). Cependant, il est fastidieux d'échapper systématiquement toutes les variables PHP dans toutes nos vues.
+
+Afin de remédier à toutes ces limitations, nous allons utiliser une solution plus moderne en intégrant à notre application un moteur de *templates*.
+
+## Choix du moteur de templates
+
+Un **moteur de templates** est un logiciel spécialisé dans la générations de vues. Un *template* (que l'on peut traduire par "gabarit") est un fichier texte contenant des instructions spécifiques (variables, structures de contrôle, etc). Lorsqu'un template est généré, les instructions spécifiques qu'il contient sont exécutées par le moteur pour aboutir au résultat désiré.
+
+Quelque part, PHP est en lui-même un moteur de templates. Cependant, un moteur de templates dédié comme celui que nous allons utiliser fournit une syntaxe plus claire et des services plus avancés.
+
+Il existe plusieurs moteurs de templates PHP, comme par exemple [Smarty](http://www.smarty.net/). Notre choix va se porter sur le moteur standard de Silex et de Symfony : [Twig](http://twig.sensiolabs.org/).
+
+La prise en main de Twig n'est pas très difficile. Si vous souhaitez des informations détaillées, consultez sa [documentation](http://twig.sensiolabs.org/doc/templates.html) ou encore ce [tutoriel](http://fr.openclassrooms.com/informatique/cours/utilisation-de-twig-un-moteur-de-templates).
+
+## Intégration de Twig
+
+L'intégration de Twig est facilitée par l'existence d'un fournisseur de services pour Silex. Nous allons donc employer la même technique que pour DBAL à l'itération précédente.
+
+Commençons par définir une dépendance de notre projet envers Twig dans le fichier `composer.json`. 
+
+    {
+        "require": {
+            "silex/silex": "~1.2",
+            "doctrine/dbal": "~2.4",
+            "twig/twig": "~1.16"
+        },
+        "autoload": {
+            "psr-0": {"MicroCMS": "src/"}
+        }
+    }
+
+Mettez ensuite à jour les dépendances en tapant la ligne ci-dessous dans un terminal.
+
+    $ composer update
+
+Ensuite, éditez le fichier `app/app.php` pour y ajouter l'enregistrement de Twig auprès de Silex.
+
+    // ...
+
+    // Register service providers.
+    $app->register(new Silex\Provider\DoctrineServiceProvider());
+    $app->register(new Silex\Provider\TwigServiceProvider(), array(
+        'twig.path' => __DIR__.'/../views',
+    ));
+
+    // ...
+
+Ici, Twig est configuré pour que le répertoire dans lequel nous stockerons nos templates soit le répertoire `views` du projet.
+
+{{% remark %}}
+Le service `$app['twig']` est défini automatiquement lors de l'enregistrement du fournisseur `TwigServiceProvider`.
+{{% /remark %}}
+
+A présent, remplaçons la vue `views/view.php` par un template Twig pour afficher la liste des articles. Dans le répertoire `views`, créez le fichier `index.html.twig` avec le contenu ci-dessous.
+
+    <!doctype html>
+    <html>
+    <head>
+        <meta charset="utf-8" />
+        <link href="microcms.css" rel="stylesheet" />
+        <title>MicroCMS - Home</title>
+    </head>
+    <body>
+        <header>
+            <h1>MicroCMS</h1>
+        </header>
+        {% autoescape %}
+        {% for article in articles %}
+            <article>
+                <h2>{{ article.title }}</h2>
+                <p>{{ article.content }}</p>
+            </article>
+        {% endfor %}
+        {% endautoescape %}
+        <footer class="footer">
+            <a href="https://github.com/bpesquet/MicroCMS">MicroCMS</a> is a minimalistic CMS built as a showcase for modern PHP development.
+        </footer>
+    </body>
+    </html>
+
+Comme vous le constatez, la syntaxe de Twig est assez proche de celle du PHP : 
+
+* la boucle `for` permet de parcourir le tableau `$articles` ;
+* l'instruction `article.title` fait appel à la méthode `getTitle` de l'objet `$article` ([plus de précisions](http://twig.sensiolabs.org/doc/templates.html#variables)) ;
+* les instructions `{% autoescape %}` et `{% endautoescape %}` délimitent un bloc de code dans lequel l'échappement des variables dynamiques est réalisé automatiquement.
+
+Vous pouvez maintenant supprimer le fichier `views/view.php` devenu inutile.
+
+Enfin, on modifie la route Silex dans le fichier `app/routes.php` pour générer la nouvelle vue.
+
+    <?php
+
+    // Return all articles
+    $app->get('/', function () use ($app) {
+        $articles = $app['dao.article']->findAll();
+        return $app['twig']->render('index.html.twig', array('articles' => $articles));
+    });
+
+Ici, on demande au service Twig (`$app['twig']`) de générer le template `index.html.twig` en lui passant ses données dynamiques en paramètre. Ici, la seule donnée dynamique est une variable nommée `articles` qui contient le tableau d'objets de la classe `Article` renvoyé par la partie Modèle.
+
+Il est temps de vérifier l'intégration de Twig en accédant à http://microcms. Même si la technologie utilisée a changé, la liste des articles s'affiche exactement comme précédemment.
+
+Le code source associé à cette itération est disponible sur une [branche du dépôt GitHub](https://github.com/bpesquet/MicroCMS/tree/iteration-05).
+
+## Conclusion
+
+la partie Présentation de notre application Web est maintenant gérée par le moteur de remplates Twig. Cependant, le rendu utilisateur n'a pas évolué depuis l'initialisation de l'application et il reste sommaire. La prochaine itération va améliorer cela.
