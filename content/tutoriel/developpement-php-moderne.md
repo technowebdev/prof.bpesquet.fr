@@ -544,7 +544,7 @@ L'ajout futur de nouveaux services similaire risque de rendre la partie Modèle 
 
 la classe `Article` est ce qu'on appelle parfois (sans peur du ridicule) un POPO, ou *Plain Old PHP Objet* par analogie avec les [POJO](http://fr.wikipedia.org/wiki/Plain_Old_Java_Object) du monde Java. Autrement dit, cette classe ne contient rien de complexe : uniquement les propriétés et accesseurs nécessaires pour représenter un article.
 
-Ecrivons maintenant cette classe en PHP. Si vous n'avez jamais utilisé PHP de manière orientée objet, je vous conseille les tutoriels des sites [openclassrooms](http://fr.openclassrooms.com/informatique/cours/programmez-en-oriente-objet-en-php) et [codecamedy](http://www.codecademy.com/fr/tracks/php).
+Ecrivons maintenant cette classe en PHP. Si vous n'avez jamais utilisé PHP de manière orientée objet, je vous conseille les tutoriels des sites [OpenClassrooms](http://fr.openclassrooms.com/informatique/cours/programmez-en-oriente-objet-en-php) (chapitres 1 et 2) et [Codecamedy](http://www.codecademy.com/fr/tracks/php).
 
     <?php
     
@@ -1076,3 +1076,592 @@ Le code source associé à cette itération est disponible sur une [branche du d
 Grâce à l'intégration de Bootstrap, les vues gérant l'affichage de notre application ont un aspect plus actuel et peuvent être écrites de manière adaptative. Leur rendu sera optimal quel que soit le terminal client utilisé.
 
 Cette itération et les précédentes ont consisté en des améliorations techniques de l'application. La prochaine itération va (enfin !) lui ajouter une nouvelle fonctionnalité métier.
+
+
+# Itération 7 : affichage des détails sur un article
+
+Le but de cette itération est de permettre au visiteur de consulter les détails sur un article.
+
+Voici la liste des éléments du *backlog* réalisés dans cette itération.
+
+Référence | Description
+----------|------------
+User_U03 | En tant que visiteur anonyme, je peux cliquer sur le titre d'un article afin de consulter son contenu et ses commentaires.
+
+## Mise à jour de la base de données
+
+Notre base de données actuelle doit évoluer pour intégrer le stockage des commentaires sur les articles. Un commentaire se caractérise par son identifiant, son auteur, son contenu ainsi que l'article auquel il se rapporte.
+
+L'un de nos récits utilisateur ("En tant qu'utilisateur connecté, je peux ajouter un commentaire à un article") implique que l'auteur d'un commentaire soit un utilisateur enregistré. Au cours de cette itération, nous allons gérer l'auteur comme une simple chaîne. On crée donc une table `t_comment` pour stocker les commentaires, en lui ajoutant les champs requis ainsi qu'une clé étrangère vers la table `t_article`. On aboutit au contenu ci-dessous pour le fichier `db/structure.sql`.
+
+    create database if not exists microcms character set utf8 collate utf8_unicode_ci;
+    use microcms;
+    
+    grant all privileges on microcms.* to 'microcms_user'@'localhost' identified by 'secret';
+    
+    drop table if exists t_comment;
+    drop table if exists t_article;
+    
+    create table t_article (
+        art_id integer not null primary key auto_increment,
+        art_title varchar(100) not null,
+        art_content varchar(2000) not null
+    ) engine=innodb character set utf8 collate utf8_unicode_ci;
+    
+    create table t_comment (
+        com_id integer not null primary key auto_increment,
+        com_author varchar(100) not null,
+        com_content varchar(500) not null,
+        art_id integer not null,
+        constraint fk_com_art foreign key(art_id) references t_article(art_id)
+    ) engine=innodb character set utf8 collate utf8_unicode_ci;
+
+On enrichit le jeu de données de test de l'application avec quelques commentaires.
+
+    # ...
+
+    insert into t_comment(art_id, com_author, com_content) values
+    (1, 'John Doe', 'Great! Keep up the good work.');
+    insert into t_comment(art_id, com_author, com_content) values
+    (1, 'Ann Yone', "Thank you, I'll try my best.");
+
+Mettez à jour les scripts SQL `db/structure.sql` et `db/content.sql` pour ajouter les éléments ci-dessus, puis exécutez-les dans cet ordre afin de mettre votre base de données à jour.
+
+## Mise à jour de l'application
+
+### Partie Modèle
+
+En respectant les choix de design effectués dans une itération précédente, on modélise un commentaire sous la forme d'une classe `Commentaire` dans l'espace de noms `MicroCMS\Domain`. Voici le diagramme UML associé.
+
+    {{% image src="microcms_uml_article_comment.jpeg" class="centered" %}}
+
+Ce diagramme modélise l'association entre un article et ses commentaires.
+
+Créez le fichier source `Comment.php` dans le répertoire `src/MicroCMS/Domain`, puis ajoutez-y le code source de la classe `Comment`.
+
+    <?php
+    
+    namespace MicroCMS\Domain;
+    
+    class Comment 
+    {
+        /**
+         * Comment id.
+         *
+         * @var integer
+         */
+        private $id;
+    
+        /**
+         * Comment author.
+         *
+         * @var string
+         */
+        private $author;
+    
+        /**
+         * Comment content.
+         *
+         * @var integer
+         */
+        private $content;
+    
+        /**
+         * Associated article.
+         *
+         * @var \MicroCMS\Domain\Article
+         */
+        private $article;
+    
+        public function getId() {
+            return $this->id;
+        }
+    
+        public function setId($id) {
+            $this->id = $id;
+        }
+    
+        public function getAuthor() {
+            return $this->author;
+        }
+    
+        public function setAuthor($author) {
+            $this->author = $author;
+        }
+    
+        public function getContent() {
+            return $this->content;
+        }
+    
+        public function setContent($content) {
+            $this->content = $content;
+        }
+    
+        public function getArticle() {
+            return $this->article;
+        }
+    
+        public function setArticle($article) {
+            $this->article = $article;
+        }
+    }
+
+L'association avec un article se traduit dans le code source par la présence d'une propriété `article`. Il ne s'agit pas d'un simple identifiant de type entier, mais bien d'un objet de la classe `Article`.
+
+A présent, il faut créer la classe d'accès aux données pour les commentaires. Cette classe doit permettre de récupérer la liste des commentaires associés à un article donné. Elle est logiquement nommée `CommentDAO` et se trouve dans l'espace de noms `MicroCMS\DAO`. Voici une première version de cette classe.
+
+    <?php
+    
+    namespace MicroCMS\DAO;
+    
+    use Doctrine\DBAL\Connection;
+    use MicroCMS\Domain\Comment;
+    
+    class CommentDAO
+    {
+        /**
+         * Database connection
+         *
+         * @var \Doctrine\DBAL\Connection
+         */
+        private $db;
+    
+        /**
+         * Constructor
+         *
+         * @param \Doctrine\DBAL\Connection The database connection object
+         */
+        public function __construct(Connection $db) {
+            $this->db = $db;
+        }
+    
+        /**
+         * Return a list of all comments for an article, sorted by date (most recent first).
+         *
+         * @param $articleId The article id.
+         *
+         * @return array A list of all comments for the article.
+         */
+        public function findAllByArticle($articleId) {
+            // ...
+        }
+    
+        /**
+         * Creates an Comment object based on a DB row.
+         *
+         * @param array $row The DB row containing Comment data.
+         * @return \MicroCMS\Domain\Comment
+         */
+        private function buildComment($row) {
+            // ...
+        }
+    }
+
+On peut remarquer que la propriété `$db` ainsi que le constructeur sont exactement les mêmes que dans la classe `ArticleDAO`. Il s'agit d'une **duplication de code**.
+
+{{% tip %}}
+La duplication de code est l'ennemie du bon développeur, et l'un des symptômes d'un design perfectible. 
+{{% /tip %}}
+
+Nous allons profiter de cette itération pour refactoriser le code d'accès aux données afin de supprimer cette duplication de code. Commençons par identifier les besoins communs à toutes les classes d'accès aux données :
+
+* la connexion à la base (propriété `$db`) ;
+* la construction d'un objet du domaine à partir d'une ligne de résultat SQL (méthodes `buildArticle` et `buildComment`).
+
+Nous factorisons ces besoin communs au sein d'une classe abstraite `DAO` dont **hériteront** toutes nos classes d'accès aux données. Si vous avez besoin de détails sur le concept d'héritage, consultez ce [cours](/cours/principaux-concepts-objet/). Voici le code source de la classe `DAO`.
+
+    <?php
+    
+    namespace MicroCMS\DAO;
+    
+    use Doctrine\DBAL\Connection;
+    
+    abstract class DAO 
+    {
+        /**
+         * Database connection
+         *
+         * @var \Doctrine\DBAL\Connection
+         */
+        private $db;
+    
+        /**
+         * Constructor
+         *
+         * @param \Doctrine\DBAL\Connection The database connection object
+         */
+        public function __construct(Connection $db) {
+            $this->db = $db;
+        }
+    
+        /**
+         * Grants access to the database connection object
+         *
+         * @return \Doctrine\DBAL\Connection The database connection object
+         */
+        protected function getDb() {
+            return $this->db;
+        }
+    
+        /**
+         * Builds a domain object from a DB row.
+         * Must be overridden by child classes.
+         */
+        protected abstract function buildDomainObject($row);
+    }
+
+La connexion à la base de données est encapsulée sous la forme d'une propriété privée `$db` et d'un accesseur protégé (donc accessible uniquement aux classes dérivées) `getDb`. La construction d'un objet du domaine est spécifique à chaque entité métier : on factorise donc uniquement la déclaration de ce service (méthode protégée `buildDomainObject`). Chaque classe d'accès aux données devra **redéfinir** cette méthode pour consstruire un objet du domaine particulier.
+
+Créez le fichier source `DAO.php` dans le répertoire `src/MicroCMS/DAO`, puis ajoutez-y le code source de la classe `DAO`.
+
+L'existence de la classe abstraite `DAO` nous permet de modifier la définition de la classe `ArticleDAO` comme indiqué ci-dessous.
+
+    <?php
+    
+    namespace MicroCMS\DAO;
+    
+    use MicroCMS\Domain\Article;
+    
+    class ArticleDAO extends DAO
+    {
+        /**
+         * Return a list of all articles, sorted by date (most recent first).
+         *
+         * @return array A list of all articles.
+         */
+        public function findAll() {
+            $sql = "select * from t_article order by art_id desc";
+            $result = $this->getDb()->fetchAll($sql);
+            
+            // Convert query result to an array of Article objects
+            $articles = array();
+            foreach ($result as $row) {
+                $articleId = $row['art_id'];
+                $articles[$articleId] = $this->buildDomainObject($row);
+            }
+            return $articles;
+        }
+    
+        /**
+         * Creates an Article object based on a DB row.
+         *
+         * @param array $row The DB row containing Article data.
+         * @return \MicroCMS\Domain\Article
+         */
+        protected function buildDomainObject($row) {
+            $article = new Article();
+            $article->setId($row['art_id']);
+            $article->setTitle($row['art_title']);
+            $article->setContent($row['art_content']);
+            return $article;
+        }
+    }
+
+La classe `ArticleDAO` hérite (mot-clé `extends`) de la classe abstraite `DAO`. L'utilisation directe de la propriété `$db` est remplacée par l'appel de la méthode `getDb` définie dans `DAO`. La méthode `buildArticle` est remplacée par la méthode redéfinie `buildDomainObject`.
+
+{{% remark %}}
+Nous aurions pu aller plus loin dans le redesign en factorisant dans la classe `DAO` la construction d'un objet du domaine générique. Cela aurait complexifié l'architecture au-delà du niveau de ce tutoriel.
+{{% /remark %}}
+
+Voici maintenant le code source de la classe `CommentDAO`.
+
+    <?php
+    
+    namespace MicroCMS\DAO;
+    
+    use MicroCMS\Domain\Comment;
+    
+    class CommentDAO extends DAO 
+    {
+        /**
+         * @var \MicroCMS\DAO\ArticleDAO
+         */
+        protected $articleDAO;
+    
+        public function setArticleDAO($articleDAO) {
+            $this->articleDAO = $articleDAO;
+        }
+    
+        /**
+         * Return a list of all comments for an article, sorted by date (most recent first).
+         *
+         * @param $articleId The article id.
+         *
+         * @return array A list of all comments for the article.
+         */
+        public function findAllByArticle($articleId) {
+            $sql = "select * from t_comment where art_id=? order by com_id";
+            $result = $this->getDb()->fetchAll($sql, array($articleId));
+            
+            // Convert query result to an array of Comment objects
+            $comments = array();
+            foreach ($result as $row) {
+                $comId = $row['com_id'];
+                $comments[$comId] = $this->buildDomainObject($row);
+            }
+            return $comments;
+        }
+    
+        /**
+         * Creates an Comment object based on a DB row.
+         *
+         * @param array $row The DB row containing Comment data.
+         * @return \MicroCMS\Domain\Comment
+         */
+        protected function buildDomainObject($row) {
+            // Find the associated article
+            $articleId = $row['art_id'];
+            $article = $this->articleDAO->find($articleId);
+    
+            $comment = new Comment();
+            $comment->setId($row['com_id']);
+            $comment->setAuthor($row['com_author']);
+            $comment->setContent($row['com_content']);
+            $comment->setArticle($article);
+            return $comment;
+        }
+    }
+
+Afin de pouvoir construire complètement une instance de la classe `Comment`, la classe `CommentDAO` doit pouvoir récupérer un article à partir de son identifiant et construire une instance de la classe `Article`. Plutôt que d'ajouter cela dans le code source de `CommentDAO`, on ajoute dans la classe `ArticleDAO` une nouvelle méthode `find` définissant le service requis. La classe `CommentDAO` a besoin de la classe `ArticleDAO` pour fonctionner : on dit qu'il existe une **dépendance** entre la classe `CommentDAO` et la classe `ArticleDAO`. Cette dépendance se traduit dans le code source de `CommentDAO` par la présence d'une propriété privée `articleDAO` et d'un accesseur en écriture (mutateur) `setArticleDAO`. 
+
+Créez le fichier source `CommentDAO.php` dans le répertoire `src/MicroCMS/DAO` et ajoutez-y le code de la classe `CommentDAO`. Ensuite, ajoutez au fichier `ArticleDAO.php` la méthode `find` ci-dessous.
+
+    <?php
+    
+    // ...
+    
+    class ArticleDAO extends DAO
+    {
+        // ...
+
+        /**
+         * Returns an article matching the supplied id.
+         *
+         * @param integer $id
+         *
+         * @return \MicroCMS\Domain\Article|throws an exception if no matching article is found
+         */
+        public function find($id) {
+            $sql = "select * from t_article where art_id=?";
+            $row = $this->getDb()->fetchAssoc($sql, array($id));
+    
+            if ($row)
+                return $this->buildDomainObject($row);
+            else
+                throw new \Exception("No article matching id " . $id);
+        }
+
+        // ...
+    }
+
+Notre refactorisation de la partie Modèle est maintenant terminée. 
+
+### Partie Vue
+
+L'évolution de cette partie consiste à ajouter une vue affichant les détails sur un article : titre, contenu et liste des commentaires. Cela se traduit par l'ajout d'un nouveau template `article.html.twig` dans le répertoire `views`. Voici une première version de ce nouveau template.
+
+    <!doctype html>
+    <html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="{{ app.request.basepath }}/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="{{ app.request.basepath }}/css/microcms.css" rel="stylesheet">
+        
+        <title>MicroCMS - {{ article.title }}</title>
+    </head>
+    <body>
+        <div class="container">
+            <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-target">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="/">MicroCMS</a>
+                    </div>
+                    <div class="collapse navbar-collapse" id="navbar-collapse-target">
+                    </div>
+                </div><!-- /.container -->
+            </nav>
+            {% autoescape %}
+            <p>
+                <h2>{{ article.title }}</h2>
+                <p>{{ article.content }}</p>
+                <h3>Comments</h3>
+                {% if comments %}
+                    {% for comment in comments %}
+                        <strong>{{ comment.author }}</strong> said : {{ comment.content }}<br>
+                    {% endfor %}
+                {% else %}
+                    No comments yet.
+                {% endif %}
+            </p>
+            {% endautoescape %}
+            <footer class="footer">
+                <a href="https://github.com/bpesquet/MicroCMS">MicroCMS</a> is a minimalistic CMS built as a showcase for modern PHP development.
+            </footer>
+        </div>
+    </body>
+    </html>
+
+Ce template utilise les structures de contrôle Twig `if/else` et `for` afin d'afficher la liste des commentaires.
+
+Le template existant `index.html.twig` et le nouveau template `article.html.twig` partagent de nombreux éléments : partie `<head>`, barre de navigation, pied de page... Pour éviter la duplication de code, on aimerait centraliser la définition de ces éléments et les inclure dans nos templates.
+
+Le moteur de templates Twig permet de faire encore mieux : il supporte le mécanisme [d'héritage de templates](http://twig.sensiolabs.org/doc/templates.html#template-inheritance). Cela permet de définir un template de base contenant les éléments communs, puis de créer chaque template spécifique par **héritage** du template commun.
+
+Créez dans le répertoire `views` un fichier texte `layout.html.twig` qui sera notre template commun :
+
+    <!doctype html>
+    <html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="{{ app.request.basepath }}/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="{{ app.request.basepath }}/css/microcms.css" rel="stylesheet">
+        <title>MicroCMS - {% block title %}{% endblock %}</title>
+    </head>
+    <body>
+        <div class="container">
+            <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-target">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="/">MicroCMS</a>
+                    </div>
+                    <div class="collapse navbar-collapse" id="navbar-collapse-target">
+                    </div>
+                </div><!-- /.container -->
+            </nav>
+            {% autoescape %}
+            <div id="content">{% block content %}{% endblock %}</div>
+            {% endautoescape %}
+            <footer class="footer">
+                <a href="https://github.com/bpesquet/MicroCMS">MicroCMS</a> is a minimalistic CMS built as a showcase for modern PHP development.
+            </footer>
+        </div>
+    </body>
+    </html>
+
+Ce template définit deux blocs, appelés `title` et `content`. Les templates dérivés redéfinissent ces blocs afin d'ajouter les parties spécifiques de chaque vue. Voici la nouvelle définition du fichier `index.html.twig` qui affiche la liste des articles.
+
+    {% extends "layout.html.twig" %}
+    
+    {% block title %}Home{% endblock %}
+    
+    {% block content %}
+    {% for article in articles %}
+        <article>
+            <a class="articleTitle" href="/article/{{ article.id }}"><h2>{{ article.title }}</h2></a>
+            <p>{{ article.content }}</p>
+        </article>
+    {% endfor %}
+    {% endblock %}
+
+On constate l'utilisation du mot-clé `extends` pour indiquer que `index.html.twig`hérite du template commun `layout.html.twig`. Le reste du template définit les valeurs des blocs `title` et `content`. Un lien (balise `<a>`) ajouté au titre de chaque article renvoie vers une URL du type `/article/<identifiant de l'article>`. Voici le code HTML généré avec notre jeu de données de tests.
+
+    <!-- ... --> 
+    <article>
+        <a class="articleTitle" href="/article/3"><h2>Lorem ipsum in french</h2></a>
+        <p>...</p>
+    </article>
+    <article>
+        <a class="articleTitle" href="/article/2"><h2>Lorem ipsum</h2></a>
+        <p>...</p>
+    </article>
+    <article>
+        <a class="articleTitle" href="/article/1"><h2>First article</h2></a>
+        <p>Hi there! This is the very first article.</p>
+    </article>
+    <!-- ... -->
+
+Le template `article.html.twig` suit le même modèle.
+
+    {% extends "layout.html.twig" %}
+    
+    {% block title %}{{ article.title }}{% endblock %}
+    
+    {% block content %}
+    <p>
+        <h2>{{ article.title }}</h2>
+        <p>{{ article.content }}</p>
+        <h3>Comments</h3>
+        {% if comments %}
+            {% for comment in comments %}
+                <strong>{{ comment.author }}</strong> said : {{ comment.content }}<br>
+            {% endfor %}
+        {% else %}
+            No comments yet.
+        {% endif %}
+    </p>
+    {% endblock %}
+
+La dernière modification de la partie Vue consiste à enrichir légèrement la feuille de style `web/css/microcms.css` pour améliorer la présentation des titres d'article cliquables.
+
+    /* ... */
+
+    .articleTitle:hover, .articleTitle:focus {
+        text-decoration: none;
+    }
+
+### Partie Contrôleur
+
+la partie Contrôleur de notre application fait le lien entre le Modèle et la Vue. On commence par mettre à jour le fichier `app/app.php` afin d'enregistrer le nouveau service d'accès aux commentaires.
+
+    // ...
+
+    // Register services.
+    $app['dao.article'] = $app->share(function ($app) {
+        return new MicroCMS\DAO\ArticleDAO($app['db']);
+    });
+    $app['dao.comment'] = $app->share(function ($app) {
+        $commentDAO = new MicroCMS\DAO\CommentDAO($app['db']);
+        $commentDAO->setArticleDAO($app['dao.article']);
+        return $commentDAO;
+    });
+
+C'est dans ce fichier que la dépendance envers la classe `ArticleDAO` est **injectée** à l'instance de `CommentDAO` grâce au mutateur `setArticleDAO`.
+
+Enfin, on fait évoluer le fichier `app/routes.php` afin d'ajouter une nouvelle route.
+
+    <?php
+    
+    // Returns all articles
+    $app->get('/', function () use ($app) {
+        $articles = $app['dao.article']->findAll();
+        return $app['twig']->render('index.html.twig', array('articles' => $articles));
+    });
+    
+    // Returns detailed info about an article
+    $app->get('/article/{id}', function ($id) use ($app) {
+        $article = $app['dao.article']->find($id);
+        $comments = $app['dao.comment']->findAllByArticle($id);
+        return $app['twig']->render('article.html.twig', array('article' => $article, 'comments' => $comments));
+    });
+
+La nouvelle route génère le template `article.html.twig` en lui passant en paramètres les données nécessaires, récupérées depuis les services de la partie Modèle : l'article identifié par le paramètre `$id` présent dans l'URL et la liste des commentaires associés à cet article.
+
+Cette longue itération touche à sa fin et il est temps de tester l'application. Ouvrez l'URL http://microcms pour afficher la liste des articles, puis cliquez sur le titre de l'article du bas. Vous devriez obtenir l'affichage de ses détails.
+
+{{% image src="microcms_article_comments.png" class="centered" %}}
+
+Si vous cliquez sur le titre d'un article sans aucun commentaire, vous obtenez un résultat de la forme suivante.
+
+{{% image src="microcms_article_nocomments.png" class="centered" %}}
+
+Le code source associé à cette itération est disponible sur une [branche du dépôt GitHub](https://github.com/bpesquet/MicroCMS/tree/iteration-07).
+
+## Conclusion
+
+Au cours de cette itération, nous avons ajouté à l'application une fonctionnalité métier en nous appuyant sur les bases définies précédemment. Nous avons également saisi les occasions de refactoriser l'architecture afin qu'elle s'adapte aux nouveaux besoins.
+
+Afin de réaliser de nouvelles fonctionnalités métier, l'itération suivante va s'intéresser à l'authentification des visiteurs. 
