@@ -3,7 +3,7 @@ title: "Premiers pas avec le framework Bootstrap"
 date: 2014-07-21
 ---
 
-Découvrez les bases du framework [Bootstrap](http://silex.sensiolabs.org/) par la pratique.
+Découvrez les bases du framework [Bootstrap](http://getbootstrap/) par la pratique.
 
 {{% image src="bootstrap_responsive.jpeg" class="centered" %}}
 
@@ -390,4 +390,4 @@ Il est également possible d'obtenir une barre de navigation adaptative. Son con
 
 # Conclusion
 
-Nous n'avons fait que survoler les possibilités de Bootstrap. Il existe de nombreuses ressources sur ce framework en ligne, à commencer par sa [documentation officielle](http://getbootstrap.com) ou encore ce [tutoriel](http://fr.openclassrooms.com/informatique/cours/prenez-en-main-bootstrap).
+Nous n'avons fait que survoler les possibilités de Bootstrap. Il existe de nombreuses ressources sur ce framework en ligne, à commencer par sa [documentation officielle](http://getbootstrap.com) ou encore les tutoriels des sites [OpenClassrooms](http://fr.openclassrooms.com/informatique/cours/prenez-en-main-bootstrap) et [Codecamedy](http://www.codecademy.com/fr/skills/make-a-website/).
