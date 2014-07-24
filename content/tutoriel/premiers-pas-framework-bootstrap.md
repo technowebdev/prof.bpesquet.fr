@@ -22,7 +22,7 @@ Découvrez les bases du framework [Bootstrap](http://silex.sensiolabs.org/) par 
 
 Pour pouvoir utiliser Bootstrap, il est nécessaire que le framework soit accessible pour nos pages Web. Pour cela, on peut y accéder en ligne via un [CDN](http://fr.wikipedia.org/wiki/Content_delivery_network) (*Content Delivery Network*) ou bien l'installer localement. Nous allons utiliser cette seconde solution.
 
-Créez dans votre répertoire personnel un sous-répertoire nommé `hello-world-bootstrap` qui sera le répertoire racine de notre exemple. Dans ce répertoire, créez un sous-répertoire `bootstrap`. Ensuite, téléchargez la version courante de Bootstrap sur [cette page](http://getbootstrap.com/getting-started/#download). Ensuite, décompressez le contenu de l'archive dans le répertoire `bootstrap` créé précédemment. Vous devez obtenez l'arborescence ci-dessous.
+Créez dans votre répertoire personnel un sous-répertoire nommé `hello-world-bootstrap` qui sera le répertoire racine de notre exemple. Dans ce répertoire, créez un sous-répertoire `bootstrap`. Ensuite, téléchargez la version courante de Bootstrap sur [cette page](http://getbootstrap.com/getting-started/#download). Ensuite, décompressez le contenu de l'archive dans le répertoire `bootstrap` créé précédemment. Vous devez obtenir l'arborescence ci-dessous.
 
 {{% img bootstrap_arborescence_initiale.png %}}
 
@@ -301,8 +301,8 @@ Le code ci-dessous définit une mise en page sur trois colonnes, avec deux menus
     </div>
     <div class="col-xs-3">
         <div class="list-group">
-            <a class="list-group-item active" href="">Menu avec list-group</a>
-            <a class="list-group-item" href="">Profil</a>
+            <a class="list-group-item" href="">Menu avec list-group</a>
+            <a class="list-group-item active" href="">Profil</a>
             <a class="list-group-item" href="">Messages</a>
         </div>
     </div>
@@ -387,10 +387,6 @@ Il est également possible d'obtenir une barre de navigation adaptative. Son con
         </ul>
     </div>
 </div>
-
-{{% remark %}}
-Rendre la barre adaptative totalement fonctionnelle nécessite l'utilisation des plugins jQuery de Bootstrap, qui ne sont pas inclus dans notre squelette HTML d'exemple.
-{{% /remark %}}
 
 # Conclusion
 
