@@ -45,9 +45,10 @@ On vous fournit le script SQL suivant qui définit une liste de news.
 
 * Créez l'utilisateur MySQL `mesnews_user` avec le mot de passe `secret` et tous les droits sur la base `mesnews`.
 
-* Dans le dossier `MesNews` de votre serveur Web, écrivez la page PHP `index.php` qui récupère et affiche la liste des news issue de la base de données. Voici les contraintes techniques associées :
+* Dans un dossier `MesNews` à créer sur votre serveur Web, écrivez la page PHP `index.php` qui récupère et affiche la liste des news issue de la base de données. Voici les contraintes techniques associées :
 
-    * La technologie de connexion à la BD est PDO.
+    * La technologie de connexion à la BD doit être PDO.
+    * L'utilisateur MySQL employé pour se connecter à la BD depuis `index.php` doit être `mesnews_user` et non pas `root`.
     * Les balises HTML5 `<header>`, `<article>` et `<footer>` doivent être utilisées.
 
 \
