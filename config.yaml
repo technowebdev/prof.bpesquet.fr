@@ -3,8 +3,6 @@ contentdir: "content"
 layoutdir: "layouts"
 publishdir: "public"
 builddrafts: false
-Taxonomies:
-    series: "series"
 baseurl: http://bpesquet.fr
 canonifyurls: true
 disqusShortname: "bpesquet"
