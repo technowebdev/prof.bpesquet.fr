@@ -6,7 +6,7 @@ url: /cours/introduction-developpement-web
 L'objectif de ce cours est d'acquérir les notions fondamentales liées au développement Web.
 
 {{% remark %}}
-Ce cours s'inspire pour partie de [la document du framework Symfony2](http://symfony.com/doc/current/book/from_flat_php_to_symfony2.html).
+Ce cours s'inspire pour partie de la [documentation du framework Symfony2](http://symfony.com/doc/current/book/from_flat_php_to_symfony2.html).
 {{% /remark %}}
 
 # Le fonctionnement du Web
