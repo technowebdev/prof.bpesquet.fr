@@ -52,6 +52,7 @@ On vous fournit le script SQL suivant qui définit une liste de news.
     * Les balises HTML5 `<header>`, `<article>` et `<footer>` doivent être utilisées.
 
 \
+
 * Créez la feuille de style `mesnews.css` afin de parvenir au résultat ci-dessous.
 
 {{% image src="mesnews.png" class="centered" %}}
