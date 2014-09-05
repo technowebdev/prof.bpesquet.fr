@@ -86,7 +86,7 @@ On peut faire les observations suivantes :
 
 * On définit une portion de code PHP gràce aux balises `<?php` et `?>`.
 * Les variables sont préfixées par le symbole `$` et leur typage est dynamique, contrairement à des langages comme C# ou Java où le typage est statique.
-* On peut construire un résultat HTML en mélangeant balises HTML et code PHP, ou bien en utilisant l'instruction PHP `echo pour générer les balises HTML.
+* On peut construire un résultat HTML en mélangeant balises HTML et code PHP, ou bien en utilisant l'instruction PHP `echo` pour générer les balises HTML.
 
 # Compléments sur PHP
 

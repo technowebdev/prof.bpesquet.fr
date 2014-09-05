@@ -3,8 +3,7 @@ title: Introduction à la programmation
 url: /cours/introduction-programmation
 ---
 
-L'objectif de ce chapitre est de découvrir les notions fondamentales
-liées à la programmation.
+L'objectif de ce chapitre est de découvrir les notions fondamentales liées à la programmation.
 
 {{% img evolution.jpg %}}
 

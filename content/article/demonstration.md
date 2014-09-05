@@ -142,8 +142,8 @@ Questions/réponses
 
 Il est possible d'ajouter une question comme ci-dessous.
 
-{{% question text="Quelle est la couleur du cheval blanc d'Henri IV ?" %}}
+{{% question_old text="Quelle est la couleur du cheval blanc d'Henri IV ?" %}}
 Il est blanc comme vous l'aurez deviné.
-{{% /question %}}
+{{% /question_old %}}
 
 

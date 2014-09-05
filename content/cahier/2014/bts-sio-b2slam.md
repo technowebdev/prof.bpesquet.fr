@@ -16,6 +16,12 @@ Pendant l'accueil des étudiants :
 **SLAM5** : pas de cours ni de TP cette semaine (rentrée scolaire) mais du travail de révision : 
 
 * Etudier les cours de rappels sur [le développement Web](/cours/introduction-developpement-web/), [HTML5](/cours/html5-en-bref) et [PHP](/cours/php-en-bref/).
-* Effectuer la partie 1 de l'activité [accès aux données avec PHP](/activite/acces-donnees-php).
+* Effectuer la partie 1 de l'activité [Accès aux données avec PHP](/activite/acces-donnees-php).
 
-**PPE** : rechercher pour la séance du **jeudi 4 septembre** des informations sur les **méthodes agiles**.
+**PPE** : rechercher pour la séance du **jeudi 4 septembre** des informations sur les méthodes agiles.
+
+Séance du jeudi 4 septembre :
+
+* Initiation à SCRUM avec des LEGO (3h)
+* Initialisation de l'environnement de développement Web (Netbeans + XAMPP sur la partition M:).
+* Activité [accès aux données avec PHP](/activite/acces-donnees-php)
