@@ -8,13 +8,26 @@ Sauf indication contraire, les travaux à réaliser doivent être terminés pour
 
 ## Semaine 1 : 1er septembre
 
-Absence professeur. Cours du mercredi 3 septembre reporté au vendredi 12 septembre de 9h à 10h.
+**Cours mercredi** : absence professeur. Reporté au vendredi 12 de 9h à 10h.
 
 ## Semaine 2 : 8 septembre
 
-Cours du lundi 8 :
+**Cours lundi**
 
 * Présentation du module SI1.
 * Cours [Composants matériels de l'ordinateur](/cours/composants-materiels-ordinateur) étudié jusqu'à la carte mère.
+* Début de l'activité [Composants matériels de l'ordinateur](/activite/composants-materiels-ordinateur).
 
-Travail pour le lundi 15 septembre : activité [Composants matériels de l'ordinateur](/activite/composants-materiels-ordinateur), questions 1 à 6.
+**TP groupe A** : TP découverte et identification des composants.
+
+**Cours mercredi** : TD sur l'information binaire.
+
+**Cours vendredi** : suite du TD sur l'information binaire.
+
+## Semaine 3 : 15 septembre
+
+**Cours lundi**
+
+* TODO : activité [Composants matériels de l'ordinateur](/activite/composants-materiels-ordinateur), questions 1 à 6.
+
+
