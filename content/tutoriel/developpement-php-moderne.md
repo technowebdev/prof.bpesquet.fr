@@ -27,70 +27,17 @@ Le code source associé est disponible sous la forme d'un [dépôt GitHub](https
 
 ## Méthodologie de réalisation
 
-En nous inspirant des [méthodes agiles](http://fr.wikipedia.org/wiki/M%C3%A9thode_agile) et notamment de [SCRUM](http://fr.wikipedia.org/wiki/Scrum_(m%C3%A9thode\)), nous allons bâtir l'application par étapes successives appelées **itérations**, ou encore [sprints](http://fr.wikipedia.org/wiki/Scrum_\(m%C3%A9thode\)#Le_sprint) dans SCRUM. 
+En nous inspirant des [méthodes agiles](http://fr.wikipedia.org/wiki/M%C3%A9thode_agile) comme [SCRUM](http://fr.wikipedia.org/wiki/Scrum_(m%C3%A9thode\)), nous allons bâtir l'application par étapes successives appelées **itérations**, ou encore [sprints](http://fr.wikipedia.org/wiki/Scrum_\(m%C3%A9thode\)#Le_sprint) dans SCRUM. 
 
 {{% definition %}}
-Une itération est une phase de travail volontairement courte permettant de produire une version souvent limitée mais toujours livrable d'un produit.
+Une itération est une phase de travail volontairement courte permettant de produire une version intermédiaire mais livrable d'un produit.
 {{% /definition %}}
 
 Certaines itérations seront consacrées à l'ajout de nouvelles fonctionnalités à l'application. Les autres permettront d'améliorer son architecture en pratiquant ce qu'on appelle la [refactorisation](http://fr.wikipedia.org/wiki/R%C3%A9usinage_de_code) (*refactoring*). 
 
-## Fonctionnalités attendues
-
-On regroupe dans les tableaux ci-dessous les fonctionnalités attendues de l'application que nous allons construire. En conformité avec la méthodologie agile choisie, nous exprimons les fonctionnalités métier sous la forme de [récits utilisateur](http://fr.wikipedia.org/wiki/R%C3%A9cit_utilisateur) (*user stories*).
-
-### Récits utilisateur
-
-Référence | Description
-----------|------------
-User_U01 | En tant que visiteur anonyme, je peux visualiser la liste de tous les articles sur la page d'accueil.
-User_U02 | En tant que visiteur anonyme, je peux accéder à l'application depuis un terminal fixe ou mobile et obtenir un affichage toujours adapté.
-User_U03 | En tant que visiteur anonyme, je peux cliquer sur le titre d'un article afin de consulter son contenu et ses commentaires.
-User_U04 | En tant que visiteur anonyme, je peux m'inscrire comme utilisateur enregistré en saisissant mes informations personnelles : nom, prénom, adresse de courriel et mot de passe.
-User_U05 | En tant qu'utilisateur, je peux me connecter en indiquant mon adresse de courriel (utilisée comme login) et mon mot de passe.
-User_U06 | En tant qu'utilisateur connecté, je peux ajouter un commentaire à un article.
-User_U07 | En tant qu'utilisateur connecté, je peux modifier mes informations personnelles.
-User_U08 | En tant qu'utilisateur connecté, je peux me déconnecter pour redevenir un utilisateur anonyme.
-User_A01 | En tant qu'administrateur, je peux me connecter de la même manière qu'un utilisateur.
-User_A02 | En tant qu'administrateur connecté, j'ai les mêmes possibilités qu'un utilisateur connecté.
-User_A03 | En tant qu'administrateur connecté, je peux créer un nouvel article.
-User_A04 | En tant qu'administrateur connecté, je peux modifier un article existant.
-User_A05 | En tant qu'administrateur connecté, je peux supprimer un article existant.
-User_D01 | En tant que développeur extérieur, je peux utiliser un service Web pour accéder à la liste des articles.
-
-### Récits techniques
-
-Référence | Description
-----------|------------
-Tech_01 | L'application utilise une base de données relationnelle pour stocker ses données persistantes.
-Tech_02 | L'application respecte une architecture de type MVC (Modèle-Vue-Contrôleur).
-Tech_03 | L'architecture de l'application se base sur un *framework* PHP.
-Tech_04 | Les données métier de l'application font l'objet d'une modélisation orientée objet.
-Tech_05 | L'application est protégée contre le risque d'injection de code SQL dans la base de données.
-Tech_06 | L'application est protégée contre le risque d'injection de code dans les pages Web affichées.
-
-{{% remark %}}
-Il existe un [débat](http://www.areyouagile.com/2013/03/pourquoi-une-user-story-technique-est-un-aveu-dechec/) concernant le bien-fondé de l'ajout de récits strictements techniques à un projet agile. Comme la valeur créée par notre projet d'exemple (apprendre à développer en PHP de manière moderne) est avant tout d'ordre technique, cela me paraît légitime ici.
-{{% /remark %}}
-
-### Carnet du produit
-
-L'ensemble de ces récits forme ce qu'on appelle dans SCRUM le [carnet du produit](http://fr.wikipedia.org/wiki/Scrum_\(m%C3%A9thode\)#Carnet_du_produit_.28Product_Backlog.29) (*product backlog*). Chaque itération (sprint) va s'attacher à réaliser un ou plusieurs récits afin de vider progressivement le *backlog*, avec toujours l'idée d'obtenir en fin d'itération un produit livrable.
-
-{{% remark %}}
-Dans un contexte réel, le *backlog* évolue en même temps que le produit : nouveaux récits, bogues à corriger, etc.
-{{% /remark %}}
-
 # Itération 1 : initialisation de l'application
 
-Le but de cette itération est d'écrire la toute première version de notre application Web d'exemple.
-
-Voici la liste des éléments du *backlog* réalisés dans cette itération.
-
-Référence | Description
-----------|------------
-User_U01 | En tant que visiteur anonyme, je peux visualiser la liste de tous les articles sur la page d'accueil.
-Tech_01 | L'application utilise une base de données relationnelle pour stocker ses données persistantes.
+Le but de cette itération est d'écrire la toute première version de notre application Web d'exemple. Conformément aux principes de l'agilité, nous commençons par réaliser ce qui apporte le plus de "valeur" à notre CMS : la page d'accueil qui affiche la liste de tous ses articles.
 
 ## Création de la base de données
 
@@ -195,18 +142,12 @@ Le code source associé à cette itération est disponible sur une [branche du d
 
 ## Conclusion
 
-La toute première version (très simpliste) de notre application Web est maintenant opérationnelle. La prochaine itération va consister à améliorer son architecture.
+La toute première version (très simpliste) de notre application Web est maintenant opérationnelle. Elle nous a permis d'initialiser la structure de l'application. La prochaine itération va consister à améliorer son architecture.
 
 
 # Itération 2 : refactorisation de l'architecture
 
-Le but de cette itération est d'améliorer l'architecture de notre application Web d'exemple.
-
-Voici la liste des éléments du *backlog* réalisés dans cette itération.
-
-Référence | Description
-----------|------------
-Tech_02 | L'application respecte une architecture de type MVC (Modèle-Vue-Contrôleur).
+Le but de cette itération est de modifier notre application Web d'exemple en introduisant une architecture de type MVC (Modèle-Vue-Contrôleur).
 
 ## Critique de l'application existante
 
@@ -337,60 +278,12 @@ Outre la feuille de style `microcms.css`, notre application Web est maintenant c
 
 Le code source associé à cette itération est disponible sur une [branche du dépôt GitHub](https://github.com/bpesquet/MicroCMS/tree/iteration-02).
 
-Cette nouvelle structure est plus complexe, mais les responsabilités de chaque partie sont maintenant claires. En faisant ce travail de *refactoring*, nous avons rendu notre exemple conforme à un modèle d'architecture très employé sur le Web : le modèle MVC.
-
-## Le modèle MVC
-
-### Présentation
-
-Le modèle MVC décrit une manière d'architecturer une application informatique en la décomposant en trois sous-parties :
-
-* la partie Modèle ;
-* la partie Vue ;
-* la partie Contrôleur.
-
-Ce modèle de conception (*design pattern*) a été imaginé à la fin des années 1970 pour le langage Smalltalk afin de bien séparer le code de l'interface graphique de la logique applicative. Il est utilisé dans de très nombreux langages : bibliothèques Swing et Model 2 (JSP) de Java, frameworks PHP, ASP.NET MVC, etc.
-
-### Rôles des composants
-
-La partie **Modèle** d'une architecture MVC encapsule la logique métier (*business logic*) ainsi que l'accès aux données. Il peut s'agir d'un ensemble de fonctions (Modèle procédural) ou de classes (Modèle orienté objet).
-
-La partie Vue s'occupe des interactions avec l'utilisateur : présentation, saisie et validation des données.
-
-La partie Contrôleur gère la dynamique de l'application. Elle fait le lien entre l'utilisateur et le reste de l'application.
-
-### Interactions entre les composants
-
-Le diagramme ci-dessous (extrait de la documentation du framework Symfony) résume les relations entre les composants d'une architecture MVC.
-
-{{% img mvc_symfony2.png %}}
-
-La demande de l'utilisateur (exemple : requête HTTP) est reçue et interprétée par le Contrôleur. Celui-ci utilise les services du Modèle afin de préparer les données à afficher. Ensuite, le Contrôleur fournit ces données à la Vue, qui les présente à l'utilisateur (par exemple sous la forme d'une page HTML).
-
-{{% remark %}}
-On peut trouver des variantes moins "pures" de cette architecture dans lesquelles la Vue interagit directement avec le Modèle afin de récupérer les données dont elle a besoin.
-{{% /remark %}}
-
-### Avantages et inconvénients
-
-Le modèle MVC offre une séparation claire des responsabilités au sein d'une application, en conformité avec les principes de conception déjà étudiés : responsabilité unique, couplage faible et cohésion forte. Le prix à payer est une augmentation de la complexité de l'architecture.
-
-Dans le cas d'une application Web, l'application du modèle MVC permet aux pages HTML (qui constituent la partie Vue) de contenir le moins possible de code serveur, étant donné que le scripting est regroupé dans les deux autres parties de l'application.
-
-### Différences avec un modèle en couches
-
-Attention à ne pas employer le terme de "couche" à propos du modèle MVC. Dans une architecture en couches, chaque couche ne peut communiquer qu'avec les couches adjacentes. Les parties Modèle, Vue et Contrôleur ne sont donc pas des couches.
+Cette nouvelle structure est plus complexe, mais les responsabilités de chaque partie sont maintenant claires. En faisant ce travail de *refactoring*, nous avons rendu notre exemple conforme à un modèle d'architecture très employé sur le Web : le modèle **MVC**. Si vous découvrez ce concept, consultez impérativement le [cours sur le modèle MVC](/cours/modele-mvc).
 
 
 # Itération 3 : intégration d'un framework PHP
 
 Le but de cette itération est d'intégrer un *framework* à notre application.
-
-Voici la liste des éléments du *backlog* réalisés dans cette itération.
-
-Référence | Description
-----------|------------
-Tech_03 | L'architecture de l'application se base sur un *framework* PHP.
 
 ## Avantages apportés par un framework
 
@@ -518,13 +411,6 @@ Nous avons refactorisé notre application Web pour intégrer le framework Silex 
 
 Le but de cette itération est d'améliorer la partie Modèle de notre application Web.
 
-Voici la liste des éléments du *backlog* réalisés dans cette itération.
-
-Référence | Description
-----------|------------
-Tech_04 | Les données métier de l'application font l'objet d'une modélisation orientée objet.
-Tech_05 | L'application est protégée contre le risque d'injection de code SQL dans la base de données.
-
 ## Modélisation objet du domaine
 
 Actuellement, la partie Modèle de notre application Web est écrite de manière simpliste. Voici pour rappel le fichier source `model.php`.
@@ -538,7 +424,7 @@ Actuellement, la partie Modèle de notre application Web est écrite de manière
         return $articles;
     }
 
-L'ajout futur de nouveaux services similaire risque de rendre la partie Modèle difficile à utiliser. Nous allons restructurer cette partie en introduisant une modélisation orientée objet des données métier. Pour l'instant, nos seules données métier sont les articles, qui se caractérisent pas un identifiant, un titre et un contenu. Nous allons modéliser un article sous la forme d'une classe nommée `Article` dont voici le diagramme UML. 
+L'ajout futur de nouveaux services similaires risque de rendre la partie Modèle difficile à utiliser. Nous allons restructurer cette partie en introduisant une modélisation orientée objet des données métier. Pour l'instant, nos seules données métier sont les articles, qui se caractérisent pas un identifiant, un titre et un contenu. Nous allons modéliser un article sous la forme d'une classe nommée `Article` dont voici le diagramme UML. 
 
 {{% image src="microcms_uml_article.jpeg" class="centered" %}}
 
@@ -821,12 +707,6 @@ Dans cette itération, nous avons surtout travaillé dans les parties Modèle et
 
 Le but de cette itération est d'améliorer la technologie d'affichage de notre application.
 
-Voici la liste des éléments du *backlog* réalisés dans cette itération.
-
-Référence | Description
-----------|------------
-Tech_06 | L'application est protégée contre le risque d'injection de code dans les pages Web affichées.
-
 ## Critique de l'application existante
 
 La partie Présentation de notre application actuelle correspond au répertoire `views`, dans lequel on définit un fichier PHP/HTML par vue affichée. Voici pour mémoire le contenu du fichier `view.php` affichant la liste des articles.
@@ -966,15 +846,10 @@ Le code source associé à cette itération est disponible sur une [branche du d
 
 la partie Présentation de notre application Web est maintenant gérée par le moteur de remplates Twig. Cependant, le rendu utilisateur n'a pas évolué depuis l'initialisation de l'application et il reste sommaire. La prochaine itération va améliorer cela.
 
+
 # Itération 6 : amélioration de la présentation
 
 Le but de cette itération est de rendre l'affichage de notre application plus conforme aux standards actuels.
-
-Voici la liste des éléments du *backlog* réalisés dans cette itération.
-
-Référence | Description
-----------|------------
-User_U02 | En tant que visiteur anonyme, je peux accéder à l'application depuis un terminal fixe ou mobile et obtenir un affichage toujours adapté.
 
 ## Introduction au design Web adaptatif
 
@@ -1080,13 +955,7 @@ Cette itération et les précédentes ont consisté en des améliorations techni
 
 # Itération 7 : affichage des détails sur un article
 
-Le but de cette itération est de permettre au visiteur de consulter les détails sur un article.
-
-Voici la liste des éléments du *backlog* réalisés dans cette itération.
-
-Référence | Description
-----------|------------
-User_U03 | En tant que visiteur anonyme, je peux cliquer sur le titre d'un article afin de consulter son contenu et ses commentaires.
+Le but de cette itération est de permettre au visiteur de consulter les détails sur un article en cliquant sur son titre.
 
 ## Mise à jour de la base de données
 
