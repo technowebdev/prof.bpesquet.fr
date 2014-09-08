@@ -17,7 +17,7 @@ Après avoir regardé [cette vidéo](https://www.youtube.com/watch?v=yf8G90v2Rz4
 
 # Question 2
 
-Trouvez et insérez une image pour chacun des types d'ordinateurs suivants :
+Trouvez et insérez dans votre document une image pour chacun des types d'ordinateurs suivants :
 
 * PC de bureau
 * Ordinateur portable
@@ -37,6 +37,7 @@ On vous fournit la photo de la carte mère ci-dessous.
 Insérez cette image dans votre document, puis identifiez (avec des flèches ou des numéros) les éléments ci-dessous :
 
 * Socket processeur
+* Supports mémoire (RAM)
 * Connecteur PCI Express
 * Connecteur PCI
 * Ports SATA
