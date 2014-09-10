@@ -39,6 +39,10 @@ Pour fonctionner, Composer doit être installé sur la machine de développement
 
     $ composer
 
+{{% remark %}}
+Le symbole `$` représente l'invite de commande (*prompt*) de votre fenêtre de terminal. Il ne fait pas partie de la commande à taper.
+{{% /remark %}}
+
 Si l'installation de Composer a réussi, vous obtenez la description des options utilisables.
 
 
@@ -85,7 +89,6 @@ Si vous êtes curieux(se), c'est le moment d'aller examiner le code source de ce
 
 Maintenant que Silex est installé, il est temps de voir comment l'utiliser. Pour cela, créez dans `hello-world-silex` un sous-répertoire `web`, puis créez dans `web` un fichier `index.php`. Copiez/collez le code ci-dessous dans `index.php`.
 
-    // web/index.php
     <?php
 
     require_once __DIR__.'/../vendor/autoload.php';
@@ -99,6 +102,10 @@ Maintenant que Silex est installé, il est temps de voir comment l'utiliser. Pou
     $app->run();
 
 Le fichier `vendor/autoload.php` est généré automatiquement par Composer. En l'incluant dans notre fichier source au moyen de l'instruction PHP [require_once](http://php.net/manual/fr/function.require-once.php), on peut ensuite utiliser tous les éléments PHP définis dans les sous-répertoires de `vendor`. L'intérêt de cette pratique est expliqué dans [cet article](https://igor.io/2013/09/04/composer-vendor-directory.html).
+
+{{% remark %}}
+`__DIR__` est une [constante magique](http://php.net/manual/fr/language.constants.predefined.php) PHP qui contient le dossier du fichier courant.
+{{% /remark %}}
 
 Le reste du code source de `index.php` instancie un objet nommé `$app`, puis définit ce qu'on appelle une **route**.
 
@@ -116,9 +123,18 @@ Vous devriez obtenir l'affichage du texte "Hello world" dans le navigateur.
 
 ## Initiation au routage avec Silex
 
-Pour l'instant, notre application Web ne dispose que d'un point d'entrée. Ajoutons-en un autre en définissant une nouvelle route dans le fichier `index.php`.
+Pour l'instant, notre application Web ne dispose que d'un point d'entrée. Ajoutons-en un autre en ajoutant une nouvelle route dans le fichier `index.php`.
 
-    // ...
+    <?php
+
+    require_once __DIR__.'/../vendor/autoload.php';
+    
+    $app = new Silex\Application();
+    
+    $app->get('/', function () {
+        return 'Hello world';
+    });
+    
     $app->get('/hello/{name}', function ($name) use ($app) {
         return 'Hello ' . $app->escape($name);
     });

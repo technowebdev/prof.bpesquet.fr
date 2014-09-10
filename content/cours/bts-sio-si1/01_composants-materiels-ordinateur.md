@@ -402,3 +402,189 @@ Lorsque les bits sont convoyés les uns à la suite des autres sur une seule et
 Lorsque les bits sont véhiculés simultanément sur plusieurs lignes parallèles, on parle alors, ô surprise, de **bus parallèle** (*parallel bus*). Exemple : PATA.
 
 {{% image src="bus_serie_parallele.png" class="centered" %}}
+
+# Le processeur
+
+## Introduction
+
+Le processeur, appelé en anglais CPU (*Central Processing Unit*) est à la
+fois le cerveau et le coeur de l'ordinateur :
+
+* Le cerveau, car son rôle est d'exécuter les instructions qui composent les programmes informatiques.
+
+* Le coeur, parce qu'il exécute ces instructions au rythme (très rapide) de son horloge interne, appelé sa fréquence.
+
+Il est le plus souvent construit en un seul composant électronique (ou puce électronique) appelé **circuit intégré**. On l'appelle alors microprocesseur. Sur ce circuit sont assemblés un nombre énorme (actuellement plus d'un milliard) de composants électroniques semi-conducteurs appelés des transistors.
+
+{{% image src="processeur.jpg" class="centered" %}}
+
+## Histoire des processeurs
+
+Les premiers processeurs sont apparus en même temps que les premiers ordinateurs, dans les années 1940. A l'époque, ils étaient prévus spécifiquement pour une machine donnée. Dans les années 1970 sont apparus les premiers processeurs capables de fonctionner sur plusieurs machines (la société Intel a fabriqué son premier processeur en 1971). Cette standardisation s'est accélérée avec l'apparition des circuits intégrés, qui ont permis la miniaturisation des processeurs.
+
+Depuis, les progrès scientifiques et industriels ont conduit à une augmentation constante de la densité de transistors sur un même circuit intégré. Le co-fondateur d'Intel, Gordon Moore, a formulé en 1965 une prédiction célèbre appelée depuis **loi de Moore** : "le nombre de transistors sur un microprocesseur doublera approximativement tous les deux ans".
+
+A l'époque, le circuit le plus performant comportant 64 transistors. De nos jours, un processeur Core i7 comporte plus d'un milliard de transistors !
+
+{{% img processeur_nombre_transistors.jpg %}}
+
+{{% question %}}
+Trouvez les noms des principaux fabricants de processeurs.
+{{% /question %}}
+
+## Types de processeur
+
+### Pour ordinateur de bureau
+
+Les ordinateurs de bureau permettent généralement d’exécuter des applications telles que des logiciels de traitement de texte, des feuilles de calcul et des applications réseau de type messagerie et navigation Web.
+
+Exemples de processeurs de bureau récents pour Intel et AMD : Celeron, Pentium, Core i3, i5, i7, Phenom, Athlon, Sempron.
+
+### Pour ordinateur portable
+
+Les processeurs pour ordinateur portable sont conçus pour avoir une consommation d’énergie réduite. L’autonomie d’un ordinateur portable lorsqu’il fonctionne sur batterie est une caractéristique importante. Pour obtenir une consommation moindre, les processeurs d’ordinateurs portables sont alimentés par une tension plus faible et fonctionnent généralement à des fréquences moins élevées que les ordinateurs de bureau.
+
+AMD et Intel déclinent pour les ordinateurs portables des versions de leurs processeurs pour ordinateur de bureau.
+
+### Pour station de travail
+
+Les stations de travail sont de puissants ordinateurs d’entreprise. Elles sont conçues pour exécuter des applications de pointe, spécialisées, comme les programmes d’ingénierie, par exemple la CAO (Conception Assistée par Ordinateur). Les stations de travail sont utilisées dans la conception d’images 3D, l’animation vidéo. Elles peuvent également servir de stations de gestion d’équipements médicaux ou de télécommunications.
+
+{{% image src="station-travail.png" class="centered" %}}
+
+Les stations de travail possèdent plusieurs processeurs qui doivent gérer une importante quantité de mémoire vive et plusieurs disques durs haute capacité, très rapides.
+
+Exemples pour Intel et AMD : Xeon, Itanium, Opteron + séries E et C.
+
+### Pour serveur
+
+Le matériel serveur est optimisé afin de fournir des réponses rapides à différentes requêtes réseau. Les serveurs peuvent être sollicités par plusieurs dizaines à plusieurs milliers de logiciels clients à la fois.
+
+Il existe plusieurs formats de serveurs :
+
+* Serveurs tour : adaptés aux plus petites entreprises.
+* Serveur rack : empilables dans des baies dédiées.
+* Serveurs lame (*blade*) : concentrent le maximum de puissance et d’évolutivité
+
+{{% image src="format-serveurs.jpg" class="centered" %}}
+
+Les serveurs sont dotés de plusieurs processeurs qui accèdent à une quantité importante de mémoire vive.
+
+Exemples pour Intel et AMD : Xeon, Opteron série 4000 et 6000.
+
+## Caractéristiques des processeurs
+
+### La fréquence
+
+La fréquence ou vitesse d'horloge est un concept relativement simple à
+comprendre. Elle se mesure actuellement en GigaHertz (GHz) et correspond
+au nombre d’opérations élémentaires que le processeur est capable
+d’effectuer en une seconde.
+
+Ainsi, un processeur fonctionnant à une fréquence de 3 Ghz peut traiter 3 milliards d'opérations élémentaires à la seconde.
+
+### Les registres
+
+Lorsque le processeur exécute des instructions, les données sont temporairement stockées dans de petites mémoires rapides de 8, 16, 32 ou 64 bits que l'on appelle registres.
+
+Un registre est un emplacement de mémoire interne à un processeur. Les registres se situent au sommet de la hiérarchie mémoire : il s'agit de la mémoire au meilleur temps d'accès, mais dont le coût de fabrication est le plus élevé.
+
+La largeur d’un processeur est un concept plus complexe, car trois caractéristiques du processeur s’expriment sous la forme d’une largeur :
+
+* le bus d’entrées/sorties de données;
+* le bus d’adresses;
+* les registres internes.
+
+{{% img processeur-largeur-registres.png %}}
+
+Le bus de données du processeur se nomme également FSB (*Front-Side Bus*), PSB (*Processor Side Bus*) ou simplement bus processeur. Tous ces termes font référence au bus qui se trouve entre le processeur et le pont nord (North Bridge).
+
+### Les instructions
+
+Une instruction est l'opération élémentaire que le processeur peut
+accomplir. Les instructions sont stockées dans la mémoire principale, en
+vue d'être traitée par le processeur.
+
+Une instruction est composée de deux champs :
+
+* le code opération, représentant l'action que le processeur doit accomplir ;
+* le code opérande, définissant les paramètres de l'action. Le code opérande dépend de l'opération. Il peut s'agir d'une donnée ou bien d'une adresse mémoire.
+
+Par exemple, l'opération A = B + C peut être traduite par la séquence suivante :
+
+* **LOAD B R1** copie le contenu de l'adresse B dans le registre R1
+* **ADD C R1** ajoute le contenu de l'adresse C dans ce registre
+* **STORE R1 A** stocke le contenu du registre à l'adresse A
+
+{{% image src="processeur-instructions.png" class="centered" %}}
+
+Chaque type de processeur gère un ensemble d’instructions appelé jeu d’instructions.
+
+Le jeu d'instructions est l'ensemble des opérations qu'un processeur peut exécuter,c'est-à-dire l'ensemble des circuits logiques qui y sont câblés. Ces circuits permettent d'effectuer des opérations élémentaires (addition, ET logique…) ou plus complexes (division, puissance…).
+
+De ce point de vue, il existe deux familles : les processeurs **CISC** (*Complex Instruction Set Computer*) et les processeurs **RISC** (R pour *Reduced*).
+
+* Les processeurs CISC embarquent de nombreuses instructions souvent très complexes mais prenant plusieurs cycles d'horloge.
+
+* À l'opposé, les processeurs RISC ont un jeu d'instructions plus réduit mais chaque instruction n'utilise que quelques cycles d'horloge.
+
+Chaque nouvelle génération de processeur étend le jeu d’instructions standard pour permettre d'améliorer les performances dans des domaines spécifiques (3D, multimédia, etc). Voici quelques exemples : instructions MMX (1997), SSE (1999), SSE4 (2007).
+
+### La mémoire cache
+
+La mémoire cache est une mémoire très rapide permettant de réduire les délais d'attente des informations stockées en mémoire vive. En effet, la mémoire centrale (RAM) de l'ordinateur possède une vitesse bien moins importante que le processeur.
+
+Les processeurs modernes utilisent plusieurs mémoires caches s’intercalant entre le processeur et la mémoire centrale. On parle alors de niveau de cache : L1, L2 et L3 (L = Level). Le cache L1 est le plus rapide et le plus proche du microprocesseur, tandis que le cache L3 est le plus lent et plus proche de la mémoire vive.
+
+{{% image src="processeur-memoire-cache.png" class="centered" %}}
+
+### Le type de support (socket)
+
+Chaque processeur est conçu pour être monté sur un support de carte mère précis, appelé **socket**.
+
+### La finesse de gravure
+
+La finesse de gravure d’un processeur correspond au procédé de fabrication utilisé pour fabriquer le cœur du processeur. Le procédé de fabrication consiste à "écrire" le plus finement possible les transistors qui sont la base de tout processeur pour assembler un plus grand nombre de transistors dans un espace plus réduit.
+
+La finesse de gravure est exprimée en nanomètres (nm, 10-9 m). Elle représente le diamètre (en nanomètres) du plus petit fil reliant deux composantes du microprocesseur. En comparaison, l'épaisseur d'un cheveu humain est de 100 microns = 100 000 nm.
+
+Plus la gravure est fine, plus le processeur va pouvoir :
+
+* fonctionner rapidement.
+* dissiper moins de chaleur.
+* consommer moins de courant électrique.
+
+Trouvez la finesse de gravure des processeurs PC récents.
+
+### La consommation électrique
+
+La consommation d’un processeur est exprimée en Watts. Elle dépend de nombreux facteurs et en particulier de la vitesse d'horloge.
+
+Depuis quelques années, les préoccupations économiques et environnementales, ainsi que l'explosion du marché de la mobilité, ont conduit les fabricants de CPU à tenter de minimiser cette consommation, en particulier dans les versions mobiles de leurs processeurs.
+
+## Technologies des processeurs
+
+### La technologie du pipeline
+
+Afin d'optimiser le rendement, la technique du pipeline est apparue sur les processeurs 80386 d'Intel en 1985. Le pipeline permet de commencer à traiter l'instruction suivante avant d'avoir terminé la précédente via un mécanisme de "travail à la chaîne".
+
+Cette technologie permet d'économiser de nombreux cycles d'horloge et donc d'augmenter les performances.
+
+### La technologie Hyper-Threading
+
+L'hyperthreading consiste à émuler au sein d'un seul processeur physique deux processeurs logiques, ce qui permet d’occuper le processeur de plus d'instructions et améliore son rendement. Ces deux processeurs logiques partagent les éléments du cœur de processeur, le cache et le bus système. Ainsi, deux processus peuvent être traités simultanément par le même processeur.
+
+{{% img processeur-hyperthreading.png %}}
+
+{{% definition %}}
+Un *thread* (ou fil) est une tâche élémentaire d'un programme en cours d'exécution. Les threads d'un programme peuvent s'exécuter en parallèle.
+{{% /definition %}}
+
+Sous Windows, on peut observer le nombre de threads grâce au
+gestionnaire de tâches.
+
+### La technologie multicœurs
+
+Un processeur multicoeurs contient en réalité deux noyaux de processeur, ou plus, sur la même puce. De l’extérieur, il ressemble à un seul processeur. Un processeur multicoeurs possède tous les avantages d’un ensemble de processeurs physiques séparés, pour un coût moindre.
+
+{{% img processeur-multicoeur.png %}}
