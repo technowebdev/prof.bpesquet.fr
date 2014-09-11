@@ -588,3 +588,183 @@ gestionnaire de tâches.
 Un processeur multicoeurs contient en réalité deux noyaux de processeur, ou plus, sur la même puce. De l’extérieur, il ressemble à un seul processeur. Un processeur multicoeurs possède tous les avantages d’un ensemble de processeurs physiques séparés, pour un coût moindre.
 
 {{% img processeur-multicoeur.png %}}
+
+# La mémoire                                                              
+
+{{% remark %}}
+Ce paragraphe s'inspire d'un cours de mon collègue Pascal Chemin.
+{{% /remark %}}
+
+## Généralités
+
+Dans un ordinateur, la mémoire sert à stocker les informations manipulées par le processeur. Il existe plusieurs catégories de mémoire, adaptées à des usages différents. On peut les classifier en fonction de l’éloignement par rapport au processeur.
+
+{{% img memoire-triangle-vitesse.png %}}
+
+Plus la mémoire est proche du processeur, plus elle est rapide, de faible capacité et chère.
+
+## La mémoire vive (RAM)
+
+### Définition
+
+La mémoire vive ou RAM (*Random Access Memory*) est la principale mémoire de travail de l'ordinateur. Elle est **volatile** : les données stockées en mémoire vive sont perdues à l'extinction de la machine. En contrepartie, la RAM est très rapide.
+
+{{% question %}}
+Estimez le débit des mémoires RAM actuelles.
+{{% /question %}}
+
+Les informations sont stockés dans les composants de mémoire vive, sous forme de charges électriques dans de minuscules condensateurs. Un condensateur chargé représente un 1 et un condensateur non chargé représente un 0. Les condensateurs se décharger naturellement, il faut entretenir la charge périodiquement. Ce processus est appelé **rafraîchissement de la mémoire**. La mémoire de ce type (nécessitant un rafraîchissement périodique) est appelée mémoire dynamique ou DRAM.
+
+ : le débit de la mémoire vive actuelle est d'environ 15 Go/s.
+
+### Echanges avec le processeur
+
+On peut envisager la mémoire vive comme un gigantesque ensemble de cases, que le processeur utilise pour stocker des informations. Les échanges entre RAM et processeur se font au travers de différents bus : commandes, adresses, données. 
+
+{{% img memoire-echanges-proc.png %}}
+
+### Format des barrettes de RAM
+
+Il existe de nombreux types de mémoires vives. Celles-ci se présentent toutes sous la forme de barrettes de mémoire enfichables sur la carte-mère. 
+
+{{% image src="memoire-ram.png" class="centered" %}}
+
+Les premières DRAM étaient de type asynchrone. Depuis 1997, elles sont synchrones(SD-RAM), elles échangent des données en se synchronisant avec le signal d’horloge. Depuis 2000, un nouveau standard est mis au point par Nec, Samsung et Toshiba : le DDR (*Double Data Rate*). Cette technologie permet de **doubler le taux de transfert** des DRAM. La technologie DDR2 est apparue en 2003, c’est une amélioration de DDR (débit plus important, consommation électrique réduite, dissipation thermique moins importante). La **technologie DDR3** est apparue en 2007. Les améliorations apportées sont de la même nature que DDR2.
+
+La **dénomination** d’une mémoire DDR est fonction de son type DDR,
+DDR2, DDR3 et de sa fréquence. Par exemple une mémoire DDR fonctionnant
+à 333 MHz aura comme dénomination DDR333.
+
+### Quantité de RAM
+
+La capacité des mémoires vives actuelles est exprimée en GigaOctets (Go). PLus cette capacité est importante, plus l'ordinateur peut exécuter d'applications en parallèle ou lancer des logiciels gourmands en RAM (retouche photo ou vidéo, jeux, etc).
+
+**Windows XP** nécessite un minimum de 256 Mo, de 512 Mo à 1 Go pour un usage bureautique, de 1 Go à 2 Go pour un usage avancé (retouche photo, montage vidéo, jeux). 
+
+**Windows 7** nécessite plus de mémoire, 1 Go minimum, de 1 Go à 2 Go pour un usage bureautique, de 2 Go à 4 Go pour un usage avancé (retouche photo, montage vidéo, jeux).
+
+{{% img w7-proprietes-syst.png %}}
+
+### Fréquence de la RAM
+
+Comme nous l’avons vu dans le chapitre sur la carte mère, la mémoire RAM est synchronisée sur la vitesse du bus (le FSB : *Front Side Bus*) de la carte mère dépendant du processeur qui l’équipe. Il convient donc d’utiliser des RAM se rapprochant le plus de cette fréquence sous peine que les performances soient diminuées. Pour un fonctionnement optimal, la RAM doit être "synchronisée" avec le processeur. 
+
+### Temps de latence
+
+La latence d’une mémoire est le temps nécessaire pour réaliser une opération de lecture ou d’écriture. Plus la latence est faible plus la mémoire est réactive... et plus son prix est élevé. La latence CAS (en anglais CAS Latence) permet d’évaluer les performances d’une mémoire. Le CAS Latence correspond au nombre de
+cycles d’horloge nécessaires entre deux accès.
+
+Sur le marché, vous trouverez des barrettes mémoires avec les
+appellations (CL2, CL2.5, CL3, CL4 ou CL5). CL est l’abréviation de CAS
+Latence suivi du nombre de cycles d’horloge.
+
+{{% img memoire-latence.png %}}
+
+### Crrection d’erreurs
+
+Les mémoires standard, installées dans nos PC sont des mémoires non-ECC. Cette abréviation précise qu’elles ne contiennent aucun système de correction d’erreur. Il existe sur le marché des barrettes mémoires de type ECC (*Error-Correcting Code*) intégrant une technologie de correction d’erreur. Le mécanisme ECC détecte et corrige les erreurs ou les données corrompues. Ce type de mémoire est surtout utilisé pour les serveurs d’entreprise où la fiabilité et l’intégrité des données en mémoire vive sont très importantes.
+
+Il existe des barrettes de mémoire de 32 bits ou 36 bits. Une barrette de mémoire de 32 bits contient exactement la même quantité de données qu'une barrette de 36 bits. Les quatre bits supplémentaires ne servent qu'à contrôler la validité des huit bits qui les précèdent (un **bit de parité** par groupe de huit bits). Le principe consiste à faire la somme des huit bits de données, puis à donner au neuvième la valeur 1 si le résultat est pair, et 0 si le résultat est impair. (On peut également faire le contraire. On parlera de **parité paire** dans le premier cas, et de **parité impaire** dans le second.)
+
+De cette façon, si un des bits change de valeur par accident, l'erreur sera repérable car le bit de parité ne correspondra plus au résultat. Il peut sembler que la sécurité ainsi obtenue ne soit pas de très haut niveau. En effet, si un deuxième bit change de valeur, la parité est de nouveau correcte. Cependant, s'il y a une chance sur mille (par exemple) qu'une erreur se produise sur un bit, il y aura une chance sur un million pour que deux bits soient erronés. La sécurité obtenue n'est donc pas négligeable. Toutefois, le bit de parité ne permet pas de retrouver le bit erroné.
+
+### Technologie Dual Channel
+
+Les processeurs modernes ont des besoins très élevés en bande passante. La technologie Dual Channel est une réponse à ces nouveaux besoins. Le principe est d’associer deux canaux à deux barrettes de mémoires DDR pour doubler le débit entre la mémoire et le processeur.
+
+Pour bénéficier de cette technologie, il faut que votre carte mère la supporte et installer deux barrettes de mémoire identiques dans les emplacements appropriés. Les emplacements Dual Channel sont d’une couleur différente du noir
+
+{{% img memoire-dual-channel.png %}}
+
+## La mémoire morte (ROM)
+
+Ce type de mémoire est non volatile mais plus lente que la mémoire vive. Elle est utilisée pour stocker les données indispensables au démarrage de l’ordinateur :
+
+* Le **BIOS**, Basic Input/Output System, programme permettant de piloter les interfaces d'entrée-sortie principales du système
+
+* Le **Power-On Self Test** (POST), programme exécuté automatiquement à l'amorçage du système permettant de faire un test du système (comptage de la RAM par exemple).
+
+{{% img memoire-rom.png %}}
+
+Les ROM ont évolué de mémoires mortes figées à des mémoires programmables, puis reprogrammables :
+
+* ROM : **Read Only Memory**
+* PROM : **Programmable ROM**,
+* EPROM : **Erasable PROM**,
+* EEPROM : **Electrically EPROM, effaçables par un courant électrique d’où le terme de flash**,
+* Flash qui est devenu un intermédiaire entre la mémoire morte initiale et la mémoire vive. Nous la reverrons avec les disques SSD (*Solid State Drive*).
+
+## Le disque dur
+
+### Description
+
+Le disque dur est un type de mémoire de masse (non volatile) encore très répandu. 
+
+{{% image src="disque-dur-exterieur.png" class="centered" %}}
+
+Il est constitué d'un ou plusieurs plateaux et d'un bras mobile sur lequel se trouvent les têtes de lecture. Chaque face du plateau est divisée en pistes circulaires concentriques. Chaque piste se divise en secteurs qui sont des portions de pistes limitées par deux rayons. En général, un secteur contient 512 octets.
+
+{{% image src="disque-dur-interieur.png" class="centered" %}}
+
+Les disques durs sont des mécanismes de haute précision, sensibles au choc. L’électronique, aussi appelée **contrôleur disque dur**, est chargée de piloter la rotation des plateaux ainsi que l’ensemble bras/tête pour
+effectuer les lectures et les écritures. Son autre rôle est d’interpréter les signaux électriques reçus par les têtes pour les convertir en bits (0 ou 1) ou de réaliser l’opération dans le sens inverse pour les opérations d’écriture.
+
+Le nombre de plateaux varie de 1 à 5. Un nombre de plateaux important
+est généralement nécessaire pour les disques durs de fortes capacités.
+
+### Format
+
+Il existe plusieurs formats de disques durs :
+
+* Format 1,8" : pour les ordinateurs ultraportables. Ses performances sont souvent modestes à cause de faibles vitesses de rotation : 4200 ou 5400 tours/min.
+
+* Format 2,5" : le format le plus courant pour les ordinateurs portables : 4200, 5400 et 7200 tours/min.
+
+* Format 3,5" : pour les ordinateurs de bureau et les serveurs. Ce sont les plus performants : 7200, 10000,15000 tours/min.
+
+### Mémoire cache
+
+Cette mémoire de faible capacité permet d’améliorer les performances d’un disque dur en stockant les informations les plus souvent utilisées.
+
+{{% question %}}
+Quelle est la taille des mémoires cache embarquées sur les disques durs actuels ?
+{{% /question %}}
+
+### Interfaces avec l'ordinateur
+
+Les interfaces internes (connexion à l'intérieur du boîtier de l'ordinateur) peuvent être :
+
+* ATA, également nommée PATA ou IDE. N’existe plus sur les DD récents.
+
+* SATA (*Serial ATA*). Standard actuel.
+
+* SCSI (*Small Computer System Interface*). Surtout utilisée pour les serveurs d’entreprise.
+
+Les interfaces externes (connexion à l'extérieur du boîtier) sont :
+
+* USB : les disques durs externes proposés sur le marché sont compatibles avec la norme 3.0.
+
+* eSATA : version externe de la technologie SATA utilisée pour les disques internes.
+
+## Le disque SSD 
+
+À la différence d’un disque dur utilisant le principe magnétique, un disque SSD (*Solid State Drive*) est constitué de **puces de mémoires flash,** qui sont des puces électroniques possédant les caractéristiques d’une mémoire vive, mais dont les données ne disparaissent pas lors d’une mise hors tension. Ils ne contiennent donc aucune pièce mécanique.
+
+{{% image src="ssd.jpeg" class="centered" %}}
+
+Les SSD présentent de nombreux avantages par rapport à un disque dur traditionnel :
+
+* Insensibilité aux chocs.
+* Temps d’accès plus rapide.
+* Fonctionnement totalement silencieux.
+* Débits importants et stables.
+* probabilité de panne beaucoup plus faible, liée à l’absence de pièces mécaniques en mouvements.
+
+Le principal inconvénient de ces disques est leur prix beaucoup plus élevé que celui d’un disque dur à capacité égale. Les capacités des SSD sont aussi inférieures aux disques durs avec une capacité maximale autour de 1 To.
+
+{{% question %}}
+Combien coûte un SSD de 500 Go ? Et un disque dur de même capacité ?
+{{% /question %}}
+
+Les SSD sont vraisemblablement appelés à remplacer les disques durs dans un proche avenir.
+
