@@ -50,6 +50,9 @@ Sauf indication contraire, les travaux à réaliser doivent être terminés pour
 
 **TP SLAM5** : tutoriel SDZ [POO en PHP](http://fr.openclassrooms.com/informatique/cours/programmez-en-oriente-objet-en-php), chapitre 1.
 
-**Cours SLAM5** : tutoriel SDZ [POO en PHP](http://fr.openclassrooms.com/informatique/cours/programmez-en-oriente-objet-en-php), chapitre 2.
+**Cours SLAM5** : 
+
+* Retour sur le tutoriel SDZ [POO en PHP](http://fr.openclassrooms.com/informatique/cours/programmez-en-oriente-objet-en-php).
+* Chapitre 2 du tutoriel.
 
 

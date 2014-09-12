@@ -7,7 +7,7 @@ Créez un document bureautique nommé `VotreNom_SI1_ComposantsOrdi.xxx` (`xxx` e
 
 # Question 1
 
-Après avoir regardé [cette vidéo](https://www.youtube.com/watch?v=yf8G90v2Rz4), trouvez les éléments ci-desous pour la carte mère présentée :
+Après avoir regardé [cette vidéo](https://www.youtube.com/watch?v=yf8G90v2Rz4), trouvez les éléments ci-dessous pour la carte mère présentée :
 
 * Format
 * Chipset
@@ -58,3 +58,20 @@ Standard | Débit théorique |
 PCI 2.0 | ...
 PCI Express | ...
 ... | ...
+
+# Question 7
+
+Réalisez un tableau dans lequel vous rassemblerez des informations sur les processeurs suivants : Intel 8088, 80486, Pentium, Pentium 4, Core 2 Duo Penryn, Core i5 Sandy Bridge, Core i7 Haswell, Core M Broadwell, AMD Athlon, Athlon II. Votre tableau aura la forme ci-dessous.
+
+Processeur | Année d'apparition | Nombre de coeurs | Fréquence | Mémoire cache | Finesse de gravure | Enveloppe thermique (TDP)
+-----------|--------------------|------------------|-----------|---------------|--------------------|--------------------------
+8088 | ...
+80486 | ...
+... | ...
+
+# Question 8
+
+Votre cousin souhaite renouveler son ordinateur de bureau et se demande quel processeur choisir. Il utilise son PC
+pour naviguer sur Internet, regarder des films et jouer à des jeux peu gourmands. Son budget est limité.
+
+Quel modèle de processeur lui conseillez-vous ? Justifier votre choix.
