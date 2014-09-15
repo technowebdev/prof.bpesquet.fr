@@ -554,7 +554,9 @@ Plus la gravure est fine, plus le processeur va pouvoir :
 * dissiper moins de chaleur.
 * consommer moins de courant électrique.
 
+{{% question %}}
 Trouvez la finesse de gravure des processeurs PC récents.
+{{% /question %}}
 
 ### La consommation électrique
 

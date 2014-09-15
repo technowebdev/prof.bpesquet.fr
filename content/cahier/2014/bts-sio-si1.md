@@ -32,10 +32,21 @@ Sauf indication contraire, les travaux à réaliser doivent être terminés pour
 * Présentation du campus SIO.
 * Cours [Composants matériels de l'ordinateur](/cours/composants-materiels-ordinateur) : le processeur.
 * Diaporama sur la fabrication d'un processeur.
-* Fin du TD sur l'information binaire.
 * Correction de l'activité [Composants matériels de l'ordinateur](/activite/composants-materiels-ordinateur).
 * Activité [Composants matériels de l'ordinateur](/activite/composants-materiels-ordinateur), questions 7 et 8.
 
 **TP groupe B** : absence professeur. Reporté au vendredi 19 de 8h à 10h.
 
+**Cours mercredi**
 
+* Fin du TD sur l'information binaire.
+* Fin de l'activité [Composants matériels de l'ordinateur](/activite/composants-materiels-ordinateur), questions 7 et 8.
+
+## Semaine 4 : 22 septembre
+
+**Cours lundi**
+
+* TODO
+
+    * Etudier le cours [Composants matériels de l'ordinateur](/cours/composants-materiels-ordinateur) : la mémoire.
+    * Répondre au questionnaire en ligne reçu par courriel.
