@@ -48,11 +48,27 @@ Sauf indication contraire, les travaux à réaliser doivent être terminés pour
 
 ## Semaine 3 : 15 septembre
 
-**TP SLAM5** : tutoriel SDZ [POO en PHP](http://fr.openclassrooms.com/informatique/cours/programmez-en-oriente-objet-en-php), chapitre 1.
+**TP SLAM5** : tutoriel SDZ [POO en PHP](http://fr.openclassrooms.com/informatique/cours/programmez-en-oriente-objet-en-php), chapitres "Introduction à la POO" et "Utiliser la classe" uniquement.
 
 **Cours SLAM5** : 
 
-* Retour sur le tutoriel SDZ [POO en PHP](http://fr.openclassrooms.com/informatique/cours/programmez-en-oriente-objet-en-php).
-* Chapitre 2 du tutoriel.
+* Retour sur la [POO avec PHP](/cours/poo-php-en-bref/).
+* Activité [Accès aux données avec PHP et Silex](/activite/acces-donnees-php-silex/).
 
+## Semaine 4 : 22 septembre
 
+**TP SLAM5**
+
+* TODO
+
+    * Terminer le tutoriel [Développement PHP moderne](/tutoriel/developpement-php-moderne/), itération 3.
+    * Terminer l'activité [Accès aux données avec PHP et Silex](/activite/acces-donnees-php-silex/).
+
+\
+
+* Tutoriel SDZ [Espaces de noms en PHP](http://fr.openclassrooms.com/informatique/cours/les-espaces-de-noms-en-php).
+* Tutoriel [Développement PHP moderne](/tutoriel/developpement-php-moderne/), itération 4.
+
+**Cours SLAM5**
+
+* Retour sur les espaces de noms en PHP.

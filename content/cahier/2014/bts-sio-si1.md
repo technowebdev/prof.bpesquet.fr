@@ -50,3 +50,4 @@ Sauf indication contraire, les travaux à réaliser doivent être terminés pour
 
     * Etudier le cours [Composants matériels de l'ordinateur](/cours/composants-materiels-ordinateur) : la mémoire.
     * Répondre au questionnaire en ligne reçu par courriel.
+    * Terminer l'activité [Composants matériels de l'ordinateur](/activite/composants-materiels-ordinateur), question 7.
