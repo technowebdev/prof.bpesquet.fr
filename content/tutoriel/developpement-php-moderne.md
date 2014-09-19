@@ -35,6 +35,17 @@ Une itération est une phase de travail volontairement courte permettant de prod
 
 Certaines itérations seront consacrées à l'ajout de nouvelles fonctionnalités à l'application. Les autres permettront d'améliorer son architecture en pratiquant ce qu'on appelle la [refactorisation](http://fr.wikipedia.org/wiki/R%C3%A9usinage_de_code) (*refactoring*). 
 
+## Remerciements
+
+Les ressources ci-dessous ont été d'une aide précieuse pour l'écriture de ce tutoriel :
+
+* [Learning PHP development with Silex](http://bojanz.wordpress.com/2013/11/11/learning-php-development-with-silex/) (ma principale source d'inspiration).
+* [Silex: getting your project structure right](http://php-and-symfony.matthiasnoback.nl/2012/01/silex-getting-your-project-structure-right/)
+* [Scaling a Silex code base](https://igor.io/2012/11/09/scaling-silex.html)
+* [PHP: the right way](http://www.phptherightway.com/)
+
+J'ai bénéficié des conseils avisés de [Matthieu Gauthey](https://twitter.com/mgauthey), [Pablo Pernot](http://www.areyouagile.com/) et de mon collègue Alain Arsane.
+
 # Itération 1 : initialisation de l'application
 
 Le but de cette itération est d'écrire la toute première version de notre application Web d'exemple. Conformément aux principes de l'agilité, nous commençons par réaliser ce qui apporte le plus de "valeur" à notre CMS : la page d'accueil qui affiche la liste de tous ses articles.
@@ -1529,4 +1540,650 @@ Le code source associé à cette itération est disponible sur une [branche du d
 
 Au cours de cette itération, nous avons ajouté à l'application une fonctionnalité métier en nous appuyant sur les bases définies précédemment. Nous avons également saisi les occasions de refactoriser l'architecture afin qu'elle s'adapte aux nouveaux besoins.
 
-Afin de réaliser de nouvelles fonctionnalités métier, l'itération suivante va s'intéresser à l'authentification des visiteurs. 
+Afin de réaliser de nouvelles fonctionnalités métier, l'itération suivante va s'intéresser à la sécurisation de l'application. 
+
+# Itération 8 : gestion de la sécurité
+
+Le but de cette itération est d'offrir aux visiteurs la possibilité de s'identifier afin d'être reconnus par l'application.
+
+## Contexte métier
+
+Nous souhaitons ajouter à notre CMS une fonctionnalité d'ajout de commentaires à un article. Cependant, cet ajout ne doit être possible que pour les utilisateurs enregistrés dans l'application. Tout commentaire sera associé à son auteur, qui est nécessairement un utilisateur enregistré.
+
+Afin de pouvoir réaliser cette fonctionnalité, il est nécessaire de sécuriser notre application Web. Pour cela, nous allons tirer parti des possibilités du framework Silex, reprises de celles de son grand frère Symfony.
+
+## Symfony et la sécurité
+
+La sécurisation est un besoin récurrent des applications Web. Comme tous les frameworks majeurs, Symfony dispose de fonctionnalités avancées dans ce domaine. Ce paragraphe en fait un bref résumé. Pour plus de détails sur la sécurité avec Symfony/Silex, consultez les rubriques associées des documentations de [Symfony](http://symfony.com/doc/current/book/security.html) et de [Silex](http://silex.sensiolabs.org/doc/providers/security.html).
+
+Symfony envisage la sécurité comme un processus en deux étapes :
+
+1. L'**authentification**. Durant cette étape, l'utilisateur s'identifie auprès de l'application. Celle-ci tente ensuite de le reconnaître.
+2. L'**autorisation**. Ici, l'application détermine si l'utilisateur reconnu a accès à la ressource qu'il demande.
+
+{{% image src="security_authentication_authorization.png" class="centered" %}}
+
+Symfony permet de sécuriser les ressources d'une application Web en définissant un **pare-feu** (*firewall*). Lorsqu'un utilisateur fait une requête à une URL qui est protégée par un pare-feu, le système de sécurité de Symfony est activé. Le rôle du pare-feu est de déterminer si un utilisateur doit ou ne doit pas être authentifié (selon sa configuration, un pare-feu peut autoriser ou non les utilisateurs anonymes), et s'il doit l'être, de retourner une réponse à l'utilisateur afin d'entamer le processus d'authentification. Cette authentification peut prendre différentes formes : saisie d'un couple login/mot de passe dans un formulaire Web (la plus courante), certificat, etc.
+
+{{% image src="security_anonymous_user_access.png" class="centered" %}}
+
+L'autorisation se base sur l'attribution de **rôles** aux utilisateurs reconnus. Dans la configuration du pare-feu, on peut soumettre l'accès à certaines ressources à la possession par l'utilisateur du rôle associé.
+
+{{% image src="security_ryan_no_role_admin_access.png" class="centered" %}}
+
+## Gestion des mots de passe
+
+La forme la plus courante d'authentification, celle que nous allons adopter, consiste à attribuer à chaque utilisateur un login et un mot de passe. Ces identifiants (*credentials*) permettent à l'application de reconnaître l'utilisateur.
+
+Comme l'actualité nous le rappelle souvent, la gestion des mots de passe revêt une importante critique. Il est essentiel qu'une application Web stocke et manipule ses mots de passe sous forme cryptée et non directement "en clair". Les mots de passe de nos utilisateurs seront donc stockés après application d'un [algorithme de hachage cryptographique](http://fr.wikipedia.org/wiki/Fonction_de_hachage) (*digest*). Par exemple, le mot `Baptiste` donne le résultat `04ce34a463c52d41c4d0c04c9afd0abe` après application de l'algorithme de hachage [MD5](http://fr.wikipedia.org/wiki/MD5). Le résultat d'un eopération de hachage est appelée empreinte.
+
+{{% image src="Hash_function_fr.svg.png" class="centered" %}}
+
+Les algorithmes de hachage ont la particularité d'être unidirectionnels : il n'existe pas de moyen de revenir de l'empreinte obtenue au mot de passe en clair initial. Le mot de passe saisi par un utilisateur sera immédiatement haché avec le même algorithme, puis comparé avec la valeur cryptée stockée : si les deux résultats sont identiques, c'est que l'utilisateur a saisi le bon mot de passe.
+
+Même si nos mots de passe sont stockées sous forme hachée, le risque subsiste qu'un individu mal intentionné arrive à s'introduire dans la base de données pour dérober ces mots de passe cryptés. Il pourrait ensuite utiliser une solution de type force brute pour hacher un très grand nombre de mots de passe et comparer le résultat avec les mots de passe volés jusqu'à trouver une correspondance. 
+
+Le [salage](http://fr.wikipedia.org/wiki/Salage_\(cryptographie\)) est une solution pour limiter ce risque. Cette technique consiste à ajouter plusieurs caractères au mot de passe juste avant de le hacher. Le résultat du hachage est différent de celui obtenu avec le mot de passe seul. Cela permet de protéger les mots de passe contre les attaques de type [dictionnaire](http://fr.wikipedia.org/wiki/Attaque_par_dictionnaire) (force brute avec utilisation d'une liste de mots de passe potentiels). Les données ajoutés au mot de passe sont appelées *salt*. Pour plus de sécurité, le *salt* doit être différent pour chaque mot de passe.
+
+Pour plus de détails concernant les bonnes pratiques de cryptage des mots de passe, consultez cet [article](http://www.jasypt.org/howtoencryptuserpasswords.html).
+
+## Sécurisation de l'application
+
+### Base de données
+
+La structure de notre base de données doit évoluer afin de refléter les nouveaux besoins métier : un commentaire est maintenant associé à un utilisateur de l'application. Voici le nouveau script SQL `structure.sql` qui permet de créer la base.
+
+    create database if not exists microcms character set utf8 collate utf8_unicode_ci;
+    use microcms;
+    
+    grant all privileges on microcms.* to 'microcms_user'@'localhost' identified by 'secret';
+    
+    drop table if exists t_comment;
+    drop table if exists t_user;
+    drop table if exists t_article;
+    
+    create table t_article (
+        art_id integer not null primary key auto_increment,
+        art_title varchar(100) not null,
+        art_content varchar(2000) not null
+    ) engine=innodb character set utf8 collate utf8_unicode_ci;
+    
+    create table t_user (
+        usr_id integer not null primary key auto_increment,
+        usr_name varchar(50) not null,
+        usr_password varchar(88) not null,
+        usr_salt varchar(23) not null,
+        usr_role varchar(50) not null 
+    ) engine=innodb character set utf8 collate utf8_unicode_ci;
+    
+    create table t_comment (
+        com_id integer not null primary key auto_increment,
+        com_content varchar(500) not null,
+        art_id integer not null,
+        usr_id integer not null,
+        constraint fk_com_art foreign key(art_id) references t_article(art_id),
+        constraint fk_com_usr foreign key(usr_id) references t_user(usr_id)
+    ) engine=innodb character set utf8 collate utf8_unicode_ci;
+
+Les utilisateurs sont stockés dans la table `t_user`. Voici la description de ses champs.
+
+* `usr_id` est l'identifiant de l'utilisateur.
+* `usr_name` est le nom de l'utilisateur. Il sera utilisé commé login. 
+* `usr_password` est son mot de passé, stockée sous forme hachée.
+* `usr_salt` est le *salt* utilisé pour hacher le mot de passe. Il est stocké en clair.
+* `usr_role` est le rôle attribué à l'utilisateur. Il sera utilisé lors de la phase d'autorisation.
+
+On observe également que la table `t_comment` contient maintenant une clé étrangère vers la table `t_user`, afin de matérialiser le lien entre un commentaire et son auteur.
+
+Les données de test sont également mises à jour. Voici le script `content.sql` associé.
+
+    insert into t_article(art_title, art_content) values
+    ('First article', 'Hi there! This is the very first article.');
+    insert into t_article(art_title, art_content) values
+    ('Lorem ipsum', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut hendrerit mauris ac porttitor accumsan. Nunc vitae pulvinar odio, auctor interdum dolor. Aenean sodales dui quis metus iaculis, hendrerit vulputate lorem vestibulum. Suspendisse pulvinar, purus at euismod semper, nulla orci pulvinar massa, ac placerat nisi urna eu tellus. Fusce dapibus rutrum diam et dictum. Sed tellus ipsum, ullamcorper at consectetur vitae, gravida vel sem. Vestibulum pellentesque tortor et elit posuere vulputate. Sed et volutpat nunc. Praesent nec accumsan nisi, in hendrerit nibh. In ipsum mi, fermentum et eleifend eget, eleifend vitae libero. Phasellus in magna tempor diam consequat posuere eu eget urna. Fusce varius nulla dolor, vel semper dui accumsan vitae. Sed eget risus neque.');
+    insert into t_article(art_title, art_content) values
+    ('Lorem ipsum in french', "J’en dis autant de ceux qui, par mollesse d’esprit, c’est-à-dire par la crainte de la peine et de la douleur, manquent aux devoirs de la vie. Et il est très facile de rendre raison de ce que j’avance. Car, lorsque nous sommes tout à fait libres, et que rien ne nous empêche de faire ce qui peut nous donner le plus de plaisir, nous pouvons nous livrer entièrement à la volupté et chasser toute sorte de douleur ; mais, dans les temps destinés aux devoirs de la société ou à la nécessité des affaires, souvent il faut faire divorce avec la volupté, et ne se point refuser à la peine. La règle que suit en cela un homme sage, c’est de renoncer à de légères voluptés pour en avoir de plus grandes, et de savoir supporter des douleurs légères pour en éviter de plus fâcheuses.");
+    
+    /* raw password is 'john' */
+    insert into t_user(usr_name, usr_salt, usr_password, usr_role) values
+    ('JohnDoe', 'YcM=A$nsYzkyeDVjEUa7W9K', 'L2nNR5hIcinaJkKR+j4baYaZjcHS0c3WX2gjYF6Tmgl1Bs+C9Qbr+69X8eQwXDvw0vp73PrcSeT0bGEW5+T2hA==', 'ROLE_USER');
+    /* raw password is 'jane' */
+    insert into t_user(usr_name, usr_salt, usr_password, usr_role) values
+    ('JaneDoe', 'dhMTBkzwDKxnD;4KNs,4ENy', 'EfakNLxyhHy2hVJlxDmVNl1pmgjUZl99gtQ+V3mxSeD8IjeZJ8abnFIpw9QNahwAlEaXBiQUBLXKWRzOmSr8HQ==', 'ROLE_USER');
+    
+    insert into t_comment(art_id, usr_id, com_content) values
+    (1, 1, 'Great! Keep up the good work.');
+    insert into t_comment(art_id, usr_id, com_content) values
+    (1, 2, "This project is awesome!");
+
+Ce jeu de données insère dans la base les utilisateurs 'JohnDoe' (mot de passe : 'john') et 'JaneDoe' (mot de passe : 'jane'). Pour chaque utilisateur, un *salt* a été généré aléatoirement puis l'algorithme de hachage par défaut de Symfony a été utilisé pour générer le mot de passe crypté. Celui-ci est stocké dans la base. On attribue à tous les utilisateurs le rôle `ROLE_USER` (rôle par défaut pour Symfony).
+
+### Composants Symfony
+
+Afin d'exploiter les fonctionnalités offertes par Symfony, nous devons récupérer les composants nécessaires. Il suffit pour cela de les déclarer dans le fichier de dépendances `composer.json`.
+
+    "require": {
+        ...
+        "symfony/security": "~2.4",
+        "symfony/twig-bridge": "~2.4"
+    }
+    ...
+
+Le composant `security` regroupe les services de gestion de la sécurité. Le composant `twig-bridge` permet d'accéder à certains services Symfony depuis les templates Twig.
+
+Une fois ce fichier modifié, on utilise Composer pour télécharger ces composants et leurs éventuelles dépendances.
+
+    $ composer update
+
+### Partie Modèle
+
+La première étape de notre travail dans cette partie est de modéliser un utilisateur de l'application sous la forme d'une classe `User` située dans l'espace de noms `MicroCMS\Domain`. Voici son code source. 
+
+    <?php
+    
+    namespace MicroCMS\Domain;
+    
+    use Symfony\Component\Security\Core\User\UserInterface;
+    
+    class User implements UserInterface
+    {
+        /**
+         * User id.
+         *
+         * @var integer
+         */
+        private $id;
+    
+        /**
+         * User name.
+         *
+         * @var string
+         */
+        private $name;
+    
+        /**
+         * User password.
+         *
+         * @var string
+         */
+        private $password;
+    
+        /**
+         * Salt that was originally used to encode the password.
+         *
+         * @var string
+         */
+        private $salt;
+    
+        /**
+         * Role.
+         * Values : ROLE_USER or ROLE_ADMIN.
+         *
+         * @var string
+         */
+        private $role;
+    
+        public function getId() {
+            return $this->id;
+        }
+    
+        public function setId($id) {
+            $this->id = $id;
+        }
+    
+        /**
+         * @inheritDoc
+         */
+        public function getUsername() {
+            return $this->name;
+        }
+    
+        public function setUsername($name) {
+            $this->name = $name;
+        }
+    
+        /**
+         * @inheritDoc
+         */
+        public function getPassword() {
+            return $this->password;
+        }
+    
+        public function setPassword($password) {
+            $this->password = $password;
+        }
+    
+        /**
+         * @inheritDoc
+         */
+        public function getSalt()
+        {
+            return $this->salt;
+        }
+    
+        public function setSalt($salt)
+        {
+            $this->salt = $salt;
+        }
+    
+        public function getRole()
+        {
+            return $this->role;
+        }
+    
+        public function setRole($role) {
+            $this->role = $role;
+        }
+    
+        /**
+         * @inheritDoc
+         */
+        public function getRoles()
+        {
+            return array($this->getRole());
+        }
+    
+        /**
+         * @inheritDoc
+         */
+        public function eraseCredentials() {
+            // Nothing to do here
+        }
+    
+        /**
+         * @inheritDoc
+         */
+        public function equals(UserInterface $user) {
+            $class = get_class($this);
+            if (!$user instanceof $class) {
+                return false;
+            }
+            if ($this->password !== $user->getPassword()) {
+                return false;
+            }
+            if ($this->salt !== $user->getSalt()) {
+                return false;
+            }
+            if ($this->name !== $user->getUsername()) {
+                return false;
+            }
+            return true;
+        }
+    }
+
+On constate une différence majeure avec les classes `Article` et `Comment` existantes : la classe `User` implémente l'interface Symfony [UserInterface](http://api.symfony.com/2.0/Symfony/Component/Security/Core/User/UserInterface.html) et définit les méthodes présentes dans cette interface. Ces méthodes sont indispensables pour que l'utilisateur puisse être authentifié et autorisé par Symfony.
+
+La classe `Comment` subit un changement (mineur du point de vue du code source) : sa propriété `author` n'est plus une chaîne de caractères, mais une instance de la classe `User`. On met à jour le commentaire pour refléter cette évolution.
+
+    <?php
+    
+    namespace MicroCMS\Domain;
+    
+    class Comment 
+    {
+        // ...
+    
+        /**
+         * Comment author.
+         *
+         * @var \MicroCMS\Domain\User
+         */
+        private $author;
+
+        // ...
+
+Nous devons également créer la classe `UserDAO` qui gère l'accès aux utilisateurs.
+
+    <?php
+    
+    namespace MicroCMS\DAO;
+    
+    use Symfony\Component\Security\Core\User\UserInterface;
+    use Symfony\Component\Security\Core\User\UserProviderInterface;
+    use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
+    use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
+    use MicroCMS\Domain\User;
+    
+    class UserDAO extends DAO implements UserProviderInterface
+    {
+        /**
+         * Returns a user matching the supplied id.
+         *
+         * @param integer $id
+         *
+         * @return \MicroCMS\Domain\User|throws an exception if no matching user is found
+         */
+        public function find($id) {
+            $sql = "select * from t_user where usr_id=?";
+            $row = $this->getDb()->fetchAssoc($sql, array($id));
+    
+            if ($row)
+                return $this->buildDomainObject($row);
+            else
+                throw new \Exception("No user matching id " . $id);
+        }
+    
+        /**
+         * {@inheritDoc}
+         */
+        public function loadUserByUsername($username)
+        {
+            $sql = "select * from t_user where usr_name=?";
+            $row = $this->getDb()->fetchAssoc($sql, array($username));
+    
+            if ($row)
+                return $this->buildDomainObject($row);
+            else
+                throw new UsernameNotFoundException(sprintf('User "%s" not found.', $username));
+        }
+    
+        /**
+         * {@inheritDoc}
+         */
+        public function refreshUser(UserInterface $user)
+        {
+            $class = get_class($user);
+            if (!$this->supportsClass($class)) {
+                throw new UnsupportedUserException(sprintf('Instances of "%s" are not supported.', $class));
+            }
+            return $this->loadUserByUsername($user->getUsername());
+        }
+    
+        /**
+         * {@inheritDoc}
+         */
+        public function supportsClass($class)
+        {
+            return 'MicroCMS\Domain\User' === $class;
+        }
+    
+        /**
+         * Creates a User object based on a DB row.
+         *
+         * @param array $row The DB row containing User data.
+         * @return \MicroCMS\Domain\User
+         */
+        protected function buildDomainObject($row) {
+            $user = new User();
+            $user->setId($row['usr_id']);
+            $user->setUsername($row['usr_name']);
+            $user->setPassword($row['usr_password']);
+            $user->setSalt($row['usr_salt']);
+            $user->setRole($row['usr_role']);
+            return $user;
+        }
+    }
+
+Cette classe reprend la structure de nos classes DAO existantes et implémente l'interface Symfony [UserProviderInterface](http://api.symfony.com/2.0/Symfony/Component/Security/Core/User/UserProviderInterface.html). Cette interface contient les méthodes nécessaires pour qu'une classe puisse être utilisée comme *fournisseur de données utilisateur* par le composant de gestion de la sécurité de Symfony au cours du processus d'authentification.
+
+La classe `CommentDAO` est mise à jour : elle dépend maintenant de la classe `UserDAO` pour construire un objet `Comment` complet à partir d'un résultat de requête SQL.
+
+    <?php
+    
+    namespace MicroCMS\DAO;
+    
+    use MicroCMS\Domain\Comment;
+    
+    class CommentDAO extends DAO 
+    {
+        // ...
+    
+        /**
+         * @var \MicroCMS\DAO\UserDAO
+         */
+        protected $userDAO;
+    
+        public function setUserDAO($userDAO) {
+            $this->userDAO = $userDAO;
+        }
+    
+        // ...
+    
+        /**
+         * Creates an Comment object based on a DB row.
+         *
+         * @param array $row The DB row containing Comment data.
+         * @return \MicroCMS\Domain\Comment
+         */
+        protected function buildDomainObject($row) {
+            // Find the associated article
+            $articleId = $row['art_id'];
+            $article = $this->articleDAO->find($articleId);
+    
+            // Find the associated user
+            $userId = $row['usr_id'];
+            $user = $this->userDAO->find($userId);
+    
+            $comment = new Comment();
+            $comment->setId($row['com_id']);
+            $comment->setContent($row['com_content']);
+            $comment->setArticle($article);
+            $comment->setAuthor($user);
+            return $comment;
+        }
+    }
+
+### Partie Contrôleur
+
+Le fichier de configuration de l'application Silex `app.php` est modifié pour intégrer les nouveaux services.
+
+    <?php
+    
+    // Register global error and exception handlers
+    use Symfony\Component\Debug\ErrorHandler;
+    ErrorHandler::register();
+    use Symfony\Component\Debug\ExceptionHandler;
+    ExceptionHandler::register();
+    
+    // Register service providers.
+    $app->register(new Silex\Provider\DoctrineServiceProvider());
+    $app->register(new Silex\Provider\TwigServiceProvider(), array(
+        'twig.path' => __DIR__.'/../views',
+    ));
+    $app->register(new Silex\Provider\SessionServiceProvider());
+    $app->register(new Silex\Provider\UrlGeneratorServiceProvider());
+    $app->register(new Silex\Provider\SecurityServiceProvider(), array(
+        'security.firewalls' => array(
+            'secured' => array(
+                'pattern' => '^/',
+                'anonymous' => true,
+                'logout' => true,
+                'form' => array('login_path' => '/login', 'check_path' => '/login_check'),
+                'users' => $app->share(function () use ($app) {
+                    return new MicroCMS\DAO\UserDAO($app['db']);
+                }),
+            ),
+        ),
+    ));
+    
+    // Register services.
+    $app['dao.article'] = $app->share(function ($app) {
+        return new MicroCMS\DAO\ArticleDAO($app['db']);
+    });
+    $app['dao.user'] = $app->share(function ($app) {
+        return new MicroCMS\DAO\UserDAO($app['db']);
+    });
+    $app['dao.comment'] = $app->share(function ($app) {
+        $commentDAO = new MicroCMS\DAO\CommentDAO($app['db']);
+        $commentDAO->setArticleDAO($app['dao.article']);
+        $commentDAO->setUserDAO($app['dao.user']);
+        return $commentDAO;
+    });
+
+Il est important de bien comprendre les paramètres utilisés pour la définition du pare-feu (*firewall*) associé au fournisseur de services *SecurityServiceProvider* :
+
+* `pattern` définit la partie sécurisée de l'application sous la forme d'une [expression rationnelle](http://fr.wikipedia.org/wiki/Expression_rationnelle). Ici, la valeur `^/` indique que le pare-feu sécurise l'intégralité de l'application ;
+* `anonymous` précise qu'un utilisateur non authentifié peut tout de même accéder à la partie sécurisée. Il est nécessaire pour que les visiteurs anonymes puissent continuer à consulter les articles du CMS ;
+* `logout` indique qu'il est possible pour les utilisateurs authentifiés de se déconnecter de l'application ;
+* `form` permet d'utiliser un formulaire comme méthode d'authentification. `login_path` définit le chemin vers le formulaire et `check_path` le chemin d'authentification ;
+* `users` définit le fournisseur de données utilisateur, autrement dit la source de données qui permet d'accéder aux utilisateurs de l'application. Ici, il s'agit logiquement d'une instance de la classe `UserDAO` créée précédemment.
+
+{{% remark %}}
+L'enregistrement du fournisseur de services *SessionServiceProvider* démarre automatiquement la gestion des sessions.
+{{% /remark %}}
+
+Il faut aussi ajouter une route pour afficher le formulaire d'authentification dans le fichier `routes.php`.
+
+    <?php
+    
+    use Symfony\Component\HttpFoundation\Request;
+    
+    // ...
+    
+    // Login form
+    $app->get('/login', function(Request $request) use ($app) {
+        return $app['twig']->render('login.html.twig', array(
+            'error'         => $app['security.last_error']($request),
+            'last_username' => $app['session']->get('_security.last_username'),
+        ));
+    })->bind('login');  // named route so that path('login') works in Twig templates
+
+Elle utilise la classe Symfony `Request` pour afficher la vue `login.html.twig` en lui passant en paramètres l'éventuelle dernière erreur de sécurité (par exemple un utilisateur non reconnu) et le dernier nom d'utilisateur utilisé.
+
+{{% warning %}}
+Cette nouvelle route est nommée `login` grâce à l'appel à la méthode `bind`. Sans cela, l'appel à la fonction `path('login')` dans un template Twig provoque une erreur (voir plus loin).
+{{% /warning %}}
+
+### Partie Vue
+
+Dans la partie Vue, il faut tout d'abord créer la vue `login.html.twig` associée à la route d'authentification.
+
+    {% extends 'layout.html.twig' %}
+    
+    {% block title %}User authentication{% endblock %}
+    
+    {% block content %}
+    <h2 class="text-center">{{ block('title') }}</h2>
+    {% if error %}
+    <div class="alert alert-danger">
+        <strong>Login failed!</strong> {{ error }}
+    </div>
+    {% endif %}
+    <div class="well">
+        <form class="form-signin form-horizontal" role="form" action="{{ path('login_check') }}" method="post">
+            <div class="form-group">
+                <div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+                <input type="text" name="_username" value="{{ last_username }}" class="form-control" placeholder="Enter your username" required autofocus>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+                    <input type="password" name="_password" class="form-control" placeholder="Enter your password" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+                    <button type="submit" class="btn btn-default btn-primary"><span class="glyphicon glyphicon-log-in"></span> Login</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    {% endblock %}
+
+Comme toutes nos vues, elle hérite de `layout.html.twig` afin d'intégrer les éléments d'interface communs (barre de navigation, pied de page, etc). Elle définit un formulaire (balise `<form>`) contenant les champs `_username` et '_password' pour saisir le login et le mot de passe de l'utilisateur. L'action associée à ce formulaire utilise la fonction `path` (fournie par le composant `twig-bridge`) pour récupérer le chemin d'authentification défini lors du paramétrage du pare-feu. Le nom de ce chemin provient de la valeur du paramètre `check_path` : les `/` sont remplacés par des `_` et le `/` initial est supprimé.
+
+Ensuite, on modifie la vue `article.html.twig` pour obtenir un affichage adapté à la présence d'un utilisateur connecté.
+
+    {% extends "layout.html.twig" %}
+    
+    {% block title %}{{ article.title }}{% endblock %}
+    
+    {% block content %}
+    <p>
+        <h2>{{ article.title }}</h2>
+        <p>{{ article.content }}</p>
+        
+        <h3>Comments</h3>
+        {% if comments %}
+            {% for comment in comments %}
+                <strong>{{ comment.author.username }}</strong> said : {{ comment.content }}<br>
+            {% endfor %}
+        {% else %}
+            No comments yet.
+        {% endif %}
+    
+        <h3>Add a comment</h3>
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            Soon!
+        {% else %}
+            <a href="{{ path('login') }} ">Log in</a> to add comments.
+        {% endif %}
+    </p>
+    {% endblock %} 
+
+Le nom de l'auteur du commentaire est maintenant accessible via la variable Twig `comment.author.username` et non plus `comment.author`. L'appel à la fonction Twig `is_granted('IS_AUTHENTICATED_FULLY')` permet de vérifier si la vue est affichée pour un utilisateur authentifié par l'application. Si c'est le cas, il faudrait lui offrir la possibilité d'ajouter un commentaire. Ce sera l'objet d'une prochaine itération. Sinon, On précise au visiteur anonyme qu'il doit se connecter pour pouvoir commenter l'article.
+
+Enfin, on modifie la partie commune à toutes les vues (fichier `layout.html.twig`) afin d'ajouter à la barre de navigation un menu déroulant associé à l'éventuel utilisateur authentifié.
+
+    <!doctype html>
+    <html>
+    <head>
+        <!-- ...-->
+    </head>
+    <body>
+        <div class="container">
+            <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+                <div class="container">
+                    <div class="navbar-header">
+                        <!-- ... -->
+                    </div>
+                    <div class="collapse navbar-collapse" id="navbar-collapse-target">
+                        <ul class="nav navbar-nav navbar-right">
+                            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                                <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <span class="glyphicon glyphicon-user"></span> Welcome, {{ app.security.token.user.username }} <b class="caret"></b></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="{{ path('logout') }}">Log out</a></li>
+                                    </ul>
+                                </li>
+                            {% else %}
+                                <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <span class="glyphicon glyphicon-user"></span> Not connected <b class="caret"></b></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="{{ path('login') }}">Log in</a></li>
+                                    </ul>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div><!-- /.container -->
+            </nav>
+            <!-- ... -->
+        </div>
+    
+        <!-- jQuery -->
+        <script src="{{ app.request.basepath }}/lib/jquery/jquery-1.11.1.min.js"></script>
+        <!-- JavaScript Boostrap plugin -->
+        <script src="{{ app.request.basepath }}/lib/bootstrap/js/bootstrap.min.js"></script>
+    </body>
+    </html>
+
+Si l'utilisateur est authentifié, le menu affiche son nom (accessible via la variable Twig `app.security.token.user.username`) et lui permet de se déconnecter (lien vers `path('logout')`). Sinon, il affiche un message et un lien vers le formulaire d'authentification (lien vers `path('login')`). On ajoute également des liens vers jQuery et le plugin JavaScript de Bootstrap afin de faire fonctionner le menu déroulant.
+
+{{% tip %}}
+L'ajout des liens JavaScript en fin de fichier plutôt qu'au début est une bonne pratique qui permet d'optimiser le temps de chargement des pages.
+{{% /tip %}}
+
+### Résultat obtenu
+
+La sécurisation de notre application est terminée. Ouvrez l'URL http://microcms pour afficher la page d'accueil de l'application. Elle doit maintenant disposer d'un menu déroulant en haut à droite. Lorsqu'aucun utilisateur ne s'est authentifié, ce menu comporte une entrée invitant l'utilisateur à le faire.
+
+{{% image src="microcms_article_anonymous_user.png" class="centered" %}}
+
+Le formulaire d'authentification permet à l'utilisateur de saisir son nom et son mot de passe. Les éventuelles erreurs d'authentification sont affichées.
+
+{{% image src="microcms_login_form.png" class="centered" %}}
+
+Lorsque l'authentification réussit, le menu déroulant de la barre de navigation est mis à jour, ainsi que l'affichage d'un article.
+
+{{% image src="microms_article_authenticated_user.png" class="centered" %}}
+
+Le code source associé à cette itération est disponible sur une [branche du dépôt GitHub](https://github.com/bpesquet/MicroCMS/tree/iteration-08).
+
+## Conclusion
+
+Cette itération nous a permis de sécuriser notre application Web en exploitant les possibilités offertes par Symfony (et donc Silex). On constate combien l'intégration d'un framework, même si elle nécessite un travail initial d'adaptation, facilite l'ajout de fonctionnalités complexes à une application Web.
+
+La prochaine itération permettra aux utilisateurs authentifiés de gérer leurs informations personnelles.
