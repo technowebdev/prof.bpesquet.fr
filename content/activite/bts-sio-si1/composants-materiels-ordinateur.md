@@ -75,3 +75,23 @@ Votre cousin souhaite renouveler son ordinateur de bureau et se demande quel pro
 pour naviguer sur Internet, regarder des films et jouer à des jeux peu gourmands. Son budget est limité.
 
 Quel modèle de processeur lui conseillez-vous ? Justifier votre choix.
+
+# Question 9
+
+Réalisez un tableau dans lequel vous indiquerez les quantités minimales et recommandées de RAM pour les systèmes d'exploitation suivants : Windows 95, Windows 2000, Windows XP, Windows 7, Windows 8, Mac OS X 10.0 "Cheetah", Mac OS X 10.9 "Mavericks", Linux Ubuntu Desktop 14. Votre tableau aura la forme ci-dessous.
+
+Système d'exploitation | Année de sortie | RAM minimale | RAM recommandée
+-----------------------|-----------------|--------------|----------------
+Windows 95 | ... | ... | ...
+Windows 2000 | ... | ... | ...
+... | ... | ... | ...
+
+# Question 10
+
+{{% image src="memoire-ecc.png" class="centered" %}}
+
+# Question 11
+
+Un développeur Web auto-entrepeneur souhaite acheter son nouvel ordinateur de bureau. Sa machine doit être compacte et lui permettre d'exploiter au maximum ses logiciels de développement, gourmands en temps de calcul et en RAM. Son budget est de 1000 euros écran compris. Il souhaite faire monter son PC plutôt que d'acheter un modèle de marque.
+
+Etablissez la liste de tous les composants nécessaires au montage de son nouveau PC, en respectant son budhet et ses exigences. Vous justifierez le choix de chaque composant.

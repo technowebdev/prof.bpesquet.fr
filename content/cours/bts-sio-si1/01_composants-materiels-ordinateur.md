@@ -617,8 +617,6 @@ Estimez le débit des mémoires RAM actuelles.
 
 Les informations sont stockés dans les composants de mémoire vive, sous forme de charges électriques dans de minuscules condensateurs. Un condensateur chargé représente un 1 et un condensateur non chargé représente un 0. Les condensateurs se décharger naturellement, il faut entretenir la charge périodiquement. Ce processus est appelé **rafraîchissement de la mémoire**. La mémoire de ce type (nécessitant un rafraîchissement périodique) est appelée mémoire dynamique ou DRAM.
 
- : le débit de la mémoire vive actuelle est d'environ 15 Go/s.
-
 ### Echanges avec le processeur
 
 On peut envisager la mémoire vive comme un gigantesque ensemble de cases, que le processeur utilise pour stocker des informations. Les échanges entre RAM et processeur se font au travers de différents bus : commandes, adresses, données. 
@@ -662,7 +660,7 @@ Latence suivi du nombre de cycles d’horloge.
 
 {{% img memoire-latence.png %}}
 
-### Crrection d’erreurs
+### Correction d’erreurs
 
 Les mémoires standard, installées dans nos PC sont des mémoires non-ECC. Cette abréviation précise qu’elles ne contiennent aucun système de correction d’erreur. Il existe sur le marché des barrettes mémoires de type ECC (*Error-Correcting Code*) intégrant une technologie de correction d’erreur. Le mécanisme ECC détecte et corrige les erreurs ou les données corrompues. Ce type de mémoire est surtout utilisé pour les serveurs d’entreprise où la fiabilité et l’intégrité des données en mémoire vive sont très importantes.
 
@@ -760,9 +758,12 @@ Les SSD présentent de nombreux avantages par rapport à un disque dur tradition
 * Temps d’accès plus rapide.
 * Fonctionnement totalement silencieux.
 * Débits importants et stables.
-* probabilité de panne beaucoup plus faible, liée à l’absence de pièces mécaniques en mouvements.
+* Probabilité de panne beaucoup plus faible, liée à l’absence de pièces mécaniques en mouvements.
 
-Le principal inconvénient de ces disques est leur prix beaucoup plus élevé que celui d’un disque dur à capacité égale. Les capacités des SSD sont aussi inférieures aux disques durs avec une capacité maximale autour de 1 To.
+En contrepartie, la technologie SSD a certaines inconvénients : 
+
+* Prix beaucoup plus élevé que celui d’un disque dur à capacité égale. Les capacités des SSD sont aussi inférieures aux disques durs avec une capacité maximale autour de 1 To.
+* Durée de vie limitée : une puce de mémoire ne fonctionnera plus au-delà d'un (grand) nombre de lecture/écriture. En répartissant les opérations de lecture/écriture sur l'ensemble du disque, la technologie [TRIM](http://fr.wikipedia.org/wiki/TRIM) permet de prolonger la durée de vie d'un SSD.
 
 {{% question %}}
 Combien coûte un SSD de 500 Go ? Et un disque dur de même capacité ?

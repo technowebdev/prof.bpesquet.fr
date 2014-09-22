@@ -66,6 +66,7 @@ Sauf indication contraire, les travaux à réaliser doivent être terminés pour
 
 \
 
+* Réunion profs à 11h : TP de 2x1h30.
 * Tutoriel SDZ [Espaces de noms en PHP](http://fr.openclassrooms.com/informatique/cours/les-espaces-de-noms-en-php).
 * Tutoriel [Développement PHP moderne](/tutoriel/developpement-php-moderne/), itération 4.
 

@@ -51,3 +51,20 @@ Sauf indication contraire, les travaux à réaliser doivent être terminés pour
     * Etudier le cours [Composants matériels de l'ordinateur](/cours/composants-materiels-ordinateur) : la mémoire.
     * Répondre au questionnaire en ligne reçu par courriel.
     * Terminer l'activité [Composants matériels de l'ordinateur](/activite/composants-materiels-ordinateur), question 7.
+
+\
+
+* Cours [Composants matériels de l'ordinateur](/cours/composants-materiels-ordinateur) : la mémoire.
+* Correction du questionnaire en ligne.
+* Diaporama sur la virtualisation.
+* Activité [Composants matériels de l'ordinateur](/activite/composants-materiels-ordinateur), questions 8 à 11.
+
+**TP groupe A** : TP installation et paramétrage MV W7.
+
+**Cours mercredi** : TD sur le codage des images.
+
+## Semaine 5 : 29 septembre
+
+**Cours lundi**
+
+* Quizz sur le cours [Composants matériels de l'ordinateur](/cours/composants-materiels-ordinateur) et le TD sur l'information binaire.
