@@ -67,9 +67,11 @@ Sauf indication contraire, les travaux à réaliser doivent être terminés pour
 \
 
 * Réunion profs à 11h : TP de 2x1h30.
+* Correction de l'activité [Accès aux données avec PHP et Silex](/activite/acces-donnees-php-silex/) disponible sur [GitHub](https://github.com/lmdsio/MesNews-silex).
 * Tutoriel SDZ [Espaces de noms en PHP](http://fr.openclassrooms.com/informatique/cours/les-espaces-de-noms-en-php).
 * Tutoriel [Développement PHP moderne](/tutoriel/developpement-php-moderne/), itération 4.
 
 **Cours SLAM5**
 
-* Retour sur les espaces de noms en PHP.
+* Explications sur l'itération 4 du tutoriel [Développement PHP moderne](/tutoriel/developpement-php-moderne/).
+* Tutoriel [Développement PHP moderne](/tutoriel/developpement-php-moderne/), itérations 4 et 5.

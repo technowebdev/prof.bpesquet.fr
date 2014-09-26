@@ -431,7 +431,7 @@ Actuellement, la partie Modèle de notre application Web est écrite de manière
         return $articles;
     }
 
-L'ajout futur de nouveaux services similaires risque de rendre la partie Modèle difficile à utiliser. Nous allons restructurer cette partie en introduisant une modélisation orientée objet des données métier. Pour l'instant, nos seules données métier sont les articles, qui se caractérisent pas un identifiant, un titre et un contenu. Nous allons modéliser un article sous la forme d'une classe nommée `Article` dont voici le diagramme UML. 
+L'ajout futur de nouveaux services similaires risque de rendre la partie Modèle difficile à utiliser. Nous allons restructurer cette partie en introduisant une modélisation orientée objet des données métier. Pour l'instant, nos seules données métier sont les articles, qui se caractérisent par un identifiant, un titre et un contenu. Nous allons modéliser un article sous la forme d'une classe nommée `Article` dont voici le diagramme UML. 
 
 {{% image src="microcms_uml_article.jpeg" class="centered" %}}
 
