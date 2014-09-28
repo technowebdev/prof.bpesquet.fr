@@ -68,6 +68,8 @@ Sauf indication contraire, les travaux à réaliser doivent être terminés pour
 **Cours lundi**
 
 * TODO : terminer l'activité [Composants matériels de l'ordinateur](/activite/composants-materiels-ordinateur), questions 8 et 9.
+* Présentation de la plate-forme [CISCO Netacad](https://www.netacad.com).
 * Activité [Composants matériels de l'ordinateur](/activite/composants-materiels-ordinateur), questions 10 et 11.
+* Etude du cours CISCO ITE, [chapitre 1](https://1302441.netacad.com/courses/186375/modules/items/11234473) et [chapitre 3](https://1302441.netacad.com/courses/186375/modules/items/11234479).
 * Correction de l'activité [Composants matériels de l'ordinateur](/activite/composants-materiels-ordinateur).
 * Quizz sur le cours [Composants matériels de l'ordinateur](/cours/composants-materiels-ordinateur) et le TD sur l'information binaire.
