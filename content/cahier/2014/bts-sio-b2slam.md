@@ -76,7 +76,7 @@ Sauf indication contraire, les travaux à réaliser doivent être terminés pour
 * Explications sur l'itération 4 du tutoriel [Développement PHP moderne](/tutoriel/developpement-php-moderne/).
 * Tutoriel [Développement PHP moderne](/tutoriel/developpement-php-moderne/), itérations 4 et 5.
 
-# Semaine 5 : 29 septembre
+## Semaine 5 : 29 septembre
 
 **TP SLAM5**
 
