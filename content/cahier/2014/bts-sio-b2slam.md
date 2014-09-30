@@ -24,7 +24,7 @@ Sauf indication contraire, les travaux à réaliser doivent être terminés pour
 
 ## Semaine 2 : 8 septembre
 
-**TP SLAM5**
+**TP**
 
 * TODO
 
@@ -41,23 +41,23 @@ Sauf indication contraire, les travaux à réaliser doivent être terminés pour
 
 \
 
-**Cours SLAM5**
+**Cours**
 
 * Retour sur le [modèle MVC](/cours/modele-mvc) et sur le [framework Silex](/tutoriel/premiers-pas-framework-php-silex/).
 * Tutoriel [Développement PHP moderne](/tutoriel/developpement-php-moderne/), itération 3.
 
 ## Semaine 3 : 15 septembre
 
-**TP SLAM5** : tutoriel SDZ [POO en PHP](http://fr.openclassrooms.com/informatique/cours/programmez-en-oriente-objet-en-php), chapitres "Introduction à la POO" et "Utiliser la classe" uniquement.
+**TP** : tutoriel SDZ [POO en PHP](http://fr.openclassrooms.com/informatique/cours/programmez-en-oriente-objet-en-php), chapitres "Introduction à la POO" et "Utiliser la classe" uniquement.
 
-**Cours SLAM5** : 
+**Cours** : 
 
 * Retour sur la [POO avec PHP](/cours/poo-php-en-bref/).
 * Activité [Accès aux données avec PHP et Silex](/activite/acces-donnees-php-silex/).
 
 ## Semaine 4 : 22 septembre
 
-**TP SLAM5**
+**TP**
 
 * TODO
 
@@ -71,16 +71,25 @@ Sauf indication contraire, les travaux à réaliser doivent être terminés pour
 * Tutoriel SDZ [Espaces de noms en PHP](http://fr.openclassrooms.com/informatique/cours/les-espaces-de-noms-en-php).
 * Tutoriel [Développement PHP moderne](/tutoriel/developpement-php-moderne/), itération 4.
 
-**Cours SLAM5**
+**Cours**
 
 * Explications sur l'itération 4 du tutoriel [Développement PHP moderne](/tutoriel/developpement-php-moderne/).
 * Tutoriel [Développement PHP moderne](/tutoriel/developpement-php-moderne/), itérations 4 et 5.
 
 ## Semaine 5 : 29 septembre
 
-**TP SLAM5**
+**TP**
 
 * Tutoriel [Développement PHP moderne](/tutoriel/developpement-php-moderne/), itération 5.
 * Tutoriel [Premiers pas avec le framework Bootstrap](/tutoriel/premiers-pas-framework-bootstrap/).
 * Tutoriel [Développement PHP moderne](/tutoriel/developpement-php-moderne/), itération 6.
 
+**Cours**
+
+* Retour sur le framework [Bootstrap](http://getbootstrap.com).
+* Tutoriel [Développement PHP moderne](/tutoriel/developpement-php-moderne/), itération 7.
+
+**PPE**
+
+* Rappels sur les formulaires Web.
+* GSB-Report mission 1.
