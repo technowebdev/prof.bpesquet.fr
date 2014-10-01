@@ -86,10 +86,11 @@ Sauf indication contraire, les travaux à réaliser doivent être terminés pour
 
 **Cours**
 
-* Retour sur le framework [Bootstrap](http://getbootstrap.com).
+* Retour sur les itérations 5 et 6 et sur le framework [Bootstrap](http://getbootstrap.com).
 * Tutoriel [Développement PHP moderne](/tutoriel/developpement-php-moderne/), itération 7.
 
 **PPE**
 
+* TODO : terminer le tutoriel [Développement PHP moderne](/tutoriel/developpement-php-moderne/), itération 7.
 * Rappels sur les formulaires Web.
 * GSB-Report mission 1.

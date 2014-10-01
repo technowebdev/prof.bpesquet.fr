@@ -82,4 +82,22 @@ Sauf indication contraire, les travaux à réaliser doivent être terminés pour
 
 * TODO : terminer l'activité [Composants matériels de l'ordinateur](/activite/composants-materiels-ordinateur) et soumettre le travail associé sur le campus SIO.
 * Correction de l'activité [Composants matériels de l'ordinateur](/activite/composants-materiels-ordinateur).
-* Etude du cours CISCO ITE, [chapitre 1](https://1302441.netacad.com/courses/186375/modules/items/11234473) et [chapitre 3](https://1302441.netacad.com/courses/186375/modules/items/11234479).
+* Etude du cours [CISCO ITE chapitre 5](https://static-course-assets.s3.amazonaws.com/ITE50FR/module5/index.html#5.0.1.1), paragraphes 5.0 à 5.2 inclus. Pour les plus rapides : revoir les chapitres 1 et 3.
+* Mini-quizz sur le cours ITE 5.0 à 5.2.
+* Correction du quizz.
+
+**TP groupe A**
+
+* TP gestion des partitions sous W7 (ITE 5.2.4.3).
+
+    * Ajouter 1 Go au disque dur virtuel de la MV W7 ("Settings" -> "Hard disk" -> "Expand").
+
+\
+
+* TP gestion des processus sous W7 (ITE 5.3.1.5).
+
+    * Télécharger et installer [Mozilla Firefox]() sur la MV W7..
+
+\
+
+* CR à déposer en fin de TP.
