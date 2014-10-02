@@ -1789,26 +1789,6 @@ La première étape de notre travail dans cette partie est de modéliser un util
         public function eraseCredentials() {
             // Nothing to do here
         }
-    
-        /**
-         * @inheritDoc
-         */
-        public function equals(UserInterface $user) {
-            $class = get_class($this);
-            if (!$user instanceof $class) {
-                return false;
-            }
-            if ($this->password !== $user->getPassword()) {
-                return false;
-            }
-            if ($this->salt !== $user->getSalt()) {
-                return false;
-            }
-            if ($this->name !== $user->getUsername()) {
-                return false;
-            }
-            return true;
-        }
     }
 
 On constate une différence majeure avec les classes `Article` et `Comment` existantes : la classe `User` implémente l'interface Symfony [UserInterface](http://api.symfony.com/2.0/Symfony/Component/Security/Core/User/UserInterface.html) et définit les méthodes présentes dans cette interface. Ces méthodes sont indispensables pour que l'utilisateur puisse être authentifié et autorisé par Symfony.
