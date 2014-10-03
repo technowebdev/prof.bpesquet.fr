@@ -19,7 +19,7 @@ Ce tutoriel vise à présenter une manière de concevoir une application Web en 
 
 Nous allons mettre en oeuvre les principes présentés dans ce tutoriel en construisant un exemple simple : une application Web de type [CMS](http://fr.wikipedia.org/wiki/Syst%C3%A8me_de_gestion_de_contenu). Notre micro-CMS d'exemple sera basique : il permettra de gérer une liste d'articles ainsi que les commentaires associés.
 
-L'application Web finale obtenue en fin de tutoriel est [accessible en ligne](http://microcms.bpesquet.fr). Le code source associé est disponible via [GitHub](https://github.com/bpesquet/MicroCMS).
+L'application Web obtenue en fin de tutoriel est [accessible en ligne](http://microcms.bpesquet.fr). Le code source associé est disponible via [GitHub](https://github.com/bpesquet/MicroCMS).
 
 ## Méthodologie de réalisation
 
@@ -2406,7 +2406,7 @@ Pour plus de précisions, consultez la [documentation détaillée](http://symfon
 Les champs générés par un formulaire Symfony sont par défaut obligatoires (attribut HTML5 `required`), ce qui pourra déclencher une validation côté navigateur.
 {{% /remark %}}
 
-On associe à chaque champ généré des classes Bootstrap (`form-group` et `form-control) afin d'améliorer la présentation. Les éventuels messages de succès sont également affichés via Bootstrap.
+On associe à chaque champ généré des classes Bootstrap (`form-group` et `form-control`) afin d'améliorer la présentation. Les éventuels messages de succès sont également affichés via Bootstrap.
 
 ### Résultat obtenu
 
@@ -2436,6 +2436,6 @@ Notre application Web d'exemple était au départ une simple page écrite en PHP
 * présentation moderne et adaptée au terminal utilisé (*responsive design*) ;
 * gestion avancée de la sécurité et des formulaires.
 
-D'autres fonctionnalités comme la validation des formulaires, la journalisation, ou l'internationalisation pourraient être ajoutées en intégrant les composants Symfony/Silex correspondants. A vous de jouer !
+D'autres fonctionnalités comme la modélisation orientée objet des contrôleurs, la validation des formulaires, la journalisation ou encore l'internationalisation pourraient être ajoutées en exploitant les possibilités de Silex. A vous de jouer !
 
 Ainsi se termine ce tutoriel qui vous aura, je l'espère, aidé à progresser en PHP.
