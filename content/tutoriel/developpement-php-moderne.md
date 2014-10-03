@@ -5,10 +5,6 @@ date: 2014-07-22
 
 Découvrez comment bâtir une application Web fonctionnelle et sûre en tirant le meilleur du langage PHP.
 
-{{% warning %}}
-Ce tutoriel est en cours d'écriture.
-{{% /warning %}}
-
 # Introduction
 
 ## Pourquoi ce tutoriel
@@ -23,7 +19,7 @@ Ce tutoriel vise à présenter une manière de concevoir une application Web en 
 
 Nous allons mettre en oeuvre les principes présentés dans ce tutoriel en construisant un exemple simple : une application Web de type [CMS](http://fr.wikipedia.org/wiki/Syst%C3%A8me_de_gestion_de_contenu). Notre micro-CMS d'exemple sera basique : il permettra de gérer une liste d'articles ainsi que les commentaires associés.
 
-Le code source associé est disponible sous la forme d'un [dépôt GitHub](https://github.com/bpesquet/MicroCMS).
+L'application Web finale obtenue en fin de tutoriel est [accessible en ligne](http://microcms.bpesquet.fr). Le code source associé est disponible via [GitHub](https://github.com/bpesquet/MicroCMS).
 
 ## Méthodologie de réalisation
 
@@ -151,7 +147,7 @@ Après avoir vérifié que votre serveur Web est bien démarré, lancez votre na
 
 Le code source associé à cette itération est disponible sur une [branche du dépôt GitHub](https://github.com/bpesquet/MicroCMS/tree/iteration-01).
 
-## Conclusion
+## Bilan
 
 La toute première version (très simpliste) de notre application Web est maintenant opérationnelle. Elle nous a permis d'initialiser la structure de l'application. La prochaine itération va consister à améliorer son architecture.
 
@@ -279,7 +275,7 @@ Le code d'affichage (fichier `view.php`) ne change pas. Le lien entre accès aux
 
 Le résultat affiché reste bien entendu identique.
 
-### Conclusion
+## Bilan
 
 Outre la feuille de style `microcms.css`, notre application Web est maintenant constituée de trois fichiers :
 
@@ -409,7 +405,7 @@ Redémarrez le serveur Web Apache pour terminer la configuration de l'hôte virt
 
 Le code source associé à cette itération est disponible sur une [branche du dépôt GitHub](https://github.com/bpesquet/MicroCMS/tree/iteration-03).
 
-## Conclusion
+## Bilan
 
 Nous avons refactorisé notre application Web pour intégrer le framework Silex et posé les bases d'une architecture robuste. Cependant, notre application profite encore peu des services que Silex peut fournir. Les prochaines itérations y remédieront.
 
@@ -703,7 +699,7 @@ C'est le moment de tester notre refactorisation en accédant à l'URL http://mic
 
 Le code source associé à cette itération est disponible sur une [branche du dépôt GitHub](https://github.com/bpesquet/MicroCMS/tree/iteration-04).
 
-## Conclusion
+## Bilan
 
 Cette itération nous a permis d'introduire une modélisation orientée objet du domaine et de l'accès aux données. Au passage, nous avons découvert comment Silex facilite l'inclusion de nouveaux services dans une application Web. C'est l'un des avantages de l'utilisation d'un framework.
 
@@ -849,7 +845,7 @@ Il est temps de vérifier l'intégration de Twig en accédant à http://microcms
 
 Le code source associé à cette itération est disponible sur une [branche du dépôt GitHub](https://github.com/bpesquet/MicroCMS/tree/iteration-05).
 
-## Conclusion
+## Bilan
 
 la partie Présentation de notre application Web est maintenant gérée par le moteur de remplates Twig. Cependant, le rendu utilisateur n'a pas évolué depuis l'initialisation de l'application et il reste sommaire. La prochaine itération va améliorer cela.
 
@@ -953,7 +949,7 @@ Accédez à l'URL http://microcms depuis votre navigateur Web. Vous obtenez à p
 
 Le code source associé à cette itération est disponible sur une [branche du dépôt GitHub](https://github.com/bpesquet/MicroCMS/tree/iteration-06).
 
-## Conclusion
+## Bilan
 
 Grâce à l'intégration de Bootstrap, les vues gérant l'affichage de notre application ont un aspect plus actuel et peuvent être écrites de manière adaptative. Leur rendu sera optimal quel que soit le terminal client utilisé.
 
@@ -1536,7 +1532,7 @@ Si vous cliquez sur le titre d'un article sans aucun commentaire, vous obtenez u
 
 Le code source associé à cette itération est disponible sur une [branche du dépôt GitHub](https://github.com/bpesquet/MicroCMS/tree/iteration-07).
 
-## Conclusion
+## Bilan
 
 Au cours de cette itération, nous avons ajouté à l'application une fonctionnalité métier en nous appuyant sur les bases définies précédemment. Nous avons également saisi les occasions de refactoriser l'architecture afin qu'elle s'adapte aux nouveaux besoins.
 
@@ -1699,7 +1695,7 @@ La première étape de notre travail dans cette partie est de modéliser un util
          *
          * @var string
          */
-        private $name;
+        private $username;
     
         /**
          * User password.
@@ -1735,11 +1731,11 @@ La première étape de notre travail dans cette partie est de modéliser un util
          * @inheritDoc
          */
         public function getUsername() {
-            return $this->name;
+            return $this->username;
         }
     
-        public function setUsername($name) {
-            $this->name = $name;
+        public function setUsername($username) {
+            $this->username = $username;
         }
     
         /**
@@ -1791,7 +1787,7 @@ La première étape de notre travail dans cette partie est de modéliser un util
         }
     }
 
-On constate une différence majeure avec les classes `Article` et `Comment` existantes : la classe `User` implémente l'interface Symfony [UserInterface](http://api.symfony.com/2.0/Symfony/Component/Security/Core/User/UserInterface.html) et définit les méthodes présentes dans cette interface. Ces méthodes sont indispensables pour que l'utilisateur puisse être authentifié et autorisé par Symfony.
+On constate une différence majeure avec les classes métier `Article` et `Comment` : la classe `User` implémente l'interface Symfony [UserInterface](http://api.symfony.com/2.5/Symfony/Component/Security/Core/User/UserInterface.html) et définit les méthodes présentes dans cette interface. Ces méthodes sont indispensables pour que l'utilisateur puisse être authentifié et autorisé par Symfony.
 
 La classe `Comment` subit un changement (mineur du point de vue du code source) : sa propriété `author` n'est plus une chaîne de caractères, mais une instance de la classe `User`. On met à jour le commentaire pour refléter cette évolution.
 
@@ -1894,7 +1890,7 @@ Nous devons également créer la classe `UserDAO` qui gère l'accès aux utilisa
         }
     }
 
-Cette classe reprend la structure de nos classes DAO existantes et implémente l'interface Symfony [UserProviderInterface](http://api.symfony.com/2.0/Symfony/Component/Security/Core/User/UserProviderInterface.html). Cette interface contient les méthodes nécessaires pour qu'une classe puisse être utilisée comme *fournisseur de données utilisateur* par le composant de gestion de la sécurité de Symfony au cours du processus d'authentification.
+Cette classe reprend la structure de nos classes DAO existantes et implémente l'interface Symfony [UserProviderInterface](http://api.symfony.com/2.5/Symfony/Component/Security/Core/User/UserProviderInterface.html). Cette interface contient les méthodes nécessaires pour qu'une classe puisse être utilisée comme *fournisseur de données utilisateur* par le composant de gestion de la sécurité de Symfony au cours du processus d'authentification.
 
 La classe `CommentDAO` est mise à jour : elle dépend maintenant de la classe `UserDAO` pour construire un objet `Comment` complet à partir d'un résultat de requête SQL.
 
@@ -2162,8 +2158,284 @@ Lorsque l'authentification réussit, le menu déroulant de la barre de navigatio
 
 Le code source associé à cette itération est disponible sur une [branche du dépôt GitHub](https://github.com/bpesquet/MicroCMS/tree/iteration-08).
 
-## Conclusion
+## Bilan
 
 Cette itération nous a permis de sécuriser notre application Web en exploitant les possibilités offertes par Symfony (et donc Silex). On constate combien l'intégration d'un framework, même si elle nécessite un travail initial d'adaptation, facilite l'ajout de fonctionnalités complexes à une application Web.
 
-La prochaine itération permettra aux utilisateurs authentifiés de gérer leurs informations personnelles.
+La prochaine itération permettra aux utilisateurs authentifiés d'interagir avec l'application.
+
+# Itération 9 : ajout de commentaires à un article
+
+Le but de cette itération est de permettre aux utilisateurs authentifiés d'ajouter des commentaires à un article.
+
+## Symfony et les formulaires
+
+La saisie de commentaires par les utilisateurs de l'application implique l'ajout d'un formulaire dans la vue qui affiche les détails sur un article. Il serait possible de gérer manuellement la définition de ce formulaire et la récupération des données saisies. Nous allons plutôt en profiter pour découvrir une autre des fonctionnalités offertes par le framework Symfony : la gestion des formulaires.
+
+Grâce au composant [Form](http://symfony.com/doc/current/book/forms.html), Symfony permet de créer un formulaire Web à partir d'un objet. Les champs du formulaire sont associés aux propriétés de cet objet. Cette association est bidirectionnelle : le formulaire affiche les valeurs des propriétés de l'objet, et sa soumission (*submit*) met à jour les propriétés de l'objet. Le composant Form permet encore bien d'autres choses, comme nous allons le voir à présent.
+
+## Mise à jour de l'application
+
+### Composants Symfony
+
+Commençons par récupérer les composants Symfony nécessaires en les ajoutant dans le fichier de dépendances `composer.json`.
+
+    "require": {
+        ...
+        "symfony/form": "~2.4",
+        "symfony/translation": "~2.4"
+    }
+    ...
+
+Le composant `form` regroupe les services de gestion des formulaires. Le composant `translation` offre des services de traduction nécessaires pour utiliser le composant `form`.
+
+Une fois ce fichier modifié, on utilise Composer pour télécharger ces composants et leurs éventuelles dépendances.
+
+    $ composer update
+
+### Partie Modèle
+
+Le formulaire que nous devons créer permettra à un utilisateur connecté de saisir un nouveau commentaire. Il sera associé à un objet de la classe métier `Comment`. Voici pour rappel le diagramme de nos classes métier actuelles.
+
+{{% image src="microcms_uml_article_comment_author.jpeg" class="centered" %}}
+
+Le nouveau commentaire sera associé à un article et à un utilisateur existants. Son identifiant sera défini au moment de son insertion dans la base de données. Le seul champ que notre formulaire pemettra de saisir sera donc le contenu du commentaire.
+
+Symfony offre plusieurs manières de créer un formulaire. Nous allons employer la technique recommandée qui consiste à le définir dans sa propre classe, afin de le rendre réutilisable dans toute l'application. Dans le répertoire `src/MicroCMS/Form/Type` (à créer lui aussi), ajoutez un nouveau fichier source nommé 'CommentType.php`. Placez-y le code source suivant.
+
+    <?php
+    
+    namespace MicroCMS\Form\Type;
+    
+    use Symfony\Component\Form\AbstractType;
+    use Symfony\Component\Form\FormBuilderInterface;
+    
+    class CommentType extends AbstractType
+    {
+        public function buildForm(FormBuilderInterface $builder, array $options)
+        {
+            $builder
+                ->add('content', 'textarea', array(
+                    'attr' => array(
+                        'rows' => '4',
+                        'placeholder' => 'Enter your comment',
+                    )
+                ))
+                ->add('save', 'submit', array(
+                    'label' => 'Publish comment',
+                ));
+        }
+    
+        public function getName()
+        {
+            return 'comment';
+        }
+    }
+
+Notre classe hérite de la classe Symfony [AbstractType](http://api.symfony.com/2.5/Symfony/Component/Form/AbstractType.html) et redéfinit sa méthode `buildForm` qui, comme son nom l'indique, permet de construire un formulaire. Ici, le formulaire aura une zone de texte associée au contenu du commentaire (champ `content` de type `textarea`) et un bouton pour soumettre le formulaire (champ `save` de type `submit`). On définit également le nombre de lignes et le message d'aide à la saisie de la zone de texte, ainsi que le texte du bouton de soumission.
+
+{{% warning %}}
+Le nom de la zone de texte ("content") n'est pas choisi au hasard : il correspond exactement à la propriété `content` de la classe métier `Comment`. C'est indispensable pour que Symfony puisse associer notre formulaire à une instance de `Comment`.
+{{% /warning %}}
+
+Nous devons modifier la classe `CommentDAO` pour la rendre capable d'insérer des commentaires dans la base de données. Pour cela, une méthode `save` est ajoutée à cette classe.
+
+    <?php
+
+    namespace MicroCMS\DAO;
+
+    use MicroCMS\Domain\Comment;
+
+    class CommentDAO extends DAO 
+    {
+        // ...
+
+        /**
+         * Saves a comment into the database.
+         *
+         * @param \MicroCMS\Domain\Comment $comment The comment to save
+         */
+        public function save($comment) {
+            $commentData = array(
+                'art_id' => $comment->getArticle()->getId(),
+                'usr_id' => $comment->getAuthor()->getId(),
+                'com_content' => $comment->getContent()
+                );
+    
+            if ($comment->getId()) {
+                // The comment has already been saved : update it
+                $this->getDb()->update('t_comment', $commentData, array('com_id' => $comment->getId()));
+            } else {
+                // The comment has never been saved : insert it
+                $this->getDb()->insert('t_comment', $commentData);
+                // Get the id of the newly created comment and set it on the entity.
+                $id = $this->getDb()->lastInsertId();
+                $comment->setId($id);
+            }
+        }
+
+        // ...
+
+Cette méthode rassemble les valeurs BD dans le tableau `$commentData`, puis vérifie s'il faut insérer ou mettre à jour le commentaire en se basant sur l'existence d'une valeur pour l'identifiant du commentaire. Ensuite, elle utilise la méthode DBAL appropriée pour effectuer l'opération dans la table `t_comment`.
+
+### Partie Contrôleur
+
+Nous devons tout d'abord enregistrer les nouveaux fournisseurs de services utilisés dans la fichier `app.php`.
+
+    <?php
+
+    // ...
+
+    $app->register(new Silex\Provider\FormServiceProvider());
+    $app->register(new Silex\Provider\TranslationServiceProvider());
+
+    // ...
+
+Ensuite, il faut mettre à jour le fichier `routes.php` pour créer le formulaire d'ajout d'un commentaire avant de générer la vue qui affiche les détails sur un article. Voici le nouveau contenu de ce fichier.
+
+    <?php
+    
+    use Symfony\Component\HttpFoundation\Request;
+    use MicroCMS\Domain\Comment;
+    use MicroCMS\Domain\Article;
+    use MicroCMS\Domain\User;
+    use MicroCMS\Form\Type\CommentType;
+    
+    // Home page
+    $app->get('/', function () use ($app) {
+        $articles = $app['dao.article']->findAll();
+        return $app['twig']->render('index.html.twig', array('articles' => $articles));
+    });
+    
+    // Detailed info about an article
+    $app->match('/article/{id}', function ($id, Request $request) use ($app) {
+        $article = $app['dao.article']->find($id);
+        $user = $app['security']->getToken()->getUser();
+        $commentFormView = NULL;
+        if ($app['security']->isGranted('IS_AUTHENTICATED_FULLY')) {
+            // A user is fully authenticated : he can add comments
+            $comment = new Comment();
+            $comment->setArticle($article);
+            $comment->setAuthor($user);
+            $commentForm = $app['form.factory']->create(new CommentType(), $comment);
+            $commentForm->handleRequest($request);
+            if ($commentForm->isValid()) {
+                $app['dao.comment']->save($comment);
+                $app['session']->getFlashBag()->add('success', 'Your comment was succesfully added.');
+            }
+            $commentFormView = $commentForm->createView();
+        }
+        $comments = $app['dao.comment']->findAllByArticle($id);
+        return $app['twig']->render('article.html.twig', array(
+            'article' => $article, 
+            'comments' => $comments,
+            'commentForm' => $commentFormView));
+    });
+    
+    // Login form
+    $app->get('/login', function(Request $request) use ($app) {
+        return $app['twig']->render('login.html.twig', array(
+            'error'         => $app['security.last_error']($request),
+            'last_username' => $app['session']->get('_security.last_username'),
+            ));
+    })->bind('login');  // named route so that path('login') works in Twig templates
+
+Pour la route `/article/{id}`, nous avons remplacé `$app->get(...)` par `$app->match(...)` afin de gérer à la fois l'accès à cette route via les commandes HTTP GET et POST (`$app->get(...)` ne gère que la commande GET).
+
+A l'intérieur de cette route, on récupère l'article (via son identifiant passé dans l'URL) puis l'utilisateur connecté (en utilisant le service `security` de Symfony). S'il y a bien un utilisateur connecté, on crée un nouveau commentaire puis le formulaire associé à ce commentaire (appel à `$app['form.factory']->create(...)`). Ensuite, la méthode `handleRequest` gère la soumission du formulaire ([plus de détails](http://symfony.com/doc/current/book/forms.html#handling-form-submissions)). Si les données reçues sont valides, on fait appel au DAO pour sauvegarder le nouveau commentaire et on crée un message de succès.
+
+Dans tous les cas, on ajoute aux données dynamiques envoyées à la vue le formulaire d'ajout d'un commentaire (variable `$commentFormView`). Si aucun utilisateur n'est connecté, cette variable vaut `NULL`.
+
+### Partie Vue
+
+Il nous reste à afficher le formulaire créé dans la partie Contrôleur. Pour cela, on modifie le template `article.html.twig` de la manière suivante.
+
+    {% extends "layout.html.twig" %}
+    
+    {% block title %}{{ article.title }}{% endblock %}
+    
+    {% block content %}
+    <p>
+        <h2>{{ article.title }}</h2>
+        <p>{{ article.content }}</p>
+        
+        <h3>Comments</h3>
+        {% if comments %}
+            {% for comment in comments %}
+                <strong>{{ comment.author.username }}</strong> said : {{ comment.content }}<br>
+            {% endfor %}
+        {% else %}
+            No comments yet.
+        {% endif %}
+    
+        <h3>Add a comment</h3>
+        {% if commentForm %}
+            {{ form_start(commentForm) }}
+                <div class="form-group">
+                    {{ form_errors(commentForm.content) }}
+                    {{ form_widget(commentForm.content, { 'attr':  {
+                        'class': 'form-control'
+                    }}) }}
+                </div>
+                <div class="form-group">
+                    {{ form_row(commentForm.save, { 'attr':  {
+                        'class': 'btn btn-primary'
+                    }}) }}
+                </div>
+            {{ form_end(commentForm) }}
+            {% for flashMessage in app.session.flashbag.get('success') %}
+                <div class="alert alert-success">
+                    {{ flashMessage }}
+                </div>
+            {% endfor %}
+        {% else %}
+            <a href="{{ path('login') }} ">Log in</a> to add comments.
+        {% endif %}
+    </p>
+    {% endblock %}
+
+Dans ce template, on vérifie si le formulaire `commentForm` existe puis (si c'est le cas) on utilise des fonctions Twig pour générer le code HTML associé à chaque partie du formulaire.
+
+* `form_start` génère le début du formulaire (balise HTML `<form>`).
+* `form_widget` génère un champ de formulaire.
+* `form_row` génère également un champ de formulaire en y ajoutant son label et les éventuelles erreurs associées.
+
+Pour plus de précisions, consultez la [documentation détaillée](http://symfony.com/doc/current/reference/forms/twig_reference.html) de ces fonctions.
+
+{{% remark %}}
+Les champs générés par un formulaire Symfony sont par défaut obligatoires (attribut HTML5 `required`), ce qui pourra déclencher une validation côté navigateur.
+{{% /remark %}}
+
+On associe à chaque champ généré des classes Bootstrap (`form-group` et `form-control) afin d'améliorer la présentation. Les éventuels messages de succès sont également affichés via Bootstrap.
+
+### Résultat obtenu
+
+Lorsqu'un utilisateur connecté clique sur le titre d'un article, la vue qui affiche son détail lui permet à présent d'ajouter un commentaire.
+
+{{% image src="microcms_comment_form.png" class="centered" %}}
+
+Une fois le commentaire saisi et publié, l'affichage de l'article intègre le nouveau commentaire ainsi qu'un un message de succès.
+
+{{% image src="microcms_comment_publish.png" class="centered" %}}
+
+Le code source associé à cette itération est disponible sur une [branche du dépôt GitHub](https://github.com/bpesquet/MicroCMS/tree/iteration-09).
+
+## Bilan
+
+Cette itération a fourni l'occasion d'intégrer à notre application la gestion des formulaires. Le composant Symfony associé permet de simplifier grandement ce processus. Il est très puissant et dispose de nombreuses autres fonctionnalités que celles présentées ici.
+
+# Conclusion
+
+Notre application Web d'exemple était au départ une simple page écrite en PHP classique. A présent, elle dispose d'une architecture robuste dont on peut rappeler les principales caractéristiques :
+
+* séparation des responsabilités selon le principe Modèle-Vue-Contrôleur ;
+* intégration d'un micro-framework ;
+* modélisation objet du domaine et de l'accès aux données ;
+* utilisation des espaces de noms et chargement automatique des classes ;
+* intégration d'un moteur de templates pour faciliter l'écriture des vues ;
+* présentation moderne et adaptée au terminal utilisé (*responsive design*) ;
+* gestion avancée de la sécurité et des formulaires.
+
+D'autres fonctionnalités comme la validation des formulaires, la journalisation, ou l'internationalisation pourraient être ajoutées en intégrant les composants Symfony/Silex correspondants. A vous de jouer !
+
+Ainsi se termine ce tutoriel qui vous aura, je l'espère, aidé à progresser en PHP.

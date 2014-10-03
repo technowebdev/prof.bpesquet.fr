@@ -94,3 +94,32 @@ Sauf indication contraire, les travaux à réaliser doivent être terminés pour
 * TODO : terminer le tutoriel [Développement PHP moderne](/tutoriel/developpement-php-moderne/), itération 7.
 * Rappels sur les formulaires Web.
 * GSB-Report mission 1.
+
+## Semaine 6 : 6 octobre
+
+**TP** : tutoriel [Développement PHP moderne](/tutoriel/developpement-php-moderne/), itération 8.
+
+**Cours**
+
+* Retour sur l'itération 8.
+* Quizz sur l'ensemble des notions étudiées depuis le début de l'année.
+* Tutoriel [Développement PHP moderne](/tutoriel/developpement-php-moderne/), itération 9.
+
+**PPE**
+
+* TODO : terminer la mission 1 GSB-Report.
+* Correction de la mission 1.
+* GSB-Report mission 2.
+
+## Semaine 7 : 13 octobre
+
+**TP** : rattrapage des tutoriels, révisions ou appronfondissements ([idée 1](http://fr.openclassrooms.com/informatique/cours/prenez-en-main-bootstrap), [idée 2](http://fr.openclassrooms.com/informatique/cours/programmez-en-oriente-objet-en-php)).
+
+**Cours** : TPDS 1 (refactorisation d'un site Web pour introduire l'architecture étudiée en cours).
+
+**PPE**
+
+* TODO : terminer la mission 2 GSB-Report.
+* Intervention d'un professionnel sur la gestion de projet agile.
+* Correction de la mission 2.
+* GSB-Report mission 3.
