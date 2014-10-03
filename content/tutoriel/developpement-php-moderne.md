@@ -5,6 +5,8 @@ date: 2014-07-22
 
 Découvrez comment bâtir une application Web fonctionnelle et sûre en tirant le meilleur du langage PHP.
 
+{{% image src="PHP_moderne.png" class="centered" %}}
+
 # Introduction
 
 ## Pourquoi ce tutoriel
