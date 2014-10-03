@@ -281,9 +281,9 @@ Le résultat affiché reste bien entendu identique.
 
 Outre la feuille de style `microcms.css`, notre application Web est maintenant constituée de trois fichiers :
 
-* `model.php` (PHP uniquement) pour l'accès aux données ;
-* `view.php` (PHP et HTML) pour l'affichage des billets du blog ;
-* `index.php` (PHP uniquement) pour faire le lien entre les deux pages précédentes.
+* `model.php` (code PHP uniquement) pour l'accès aux données ;
+* `view.php` (code PHP et balises HTML) pour l'affichage des articles du CMS ;
+* `index.php` (code PHP uniquement) pour faire le lien entre les deux pages précédentes.
 
 Le code source associé à cette itération est disponible sur une [branche du dépôt GitHub](https://github.com/bpesquet/MicroCMS/tree/iteration-02).
 
