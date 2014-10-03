@@ -19,7 +19,7 @@ Ce tutoriel vise à présenter une manière de concevoir une application Web en 
 
 Nous allons mettre en oeuvre les principes présentés dans ce tutoriel en construisant un exemple simple : une application Web de type [CMS](http://fr.wikipedia.org/wiki/Syst%C3%A8me_de_gestion_de_contenu). Notre micro-CMS d'exemple sera basique : il permettra de gérer une liste d'articles ainsi que les commentaires associés.
 
-L'application Web obtenue en fin de tutoriel est [accessible en ligne](http://microcms.bpesquet.fr). Le code source associé est disponible via [GitHub](https://github.com/bpesquet/MicroCMS).
+L'application Web obtenue en fin de tutoriel est [accessible en ligne](http://microcms.bpesquet.fr). Le code source associé est disponible sur [GitHub](https://github.com/bpesquet/MicroCMS).
 
 ## Méthodologie de réalisation
 
@@ -2422,7 +2422,7 @@ Le code source associé à cette itération est disponible sur une [branche du d
 
 ## Bilan
 
-Cette itération a fourni l'occasion d'intégrer à notre application la gestion des formulaires. Le composant Symfony associé permet de simplifier grandement ce processus. Il est très puissant et dispose de nombreuses autres fonctionnalités que celles présentées ici.
+Cette itération a fourni l'occasion d'intégrer à notre application la gestion des formulaires. Le composant Symfony associé permet de simplifier grandement ce processus. Ce composant est très puissant et dispose de nombreuses autres fonctionnalités que celles présentées ici.
 
 # Conclusion
 
