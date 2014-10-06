@@ -433,7 +433,7 @@ L'ajout futur de nouveaux services similaires risque de rendre la partie Modèle
 
 {{% image src="microcms_uml_article.jpeg" class="centered" %}}
 
-la classe `Article` est ce qu'on appelle parfois (sans peur du ridicule) un POPO, ou *Plain Old PHP Objet* par analogie avec les [POJO](http://fr.wikipedia.org/wiki/Plain_Old_Java_Object) du monde Java. Autrement dit, cette classe ne contient rien de complexe : uniquement les propriétés et accesseurs nécessaires pour représenter un article.
+La classe `Article` est ce qu'on appelle parfois (sans peur du ridicule) un POPO, ou *Plain Old PHP Objet* par analogie avec les [POJO](http://fr.wikipedia.org/wiki/Plain_Old_Java_Object) du monde Java. Autrement dit, cette classe ne contient rien de complexe : uniquement les propriétés et accesseurs nécessaires pour représenter un article.
 
 Ecrivons maintenant cette classe en PHP. Si vous n'avez jamais utilisé PHP de manière orientée objet, je vous conseille les tutoriels des sites [OpenClassrooms](http://fr.openclassrooms.com/informatique/cours/programmez-en-oriente-objet-en-php) (chapitres 1 et 2) et [Codecamedy](http://www.codecademy.com/fr/tracks/php).
 
