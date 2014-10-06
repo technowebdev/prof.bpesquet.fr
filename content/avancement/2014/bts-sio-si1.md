@@ -1,5 +1,5 @@
 ---
-title: "Cahier de textes SI1 2014/2015"
+title: "Avancement SI1 2014/2015"
 ---
 
 Sauf indication contraire, les travaux à réaliser doivent être terminés pour la séance de la semaine suivante.
