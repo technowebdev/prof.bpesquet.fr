@@ -82,10 +82,7 @@ Sauf indication contraire, les travaux à réaliser doivent être terminés pour
 
 * TODO : terminer l'activité [Composants matériels de l'ordinateur](/activite/composants-materiels-ordinateur) et soumettre le travail associé sur le campus SIO.
 * Correction de l'activité [Composants matériels de l'ordinateur](/activite/composants-materiels-ordinateur).
-* Etude du cours [CISCO ITE chapitre 5](https://static-course-assets.s3.amazonaws.com/ITE50FR/module5/index.html#5.0.1.1), paragraphes 5.0 à 5.2 inclus. Pour les plus rapides : revoir les chapitres 1 et 3.
-* Mini-quizz sur le cours ITE 5.0 à 5.2.
-* Correction du quizz.
-
+* Etude du cours [CISCO ITE chapitre 5](https://static-course-assets.s3.amazonaws.com/ITE50FR/module5/index.html#5.0.1.1), paragraphes 5.0 à 5.2 inclus. 
 **TP groupe A**
 
 * TP gestion des partitions sous W7 (ITE 5.2.4.3).
@@ -96,8 +93,25 @@ Sauf indication contraire, les travaux à réaliser doivent être terminés pour
 
 * TP gestion des processus sous W7 (ITE 5.3.1.5).
 
-    * Télécharger et installer [Mozilla Firefox]() sur la MV W7..
+    * Bonus de fin de TP : installer [Mozilla Firefox](https://www.mozilla.org/fr/firefox/new/) sur la MV W7.
 
 \
 
-* CR à déposer en fin de TP.
+* CR du TP à déposer d'ici la fin de la semaine.
+
+**Cours mercredi**
+
+* Révisions sur l'information binaire et/ou
+* Etude du cours [CISCO ITE chapitre 5](https://static-course-assets.s3.amazonaws.com/ITE50FR/module5/index.html#5.0.1.1), parties 5.0 à 5.2 inclus. Pour les plus rapides : revoir les parties 1.x et 3.x.
+
+## Semaine 7 : 13 octobre
+
+**Cours lundi**
+
+* TODO : étudier le cours [CISCO ITE chapitre 5](https://static-course-assets.s3.amazonaws.com/ITE50FR/module5/index.html#5.0.1.1), parties 5.0 à 5.2 inclus.
+* Construction collaborative d'un mémento sur les systèmes d'exploitation.
+* Questionnaire (*space race* ?) sur le cours CISCO.
+
+**TP groupe B** : gestion des partitions et des processus sous W7.
+
+**Cours mercredi** : quizz récapitulatif sur l'ensemble des cours/TP/TD.

@@ -45,7 +45,7 @@
         <h1>Cahiers de textes</h1>
         <ul>
             {{ range .Data.Pages.ByTitle }}
-            {{ if eq .Type "cahier" }}
+            {{ if eq .Type "avancement" }}
                 <li><a href="{{ .Permalink }}">{{ .LinkTitle }}</a></li>
             {{ end }}    
             {{ end }}

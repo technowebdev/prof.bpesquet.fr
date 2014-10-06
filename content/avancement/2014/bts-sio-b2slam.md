@@ -1,5 +1,5 @@
 ---
-title: "Cahier de textes SLAM5/PPE 2014/2015"
+title: "Avancement SLAM5/PPE 2014/2015"
 ---
 
 Sauf indication contraire, les travaux à réaliser doivent être terminés pour la séance de la semaine suivante.
