@@ -82,7 +82,8 @@ Sauf indication contraire, les travaux à réaliser doivent être terminés pour
 
 * TODO : terminer l'activité [Composants matériels de l'ordinateur](/activite/composants-materiels-ordinateur) et soumettre le travail associé sur le campus SIO.
 * Correction de l'activité [Composants matériels de l'ordinateur](/activite/composants-materiels-ordinateur).
-* Etude du cours [CISCO ITE chapitre 5](https://static-course-assets.s3.amazonaws.com/ITE50FR/module5/index.html#5.0.1.1), paragraphes 5.0 à 5.2 inclus. 
+* Etude du cours [CISCO ITE chapitre 5](https://static-course-assets.s3.amazonaws.com/ITE50FR/module5/index.html#5.0.1.1), paragraphes 5.0 à 5.2 inclus.
+
 **TP groupe A**
 
 * TP gestion des partitions sous W7 (ITE 5.2.4.3).

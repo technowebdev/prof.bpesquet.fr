@@ -2058,7 +2058,7 @@ Dans la partie Vue, il faut tout d'abord créer la vue `login.html.twig` associ�
     </div>
     {% endblock %}
 
-Comme toutes nos vues, elle hérite de `layout.html.twig` afin d'intégrer les éléments d'interface communs (barre de navigation, pied de page, etc). Elle définit un formulaire (balise `<form>`) contenant les champs `_username` et '_password' pour saisir le login et le mot de passe de l'utilisateur. L'action associée à ce formulaire utilise la fonction `path` (fournie par le composant `twig-bridge`) pour récupérer le chemin d'authentification défini lors du paramétrage du pare-feu. Le nom de ce chemin provient de la valeur du paramètre `check_path` : les `/` sont remplacés par des `_` et le `/` initial est supprimé.
+Comme toutes nos vues, elle hérite de `layout.html.twig` afin d'intégrer les éléments d'interface communs (barre de navigation, pied de page, etc). Elle définit un formulaire (balise `<form>`) contenant les champs `_username` et `_password pour saisir le login et le mot de passe de l'utilisateur. L'action associée à ce formulaire utilise la fonction `path` (fournie par le composant `twig-bridge`) pour récupérer le chemin d'authentification défini lors du paramétrage du pare-feu. Le nom de ce chemin provient de la valeur du paramètre `check_path` : les `/` sont remplacés par des `_` et le `/` initial est supprimé.
 
 Ensuite, on modifie la vue `article.html.twig` pour obtenir un affichage adapté à la présence d'un utilisateur connecté.
 
