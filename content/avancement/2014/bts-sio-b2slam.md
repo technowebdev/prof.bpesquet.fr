@@ -93,7 +93,7 @@ Sauf indication contraire, les travaux à réaliser doivent être terminés pour
 
 * TODO : terminer le tutoriel [Développement PHP moderne](/tutoriel/developpement-php-moderne/), itération 7.
 * Rappels sur les formulaires Web.
-* GSB-Report mission 1.
+* GSB-Report : [mission 1](/activite/gsb-report-mission1).
 
 ## Semaine 6 : 6 octobre
 
@@ -108,12 +108,16 @@ Sauf indication contraire, les travaux à réaliser doivent être terminés pour
 **PPE**
 
 * TODO : terminer la mission 1 GSB-Report.
-* Correction de la mission 1.
-* GSB-Report mission 2.
+* Correction de la mission 1 ([Résultat à obtenir](http://gsb-report-1.bpesquet.fr)).
+* GSB-Report : [mission 2](/activite/gsb-report-mission2) ([Résultat à obtenir](http://gsb-report-2.bpesquet.fr)).
 
 ## Semaine 7 : 13 octobre
 
-**TP** : rattrapage des tutoriels, révisions ou appronfondissements ([idée 1](http://fr.openclassrooms.com/informatique/cours/prenez-en-main-bootstrap), [idée 2](http://fr.openclassrooms.com/informatique/cours/programmez-en-oriente-objet-en-php)).
+**TP**
+
+* TODO : venir avec un support de stockage amovible (clé USB, disque dur externe).
+* Installation de XAMPP sur le support amovible puis déplacement de tous les projets SLAM5/PPE sur ce support.
+* Rattrapage des tutoriels, révisions ou appronfondissements ([idée 1](http://fr.openclassrooms.com/informatique/cours/prenez-en-main-bootstrap), [idée 2](http://fr.openclassrooms.com/informatique/cours/programmez-en-oriente-objet-en-php)).
 
 **Cours** : TPDS 1 (refactorisation d'un site Web pour introduire l'architecture étudiée en cours).
 
@@ -122,4 +126,4 @@ Sauf indication contraire, les travaux à réaliser doivent être terminés pour
 * TODO : terminer la mission 2 GSB-Report.
 * Intervention d'un professionnel sur la gestion de projet agile.
 * Correction de la mission 2.
-* GSB-Report mission 3.
+* GSB-Report : [mission 3](/activite/gsb-report-mission3) ([Résultat à obtenir](http://gsb-report-3.bpesquet.fr)).
