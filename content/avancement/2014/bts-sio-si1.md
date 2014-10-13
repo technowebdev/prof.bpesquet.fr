@@ -110,8 +110,8 @@ Sauf indication contraire, les travaux à réaliser doivent être terminés pour
 **Cours lundi**
 
 * TODO : étudier le cours [CISCO ITE chapitre 5](https://static-course-assets.s3.amazonaws.com/ITE50FR/module5/index.html#5.0.1.1), parties 5.0 à 5.2 inclus.
-* Construction collaborative d'un mémento sur les systèmes d'exploitation.
-* Questionnaire (*space race* ?) sur le cours CISCO.
+* Construction collaborative du [cours sur les systèmes d'exploitation](/cours/systemes-exploitation).
+* Questionnaire (*space race*) sur le cours CISCO ITE.
 
 **TP groupe B** : gestion des partitions et des processus sous W7.
 

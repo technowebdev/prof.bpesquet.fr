@@ -17,7 +17,28 @@ La barre de navigation de l'application affiche (en haut à droite) un menu dér
 * S'il n'est pas connecté, le menu affiche "Non connecté" et comporte un lien "Se connnecter" renvoyant vers le formulaire de connexion.
 * S'il l'est, le menu déroulant affiche un message de bienvenue accompagné de son nom d'utilisateur. Le menu comporte un lien "Se déconnecter" permettant la déconnexion.
 
+{{% important %}}
 La version de l'application produite à la fin de cette mission doit donner l'impression d'avoir été réalisée par les mêmes développeurs que la version initiale, tant au niveau du code source que du résultat affiché à l'écran.
+{{% /important %}}
+
+Voici l'extrait de code qui permet de configurer le pare-feu Silex.
+
+    $app->register(new Silex\Provider\SecurityServiceProvider(), array(
+        'security.firewalls' => array(
+            'login' => array(
+                'pattern' => '^/login$',
+                'anonymous' => true
+            ),
+            'secured' => array(
+                'pattern' => '^.*$',
+                'logout' => true,
+                'form' => array('login_path' => '/login', 'check_path' => '/login_check'),
+                'users' => $app->share(function () use ($app) {
+                    return new GSB\DAO\VisitorDAO($app['db']);
+                }),
+            ),
+        ),
+    ));
 
 # Besoins optionnels (bonus)
 La barre de navigation comporte un lien "Profil" qui permet au visiteur connecté de visualiser et de modifier ses informations personnelles. Les données à afficher sont : nom, prénom, adresse, code postal, ville, date d'embauche, nom d'utilisateur, mot de passe. Un message de confirmation s'affiche lorsque les modifications sont enregistrées.
