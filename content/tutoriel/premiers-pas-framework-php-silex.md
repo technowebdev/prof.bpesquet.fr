@@ -19,7 +19,7 @@ Apprenez à utiliser le framework PHP [Silex](http://silex.sensiolabs.org/) par 
 
 Contrairement à Symfony qui fournit (et impose) une architecture complète (dite *full stack*), Silex est un framework minimaliste qui laisse beaucoup de liberté au développeur. C'est pourquoi on peut le qualifier de **micro-framework**. Il fournit un ensemble réduit de services au-dessus desquels on peut développer une application Web. 
 
-Silex dispose d'une [documentation en ligne](http://silex.sensiolabs.org/documentation) assez complète. Dans ce turoriel, nous allons nous contenter d'utiliser Silex pour afficher le classique message "Hello world" à l'utilisateur.
+Silex dispose d'une [documentation en ligne](http://silex.sensiolabs.org/documentation) assez complète. Dans ce tutoriel, nous allons nous contenter d'utiliser Silex pour afficher le classique message "Hello world" à l'utilisateur.
 
 
 # Installation de Silex
