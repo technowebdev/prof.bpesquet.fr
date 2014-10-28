@@ -121,5 +121,5 @@ Sauf indication contraire, les travaux à réaliser doivent être terminés pour
 
 * TODO : terminer la mission 2 GSB-Report.
 * Intervention d'un professionnel sur la gestion de projet agile.
-* Correction de la mission 2.
+* Correction de la mission 2 ([Code source](https://github.com/lmdsio/GSB-Report-correction)).
 * [GSB-Report : mission 3](/activite/gsb-report-mission3) ([Résultat à obtenir](http://gsb-report-3.bpesquet.fr)).
