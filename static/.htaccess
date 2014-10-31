@@ -1,0 +1,3 @@
+<IfModule mod_alias.c>
+    Redirect permanent /tutoriel/premiers-pas-framework-php-silex/ http://openclassrooms.com/courses/premiers-pas-avec-le-framework-php-silex
+</IfModule>

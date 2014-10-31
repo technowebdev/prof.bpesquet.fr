@@ -1,6 +1,7 @@
 ---
 title: "Premiers pas avec le framework PHP Silex"
 date: 2014-06-20
+draft: true
 ---
 
 Apprenez à utiliser le framework PHP [Silex](http://silex.sensiolabs.org/) par la pratique.
