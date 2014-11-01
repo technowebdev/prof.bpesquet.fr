@@ -1,9 +1,8 @@
 <ul>
-    <li><a href="http://bpesquet.developpez.com/tutoriels/php/evoluer-architecture-mvc/"> Evoluer vers une architecture MVC en PHP </a> (developpez.com)</li>
-    {{ range .Data.Pages.ByDate }}
-        {{ if eq .Type "tutoriel" }}
-            <li><a href="{{ .Permalink }}">{{ .LinkTitle }}</a></li>
-        {{ end }}   
+    <li><a href="http://bpesquet.developpez.com/tutoriels/php/evoluer-architecture-mvc/"> Evoluer vers une architecture MVC en PHP</a> (developpez.com)</li>
+    <li><a href="http://openclassrooms.com/courses/premiers-pas-avec-le-framework-php-silex"> Premiers pas avec le framework PHP Silex</a> (OpenClassrooms)</li>
+    {{ range (where .Data.Pages "Section" "tutoriel").ByDate }}
+        <li><a href="{{ .Permalink }}">{{ .LinkTitle }}</a></li>
     {{ end }}
 </ul>
 
