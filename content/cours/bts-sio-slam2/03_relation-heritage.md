@@ -1,6 +1,7 @@
 ---
 title: "La relation d'héritage"
 url: /cours/relation-heritage
+draft: true
 ---
 
 L'objectif de ce chapitre est d'enrichir notre compréhension de l'héritage et de ses possibilités.

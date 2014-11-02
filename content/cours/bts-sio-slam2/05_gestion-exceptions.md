@@ -1,6 +1,7 @@
 ---
 title: "Gestion des exceptions"
 url: /cours/gestion-exceptions
+draft: true
 ---
 
 L'objectif de ce chapitre est de se familiariser avec le mécanisme de gestion des exceptions.

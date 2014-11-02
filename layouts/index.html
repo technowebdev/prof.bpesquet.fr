@@ -6,12 +6,16 @@
 
 <div class="row">
     <div class="col-md-6">
+        <h1>Livres</h1>
+        {{ template "partials/livres.html" . }}
+
         <h1>Supports de cours</h1>
         <ul>
             {{ range (where .Data.Pages "Section" "cours").ByTitle }}
                 <li><a href="{{ .Permalink }}">{{ .LinkTitle }}</a></li>
             {{ end }}
         </ul>
+
     </div>
 
     <div class="col-md-6">

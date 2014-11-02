@@ -1,6 +1,7 @@
 ---
 title: "Gestion des objets en mémoire"
 url: /cours/gestion-objets-memoire
+draft: true
 ---
 
 L’objectif de ce chapitre est de découvrir les spécificités des variables de type objet, ainsi que la notion de référence.

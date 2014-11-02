@@ -1,6 +1,7 @@
 ---
 title: "La relation d'association"
 url: /cours/relation-association
+draft: true
 ---
 
 L'objectif de ce chapitre est de pourquoi et comment mettre des objets en relation les uns avec les autres.

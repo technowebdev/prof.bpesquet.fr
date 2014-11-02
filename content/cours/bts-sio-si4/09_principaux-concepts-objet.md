@@ -1,6 +1,7 @@
 ---
 title: "Principaux concepts objet"
 url: /cours/principaux-concepts-objet
+draft: true
 ---
 
 L'objectif de ce chapitre est de présenter les concepts essentiels de la

@@ -1,6 +1,7 @@
 ---
 title: "Compléments sur l'écriture de classes"
 url: /cours/complements-ecriture-classes
+draft: true
 ---
 
 L'objectif de ce chapitre est de découvrir comment enrichir la définition de nos classes en utilisant certaines possibilités des langages à objets.

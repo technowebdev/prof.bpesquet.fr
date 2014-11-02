@@ -1,3 +1,10 @@
 <IfModule mod_alias.c>
     Redirect permanent /tutoriel/premiers-pas-framework-php-silex/ http://openclassrooms.com/courses/premiers-pas-avec-le-framework-php-silex
+    Redirect permanent /cours/initiation-poo/ http://bpesquet.gitbooks.io/programmation-orientee-objet-csharp/content/chapters/01-initiation-poo.html
+    Redirect permanent /cours/principaux-concepts-objet/ http://bpesquet.gitbooks.io/programmation-orientee-objet-csharp/content/chapters/02-principaux-concepts-objet.html
+    Redirect permanent /cours/gestion-objets-memoire/ http://bpesquet.gitbooks.io/programmation-orientee-objet-csharp/content/chapters/03-gestion-objets-memoire.html
+    Redirect permanent /cours/relation-association/ http://bpesquet.gitbooks.io/programmation-orientee-objet-csharp/content/chapters/04-relation-association.html
+    Redirect permanent /cours/relation-heritage/ http://bpesquet.gitbooks.io/programmation-orientee-objet-csharp/content/chapters/05-relation-heritage.html
+    Redirect permanent /cours/complements-ecriture-classes/ http://bpesquet.gitbooks.io/programmation-orientee-objet-csharp/content/chapters/06-complements-classes.html
+    Redirect permanent /cours/gestion-exceptions/ http://bpesquet.gitbooks.io/programmation-orientee-objet-csharp/content/chapters/07-gestion-exceptions.html
 </IfModule>
