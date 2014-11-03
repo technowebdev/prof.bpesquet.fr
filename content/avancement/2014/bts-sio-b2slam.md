@@ -123,3 +123,25 @@ Sauf indication contraire, les travaux à réaliser doivent être terminés pour
 * Intervention d'un professionnel sur la gestion de projet agile.
 * Correction de la mission 2 ([Code source](https://github.com/lmdsio/GSB-Report-correction)).
 * [GSB-Report : mission 3](/activite/gsb-report-mission3) ([Résultat à obtenir](http://gsb-report-3.bpesquet.fr)).
+
+# Toussaint - Noël
+
+## Semaine 8 : 3 novembre
+
+**TP** : initialisation du projet agile e-commerce
+
+* Constitution des équipes (deux personnes.
+* Choix du thème et du nom des projets.
+* Présentation de l'organisation, du backlog et des paramètres.
+* Inscription sur [Trello](http://trello.com) (utiliser son compte GitHub), création des planches  et attribution des droits pour chaque projet.
+* Création des dépôts GitHub et attribution des droits pour chaque projet.
+* Début du sprint 1
+
+    * Choix des stories du sprint.
+    * Création des tâches et des tests pour chaque story du sprint.
+    * Début du développement.
+
+**Cours**
+
+* Correction du TPDS 1.
+* Projet agile : sprint 1.

@@ -1,6 +1,5 @@
 ---
 title: "Fichier vide"
-draft: true
 ---
 
-Hi there !
+Hi mom !

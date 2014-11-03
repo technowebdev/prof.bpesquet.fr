@@ -14,7 +14,7 @@ Sauf indication contraire, les travaux à réaliser doivent être terminés pour
 
 **Cours lundi**
 
-* Présentation du module SI1.
+* Présentation du module SI1 et de la [progression prévue sur le semestre](https://docs.google.com/spreadsheet/ccc?key=0Ai28xIJg0K-zdE4talZQc1hrSFZUaEZDSDcyamdRLVE&usp=sharing).
 * Cours [Composants matériels de l'ordinateur](/cours/composants-materiels-ordinateur) étudié jusqu'à la carte mère.
 * Début de l'activité [Composants matériels de l'ordinateur](/activite/composants-materiels-ordinateur).
 
@@ -103,16 +103,44 @@ Sauf indication contraire, les travaux à réaliser doivent être terminés pour
 **Cours mercredi**
 
 * Révisions sur l'information binaire et/ou
-* Etude du cours [CISCO ITE chapitre 5](https://static-course-assets.s3.amazonaws.com/ITE50FR/module5/index.html#5.0.1.1), parties 5.0 à 5.2 inclus. Pour les plus rapides : revoir les parties 1.x et 3.x.
+* Etude du cours [CISCO ITE chapitre 5](https://static-course-assets.s3.amazonaws.com/ITE50FR/module5/index.html#5.0.1.1), parties 5.0 à 5.2. Pour les plus rapides : revoir les parties 1.x et 3.x.
 
 ## Semaine 7 : 13 octobre
 
 **Cours lundi**
 
-* TODO : étudier le cours [CISCO ITE chapitre 5](https://static-course-assets.s3.amazonaws.com/ITE50FR/module5/index.html#5.0.1.1), parties 5.0 à 5.2 inclus.
+* TODO : étudier le cours [CISCO ITE chapitre 5](https://static-course-assets.s3.amazonaws.com/ITE50FR/module5/index.html#5.0.1.1), parties 5.0 à 5.2.
 * Construction collaborative du [cours sur les systèmes d'exploitation](/cours/systemes-exploitation).
 * Questionnaire (*space race*) sur le cours CISCO ITE.
 
 **TP groupe B** : gestion des partitions et des processus sous W7.
 
 **Cours mercredi** : quizz récapitulatif sur l'ensemble des cours/TP/TD.
+
+# Toussaint - Noël
+
+## Semaine 8 : 3 novembre
+
+**Cours lundi**
+
+* Activité [Conférence de Richard Stallman](/activite/conference-stallman-logiciel-libre).
+* Etude du cours [CISCO ITE chapitre 5](https://static-course-assets.s3.amazonaws.com/ITE50FR/module5/index.html#5.0.1.1), parties 5.3 à 5.7.
+
+**TP groupe A** : TP W7 
+
+* Installation d'un logiciel (ITE 5.3.1.11).
+* Création d'utilisateurs (ITE 5.3.2.3).
+* Maintenance du disque dur (ITE 5.3.4.2).
+
+**Cours mercredi** : suite de la construction collaborative du [cours sur les systèmes d'exploitation](/cours/systemes-exploitation).
+
+## Semaine 8 : 10 novembre
+
+**Cours lundi**
+
+* Installation MV Linux Ubuntu.
+* Découverte de Linux Ubuntu (partie 1).
+* Construction individuelle d'un mémento sur les commandes Linux.
+* Debriefing du support et des QCM en fin de séance.
+
+**TP groupe B** : cf semaine précédente.
