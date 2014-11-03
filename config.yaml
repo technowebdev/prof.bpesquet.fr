@@ -3,7 +3,7 @@ contentdir: "content"
 layoutdir: "layouts"
 publishdir: "public"
 builddrafts: false
-baseurl: http://bpesquet.fr
+baseurl: http://prof.bpesquet.fr
 canonifyurls: true
 disqusShortname: "bpesquet"
 ---
