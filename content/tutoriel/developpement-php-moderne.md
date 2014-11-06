@@ -2426,6 +2426,32 @@ Le code source associé à cette itération est disponible sur une [branche du d
 
 Cette itération a fourni l'occasion d'intégrer à notre application la gestion des formulaires. Le composant Symfony associé permet de simplifier grandement ce processus. Ce composant est très puissant et dispose de nombreuses autres fonctionnalités que celles présentées ici.
 
+# Itération 10 : préparation pour la production
+
+Le but de cette itération est d'intégrer à l'application plusieurs améliorations dans l'objectif d'une future mise en production.
+
+{{% warning %}}
+Cette itération est en cours d'écriture.
+{{% /warning %}}
+
+## Ajout de tests fonctionnels
+
+### Pourquoi tester ?
+
+La problématique des tests est souvent considérée comme secondaire et négligée par les développeurs débutants. C'est une erreur : lorsqu'on livre une application et qu'elle est placée en *production* (offerte à ses utilisateurs), il est essentiel d'avoir un maximum de garanties sur son bon fonctionnement afin d'éviter au maximum les mauvaises surprises.
+
+Le test d'une application peut être manuel. Dans ce cas, une personne effectue sur l'application une suite d'opérations prévue à l'avance (navigation, connexion, envoi d'informations...) pour vérifier qu'elle possède bien le comportement attendu. C'est un processus coûteux en temps et sujets aux erreurs (oublis, négligences, etc).
+
+En complément de ces tests manuels, on a tout intérêt à intégrer à un projet logiciel des tests automatisés qui pourront être lancés aussi souvent que nécessaire. Ceci est d'autant plus vrai pour les méthodologies agiles basées sur un développement itératif et des livraisons fréquentes, ou bien lorsque l'on met en place une [intégration continue](http://fr.wikipedia.org/wiki/Int%C3%A9gration_continue).
+
+### Comment tester ?
+
+
+
+## Journalisation
+
+## Réécriture orientée objet des contrôleurs
+
 # Conclusion
 
 Notre application Web d'exemple était au départ une simple page écrite en PHP classique. A présent, elle dispose d'une architecture robuste dont on peut rappeler les principales caractéristiques :

@@ -130,15 +130,15 @@ Sauf indication contraire, les travaux à réaliser doivent être terminés pour
 
 **TP** : initialisation du projet agile e-commerce
 
-* Constitution des équipes (deux personnes.
-* Choix du thème et du nom des projets.
+* Constitution des équipes (deux personnes).
+* Choix du thème et du nom des projets (remplir [cette feuille](https://docs.google.com/spreadsheets/d/1sy6pItWwDct-MpJ9yaKjm9T4VAcN363ybROOIIaxN0U/edit?usp=sharing))
 * Présentation de l'organisation, du backlog et des paramètres.
-* Inscription sur [Trello](http://trello.com) (utiliser son compte GitHub), création des planches  et attribution des droits pour chaque projet.
+* Inscription sur [Trello](http://trello.com), création des planches et attribution des droits pour chaque projet.
 * Création des dépôts GitHub et attribution des droits pour chaque projet.
 * Début du sprint 1
 
     * Choix des stories du sprint.
-    * Création des tâches et des tests pour chaque story du sprint.
+    * Création des listes de tâches et de tests pour chaque story du sprint.
     * Début du développement.
 
 **Cours**
