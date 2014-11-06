@@ -2446,11 +2446,7 @@ En complément de ces tests manuels, on a tout intérêt à intégrer à un proj
 
 ### Comment tester ?
 
-
-
-## Journalisation
-
-## Réécriture orientée objet des contrôleurs
+## Débogage et journalisation
 
 # Conclusion
 

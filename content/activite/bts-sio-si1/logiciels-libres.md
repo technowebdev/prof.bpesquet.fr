@@ -3,7 +3,7 @@ title: "Les logiciels libres"
 url: /activite/logiciels-libres
 ---
 
-# Conférence de Richard Stallman
+# Partie 1 : conférence de Richard Stallman
 
 Regardez [cette vidéo](http://webtv.ac-versailles.fr/spip.php?article871) aux intervalles de temps ci-dessous.
 
@@ -23,7 +23,7 @@ Répondez ensuite aux questions ci-dessous :
 * Quelle est la licence de Linux ?
 * Comment devrait-on appeler Linux ?
 
-# Article de l'APRIL
+# Partie 2 : article de l'APRIL
 
 Lisez l'article de l'APRIL, puis répondez aux questions ci-dessous :
 

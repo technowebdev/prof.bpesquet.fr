@@ -123,7 +123,7 @@ Sauf indication contraire, les travaux à réaliser doivent être terminés pour
 
 **Cours lundi**
 
-* Activité [Conférence de Richard Stallman](/activite/conference-stallman-logiciel-libre).
+* Activité [Logiciels libres](/activite/logiciels-libres), partie 1
 * Etude du cours [CISCO ITE chapitre 5](https://static-course-assets.s3.amazonaws.com/ITE50FR/module5/index.html#5.0.1.1), parties 5.3 à 5.7.
 
 **TP groupe A** : TP W7 
@@ -132,7 +132,10 @@ Sauf indication contraire, les travaux à réaliser doivent être terminés pour
 * Création d'utilisateurs (ITE 5.3.2.3).
 * Maintenance du disque dur (ITE 5.3.4.2).
 
-**Cours mercredi** : suite de la construction collaborative du [cours sur les systèmes d'exploitation](/cours/systemes-exploitation).
+**Cours mercredi**
+
+* Fin de la construction collaborative du [cours sur les systèmes d'exploitation](/cours/systemes-exploitation).
+* Activité [Logiciels libres](/activite/logiciels-libres), partie 2.
 
 ## Semaine 8 : 10 novembre
 
