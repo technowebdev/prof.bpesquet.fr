@@ -131,19 +131,20 @@ Sauf indication contraire, les travaux à réaliser doivent être terminés pour
 * Installation d'un logiciel (ITE 5.3.1.11).
 * Création d'utilisateurs (ITE 5.3.2.3).
 * Maintenance du disque dur (ITE 5.3.4.2).
+* CR à déposer en fin de TP.
 
 **Cours mercredi**
 
 * Fin de la construction collaborative du [cours sur les systèmes d'exploitation](/cours/systemes-exploitation).
 * Activité [Logiciels libres](/activite/logiciels-libres), partie 2.
 
-## Semaine 8 : 10 novembre
+## Semaine 9 : 10 novembre
 
 **Cours lundi**
 
 * Installation MV Linux Ubuntu.
 * Découverte de Linux Ubuntu (partie 1).
 * Construction individuelle d'un mémento sur les commandes Linux.
-* Debriefing du support et des QCM en fin de séance.
+* Debriefing du support en fin de séance.
 
 **TP groupe B** : cf semaine précédente.
