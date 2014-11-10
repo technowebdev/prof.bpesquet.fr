@@ -246,7 +246,7 @@ Le fichier `index.php` devient alors :
     // Data display
     require 'view.php';
 
-La fonction PHP [require](http://php.net//manual/fr/function.require.php) fonctionne de manière similaire à [include](http://php.net/manual/fr/function.include.php) : elle inclut et exécute le fichier spécifié. En cas d'échec, `include` ne produit qu'un avertissement alors que `require stoppe l'exécution du fichier source.
+La fonction PHP [require](http://php.net//manual/fr/function.require.php) fonctionne de manière similaire à [include](http://php.net/manual/fr/function.include.php) : elle inclut et exécute le fichier spécifié. En cas d'échec, `include` ne produit qu'un avertissement alors que `require` stoppe l'exécution du fichier source.
 
 {{% remark %}}
 La balise de fin de code PHP `?>` est volontairement omise à la fin du fichier `index.php`. C'est une [bonne pratique](http://php.net/manual/fr/language.basic-syntax.phptags.php) pour les fichiers qui ne contiennent que du PHP. Elle permet d'éviter des problèmes lors d'inclusions de fichiers.
@@ -265,7 +265,7 @@ Nous avons amélioré l'architecture de notre application, mais nous pourrions g
         return $articles;
     }
 
-Dans ce fichier, nous avons déplacé la récupération des articles du CMS à l'intérieur d'une fonction nommée `getArticles.
+Dans ce fichier, nous avons déplacé la récupération des articles du CMS à l'intérieur d'une fonction nommée `getArticles`.
 
 Le code d'affichage (fichier `view.php`) ne change pas. Le lien entre accès aux données et présentation est effectué par le fichier `index.php`. Ce fichier est maintenant très simple.
 
@@ -353,7 +353,7 @@ Déplacez le fichier `view.php` dans le sous-répertoire `views`, puis déplacez
     
     $app->run();
 
-Ce fichier constitue le **contrôleur frontal** de notre application Web. Il centralise la gestion des requêtes HTTP entrantes. Dans ce fichier, on instancie l'objet Silex principal `$app` puis on inclut la définitions des routes de l'application (fichier `routes.php`).
+Ce fichier constitue le **contrôleur frontal** de notre application Web. Il centralise la gestion des requêtes HTTP entrantes. Dans ce fichier, on instancie l'objet Silex principal `$app` puis on inclut la définition des routes de l'application (fichier `routes.php`).
 
 Toujours dans `web`, créez un nouveau fichier texte nommé `.htaccess` contenant le texte ci-dessous. Ce fichier permet de rediriger toutes les requêtes entrantes vers `index.php`.
 
@@ -391,7 +391,7 @@ Voici l'arborescence obtenue après tous ces changements.
 
 ### Définition d'un hôte virtuel
 
-Enfin, il nous reste à configurer un **hôte virtuel** afin que l'application puisse répondre à une URL de la forme http://microcms. En suivant l'exemple donné dans le tutoriel [Premiers pas avec le framework PHP Silex](/tutoriel/premiers-pas-framework-php-silex/), éditez le fichier de configuration Appache `httpd-vhosts.conf` et ajoutez le contenu ci-dessous à la fin en adaptant les lignes commençant par `DocumentRoot`et `Directory` à votre configuration locale.
+Enfin, il nous reste à configurer un **hôte virtuel** afin que l'application puisse répondre à une URL de la forme http://microcms. En suivant l'exemple donné dans le tutoriel [Premiers pas avec le framework PHP Silex](/tutoriel/premiers-pas-framework-php-silex/), éditez le fichier de configuration Apache `httpd-vhosts.conf` et ajoutez le contenu ci-dessous à la fin en adaptant les lignes commençant par `DocumentRoot`et `Directory` à votre configuration locale.
 
     <VirtualHost *:80>
         DocumentRoot "C:\xampp\htdocs\MicroCMS\web"
@@ -2430,15 +2430,11 @@ Cette itération a fourni l'occasion d'intégrer à notre application la gestion
 
 Le but de cette itération est d'intégrer à l'application plusieurs améliorations dans l'objectif d'une future mise en production.
 
-{{% warning %}}
-Cette itération est en cours d'écriture.
-{{% /warning %}}
-
 ## Ajout de tests fonctionnels
 
 ### Pourquoi tester ?
 
-La problématique des tests est souvent considérée comme secondaire et négligée par les développeurs débutants. C'est une erreur : lorsqu'on livre une application et qu'elle est placée en *production* (offerte à ses utilisateurs), il est essentiel d'avoir un maximum de garanties sur son bon fonctionnement afin d'éviter au maximum les mauvaises surprises.
+La problématique des tests est souvent considérée comme secondaire et négligée par les développeurs débutants. C'est une erreur : lorsqu'on livre une application et qu'elle est placée en *production* (offerte à ses utilisateurs), il est essentiel d'avoir un maximum de garanties sur son bon fonctionnement afin d'éviter au maximum de coûteuses mauvaises surprises.
 
 Le test d'une application peut être manuel. Dans ce cas, une personne effectue sur l'application une suite d'opérations prévue à l'avance (navigation, connexion, envoi d'informations...) pour vérifier qu'elle possède bien le comportement attendu. C'est un processus coûteux en temps et sujets aux erreurs (oublis, négligences, etc).
 
@@ -2446,7 +2442,256 @@ En complément de ces tests manuels, on a tout intérêt à intégrer à un proj
 
 ### Comment tester ?
 
-## Débogage et journalisation
+On peut employer différentes stratégies pour automatiser le test d'une application. Parmi les types de test possibles, citons les [tests unitaires](http://fr.wikipedia.org/wiki/Test_unitaire) qui testent individuellement chaque élément de l'application (un composant, une classe, etc) et les tests fonctionnels qui vérifient le fonctionnement global de l'application.
+
+Quelle que soit la stratégie choisie, l'écriture de tests est une activité chronophage et parfois délicate. En suivant les recommandations des [bonnes pratiques Symfony](http://symfony.com/doc/current/best_practices/), nous allons nous contenter d'écrire des tests fonctionnels simples. Ces tests vérifieront uniquement que l'application répond sans erreur aux différentes routes possibles.
+
+### Composants nécessaires
+
+Nous allons créer nos tests à l'aide de [PHPUnit](https://phpunit.de/), l'outil le plus fréquemment employé pour écrire des tests en PHP. Pour récupérer PHPUnit ainsi que les composants Symfony nécessaires, il faut modifier le fichier `composer.json`.
+
+Editez ce fichier pour qu'il ait le contenu suivant.
+
+    {
+        "require": {
+            "silex/silex": "~1.2",
+            "doctrine/dbal": "~2.4",
+            "twig/twig": "~1.16",
+            "symfony/security": "~2.4",
+            "symfony/twig-bridge": "~2.4",
+            "symfony/form": "~2.4",
+            "symfony/translation": "~2.4"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "~4.3",
+            "symfony/browser-kit": "~2.4",
+            "symfony/css-selector": "~2.4"
+        },
+        "autoload": {
+            "psr-0": {"MicroCMS": "src/"}
+        }
+    }
+
+On utilise ici `require-dev` pour définir les dépendances nécessaires uniquement pendant le développement. Lors de la mise en production de l'application, on utilisera Composer avec l'option `--no-dev` pour ne pas installer ces dépendances.
+
+Il ne reste plus qu'à récupérer ces composants via la commande habituelle :
+
+    $ composer update
+
+### Classe de test
+
+Le framework Silex permet d'écrire des tests PHPUnit sous la forme de classes dérivées de [WebTestCase](https://github.com/silexphp/Silex/blob/master/src/Silex/WebTestCase.php). 
+
+Créez dans le répertoire `MicroCMS` l'arborescence de sous-répertoires `tests/MicroCMS/Tests`. Dans ce dernier, ajoutez un fichier nommé `AppTest.php` ayant le contenu suivant.
+
+    <?php
+    
+    namespace MicroCMS\Tests;
+    
+    require_once __DIR__.'/../../../vendor/autoload.php';
+    
+    use Silex\WebTestCase;
+    
+    class AppTest extends WebTestCase
+    {
+        /** 
+         * Basic, application-wide functional test inspired by Symfony best practices.
+         * Simply checks that all application URLs load successfully.
+         * During test execution, this method is called for each URL returned by the provideUrls method.
+         *
+         * @dataProvider provideUrls 
+         */
+        public function testPageIsSuccessful($url)
+        {
+            $client = $this->createClient();
+            $client->request('GET', $url);
+    
+            $this->assertTrue($client->getResponse()->isSuccessful());
+        }
+    
+        /**
+         * {@inheritDoc}
+         */
+        public function createApplication()
+        {
+            $app = new \Silex\Application();
+    
+            require __DIR__.'/../../../app/config/dev.php';
+            require __DIR__.'/../../../app/app.php';
+            require __DIR__.'/../../../app/routes.php';
+            
+            // Generate raw exceptions instead of HTML pages if errors occur
+            $app['exception_handler']->disable();
+            // Simulate sessions for testing
+            $app['session.test'] = true;
+    
+            return $app;
+        }
+    
+        /**
+         * Provides all valid application URLs.
+         *
+         * @return array The list of all valid application URLs.
+         */
+        public function provideUrls()
+        {
+            return array(
+                array('/'),
+                array('/article/1'),
+                array('/login'),
+                ); 
+        }
+    }
+
+Ce fichier définit une classe `AppTest` dérivée de `WebTestCase`. Sa méthode `createApplication` instancie, configure et renvoie notre application Silex. Sa méthode `provideUrls` définit toutes les URL à tester : elles correspondent aux routes de notre application accessibles via la commande HTTP GET. Les routes testées ici sont `/` (page d'accueil), `/article/1` (détails sur l'article ayant l'identifiant 1) et `/login` (formulaire de connexion).
+
+Enfin, sa méthode `testPageIsSuccessful` instancie un client et vérifie (méthode PHPUnit `AssertTrue`) que la réponse HTTP renvoyée pour chaque URL à tester indique un succès. Dans le cas contraire, le test échouera.
+
+{{% remark %}}
+Lors du lancement d'un test, PHPUnit exécute automatiquement les méthodes commençant par `test`.
+{{% /remark %}}
+
+### Exécution des tests
+
+Afin de faciliter le lancement des tests, on ajoute à l'application un fichier de configuration PHPUnit nommé `phpunit.xml.dist`. Créez ce fichier dans le répertoire `MicroCMS` et ajoutez-lui le contenu suivant.
+
+    <?xml version="1.0" encoding="UTF-8"?>
+    
+    <phpunit>
+      <testsuites>
+        <testsuite name="MicroCMS">
+          <directory>tests</directory>
+        </testsuite>
+      </testsuites>
+    </phpunit>
+
+Grâce à ce fichier, PHPUnit utilisera toutes les classes de test se trouvant dans le répertoire `tests` ainsi que ses sous-répertoires.
+
+Pour éviter un problème de connexion à MySQL pendant l'exécution des tests, modifiez le fichier `app/config/prod.php` et remplacez `localhost` par `127.0.0.1`.
+
+    <?php
+    
+    // Doctrine (db)
+    $app['db.options'] = array(
+        'driver'   => 'pdo_mysql',
+        'charset'  => 'utf8',
+        'host'     => '127.0.0.1',  // Mandatory for PHPUnit testing
+        'port'     => '3306',
+        'dbname'   => 'microcms',
+        'user'     => 'microcms_user',
+        'password' => 'secret',
+    );
+
+Il est temps de vérifier le fonctionnement de l'application ! Dans une fenêtre de terminal, déplacez-vous dans le répertoire `MicroCMS` puis lancez la commande ci-dessous :
+
+    $ vendor/bin/phpunit
+
+Vous devriez obtenir un résultat similaire au suivant.
+
+{{% image src="microcms_apptest.png" class="centered" %}}
+
+Ce résultat indique que 3 tests sur 3 ont réussi. Cela signifie que notre application répond avec succès aux requêtes vers `/`, `/article/1` et `/login`. Même si ces tests ne couvrent pas tous les cas de figure et ne vérifient pas l'intégralité du code source, ils permettront d'éviter les erreurs majeures. On parle en anglais de [smoke testing](http://en.wikipedia.org/wiki/Smoke_testing_\(software\)).
+
+{{% warning %}}
+Pour que ces tests gardent leur pertinence lorsque l'application évoluera, il faudra penser à modifier la méthode `provideUrls` de la classe `AppTest` pour ajouter les nouvelles URL à tester.
+{{% /warning %}}
+
+## Journalisation et débogage
+
+{{% definition %}}
+La journalisation consiste à mémoriser, le plus souvent dans un ou plusieurs fichiers textes, les évènements qui se produisent lors du fonctionnement d'une application.
+{{% /definition %}}
+
+La journalisation peut fournir une aide bienvenue lors des phases de débogage. Elle est de plus très facile à mettre en oeuvre grâce à l'intégration par Silex de la librairie [Monolog](https://github.com/Seldaek/monolog). Pour le débogage, Symfony fournit une barre d'outils très utile qui peut également être intégrée avec Silex grâce à un [fournisseur de services](https://github.com/silexphp/Silex-WebProfiler) dédié.
+
+Comme d'habitude, nous commençons par déclarer les dépendances nécessaires dans `composer.json`.
+
+    "require": {
+        ...
+        "symfony/monolog-bridge": "~2.4"
+    },
+    "require-dev": {
+        ...
+        "silex/web-profiler": "~1.0"
+    },
+    ...
+
+Ensuite, on récupère les composants `monolog-bridge` et `web-profiler` avec Composer.
+
+    $ composer update
+
+Il faut maintenant configurer notre application Silex pour qu'elle utilise ces composants. Pour cela, modifiez le fichier `app/app.php` en ajoutant les lignes ci-dessous à la fin de l'enregistrement des fournisseurs de services.
+
+    $app->register(new Silex\Provider\MonologServiceProvider(), array(
+        'monolog.logfile' => __DIR__.'/../var/logs/silex.log',
+        'monolog.name' => 'MicroCMS',
+        'monolog.level' => ($app['debug']) ? 'INFO' : 'WARNING'
+    ));
+    $app->register(new Silex\Provider\ServiceControllerServiceProvider());
+    if ($app['debug']) {
+        $app->register(new Silex\Provider\WebProfilerServiceProvider(), array(
+            'profiler.cache_dir' => __DIR__.'/../var/cache/profiler'
+        ));
+    }
+
+Monolog est configuré pour écrire les évènements dans le fichier `var/logs/silex.log`. Le niveau de détail (`monolog.level`) est plus élevé lorsque l'application est configurée pour le débogage. La barre d'outils Symfony n'est activée que lorsque l'application est configurée pour le débogage.
+
+{{% remark %}}
+La configuration pour le débogage dépend du paramètre `$app['debug']`, défini dans le fichier `app/config/dev.php`.
+{{% /remark %}}
+
+Enfin, créez les sous-répertoires nécessaires : `var/logs` et `var/cache/profiler`.
+
+A présent, la page d'accueil de l'application http://microcms intègre au bas de l'écran la barre d'outils Symfony.
+
+{{% image src="microcms_symfony_toolbar.png" class="centered" %}}
+
+Cette barre intègre de nombreuses fonctionnalités, telle la *timeline* qui permet de visualiser précisément la chronologie d'une requête.
+
+{{% image src="microcms_symfony_timeline.png" class="centered" %}}
+
+Le fichier `var/logs/silex.log` enregistre les principaux évènements de l'application. En voici un extrait.
+
+    [2014-11-10 17:16:46] MicroCMS.INFO: Matched route "GET_" (parameters: "_controller": "{}", "_route": "GET_") [] []
+    [2014-11-10 17:16:46] MicroCMS.INFO: > GET / [] []
+    [2014-11-10 17:16:46] MicroCMS.INFO: < 200 [] []
+    [2014-11-10 17:16:46] MicroCMS.INFO: Matched route "_wdt" (parameters: "_controller": "web_profiler.controller. profiler:toolbarAction", "token": "c58b8c", "_route": "_wdt") [] []
+    [2014-11-10 17:16:46] MicroCMS.INFO: > GET /_profiler/wdt/c58b8c [] []
+    [2014-11-10 17:16:47] MicroCMS.INFO: < 200 [] []
+    [2014-11-10 17:16:56] MicroCMS.INFO: Matched route "_article_id" (parameters: "_controller": "{}", "id": "1", "_    route": "_article_id") [] []
+    [2014-11-10 17:16:56] MicroCMS.INFO: > GET /article/1 [] []
+    [2014-11-10 17:16:57] MicroCMS.INFO: < 200 [] []
+    [2014-11-10 17:16:57] MicroCMS.INFO: Matched route "_wdt" (parameters: "_controller": "web_profiler.controller. profiler:toolbarAction", "token": "c47a8b", "_route": "_wdt") [] []
+    [2014-11-10 17:16:57] MicroCMS.INFO: > GET /_profiler/wdt/c47a8b [] []
+    [2014-11-10 17:16:58] MicroCMS.INFO: < 200 [] []
+
+Pour l'instant, seuls les composants Silex/Symfony ajoutent des évènements dans ce fichier. Pour que notre application en crée aussi, il suffirait de rajouter aux endroits appropriés de notre code source des appels de la forme :
+
+    $app['monolog']->addInfo("Ceci est un évènement de test"); 
+
+## Mise en production
+
+Lorsque l'application est mise en production, il faudra utiliser le fichier `app/config/prod.php` à la place de `app/config/dev.php` dans le contrôleur frontal `web/index.php`.
+
+    <?php
+    
+    require_once __DIR__.'/../vendor/autoload.php';
+    
+    $app = new Silex\Application();
+    
+    require __DIR__.'/../app/config/prod.php';  // Config for production
+    require __DIR__.'/../app/app.php';
+    require __DIR__.'/../app/routes.php';
+    
+    $app->run();
+
+Sur le serveur de production, il faudra installer les dépendances avec l'option `--no-dev`.
+
+    $ composer install --no-dev
+
+## Bilan
+
+Au cours de cette itération, nous avons ajouté à l'application des tests fonctionnels qui, malgré leur simplicité, permettront d'augmenter la confiance dans sa conformité aux attentes. Nous avons également facilité la mise au point de l'application grâce à la journalisation et à l'intégration de la barre de débogage Symfony.
 
 # Conclusion
 
@@ -2458,8 +2703,9 @@ Notre application Web d'exemple était au départ une simple page écrite en PHP
 * utilisation des espaces de noms et chargement automatique des classes ;
 * intégration d'un moteur de templates pour faciliter l'écriture des vues ;
 * présentation moderne et adaptée au terminal utilisé (*responsive design*) ;
-* gestion avancée de la sécurité et des formulaires.
+* gestion avancée de la sécurité et des formulaires ;
+* tests fonctionnels automatisés.
 
-D'autres fonctionnalités comme la modélisation orientée objet des contrôleurs, la validation des formulaires, la journalisation ou encore l'internationalisation pourraient être ajoutées en exploitant les possibilités de Silex. A vous de jouer !
+D'autres fonctionnalités comme la modélisation orientée objet des contrôleurs, la validation des formulaires ou encore l'internationalisation pourraient être ajoutées en exploitant les possibilités de Silex. A vous de jouer !
 
 Ainsi se termine ce tutoriel qui vous aura, je l'espère, aidé à progresser en PHP.
