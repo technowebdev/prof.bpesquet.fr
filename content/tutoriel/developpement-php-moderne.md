@@ -2637,7 +2637,7 @@ Il faut maintenant configurer notre application Silex pour qu'elle utilise ces c
 Monolog est configuré pour écrire les évènements dans le fichier `var/logs/silex.log`. Le niveau de détail (`monolog.level`) est plus élevé lorsque l'application est configurée pour le débogage. La barre d'outils Symfony n'est activée que lorsque l'application est configurée pour le débogage.
 
 {{% remark %}}
-La configuration pour le débogage dépend du paramètre `$app['debug']`, défini dans le fichier `app/config/dev.php`.
+La configuration de débogage dépend du paramètre `$app['debug']`, défini dans le fichier `app/config/dev.php`.
 {{% /remark %}}
 
 Enfin, créez les sous-répertoires nécessaires : `var/logs` et `var/cache/profiler`.
@@ -2646,7 +2646,7 @@ A présent, la page d'accueil de l'application http://microcms intègre au bas d
 
 {{% image src="microcms_symfony_toolbar.png" class="centered" %}}
 
-Cette barre intègre de nombreuses fonctionnalités, telle la *timeline* qui permet de visualiser précisément la chronologie d'une requête.
+Cette barre fournit de nombreux services, telle la *timeline* qui permet de visualiser précisément la chronologie d'une requête.
 
 {{% image src="microcms_symfony_timeline.png" class="centered" %}}
 
@@ -2669,9 +2669,76 @@ Pour l'instant, seuls les composants Silex/Symfony ajoutent des évènements dan
 
     $app['monolog']->addInfo("Ceci est un évènement de test"); 
 
+## Gestion des erreurs
+
+En cas d'apparition d'une erreur (ressource non trouvée, problème de connexion à la base, etc), l'application actuelle affiche directement le message associé, ainsi que la pile des appels (*stack trace*) en configuration de débogage. Voici par exemple ce qui se produit lorsqu'on tente d'accéder à l'URL http://microcms/dummy, non gérée par l'application.
+
+{{% image src="microcms_error_nohandler.png" class="centered" %}}
+
+Ce comportement est acceptable et même pratique en phase de développement, mais pas en production. Il faudrait que l'affichage des erreurs soit homogène avec le reste des vues. Pour obtenir ce comportement, nous allons ajouter à l'application un gestionnaire d'erreurs personnalisé. 
+
+Modifiez le fichier `app/app.php` pour y ajouter le code ci-dessous en fin de fichier.
+
+    // Register error handler
+    use Symfony\Component\HttpFoundation\Response;
+    $app->error(function (\Exception $e, $code) use ($app) {
+        switch ($code) {
+            case 404:
+                $message = 'The requested resource could not be found.';
+                break;
+            default:
+                $message = "Something went wrong.";
+        }
+        return $app['twig']->render('error.html.twig', array('message' => $message));
+    });
+
+Ce gestionnaire d'erreurs construit un message en fonction du code de l'erreur, puis génère la vue `error.html.twig` en lui passant ce message en paramètre.
+
+Créez dans le répertoire `views` le fichier `error.html.twig` avec le contenu ci-dessous.
+
+    {% extends "layout.html.twig" %}
+    
+    {% block title %}Error!{% endblock %}
+    
+    {% block content %}
+    <div class="row" id="errorPanel">
+        <div class="col-xs-5">
+            <img class="img-responsive pull-right" src="{{ app.request.basepath }}/images/404-ghost.png" alt="Error ghost" />
+        </div>
+        <div class="col-xs-6">
+            <h1>Whoops...<br><small>{{ message }}</small></h1>
+        </div>
+    </div>
+    {% endblock %}
+
+L'image `404-ghost.png` fait partie du code source de la plate-forme de blogging [Ghost](https://ghost.org/). Vous pouvez la télécharger [ici](https://github.com/TryGhost/Ghost/blob/master/core/client/assets/img/404-ghost.png) puis la copier dans le répertoire `web/images` (à créer).
+
+Modifiez ensuite le fichier `web/css/microcms.css` pour y ajouter le contenu ci-dessous, qui permet de placer correctement le message d'erreur dans la vue.
+
+    #errorPanel {
+        padding-top: 30px;
+        padding-bottom: 10px;
+    }
+
+Afin de pallier à la non-initialisation du contexte de sécurité pendant la gestion d'une erreur par Silex, modifiez ensuite le fichier `views/layout.html.twig` afin de remplacer la ligne :
+
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+
+Par la ligne : 
+
+    {% if app.security.token and is_granted('IS_AUTHENTICATED_FULLY') %}
+
+A présent, déclenchons volontairement une erreur en accédant à l'URL http://microcms/dummy. Voici le résultat obtenu.
+
+{{% image src="microcms_error_handler.png" class="centered" %}}
+
+{{% remark %}}
+Les informations détaillées sur l'erreur sont accessibles dans le fichier de journalisation ou (en configuration de débogage) grâce à la barre d'outils Symfony.
+{{% /remark %}}
+
 ## Mise en production
 
-Lorsque l'application est mise en production, il faudra utiliser le fichier `app/config/prod.php` à la place de `app/config/dev.php` dans le contrôleur frontal `web/index.php`.
+Lorsque l'application sera mise en production, il faudra utiliser le fichier `app/config/prod.php` à la place de `app/config/dev.php` dans le contrôleur frontal `web/index.php`.
 
     <?php
     
@@ -2691,11 +2758,11 @@ Sur le serveur de production, il faudra installer les dépendances avec l'option
 
 ## Bilan
 
-Au cours de cette itération, nous avons ajouté à l'application des tests fonctionnels qui, malgré leur simplicité, permettront d'augmenter la confiance dans sa conformité aux attentes. Nous avons également facilité la mise au point de l'application grâce à la journalisation et à l'intégration de la barre de débogage Symfony.
+Au cours de cette itération, nous avons ajouté à l'application des tests fonctionnels qui, malgré leur simplicité, permettront d'augmenter la confiance dans sa conformité aux attentes. Nous avons également facilité la mise au point de l'application grâce à la journalisation et à l'intégration de la barre de débogage Symfony. Enfin, l'apparition d'une erreur ne dégrade plus l'affichage.
 
 # Conclusion
 
-Notre application Web d'exemple était au départ une simple page écrite en PHP classique. A présent, elle dispose d'une architecture robuste dont on peut rappeler les principales caractéristiques :
+Notre application Web d'exemple était au départ une simple page écrite en PHP classique. A présent, elle dispose d'une architecture avancée dont on peut rappeler les principales caractéristiques :
 
 * séparation des responsabilités selon le principe Modèle-Vue-Contrôleur ;
 * intégration d'un micro-framework ;
@@ -2705,6 +2772,7 @@ Notre application Web d'exemple était au départ une simple page écrite en PHP
 * présentation moderne et adaptée au terminal utilisé (*responsive design*) ;
 * gestion avancée de la sécurité et des formulaires ;
 * tests fonctionnels automatisés.
+* journalisation et gestion des erreurs.
 
 D'autres fonctionnalités comme la modélisation orientée objet des contrôleurs, la validation des formulaires ou encore l'internationalisation pourraient être ajoutées en exploitant les possibilités de Silex. A vous de jouer !
 
