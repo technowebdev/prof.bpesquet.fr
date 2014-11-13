@@ -145,3 +145,12 @@ Sauf indication contraire, les travaux à réaliser doivent être terminés pour
 
 * Correction du TPDS 1.
 * Projet agile : sprint 1.
+
+## Semaine 9 : 10 novembre
+
+Pas de TP (férié).
+
+**Cours** : projet agile
+
+* Récupération du répertoire `vendor`.
+* Sprint 1.

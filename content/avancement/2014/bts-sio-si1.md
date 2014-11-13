@@ -148,3 +148,10 @@ Sauf indication contraire, les travaux à réaliser doivent être terminés pour
 * Debriefing du support en fin de séance.
 
 **TP groupe B** : cf semaine précédente.
+
+**Cours mercredi**
+
+* Recherche de trois antivirus pour Windows 7, y compris gratuits (ITE 10.2.3.2).
+* Calcul du coût pour 50 postes sur 1 an.
+* CR à déposer sur le réseau au plus tard lundi 17 à 8h.
+
