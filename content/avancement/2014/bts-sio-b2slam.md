@@ -154,3 +154,11 @@ Pas de TP (férié).
 
 * Récupération du répertoire `vendor`.
 * Sprint 1.
+
+## Semaine 10 : 17 novembre
+
+**TP**
+
+* Tutoriel [Développement PHP moderne](/tutoriel/developpement-php-moderne/), itération 10.
+* Projet agile : sprint 1.
+

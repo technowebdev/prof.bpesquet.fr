@@ -155,3 +155,18 @@ Sauf indication contraire, les travaux à réaliser doivent être terminés pour
 * Calcul du coût pour 50 postes sur 1 an.
 * CR à déposer sur le réseau au plus tard lundi 17 à 8h.
 
+## Semaine 10 : 17 novembre
+
+**Cours lundi**
+
+* Fin de la découverte de Linux Ubuntu partie 1 (QCM 3 et 4). Bonus : installer les VMWare Tools.
+* Correction découverte Linux Ubuntu partie 1.
+* Cours sur la ligne de commande Linux -> page 3.
+
+**TP 1h/1h** : TP W7 
+
+* Gestion des fichiers système (ITE 5.3.4.6).
+* Utilitaires en ligne de commande (ITE 5.3.7.4).
+* Restauration du système (ITE 5.5.1.11).
+* Bonus : gestion du menu Démarrer (ITE 5.5.1.2).
+
