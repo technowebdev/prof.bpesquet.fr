@@ -3675,6 +3675,58 @@ Et enfin le supprimer.
 
 {{% image src="microcms_admin_user_delete.png" class="centered" %}}
 
+## Tests fonctionnels
+
+La dernière opération de cette opération consiste à mettre à jour nos tests fonctionnels pour valider les routes associées au back-office. Pour cela, modifiez la classe `AppTest` (fichier `tests/MicroCMS/Tests/AppTest.php`) de la manière suivante.
+
+    <?php
+
+    // ...
+
+    class AppTest extends WebTestCase
+    {
+        // ...
+
+        /**
+         * {@inheritDoc}
+         */
+        public function createApplication()
+        {
+            // ...
+
+            // Enable anonymous access to admin zone
+            $app['security.access_rules'] = array();
+
+            return $app;
+        }
+
+        /**
+         * Provides all valid application URLs.
+         *
+         * @return array The list of all valid application URLs.
+         */
+        public function provideUrls()
+        {
+            return array(
+                array('/'),
+                array('/article/1'),
+                array('/login'),
+                array('/admin'),
+                array('/admin/article/add'),
+                array('/admin/article/1/edit'),
+                array('/admin/comment/1/edit'),
+                array('/admin/user/add'),
+                array('/admin/user/1/edit')
+                ); 
+        }
+    }
+
+Dans la méthode `createApplication`, on désactive les règles de sécurité afin de permettre à un client non authentifié d'accéder aux routes du back-office (normalement soumises à la possession du rôle `ROLE_ADMIN`). Dans la méthode `provideUrls`, on ajoute les URL correspondant à des opérations de lecture du back-office.
+
+Il ne reste plus qu'à lancer les tests avec PHPUnit. Voici le résultat à obtenir.
+
+{{% image src="microcms_apptest_backoffice.png" class="centered" %}}
+
 Le code source associé à cette itération est disponible sur une [branche du dépôt GitHub](https://github.com/bpesquet/MicroCMS/tree/iteration-11).
 
 ## Bilan
@@ -3696,6 +3748,6 @@ Notre application Web d'exemple était au départ une simple page écrite en PHP
 * journalisation et gestion des erreurs.
 * back-office d'administration complet.
 
-D'autres fonctionnalités comme la modélisation orientée objet des contrôleurs, la validation des formulaires ou encore l'internationalisation pourraient être ajoutées en exploitant les possibilités de Silex. A vous de jouer !
+D'autres fonctionnalités comme la modélisation orientée objet des contrôleurs ou encore l'internationalisation pourraient être ajoutées en exploitant les possibilités de Silex. A vous de jouer !
 
 Ainsi se termine ce tutoriel qui vous aura, je l'espère, aidé à progresser en PHP.
