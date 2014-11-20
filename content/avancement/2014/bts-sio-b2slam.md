@@ -162,3 +162,7 @@ Pas de TP (férié).
 * Tutoriel [Développement PHP moderne](/tutoriel/developpement-php-moderne/), itération 10.
 * Projet agile : sprint 1.
 
+**Cours**
+
+* Retour sur l'itération 10.
+* Projet agile : sprint 1.

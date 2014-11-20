@@ -170,3 +170,7 @@ Sauf indication contraire, les travaux à réaliser doivent être terminés pour
 * Restauration du système (ITE 5.5.1.11).
 * Bonus : gestion du menu Démarrer (ITE 5.5.1.2).
 
+**Cours mercredi**
+
+* Retour sur le PPE1 SI1.
+* Recherche de pare-feux logiciels et matériels (ITE 10.2.3.2).
