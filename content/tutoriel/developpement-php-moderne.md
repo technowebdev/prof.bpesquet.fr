@@ -2482,7 +2482,7 @@ Il ne reste plus qu'à récupérer ces composants via la commande habituelle :
 
 Le framework Silex permet d'écrire des tests PHPUnit sous la forme de classes dérivées de [WebTestCase](https://github.com/silexphp/Silex/blob/master/src/Silex/WebTestCase.php). 
 
-Créez dans le répertoire `MicroCMS` l'arborescence de sous-répertoires `tests/MicroCMS/Tests`. Dans ce dernier, ajoutez un fichier nommé `AppTest.php` ayant le contenu suivant.
+Créez dans le répertoire racine de l'application l'arborescence de sous-répertoires `tests/MicroCMS/Tests`. Dans ce dernier, ajoutez un fichier nommé `AppTest.php` ayant le contenu suivant.
 
     <?php
     
@@ -2553,7 +2553,7 @@ Lors du lancement d'un test, PHPUnit exécute automatiquement les méthodes comm
 
 ### Exécution des tests
 
-Afin de faciliter le lancement des tests, on ajoute à l'application un fichier de configuration PHPUnit nommé `phpunit.xml.dist`. Créez ce fichier dans le répertoire `MicroCMS` et ajoutez-lui le contenu suivant.
+Afin de faciliter le lancement des tests, on ajoute à l'application un fichier de configuration PHPUnit nommé `phpunit.xml.dist`. Créez ce fichier dans le répertoire racine et ajoutez-lui le contenu suivant.
 
     <?xml version="1.0" encoding="UTF-8"?>
     
@@ -2582,9 +2582,13 @@ Pour éviter un problème de connexion à MySQL pendant l'exécution des tests, 
         'password' => 'secret',
     );
 
-Il est temps de vérifier le fonctionnement de l'application ! Dans une fenêtre de terminal, déplacez-vous dans le répertoire `MicroCMS` puis lancez la commande ci-dessous :
+Il est temps de vérifier le fonctionnement de l'application ! Dans une fenêtre de terminal, déplacez-vous dans le répertoire racine `MicroCMS` puis lancez la commande qui démarre l'exécution des tests. Celle-ci dépend de votre système d'exploitation. Sous Mac OS et Linux, tapez la commande ci-dessous :
 
     $ vendor/bin/phpunit
+
+Sous Windows, vous devez taper (sans le `>`) :
+
+    > vendor\bin\phpunit.bat
 
 Vous devriez obtenir un résultat similaire au suivant.
 
@@ -2635,7 +2639,7 @@ Ajoutez ensuite les lignes suivantes à la fin du fichier `app/config/dev.php`.
     // override log level
     $app['monolog.level'] = 'INFO';
 
-On modifie le niveau de journalisation à `INFO`, ce qui permet d'enregistrer les informations en pluses des avertissements et des erreurs.
+On modifie le niveau de journalisation à `INFO`, ce qui permet d'enregistrer les informations en plus des avertissements et des erreurs.
 
 A présent, modifiez le fichier `app/app.php` en ajoutant les lignes ci-dessous à la fin de l'enregistrement des fournisseurs de services.
 
@@ -2657,7 +2661,7 @@ Monolog est configuré avec les paramètres définis plus haut. La barre d'outil
 La configuration de débogage dépend du paramètre `$app['debug']`, défini dans le fichier `app/config/dev.php`.
 {{% /remark %}}
 
-Enfin, créez les sous-répertoires nécessaires : `var/logs` et `var/cache/profiler`.
+Enfin, créez dans le répertoire racine les sous-répertoires nécessaires : `var/logs` et `var/cache/profiler`.
 
 A présent, la page d'accueil de l'application http://microcms intègre au bas de l'écran la barre d'outils Symfony.
 
