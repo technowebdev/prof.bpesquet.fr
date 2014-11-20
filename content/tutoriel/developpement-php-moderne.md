@@ -2565,7 +2565,9 @@ Afin de faciliter le lancement des tests, on ajoute à l'application un fichier 
       </testsuites>
     </phpunit>
 
-Grâce à ce fichier, PHPUnit utilisera toutes les classes de test se trouvant dans le répertoire `tests` ainsi que ses sous-répertoires.
+Grâce à ce fichier, PHPUnit utilisera toutes les classes de test se trouvant dans le répertoire `tests` ainsi que ses sous-répertoires. L'arborescence de notre projet est maintenant la suivante.
+
+{{% img microcms_arborescence_tests.png %}}
 
 Pour éviter un problème de connexion à MySQL pendant l'exécution des tests, modifiez le fichier `app/config/prod.php` et remplacez `localhost` par `127.0.0.1`.
 
@@ -2586,9 +2588,9 @@ Il est temps de vérifier le fonctionnement de l'application ! Dans une fenêtre
 
     $ vendor/bin/phpunit
 
-Sous Windows, vous devez taper (sans le `>`) :
+Sous Windows, vous devez taper :
 
-    > vendor\bin\phpunit.bat
+    vendor\bin\phpunit.bat
 
 Vous devriez obtenir un résultat similaire au suivant.
 
