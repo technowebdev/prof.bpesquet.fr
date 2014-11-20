@@ -3319,7 +3319,7 @@ Il ne reste plus qu'à ajouter dans le fichier `app/routes.php` les routes perme
     $app->get('/admin/article/{id}/delete', function($id, Request $request) use ($app) {
         // Delete all associated comments
         $app['dao.comment']->deleteAllByArticle($id);
-        // Delete the articles
+        // Delete the article
         $app['dao.article']->delete($id);
         $app['session']->getFlashBag()->add('success', 'The article was succesfully removed.');
         return $app->redirect('/admin');
@@ -3383,7 +3383,24 @@ Créez ce fichier et donnez-lui le contenu suivant.
     </div>
     {% endblock %}
 
-La méthode de sauvegarde d'un commentaire existe déjà dans la classe `CommentDAO`. Modifiez le fichier `src/MicroCMS/DAO/CommentDAO.php` pour y ajouter la méthode de suppression d'un commentaire, comme indiqué ci-dessous.
+La méthode de sauvegarde d'un commentaire existe déjà dans la classe `CommentDAO`. Modifiez le fichier `src/MicroCMS/DAO/CommentDAO.php` pour y ajouter la méthode de recherche d'un commentaire et la méthode de suppression d'un commentaire définies ci-dessous.
+
+    /**
+     * Returns a comment matching the supplied id.
+     *
+     * @param integer $id
+     *
+     * @return \MicroCMS\Domain\Comment|throws an exception if no matching comment is found
+     */
+    public function find($id) {
+        $sql = "select * from t_comment where com_id=?";
+        $row = $this->getDb()->fetchAssoc($sql, array($id));
+
+        if ($row)
+            return $this->buildDomainObject($row);
+        else
+            throw new \Exception("No comment matching id " . $id);
+    }
 
     /**
      * Removes a comment from the database.
@@ -3461,9 +3478,7 @@ Ile ne nous reste plus qu'à implémenter la gestion des utilisateurs pour final
         }
     }
 
-TODO pwd
-
-Dans ce formulaire, nous définissons le champ `role` sous la forme d'une liste (`choice`). Les deux valeurs possibles sont `ROLE_ADMIN` et `ROLE_USER`. Nous observerons plus loin comment Symfony affiche ce type de champ.
+Dans la plupart des applications Web, les mots de passe des utilisateurs sont entrés deux fois pour éviter les erreurs de saisie. Symfony supporte cette fonctionnalité : le type `repeated` permet de faire saisir un champ deux fois et effectue automatiquement la comparaison des deux valeurs. Le message défini par `invalid_message` apparaîtra si les deux valeurs sont différentes. Nous définissons le champ `role` sous la forme d'une liste (`choice`). Les deux valeurs possibles sont `ROLE_ADMIN` et `ROLE_USER`. Nous observerons plus loin comment Symfony affiche ce type de champ.
 
 Ce formulaire est utilisé par la vue `views/user_form.html.twig` ci-dessous.
 
@@ -3479,6 +3494,11 @@ Ce formulaire est utilisé par la vue `views/user_form.html.twig` ci-dessous.
         {{ flashMessage }}
     </div>
     {% endfor %}
+    {% if form_errors(userForm.password.first) %}
+    <div class="alert alert-danger">
+        {{ form_errors(userForm.password.first) }}
+    </div>
+    {% endif %}
 
     <div class="well">
     {{ form_start(userForm, { 'attr': {'class': 'form-horizontal'} }) }}
@@ -3494,12 +3514,21 @@ Ce formulaire est utilisé par la vue `views/user_form.html.twig` ci-dessous.
             </div>
         </div>
         <div class="form-group">
-            {{ form_label(userForm.password, NULL, { 'label_attr':  {
+            {{ form_label(userForm.password.first, NULL, { 'label_attr':  {
                 'class': 'col-sm-5 control-label'
             }}) }}
             <div class="col-sm-4">
-                {{ form_errors(userForm.password) }}
-                {{ form_widget(userForm.password, { 'attr':  {
+                {{ form_widget(userForm.password.first, { 'attr':  {
+                    'class': 'form-control'
+                }}) }}
+            </div>
+        </div>
+        <div class="form-group">
+            {{ form_label(userForm.password.second, NULL, { 'label_attr':  {
+                'class': 'col-sm-5 control-label'
+            }}) }}
+            <div class="col-sm-4">
+                {{ form_widget(userForm.password.second, { 'attr':  {
                     'class': 'form-control'
                 }}) }}
             </div>
@@ -3524,8 +3553,133 @@ Ce formulaire est utilisé par la vue `views/user_form.html.twig` ci-dessous.
     </div>
     {% endblock %}
 
+Cette vue affiche les champs du formulaire `UserType`. Le mot de passe est affiché sous la forme de deux champs : `userForm.password.first` et `userForm.password.second`.
+
+Comme pour les articles, il faut ajouter les méthodes de modification et de suppression d'un utilisateur dans la classe `UserDAO` (fichier `src/MicroCMS/DAO/UserDAO.php').
+
+    /**
+     * Saves a user into the database.
+     *
+     * @param \MicroCMS\Domain\User $user The user to save
+     */
+    public function save(User $user) {
+        $userData = array(
+            'usr_name' => $user->getUsername(),
+            'usr_salt' => $user->getSalt(),
+            'usr_password' => $user->getPassword(),
+            'usr_role' => $user->getRole()
+            );
+
+        if ($user->getId()) {
+            // The user has already been saved : update it
+            $this->getDb()->update('t_user', $userData, array('usr_id' => $user->getId()));
+        } else {
+            // The user has never been saved : insert it
+            $this->getDb()->insert('t_user', $userData);
+            // Get the id of the newly created user and set it on the entity.
+            $id = $this->getDb()->lastInsertId();
+            $user->setId($id);
+        }
+    }
+
+    /**
+     * Removes an user from the database.
+     *
+     * @param \MicroCMS\Domain\user $user The user to remove
+     */
+    public function delete($id) {
+        // Delete the user
+        $this->getDb()->delete('t_user', array('usr_id' => $id));
+    }
+
+Il faut également ajouter dans le fichier `src/MicroCMS/DAO/CommentDAO.php` la possibilité de supprimer tous les commentaires associés à un utilisateur.
+
+    /**
+     * Removes all comments for a user
+     *
+     * @param $userId The id of the user
+     */
+    public function deleteAllByUser($userId) {
+        $this->getDb()->delete('t_comment', array('usr_id' => $userId));
+    }
+
+Pour terminer, ajoutez les contrôleurs nécessaires à la fin du fichier `app/routes.php`.
+
+    // Add a user
+    $app->match('/admin/user/add', function(Request $request) use ($app) {
+        $user = new User();
+        $userForm = $app['form.factory']->create(new UserType(), $user);
+        $userForm->handleRequest($request);
+        if ($userForm->isValid()) {
+            $salt = substr(md5(time()), 0, 23);
+            $user->setSalt($salt);
+            $plainPassword = $user->getPassword();
+            // find the default encoder
+            $encoder = $app['security.encoder.digest'];
+            // compute the encoded password
+            $password = $encoder->encodePassword($plainPassword, $user->getSalt());
+            $user->setPassword($password); 
+            $app['dao.user']->save($user);
+            $app['session']->getFlashBag()->add('success', 'The user was successfully created.');
+        }
+        return $app['twig']->render('user_form.html.twig', array(
+            'title' => 'New user',
+            'userForm' => $userForm->createView()));
+    });
+
+    // Edit an existing user
+    $app->match('/admin/user/{id}/edit', function($id, Request $request) use ($app) {
+        $user = $app['dao.user']->find($id);
+        $userForm = $app['form.factory']->create(new UserType(), $user);
+        $userForm->handleRequest($request);
+        if ($userForm->isValid()) {
+            $plainPassword = $user->getPassword();
+            // find the encoder for the user
+            $encoder = $app['security.encoder_factory']->getEncoder($user);
+            // compute the encoded password
+            $password = $encoder->encodePassword($plainPassword, $user->getSalt());
+            $user->setPassword($password); 
+            $app['dao.user']->save($user);
+            $app['session']->getFlashBag()->add('success', 'The user was succesfully updated.');
+        }
+        return $app['twig']->render('user_form.html.twig', array(
+            'title' => 'Edit user',
+            'userForm' => $userForm->createView()));
+    });
+
+    // Remove a user
+    $app->get('/admin/user/{id}/delete', function($id, Request $request) use ($app) {
+        // Delete all associated comments
+        $app['dao.comment']->deleteAllByUser($id);
+        // Delete the user
+        $app['dao.user']->delete($id);
+        $app['session']->getFlashBag()->add('success', 'The user was succesfully removed.');
+        return $app->redirect('/admin');
+    });
+
+Les contrôleurs de création et de modification doivent hacher le mot de passe saisi par l'utilisateur avant de le sauvegarder dans la base de données. Ils utilisent pour cela les services `$app['security.encoder.digest']` et `$app['security.encoder_factory']`. Le salage (`$salt`) est généré aléatoirement grâce à la fonction PHP [md5](http://php.net/manual/fr/function.md5.php).
+
+Le back-office est maintenant terminé. Vous pouvez le tester en ajoutant un nouvel utilisateur. Commencez par saisir deux mots de passe différents : l'application affiche le message d'erreur approprié. Merci Symfony !
+
+{{% image src="microcms_admin_user_pwd_error.png" class="centered" %}}
+
+On remarque également que le rôle (type de champ `choice`) est affiché sous la forme d'une liste déroulante. Saisissez ensuite le même mot de passe deux fois : l'utilisateur est cette fois-ci bien créé.
+
+{{% image src="microcms_admin_user_add.png" class="centered" %}}
+
+Vous pouvez ensuite modifier ses propriétés...
+
+{{% image src="microcms_admin_user_edit.png" class="centered" %}}
+
+Et enfin le supprimer.
+
+{{% image src="microcms_admin_user_delete.png" class="centered" %}}
+
+Le code source associé à cette itération est disponible sur une [branche du dépôt GitHub](https://github.com/bpesquet/MicroCMS/tree/iteration-11).
 
 ## Bilan
+
+Cette longue itération nous a permis d'intégrer à l'application des fonctionnalités d'administration. Les utilisateurs disposant du rôle d'administrateur peuvent à présent ajouter, modifier et supprimer des données dans la base. Pour cela, nous avons exploité les possibilités du framework Bootstrap pour obtenir un affichage moderne. Nous avons également découvert certaines fonctionnalités de Symfony en matière de sécurité (gestion des rôles) et de validation des formulaires (comparaison des mots de passe).
 
 # Conclusion
 
@@ -3540,6 +3694,7 @@ Notre application Web d'exemple était au départ une simple page écrite en PHP
 * gestion avancée de la sécurité et des formulaires.
 * tests fonctionnels automatisés.
 * journalisation et gestion des erreurs.
+* back-office d'administration complet.
 
 D'autres fonctionnalités comme la modélisation orientée objet des contrôleurs, la validation des formulaires ou encore l'internationalisation pourraient être ajoutées en exploitant les possibilités de Silex. A vous de jouer !
 
