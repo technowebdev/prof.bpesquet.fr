@@ -2759,6 +2759,8 @@ A présent, déclenchons volontairement une erreur en accédant à l'URL http://
 Les informations détaillées sur l'erreur sont accessibles dans le fichier de journalisation ou (en configuration de débogage) grâce à la barre d'outils Symfony.
 {{% /remark %}}
 
+Le code source associé à cette itération est disponible sur une [branche du dépôt GitHub](https://github.com/bpesquet/MicroCMS/tree/iteration-10).
+
 ## Mise en production
 
 Lorsque l'application sera mise en production, il faudra utiliser le fichier `app/config/prod.php` à la place de `app/config/dev.php` dans le contrôleur frontal `web/index.php`.
@@ -2782,6 +2784,748 @@ Sur le serveur de production, il faudra installer les dépendances avec l'option
 ## Bilan
 
 Au cours de cette itération, nous avons ajouté à l'application des tests automatisés qui, malgré leur simplicité, permettront d'augmenter la confiance dans son fonctionnement. Nous avons également facilité la mise au point de l'application grâce à la journalisation et à l'intégration de la barre de débogage Symfony. Enfin, l'apparition d'une erreur ne dégrade plus l'affichage.
+
+# Itération 11 : back-office d'administration
+
+Le but de cette itération est de pouvoir administrer l'application via un *back-office* dédié.
+
+{{% warning %}}
+Cette itération est plus longue et un peu plus complexe que les précédentes. Concentrez-vous bien !
+{{% /warning %}}
+
+## Objectifs du back-office
+
+{{% definition %}}
+Le **back-office** d'une application Web désigne "la partie du site internet qui n'est visible que par l'administrateur du site et qui permet de gérer le contenu, les fonctionnalités..." ([source](http://aide.meabilis.fr/glossaire/b/definition-back-office.html)).
+{{% /definition %}}
+
+L'accès au back-office sera réservé aux administrateurs de l'application. Il leur offrira les fonctionnalités suivantes :
+
+* Affichage des articles, commentaires et utilisateurs de l'application.
+* Modification et suppression d'un article, d'un commentaire ou d'un utilisateur.
+* Ajout d'un nouvel article ou d'un nouvel utilisateur (l'ajout de commentaires étant déjà permis par l'application).
+
+## Gestion des rôles
+
+Pour pouvoir réserver l'accès au back-office aux administrateurs, il faut pouvoir définir si un utilisateur connecté possède ou non le droit d'administration. Pour cela, nous allons utiliser la notion de **rôle** mise en oeuvre dans Symfony. Ce framework permet d'associer aux utilisateurs un ou plusieurs rôle(s). L'accès aux ressources de l'application est ensuite conditionné à la possession de rôles particuliers. On peut relier les rôles par une hiérarchie, la possesion d'un rôle donnant automatiquement les droits associés à un autre rôle. Pour plus de détails sur les rôles, consultez la [documentation Symfony](http://symfony.com/fr/doc/current/book/security.html#les-roles).
+
+Notre application distingue deux types d'utilisateurs :
+
+* les utilisateurs simples, qui ne peuvent qu'ajouter des commentaires aux articles.
+* les administrateurs, qui ont en plus l'accès complet au back-office.
+
+Dans l'itération 8, nous avions donné à nos utilisateurs le rôle `ROLE_USER` : c'est le rôle par défaut pour Symfony. Nous définissons donc un second rôle `ROLE_ADMIN` associé aux administrateurs. 
+
+Commençons par ajouter un administrateur à l'application en modifiant le fichier `db/content.sql`.
+
+    /* ... */
+    
+    /* raw password is '@dm1n' */
+    insert into t_user(usr_name, usr_salt, usr_password, usr_role) values
+    ('admin', 'EDDsl&fBCJB|a5XUtAlnQN8', 'gqeuP4YJ8hU3ZqGwGikB6+rcZBqefVy+7hTLQkOD+jwVkp4fkS7/  gr1rAQfn9VUKWc7bvOD7OsXrQQN5KGHbfg==', 'ROLE_ADMIN');
+    
+    /* ... */
+
+{{% remark %}}
+Vous pouvez ajouter temporairement un contrôleur similaire à [celui-ci](https://gist.github.com/bpesquet/501c789f01e5bdeda90d) pour obtenir le hachage d'un mot de passe.
+{{% /remark %}}
+
+Il faut ensuite mettre à jour la configuration de la sécurité pour soumettre l'accès au back-office (zone `/admin`) à la possession du rôle `ROLE_ADMIN`. Voici les modifications à intégrer au fichier `app/app.php`.
+
+    <?php
+
+    // ...
+
+    $app->register(new Silex\Provider\SecurityServiceProvider(), array(
+        'security.firewalls' => array(
+            'secured' => array(
+                'pattern' => '^/',
+                'anonymous' => true,
+                'logout' => true,
+                'form' => array('login_path' => '/login', 'check_path' => '/login_check'),
+                'users' => $app->share(function () use ($app) {
+                    return new MicroCMS\DAO\UserDAO($app['db']);
+                }),
+            ),
+        ),
+        'security.role_hierarchy' => array(
+            'ROLE_ADMIN' => array('ROLE_USER'),
+        ),
+        'security.access_rules' => array(
+            array('^/admin', 'ROLE_ADMIN'),
+        ),
+    ));
+
+    // ...
+
+    // Register error handler
+    use Symfony\Component\HttpFoundation\Response;
+    $app->error(function (\Exception $e, $code) use ($app) {
+        switch ($code) {
+            case 403:
+                $message = 'Access denied.';
+                break;
+            case 404:
+                $message = 'The requested resource could not be found.';
+                break;
+            default:
+                $message = "Something went wrong.";
+        }
+        return $app['twig']->render('error.html.twig', array('message' => $message));
+    });
+
+Comme indiqué plus haut, nous modifions la configuration du pare-feu pour définir une hiérarchie entre `ROLE_ADMIN` et `ROLE_USER`, puis pour protéger spécifiquement la zone `/admin`. Au passage, le gestionnaire d'erreurs renvoie à présent un message spcifique ("Access denied") en cas de tentative d'accès à une zone interdite.
+
+Enfin, il faut signaler visuellement à l'administrateur connecté qu'il a accès au back-office d'administration. Pour cela, ajoutez le code ci-dessous à la ligne 25 du fichier `views/layout.html.twig`.
+
+    {% if app.security.token and is_granted('ROLE_ADMIN') %}
+        <li class="{% if adminMenu is defined %}active{% endif %}"><a href="/admin"><span class="glyphicon glyphicon-cog"></span> Administration</a></li>
+    {% endif %}
+
+A présent, ouvrez l'URL http://microcms et tentez de vous connecter en tant qu'administrateur (admin/@dm1n). Vous devriez obtenir l'affichage d'une nouvelle entrée "Administration" dans le barre de navigation de l'application.
+
+{{% image src="microcms_menu_admin.png" class="centered" %}}
+
+Bien entendu, le clic sur ce menu provoquer une erreur : il nous reste à écrire tout le code d'administration.
+
+## Page d'accueil du back-office
+
+L'accueil du back-office (route `/admin`) doit afficher à l'administrateur l'ensemble des données de l'application. On ajoute pour cela une nouvelle route à la fin du fichier `app/routes.php`.
+
+    // Admin zone
+    $app->get('/admin', function() use ($app) {
+        $articles = $app['dao.article']->findAll();
+        $comments = $app['dao.comment']->findAll();
+        $users = $app['dao.user']->findAll();
+        return $app['twig']->render('admin.html.twig', array(
+            'articles' => $articles,
+            'comments' => $comments,
+            'users' => $users));
+    });
+
+Le contrôleur associé génère la vue `admin.html.twig` en lui fournissant les listes des articles, des commentaires et des utilisateurs. La méthode `findAll` existe déjà dans la classe `ArticleDAO`. Il faut créer les deux autres.
+
+Modifiez le fichier `src/MicroCMS/DAO/CommentDAO.php` pour ajouter la méthode `findAll`comme indiqué ci-dessous.
+
+    /**
+     * Returns a list of all comments, sorted by id.
+     *
+     * @return array A list of all comments.
+     */
+    public function findAll() {
+        $sql = "select * from t_comment order by com_id desc";
+        $result = $this->getDb()->fetchAll($sql);
+        
+        // Convert query result to an array of Comment objects
+        $entities = array();
+        foreach ($result as $row) {
+            $id = $row['com_id'];
+            $entities[$id] = $this->buildDomainObject($row);
+        }
+        return $entities;
+    }
+
+Modifiez le fichier `src/MicroCMS/DAO/UserDAO.php` pour ajouter la méthode `findAll`comme indiqué ci-dessous.
+
+    /**
+     * Returns a list of all users, sorted by role and name.
+     *
+     * @return array A list of all users.
+     */
+    public function findAll() {
+        $sql = "select * from t_user order by usr_role, usr_name";
+        $result = $this->getDb()->fetchAll($sql);
+        
+        // Convert query result to an array of User objects
+        $entities = array();
+        foreach ($result as $row) {
+            $id = $row['usr_id'];
+            $entities[$id] = $this->buildDomainObject($row);
+        }
+        return $entities;
+    }
+
+Modifiez la feuille de style `web/css/microcms.css` pour y ajouter le contenu ci-dessous, destiné à améliorer la présentation de la page d'accueil.
+
+    .adminTable {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+Afin de limiter la taille du contenu des articles dans la page d'accueil du back-office, nous allons utiliser la fonction `truncate` fournie par l'extension `Text` de Twig. Pour cela, modifiez votre fichier `composer.json` comme indiqué ci-dessous.
+
+    {
+        "require": {
+            // ...
+            "twig/extensions": "~1.2"
+        },
+    
+        // ...
+
+Récupérez ce nouveau composant grâce à la commande habituelle :
+
+    $ composer update
+
+Il faut ensuite modifier le fichier de configuration de l'application `app/app.php` pour intégrer la nouvelle extension. Ajoutez les lignes suivantes juste après avoir enregistré `TwigServiceProvider`.
+
+    $app['twig'] = $app->share($app->extend('twig', function($twig, $app) {
+        $twig->addExtension(new Twig_Extensions_Extension_Text());
+        return $twig;
+    }));
+
+Enfin, créez le fichier `views/admin.html.twig` en lui donnant le contenu ci-dessous.
+
+    {% extends "layout.html.twig" %}
+    {% set adminMenu = true %}
+
+    {% block title %}Administration{% endblock %}
+
+    {% block content %}
+    <h2 class="text-center">{{ block('title') }}</h2>
+    {% for flashMessage in app.session.flashbag.get('success') %}
+    <div class="alert alert-success">
+        {{ flashMessage }}
+    </div>
+    {% endfor %}
+    <div class="row">
+        <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+            <ul class="nav nav-tabs nav-justified">
+                <li class="active"><a href="#articles" data-toggle="tab">Articles</a></li>
+                <li><a href="#comments" data-toggle="tab">Comments</a></li>
+                <li><a href="#users" data-toggle="tab">Users</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="tab-content">
+        <div class="tab-pane fade in active adminTable" id="articles">
+            {% if articles %}
+            <div class="table-responsive">
+                <table class="table table-hover table-condensed">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Content</th>
+                            <th></th>  <!-- Actions column -->
+                        </tr>
+                    </thead>
+                    {% for article in articles %}
+                    <tr>
+                        <td><a class="articleTitle" href="/article/{{ article.id }}">{{ article.title }}</a></td>
+                        <td>{{ article.content | truncate(60) }}</td>
+                        <td>
+                            <a href="/admin/article/{{ article.id }}/edit" class="btn btn-info btn-xs" title="Edit"><span class="glyphicon glyphicon-edit"></span></a>
+                            <button type="button" class="btn btn-danger btn-xs" title="Delete" data-toggle="modal" data-target="#articleDialog{{ article.id }}"><span class="glyphicon glyphicon-remove"></span>
+                            </button>
+                            <div class="modal fade" id="articleDialog{{ article.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                            <h4 class="modal-title" id="myModalLabel">Confirmation needed</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            Do you really want to delete this article ?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                            <a href="/admin/article/{{ article.id }}/delete" class="btn btn-danger">Confirm</a>
+                                        </div>
+                                    </div><!-- /.modal-content -->
+                                </div><!-- /.modal-dialog -->
+                            </div><!-- /.modal -->
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            {% else %}
+            <div class="alert alert-warning">No articles found.</div>
+            {% endif %}
+            <a href="/admin/article/add"><button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Add article</button></a>
+        </div>
+        <div class="tab-pane fade adminTable" id="comments">
+            {% if comments %}
+            <div class="table-responsive">
+                <table class="table table-hover table-condensed">
+                    <thead>
+                        <tr>
+                            <th>Article</th>
+                            <th>Author</th>
+                            <th>Content</th>
+                            <th></th>  <!-- Actions column -->
+                        </tr>
+                    </thead>
+                    {% for comment in comments %}
+                    <tr>
+                        <td><a class="articleTitle" href="/article/{{ comment.article.id }}">{{ comment.article.title }}</a></td>
+                        <td>{{ comment.author.username }}</td>
+                        <td>{{ comment.content | truncate(60) }}</td>
+                        <td>
+                            <a href="/admin/comment/{{ comment.id }}/edit" class="btn btn-info btn-xs" title="Edit"><span class="glyphicon glyphicon-edit"></span></a>
+                            <button type="button" class="btn btn-danger btn-xs" title="Delete" data-toggle="modal" data-target="#commentDialog{{ comment.id }}"><span class="glyphicon glyphicon-remove"></span>
+                            </button>
+                            <div class="modal fade" id="commentDialog{{ comment.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                            <h4 class="modal-title" id="myModalLabel">Confirmation needed</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            Do you really want to delete this comment ?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                            <a href="/admin/comment/{{ comment.id }}/delete" class="btn btn-danger">Confirm</a>
+                                        </div>
+                                    </div><!-- /.modal-content -->
+                                </div><!-- /.modal-dialog -->
+                            </div><!-- /.modal -->
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            {% else %}
+            <div class="alert alert-warning">No comments found.</div>
+            {% endif %}
+        </div>
+        <div class="tab-pane fade adminTable" id="users">
+            {% if users %}
+            <div class="table-responsive">
+                <table class="table table-hover table-condensed">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Role</th>
+                            <th></th>  <!-- Actions column -->
+                        </tr>
+                    </thead>
+                    {% for user in users %}
+                    <tr>
+                        <td>{{ user.username }}</a></td>
+                        <td>
+                            {% if user.role == 'ROLE_ADMIN' %}
+                                Admin
+                            {% else %}
+                                User
+                            {% endif %}
+                        </td>
+                        <td>
+                            <a href="/admin/user/{{ user.id }}/edit" class="btn btn-info btn-xs" title="Edit"><span class="glyphicon glyphicon-edit"></span></a>
+                            <button type="button" class="btn btn-danger btn-xs" title="Delete" data-toggle="modal" data-target="#userDialog{{ user.id }}"><span class="glyphicon glyphicon-remove"></span>
+                            </button>
+                            <div class="modal fade" id="userDialog{{ user.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                            <h4 class="modal-title" id="myModalLabel">Confirmation needed</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            Do you really want to delete this user ?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                            <a href="/admin/user/{{ user.id }}/delete" class="btn btn-danger">Confirm</a>
+                                        </div>
+                                    </div><!-- /.modal-content -->
+                                </div><!-- /.modal-dialog -->
+                            </div><!-- /.modal -->
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            {% else %}
+            <div class="alert alert-warning">No users found.</div>
+            {% endif %}
+            <a href="/admin/user/add"><button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Add user</button></a>
+        </div>
+    </div>
+    {% endblock %}
+
+Cette vue comporte beaucoup de code Bootstrap et peut vous paraître complexe si vous connaissez peu ce framework. Elle affiche les données de l'application dans trois onglets Articles, Comments et Users (classe `tab-pane`). Grâce au code JavaScript inclus dans Bootstrap, le clic sur un onglet déclenche l'affichage du contenu de celui-ci. 
+
+A chaque ligne de donnée sont associés deux actions matérialisés par des boutons :
+
+* la modification ("Edit") ;
+* la suppression ("Delete"). Lors du clic sur ce bouton, une [fenêtre modale](http://fr.wikipedia.org/wiki/Fen%C3%AAtre_modale) permet de demander confirmation à l'utilisateur avant de lancer l'opération de suppression.
+
+Pour mieux comprendre le fonctionnement de cette vue, connectez-vous à l'application en tant qu'administrateur puis accédez à la zone d'administration. Vous obtenez l'affichage suivant.
+
+{{% image src="microcms_admin_home.png" class="centered" %}}
+
+Vous pouvez cliquez sur les onglets pour afficher les données associées. Vous pouvez également cliquer sur les boutons rouge "Delete" pour voir apparaître les fenêtres modales de confirmation. Prenez soin d'annuler ensuite l'opération sous peine de déclencher une erreur !
+
+## Gestion des articles
+
+Ajouter un nouvel article nécessite de saisir ses caractéristiques dans un formulaire. En suivant la méthode préconisée par Symfony, on définit ce formulaire dans une classe `ArticleType` créée dans le fichier `src/MicroCMS/Form/Type/ArticleType.php`.
+
+    <?php
+
+    namespace MicroCMS\Form\Type;
+
+    use Symfony\Component\Form\AbstractType;
+    use Symfony\Component\Form\FormBuilderInterface;
+
+    class ArticleType extends AbstractType
+    {
+        public function buildForm(FormBuilderInterface $builder, array $options)
+        {
+            $builder
+                ->add('title')
+                ->add('content', 'textarea');
+        }
+
+        public function getName()
+        {
+            return 'article';
+        }
+    }
+
+Les deux champs du formulaire correspondent aux propriétés d'un article. Ce formulaire est affiché dans la vue `views/article_form.html.twig`. Créez ce fichier avec le contenu suivant.
+
+    {% extends 'layout.html.twig' %}
+    {% set adminMenu = true %}
+
+    {% block title %}{{ title }}{% endblock %}
+
+    {% block content %}
+    <h2 class="text-center">{{ block('title') }}</h2>
+    {% for flashMessage in app.session.flashbag.get('success') %}
+    <div class="alert alert-success">
+        {{ flashMessage }}
+    </div>
+    {% endfor %}
+
+    <div class="well">
+    {{ form_start(articleForm, { 'attr': {'class': 'form-horizontal'} }) }}
+        <div class="form-group">
+            {{ form_label(articleForm.title, NULL, { 'label_attr':  {
+                'class': 'col-sm-4 control-label'
+            }}) }}
+            <div class="col-sm-6">
+                {{ form_errors(articleForm.title) }}
+                {{ form_widget(articleForm.title, { 'attr':  {
+                    'class': 'form-control'
+                }}) }}
+            </div>
+        </div>
+        <div class="form-group">
+            {{ form_label(articleForm.content, NULL, { 'label_attr':  {
+                'class': 'col-sm-4 control-label'
+            }}) }}
+            <div class="col-sm-6">
+                {{ form_errors(articleForm.content) }}
+                {{ form_widget(articleForm.content, { 'attr':  {
+                    'class': 'form-control',
+                    'rows': '8'
+                }}) }}
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-4 col-sm-3">
+                <input type="submit" class="btn btn-primary" value="Save" />
+            </div>
+        </div>
+    {{ form_end(articleForm) }}
+    </div>
+    {% endblock %}
+
+Cette vue affiche les propriétés d'un article, ainsi qu'un bouton de validation.
+
+A présent, modifiez le fichier `src/MicroCMS/DAO/ArticleDAO.php` pour y ajouter les méthodes de sauvegarde et de suppression d'un article, comme indiqué ci-dessous.
+
+    /**
+     * Saves an article into the database.
+     *
+     * @param \MicroCMS\Domain\Article $article The article to save
+     */
+    public function save(Article $article) {
+        $articleData = array(
+            'art_title' => $article->getTitle(),
+            'art_content' => $article->getContent(),
+            );
+
+        if ($article->getId()) {
+            // The article has already been saved : update it
+            $this->getDb()->update('t_article', $articleData, array('art_id' => $article->getId()));
+        } else {
+            // The article has never been saved : insert it
+            $this->getDb()->insert('t_article', $articleData);
+            // Get the id of the newly created article and set it on the entity.
+            $id = $this->getDb()->lastInsertId();
+            $article->setId($id);
+        }
+    }
+
+    /**
+     * Removes an article from the database.
+     *
+     * @param \MicroCMS\Domain\Article $article The article to remove
+     */
+    public function delete($id) {
+        // Delete the article
+        $this->getDb()->delete('t_article', array('art_id' => $id));
+    }
+
+La suppression d'un article entraînant celle de tous ses commentaires, modifiez également le fichier `src/MicroCMS/DAO/CommentDAO.php` pour ajouter la méthode suivante.
+
+    /**
+     * Removes all comments for an article
+     *
+     * @param $articleId The id of the article
+     */
+    public function deleteAllByArticle($articleId) {
+        $this->getDb()->delete('t_comment', array('art_id' => $articleId));
+    }
+
+{{% remark %}}
+On aurait pu obtenir la suppression automatique des commentaires d'un article en utilisant des contraintes SQL `ON DELETE CASCADE`.
+{{% /remark %}}
+
+Il ne reste plus qu'à ajouter dans le fichier `app/routes.php` les routes permettant la création, la modification et la suppresion d'un article. Ajoutez les contrôleurs ci-dessous à la fin de ce fichier.
+
+    // Add a new article
+    $app->match('/admin/article/add', function(Request $request) use ($app) {
+        $article = new Article();
+        $articleForm = $app['form.factory']->create(new ArticleType(), $article);
+        $articleForm->handleRequest($request);
+        if ($articleForm->isValid()) {
+            $app['dao.article']->save($article);
+            $app['session']->getFlashBag()->add('success', 'The article was successfully created.');
+        }
+        return $app['twig']->render('article_form.html.twig', array(
+            'title' => 'New article',
+            'articleForm' => $articleForm->createView()));
+    });
+
+    // Edit an existing article
+    $app->match('/admin/article/{id}/edit', function($id, Request $request) use ($app) {
+        $article = $app['dao.article']->find($id);
+        $articleForm = $app['form.factory']->create(new ArticleType(), $article);
+        $articleForm->handleRequest($request);
+        if ($articleForm->isValid()) {
+            $app['dao.article']->save($article);
+            $app['session']->getFlashBag()->add('success', 'The article was succesfully updated.');
+        }
+        return $app['twig']->render('article_form.html.twig', array(
+            'title' => 'Edit article',
+            'articleForm' => $articleForm->createView()));
+    });
+
+    // Remove an article
+    $app->get('/admin/article/{id}/delete', function($id, Request $request) use ($app) {
+        // Delete all associated comments
+        $app['dao.comment']->deleteAllByArticle($id);
+        // Delete the articles
+        $app['dao.article']->delete($id);
+        $app['session']->getFlashBag()->add('success', 'The article was succesfully removed.');
+        return $app->redirect('/admin');
+    });
+
+Les contrôleurs de création et de modification sont similaires. L'un crée un nouvel article, alors que l'autre la récupère dans la base de données à partir de l'identifiant passé en paramètre dans l'URL. Tous deux utilisent le formulaire `ArticleType` et la vue `article_form.html.twig` définis précédemment.
+
+le contrôleur de suppression détruit l'article passé en paramètre de l'URL après avoir supprimé les commentaires associés. Il redirige ensuite le client vers la page d'accueil du back-office.
+
+Il est temps de tester nos modifications. En tant qu'administrateur, essayez d'ajouter un nouvel article. 
+
+{{% image src="microcms_admin_article_new.png" class="centered" %}}
+
+Vous pouvez ensuite le modifier...
+
+{{% image src="microcms_admin_article_edit.png" class="centered" %}}
+
+Et enfin le supprimer.
+
+{{% image src="microcms_admin_article_delete.png" class="centered" %}}
+
+## Gestion des commentaires
+
+La gestion des commentaires suit le même modèle que celles des articles. Le formulaire `CommentType` existe déjà : nous l'avions créé lors de l'itération 9, pour ajouter un commentaire à un article. Ce formulaire est affiché par la vue existante `views/article.html.twig` et par la nouvelle vue `views/comment_form.html.twig`. 
+
+Créez ce fichier et donnez-lui le contenu suivant.
+
+    {% extends 'layout.html.twig' %}
+    {% set adminMenu = true %}
+
+    {% block title %}{{ title }}{% endblock %}
+
+    {% block content %}
+    <h2 class="text-center">{{ block('title') }}</h2>
+    {% for flashMessage in app.session.flashbag.get('success') %}
+    <div class="alert alert-success">
+        {{ flashMessage }}
+    </div>
+    {% endfor %}
+
+    <div class="well">
+    {{ form_start(commentForm, { 'attr': {'class': 'form-horizontal'} }) }}
+        <div class="form-group">
+            {{ form_label(commentForm.content, NULL, { 'label_attr':  {
+                'class': 'col-sm-4 control-label'
+            }}) }}
+            <div class="col-sm-6">
+                {{ form_errors(commentForm.content) }}
+                {{ form_widget(commentForm.content, { 'attr':  {
+                    'class': 'form-control',
+                    'rows': '4'                
+                }}) }}
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-4 col-sm-3">
+                <input type="submit" class="btn btn-primary" value="Save" />
+            </div>
+        </div>
+    {{ form_end(commentForm) }}
+    </div>
+    {% endblock %}
+
+La méthode de sauvegarde d'un commentaire existe déjà dans la classe `CommentDAO`. Modifiez le fichier `src/MicroCMS/DAO/CommentDAO.php` pour y ajouter la méthode de suppression d'un commentaire, comme indiqué ci-dessous.
+
+    /**
+     * Removes a comment from the database.
+     *
+     * @param \MicroCMS\Domain\Comment $comment The comment to remove
+     */
+    public function delete($id) {
+        // Delete the comment
+        $this->getDb()->delete('t_comment', array('com_id' => $id));
+    }
+
+Enfin, ajoutez les contrôleurs ci-dessous à la fin du fichier `app/routes.php`.
+
+    // Edit an existing comment
+    $app->match('/admin/comment/{id}/edit', function($id, Request $request) use ($app) {
+        $comment = $app['dao.comment']->find($id);
+        $commentForm = $app['form.factory']->create(new CommentType(), $comment);
+        $commentForm->handleRequest($request);
+        if ($commentForm->isValid()) {
+            $app['dao.comment']->save($comment);
+            $app['session']->getFlashBag()->add('success', 'The comment was succesfully updated.');
+        }
+        return $app['twig']->render('comment_form.html.twig', array(
+            'title' => 'Edit comment',
+            'commentForm' => $commentForm->createView()));
+    });
+
+    // Remove a comment
+    $app->get('/admin/comment/{id}/delete', function($id, Request $request) use ($app) {
+        $app['dao.comment']->delete($id);
+        $app['session']->getFlashBag()->add('success', 'The comment was succesfully removed.');
+        return $app->redirect('/admin');
+    });
+
+Vous pouvez à présent tester, en tant qu'administrateur, la modification d'un commentaire.
+
+{{% image src="microcms_admin_comment_edit.png" class="centered" %}}
+
+Vous pouvez également supprimer un commentaire existant.
+
+{{% image src="microcms_admin_comment_delete.png" class="centered" %}}
+
+## Gestion des utilisateurs
+
+Ile ne nous reste plus qu'à implémenter la gestion des utilisateurs pour finaliser le back-office. Commeçons par définir le formulaire associé à un utilisateur dans le fichier `src/MicroCMS/Form/Type/UserType.php`.
+
+    <?php
+
+    namespace MicroCMS\Form\Type;
+
+    use Symfony\Component\Form\AbstractType;
+    use Symfony\Component\Form\FormBuilderInterface;
+
+    class UserType extends AbstractType
+    {
+        public function buildForm(FormBuilderInterface $builder, array $options)
+        {
+            $builder
+                ->add('username')
+                ->add('password', 'repeated', array(
+                    'type'            => 'password',
+                    'invalid_message' => 'The password fields must match.',
+                    'options'         => array('required' => true),
+                    'first_options'   => array('label' => 'Password'),
+                    'second_options'  => array('label' => 'Repeat password'),
+                ))
+                ->add('role', 'choice', array(
+                    'choices' => array('ROLE_ADMIN' => 'Admin', 'ROLE_USER' => 'User')
+                ));
+        }
+
+        public function getName()
+        {
+            return 'user';
+        }
+    }
+
+TODO pwd
+
+Dans ce formulaire, nous définissons le champ `role` sous la forme d'une liste (`choice`). Les deux valeurs possibles sont `ROLE_ADMIN` et `ROLE_USER`. Nous observerons plus loin comment Symfony affiche ce type de champ.
+
+Ce formulaire est utilisé par la vue `views/user_form.html.twig` ci-dessous.
+
+    {% extends 'layout.html.twig' %}
+    {% set adminMenu = true %}
+
+    {% block title %}{{ title }}{% endblock %}
+
+    {% block content %}
+    <h2 class="text-center">{{ block('title') }}</h2>
+    {% for flashMessage in app.session.flashbag.get('success') %}
+    <div class="alert alert-success">
+        {{ flashMessage }}
+    </div>
+    {% endfor %}
+
+    <div class="well">
+    {{ form_start(userForm, { 'attr': {'class': 'form-horizontal'} }) }}
+        <div class="form-group">
+            {{ form_label(userForm.username, NULL, { 'label_attr':  {
+                'class': 'col-sm-5 control-label'
+            }}) }}
+            <div class="col-sm-4">
+                {{ form_errors(userForm.username) }}
+                {{ form_widget(userForm.username, { 'attr':  {
+                    'class': 'form-control'
+                }}) }}
+            </div>
+        </div>
+        <div class="form-group">
+            {{ form_label(userForm.password, NULL, { 'label_attr':  {
+                'class': 'col-sm-5 control-label'
+            }}) }}
+            <div class="col-sm-4">
+                {{ form_errors(userForm.password) }}
+                {{ form_widget(userForm.password, { 'attr':  {
+                    'class': 'form-control'
+                }}) }}
+            </div>
+        </div>
+        <div class="form-group">
+            {{ form_label(userForm.role, NULL, { 'label_attr':  {
+                'class': 'col-sm-5 control-label'
+            }}) }}
+            <div class="col-sm-2">
+                {{ form_errors(userForm.role) }}
+                {{ form_widget(userForm.role, { 'attr':  {
+                    'class': 'form-control'
+                }}) }}
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-5 col-sm-3">
+                <input type="submit" class="btn btn-primary" value="Save" />
+            </div>
+        </div>
+    {{ form_end(userForm) }}
+    </div>
+    {% endblock %}
+
+
+## Bilan
 
 # Conclusion
 
