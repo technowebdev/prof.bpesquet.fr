@@ -174,3 +174,22 @@ Sauf indication contraire, les travaux à réaliser doivent être terminés pour
 
 * Retour sur le PPE1 SI1.
 * Recherche de pare-feux logiciels et matériels (ITE 10.2.3.2).
+
+## Semaine 11 : 24 novembre
+
+**Cours lundi**
+
+* Cours sur la ligne de commande Linux -> chapitre 4 compris.
+* Découverte de Linux Ubuntu partie 2 -> QCM 5.
+* Fin de la recherche de pare-feux.
+
+**TP groupe A** : TP W7 
+
+* Restauration du système (ITE 5.5.1.11).
+* Sauvegarde et restauration de données (ITE 10.3.1.4).
+* Bonus : gestion du menu Démarrer (ITE 5.5.1.2).
+
+**Cours mercredi**
+
+* Quizz sur W7 et Linux.
+* Fin de la recherche de pare-feux. CR à déposer sur le réseau au plus tard lundi 1er à 8h.

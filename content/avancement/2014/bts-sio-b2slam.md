@@ -166,3 +166,15 @@ Pas de TP (férié).
 
 * Retour sur l'itération 10.
 * Projet agile : sprint 1.
+
+## Semaine 11 : 24 novembre
+
+**TP**
+
+* Tutoriel [Développement PHP moderne](/tutoriel/developpement-php-moderne/), itération 11.
+* Projet agile : démo du sprint 1 et début du sprint 2.
+
+**Cours**
+
+* Retour sur l'itération 11.
+* Projet agile : sprint 2.
