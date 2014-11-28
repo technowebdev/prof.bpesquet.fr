@@ -177,4 +177,5 @@ Pas de TP (férié).
 **Cours**
 
 * Retour sur l'itération 11.
-* Projet agile : sprint 2.
+* Démonstration du projet MusicStore.
+* Projet agile : fin des démos du sprint 1 et sprint 2 (choix et analyses des stories).

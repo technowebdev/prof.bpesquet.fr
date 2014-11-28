@@ -2650,7 +2650,7 @@ A présent, modifiez le fichier `app/app.php` en ajoutant les lignes ci-dessous 
         'monolog.name' => 'MicroCMS',
         'monolog.level' => $app['monolog.level']
     ));
-    $app->register(new Silex\Provider\ServiceControllerServiceProvider());
+    $app->register(new Silex\Provider\ServiceControllererviceProvider());
     if (isset($app['debug']) and $app['debug']) {
         $app->register(new Silex\Provider\WebProfilerServiceProvider(), array(
             'profiler.cache_dir' => __DIR__.'/../var/cache/profiler'
@@ -3742,6 +3742,609 @@ Le code source associé à cette itération est disponible sur une [branche du d
 
 Cette longue itération nous a permis d'intégrer à l'application des fonctionnalités d'administration. Les utilisateurs disposant du rôle d'administrateur peuvent à présent ajouter, modifier et supprimer des données dans la base. Pour cela, nous avons exploité les possibilités du framework Bootstrap pour obtenir un affichage moderne. Nous avons également découvert certaines fonctionnalités de Symfony en matière de sécurité (gestion des rôles) et de validation des formulaires (comparaison des mots de passe).
 
+# Itération 12 : API JSON et réorganisation des contrôleurs
+
+Le but de cette itération est d'intégrer à l'application une [API](http://fr.wikipedia.org/wiki/Interface_de_programmation) utilisant le format [JSON](http://fr.wikipedia.org/wiki/JavaScript_Object_Notation).
+
+## Ajout d'une API JSON
+
+### Fonctionnalités de l'API
+
+Une API (*Application Programming Interface*) est une interface offerte par une application à destination d'autres applications. Une API offerte via le protocole HTTP(S) est appelée un service Web. Ces dernières années, le format JSON (*JavaScript Object Notation*) s'est imposé comme un standard pour les échanges de données entre applications via des services Web.
+
+Nous allons ajout à notre application une API offrant les fonctionnalités suivantes :
+
+* consultation de la liste des articles ;
+* consultation d'un article à partir de son identifiant ;
+* ajout d'un nouvel article ;
+* suppression d'un article.
+
+### Création de l'API de consultation
+
+Notre application offre déjà, via les classes DAO, les services d'accès aux données nécessaires. Il ne nous reste qu'à exposer ces services via JSON. Pour cela, ajoutez les lignes ci-dessous à la fin du fichier `app/routes.php`.
+
+    // API : get all articles
+    $app->get('/api/articles', function() use ($app) {
+        $articles = $app['dao.article']->findAll();
+        // Convert an array of objects ($articles) into an array of associative arrays ($responseData)
+        $responseData = array();
+        foreach ($articles as $article) {
+            $responseData[] = array(
+                'id' => $article->getId(),
+                'title' => $article->getTitle(),
+                'content' => $article->getContent()
+                );
+        }
+        // Create and return a JSON response
+        return $app->json($responseData);
+    });
+
+    // API : get an article
+    $app->get('/api/article/{id}', function($id) use ($app) {
+        $article = $app['dao.article']->find($id);
+        // Convert an object ($article) into an associative array ($responseData)
+        $responseData = array(
+            'id' => $article->getId(),
+            'title' => $article->getTitle(),
+            'content' => $article->getContent()
+            );
+        // Create and return a JSON response
+        return $app->json($responseData);
+    });
+
+On définit ici les contrôleurs associés aux routes `/api/articles` et `/api/article/{id}`. Ces deux contrôleurs fonctionnent de manière similaire : ils utilisent le service d'accès aux articles pour récupérer les données nécessaires, puis convertissent ces données sous forme de tableaux associatifs champs/valeurs. Enfin, ils utilisent la méthode `$app->json` pour renvoyer la réponse JSON.
+
+Essayons sans tarder de vérifier si notre API fonctionne. Pour cela, il suffit d'envoyer une requête HTTP vers l'URL http://microcms/api/articles puis d'examiner la réponse reçue.
+
+{{% image src="microcms_api_firefox.png" class="centered" %}}
+
+Nous constatons que les données sont bien renvoyées. Pour obtenir une meilleure présentation du résultat, il est possible d'installer une extension de navigateur comme par exemple [RESTClient](https://addons.mozilla.org/fr/firefox/addon/restclient/) pour Mozilla Firefox.
+
+Une fois cette extension installée, on peut l'utiliser pour envoyer une requête HTTP GET vers http://microcms/api/articles puis analyser en détail le résultat.
+
+{{% image src="microcms_api_restclient_1.png" class="centered" %}}
+
+{{% image src="microcms_api_restclient_2.png" class="centered" %}}
+
+On vérifie bien que la réponse du serveur est au format JSON et contient les données attendues.
+
+### Création de l'API de modification
+
+Pour créer l'API de modification, ajoutez les lignes suivantes à la fin du fichier `app/routes.php`.
+
+    $app->post('/api/article', function(Request $request) use ($app) {
+        // Check request parameters
+        if (!$request->request->has('title')) {
+            return $app->json('Missing required parameter: title', 400);
+        }
+        if (!$request->request->has('content')) {
+            return $app->json('Missing required parameter: content', 400);
+        }
+        // Build and save the new article
+        $article = new Article();
+        $article->setTitle($request->request->get('title'));
+        $article->setContent($request->request->get('content'));
+        $app['dao.article']->save($article);
+        // Convert an object ($article) into an associative array ($responseData)
+        $responseData = array(
+            'id' => $article->getId(),
+            'title' => $article->getTitle(),
+            'content' => $article->getContent()
+            );
+        return $app->json($responseData, 201);  // 201 = Created
+    });
+
+    $app->delete('/api/article/{id}', function ($id, Request $request) use ($app) {
+        $app['dao.article']->delete($id);
+        return $app->json('No Content', 204);
+    });
+
+Le premier contrôleur répond à une requête HTTP POST vers `/api/article`. Il construit un nouvel objet de la classe Article à partir des champs `title` et `content` extraits de la requête HTTP. Le nouvel article est sauvegardé dans la base de données puis renvoyé comme résultat JSON de la requête.
+
+La second contrôleur répond à une requête HTTP DELETE vers `/api/article/{id}`. Il supprime l'article associé par l'identifiant présent dans l'URL de la requête puis renvoie une réponse indiquant que l'article n'existe plus.
+
+Pour pouvoir créer un nouvel article en utilisant la nouvelle API de création, il faut envoyer une requête HTTP POST contenant les données de l'article (titre et contenu) au format JSON : 
+
+    { 
+        "title": "Another article", 
+        "content": "This article was created using the JSON API. How cool is that?"
+    }
+
+Ajoutez les lignes ci-dessous à la fin du fichier `app/app.php`.
+
+    // Register JSON data decoder for JSON requests
+    use Symfony\Component\HttpFoundation\Request;
+    $app->before(function (Request $request) {
+        if (0 === strpos($request->headers->get('Content-Type'), 'application/json')) {
+            $data = json_decode($request->getContent(), true);
+            $request->request->replace(is_array($data) ? $data : array());
+        }
+    });
+
+Ce code intercepte toutes les requêtes reçues et, si son contenu est au format JSON, décode ce contenu et la définit comme paramètres de la requête. Ainsi, les méthodes `$request->request->get` permettront d'accéder aux données JSON.
+
+Il est temps de tester notre nouvelle API. Avant d'envoyer des requêtes avec RESTClient, il faut paramétrer l'extension pour définir `application/json` comme format des données envoyées. Pour cela, allez dans le menu **Headers** et choisissez l'option **Custom Header**.
+
+{{% img microcms_api_customheader.png %}}
+
+Ensuite, envoyez vers http://microcms.api/article une requête HTTP POST dont le corps correspond au contenu JSON défini plus haut. 
+
+{{% image src="microcms_api_restclient_3.png" class="centered" %}}
+
+Le serveur renvoie une réponse avec le code HTTP **201**, indiquant le succès de la création. Le corps de la réponse contient les données du nouvel article : son identifiant (4) a été défini au moment de l'insertion dans la base de données.
+
+On peut vérifier en accédant à http://microcms avec un navigateur que le nouvel article est présent.
+
+{{% image src="microcms_api_create.png" class="centered" %}}
+
+Enfin, vérifions que notre API de suppression fonctionne en envoyant la requête HTTP DELETE vers http://microcms/api/article/4. 
+
+{{% image src="microcms_api_restclient_delete.png" class="centered" %}}
+
+Le code **204** de la réponse HTTP indique que l'élément en question n'existe plus. On le vérifie également en accédant à http://microcms.
+
+{{% image src="microcms_api_delete.png" class="centered" %}}
+
+Enfin, il faut penser à mettre à jour nos tests fonctionnels pour ajouter les URL `/api/articles`  et `/api/article/1` permettant de tester nos API de consultation. Voici la nouvelle définition de la méthode `provideUrls` de la classe `AppTest`, située dans le fichier `tests/MicroCMS/Tests/AppTest.php`.
+
+    /**
+     * Provides all valid application URLs.
+     *
+     * @return array The list of all valid application URLs.
+     */
+    public function provideUrls()
+    {
+        return array(
+            array('/'),
+            array('/article/1'),
+            array('/login'),
+            array('/admin'),
+            array('/admin/article/add'),
+            array('/admin/article/1/edit'),
+            array('/admin/comment/1/edit'),
+            array('/admin/user/add'),
+            array('/admin/user/1/edit'),
+            array('/api/articles'),
+            array('/api/article/1'),
+            ); 
+    }
+
+L'exécution des tests nous prouve que l'application fonctionne toujours correctement.
+
+{{% image src="microcms_api_apptest.png" class="centered" %}}
+
+## Réorganisation des contrôleurs
+
+Jusqu'à présent, nous avons centralisé la définition de tous les contrôleurs dans le fichier `app/routes.php`. Cette organisation a le mérite de la simplicité mais commence à montrer ses limites. Chaque nouvelle route fait augmenter la taille de ce fichier, jusqu'à rendre sa lecture difficile. Il est temps de réorganiser nos contrôleurs d'une manière plus lisible et plus logique. Ils vont devenir des méthodes définies dans des classes.
+
+Créez le répertoire `src/MicroCMS/Controller`, puis le fichier `HomeController.php` dans le cépertoire créé. Donnez à ce fichier le contenu suivant.
+
+    <?php
+
+    namespace MicroCMS\Controller;
+
+    use Silex\Application;
+    use Symfony\Component\HttpFoundation\Request;
+    use MicroCMS\Domain\Comment;
+    use MicroCMS\Form\Type\CommentType;
+
+    class HomeController {
+
+        /**
+         * Home page controller.
+         *
+         * @param Application $app Silex application
+         */
+        public function indexAction(Application $app) {
+            $articles = $app['dao.article']->findAll();
+            return $app['twig']->render('index.html.twig', array('articles' => $articles));
+        }
+
+        /**
+         * Article details controller.
+         *
+         * @param integer $id Article id
+         * @param Request $request Incoming request
+         * @param Application $app Silex application
+         */
+        public function articleAction($id, Request $request, Application $app) {
+            $article = $app['dao.article']->find($id);
+            $user = $app['security']->getToken()->getUser();
+            $commentFormView = NULL;
+            if ($app['security']->isGranted('IS_AUTHENTICATED_FULLY')) {
+                // A user is fully authenticated : he can add comments
+                $comment = new Comment();
+                $comment->setArticle($article);
+                $comment->setAuthor($user);
+                $commentForm = $app['form.factory']->create(new CommentType(), $comment);
+                $commentForm->handleRequest($request);
+                if ($commentForm->isValid()) {
+                    $app['dao.comment']->save($comment);
+                    $app['session']->getFlashBag()->add('success', 'Your comment was succesfully added.');
+                }
+                $commentFormView = $commentForm->createView();
+            }
+            $comments = $app['dao.comment']->findAllByArticle($id);
+            return $app['twig']->render('article.html.twig', array(
+                'article' => $article, 
+                'comments' => $comments,
+                'commentForm' => $commentFormView));
+        }
+
+        /**
+         * User login controller.
+         *
+         * @param Request $request Incoming request
+         * @param Application $app Silex application
+         */
+        public function loginAction(Request $request, Application $app) {
+            return $app['twig']->render('login.html.twig', array(
+                'error'         => $app['security.last_error']($request),
+                'last_username' => $app['session']->get('_security.last_username'),
+                ));
+        }
+    }
+
+Nous avons simplement déplacé dans les méthodes `indexAction`, `articleAction` et `loginAction` le code des contrôleurs des routes `/`, `/article/{id}` et `/login`.
+
+{{% remark %}}
+Vous aurez remarqué que toutes nos méthodes contrôleurs se terminent par `action`. C'est une convention que l'on retrouve chez Symfony et dans d'autres frameworks.
+{{% /remark %}}
+
+Dans le répertoire `src/MicroCMS/Controller`, créez le fichier `AdminController.php` avec le contenu suivant.
+
+    <?php
+
+    namespace MicroCMS\Controller;
+
+    use Silex\Application;
+    use Symfony\Component\HttpFoundation\Request;
+    use MicroCMS\Domain\Article;
+    use MicroCMS\Domain\Comment;
+    use MicroCMS\Domain\User;
+    use MicroCMS\Form\Type\ArticleType;
+    use MicroCMS\Form\Type\CommentType;
+    use MicroCMS\Form\Type\UserType;
+
+    class AdminController {
+
+        /**
+         * Admin home page controller.
+         *
+         * @param Application $app Silex application
+         */
+        public function indexAction(Application $app) {
+            $articles = $app['dao.article']->findAll();
+            $comments = $app['dao.comment']->findAll();
+            $users = $app['dao.user']->findAll();
+            return $app['twig']->render('admin.html.twig', array(
+                'articles' => $articles,
+                'comments' => $comments,
+                'users' => $users));
+        }
+
+        /**
+         * Add article controller.
+         *
+         * @param Request $request Incoming request
+         * @param Application $app Silex application
+         */
+        public function addArticleAction(Request $request, Application $app) {
+            $article = new Article();
+            $articleForm = $app['form.factory']->create(new ArticleType(), $article);
+            $articleForm->handleRequest($request);
+            if ($articleForm->isValid()) {
+                $app['dao.article']->save($article);
+                $app['session']->getFlashBag()->add('success', 'The article was successfully created.');
+            }
+            return $app['twig']->render('article_form.html.twig', array(
+                'title' => 'New article',
+                'articleForm' => $articleForm->createView()));
+        }
+
+        /**
+         * Edit article controller.
+         *
+         * @param integer $id Article id
+         * @param Request $request Incoming request
+         * @param Application $app Silex application
+         */
+        public function editArticleAction($id, Request $request, Application $app) {
+            $article = $app['dao.article']->find($id);
+            $articleForm = $app['form.factory']->create(new ArticleType(), $article);
+            $articleForm->handleRequest($request);
+            if ($articleForm->isValid()) {
+                $app['dao.article']->save($article);
+                $app['session']->getFlashBag()->add('success', 'The article was succesfully updated.');
+            }
+            return $app['twig']->render('article_form.html.twig', array(
+                'title' => 'Edit article',
+                'articleForm' => $articleForm->createView()));
+        }
+
+        /**
+         * Delete article controller.
+         *
+         * @param integer $id Article id
+         * @param Request $request Incoming request
+         * @param Application $app Silex application
+         */
+        public function deleteArticleAction($id, Request $request, Application $app) {
+            // Delete all associated comments
+            $app['dao.comment']->deleteAllByArticle($id);
+            // Delete the article
+            $app['dao.article']->delete($id);
+            $app['session']->getFlashBag()->add('success', 'The article was succesfully removed.');
+            return $app->redirect('/admin');
+        }
+
+        /**
+         * Edit comment controller.
+         *
+         * @param integer $id Comment id
+         * @param Request $request Incoming request
+         * @param Application $app Silex application
+         */
+        public function editCommentAction($id, Request $request, Application $app) {
+            $comment = $app['dao.comment']->find($id);
+            $commentForm = $app['form.factory']->create(new CommentType(), $comment);
+            $commentForm->handleRequest($request);
+            if ($commentForm->isValid()) {
+                $app['dao.comment']->save($comment);
+                $app['session']->getFlashBag()->add('success', 'The comment was succesfully updated.');
+            }
+            return $app['twig']->render('comment_form.html.twig', array(
+                'title' => 'Edit comment',
+                'commentForm' => $commentForm->createView()));
+        }
+
+        /**
+         * Delete comment controller.
+         *
+         * @param integer $id Comment id
+         * @param Request $request Incoming request
+         * @param Application $app Silex application
+         */
+        public function deleteCommentAction($id, Request $request, Application $app) {
+            $app['dao.comment']->delete($id);
+            $app['session']->getFlashBag()->add('success', 'The comment was succesfully removed.');
+            return $app->redirect('/admin');
+        }
+
+        /**
+         * Add user controller.
+         *
+         * @param Request $request Incoming request
+         * @param Application $app Silex application
+         */
+        public function addUserAction(Request $request, Application $app) {
+            $user = new User();
+            $userForm = $app['form.factory']->create(new UserType(), $user);
+            $userForm->handleRequest($request);
+            if ($userForm->isValid()) {
+                $salt = substr(md5(time()), 0, 23);
+                $user->setSalt($salt);
+                $plainPassword = $user->getPassword();
+                // find the default encoder
+                $encoder = $app['security.encoder.digest'];
+                // compute the encoded password
+                $password = $encoder->encodePassword($plainPassword, $user->getSalt());
+                $user->setPassword($password); 
+                $app['dao.user']->save($user);
+                $app['session']->getFlashBag()->add('success', 'The user was successfully created.');
+            }
+            return $app['twig']->render('user_form.html.twig', array(
+                'title' => 'New user',
+                'userForm' => $userForm->createView()));
+        }
+
+        /**
+         * Edit user controller.
+         *
+         * @param integer $id User id
+         * @param Request $request Incoming request
+         * @param Application $app Silex application
+         */
+        public function editUserAction($id, Request $request, Application $app) {
+            $user = $app['dao.user']->find($id);
+            $userForm = $app['form.factory']->create(new UserType(), $user);
+            $userForm->handleRequest($request);
+            if ($userForm->isValid()) {
+                $plainPassword = $user->getPassword();
+                // find the encoder for the user
+                $encoder = $app['security.encoder_factory']->getEncoder($user);
+                // compute the encoded password
+                $password = $encoder->encodePassword($plainPassword, $user->getSalt());
+                $user->setPassword($password); 
+                $app['dao.user']->save($user);
+                $app['session']->getFlashBag()->add('success', 'The user was succesfully updated.');
+            }
+            return $app['twig']->render('user_form.html.twig', array(
+                'title' => 'Edit user',
+                'userForm' => $userForm->createView()));
+        }
+
+        /**
+         * Delete user controller.
+         *
+         * @param integer $id User id
+         * @param Request $request Incoming request
+         * @param Application $app Silex application
+         */
+        public function deleteUserAction($id, Request $request, Application $app) {
+            // Delete all associated comments
+            $app['dao.comment']->deleteAllByUser($id);
+            // Delete the user
+            $app['dao.user']->delete($id);
+            $app['session']->getFlashBag()->add('success', 'The user was succesfully removed.');
+            return $app->redirect('/admin');
+        }
+    }
+
+Comme son nom l'indique, cette classe centralise tous les contrôleurs d'administration.
+
+Dans le répertoire `src/MicroCMS/Controller`, créez le fichier `ApiController.php` avec le contenu suivant.
+
+    <?php
+
+    namespace MicroCMS\Controller;
+
+    use Silex\Application;
+    use Symfony\Component\HttpFoundation\Request;
+    use MicroCMS\Domain\Article;
+
+    class ApiController {
+        
+        /**
+         * API articles controller.
+         *
+         * @param Application $app Silex application
+         *
+         * @return All articles in JSON format
+         */
+        public function getArticlesAction(Application $app) {
+            $articles = $app['dao.article']->findAll();
+            // Convert an array of objects ($articles) into an array of associative arrays ($responseData)
+            $responseData = array();
+            foreach ($articles as $article) {
+                $responseData[] = $this->buildArticleArray($article);
+            }
+            return $app->json($responseData);
+        }
+
+        /**
+         * API article details controller.
+         *
+         * @param integer $id Article id
+         * @param Application $app Silex application
+         *
+         * @return Article details in JSON format
+         */
+        public function getArticleAction($id, Application $app) {
+            $article = $app['dao.article']->find($id);
+            $responseData = $this->buildArticleArray($article);
+            return $app->json($responseData);
+        }
+
+        /**
+         * API create article controller.
+         *
+         * @param Request $request Incoming request
+         * @param Application $app Silex application
+         *
+         * @return Article details in JSON format
+         */
+        public function addArticleAction(Request $request, Application $app) {
+            // Check request parameters
+            if (!$request->request->has('title')) {
+                return $app->json('Missing required parameter: title', 400);
+            }
+            if (!$request->request->has('content')) {
+                return $app->json('Missing required parameter: content', 400);
+            }
+            // Build and save the new article
+            $article = new Article();
+            $article->setTitle($request->request->get('title'));
+            $article->setContent($request->request->get('content'));
+            $app['dao.article']->save($article);
+            $responseData = $this->buildArticleArray($article);
+            return $app->json($responseData, 201);  // 201 = Created
+        }
+
+        /**
+         * API delete article controller.
+         *
+         * @param integer $id Article id
+         * @param Application $app Silex application
+         */
+        public function deleteArticleAction($id, Application $app) {
+            $app['dao.article']->delete($id);
+            return $app->json('No Content', 204);
+        }
+
+        /**
+         * Converts an Article object into an associative array for JSON encoding
+         *
+         * @param Article $article Article object
+         *
+         * @return array Associative array whose fields are the article properties.
+         */
+        private function buildArticleArray(Article $article) {
+            $data  = array(
+                'id' => $article->getId(),
+                'title' => $article->getTitle(),
+                'content' => $article->getContent()
+                );
+            return $data;
+        }
+    }
+
+Nous déplaçons dans ce fichier les contrôleurs de nos API. Au passage, l'ajout de la méthode `buildArticleArray` permet d'éliminer la duplication de code entre les contrôleurs.
+
+{{% remark %}}
+Nous aurions pu aller encore plus loin dans la refactorisation en définissant nos contrôleurs en tant que [services](http://silex.sensiolabs.org/doc/providers/service_controller.html).
+{{% /remark %}}
+
+Pour terminer, le fichier `app/routes.php` est profondément simplifié puisqu'il suffit à présent d'associer à chaque route la méthode appropriée des classes contrôleurs. Voici maintenant le contenu de ce fichier.
+
+    <?php
+
+    // Home page
+    $app->get('/', "MicroCMS\Controller\HomeController::indexAction");
+
+    // Detailed info about an article
+    $app->match('/article/{id}', "MicroCMS\Controller\HomeController::articleAction");
+
+    // Login form
+    $app->get('/login', "MicroCMS\Controller\HomeController::loginAction")
+    ->bind('login');  // named route so that path('login') works in Twig templates
+
+    // Admin zone
+    $app->get('/admin', "MicroCMS\Controller\AdminController::indexAction");
+
+    // Add a new article
+    $app->match('/admin/article/add', "MicroCMS\Controller\AdminController::addArticleAction");
+
+    // Edit an existing article
+    $app->match('/admin/article/{id}/edit', "MicroCMS\Controller\AdminController::editArticleAction");
+
+    // Remove an article
+    $app->get('/admin/article/{id}/delete', "MicroCMS\Controller\AdminController::deleteArticleAction");
+
+    // Edit an existing comment
+    $app->match('/admin/comment/{id}/edit', "MicroCMS\Controller\AdminController::editCommentAction");
+
+    // Remove a comment
+    $app->get('/admin/comment/{id}/delete', "MicroCMS\Controller\AdminController::deleteCommentAction");
+
+    // Add a user
+    $app->match('/admin/user/add', "MicroCMS\Controller\AdminController::addUserAction");
+
+    // Edit an existing user
+    $app->match('/admin/user/{id}/edit', "MicroCMS\Controller\AdminController::editUserAction");
+
+    // Remove a user
+    $app->get('/admin/user/{id}/delete', "MicroCMS\Controller\AdminController::deleteUserAction");
+
+    // API : get all articles
+    $app->get('/api/articles', "MicroCMS\Controller\ApiController::getArticlesAction");
+
+    // API : get an article
+    $app->get('/api/article/{id}', "MicroCMS\Controller\ApiController::getArticleAction");
+
+    // API : create an article
+    $app->post('/api/article', "MicroCMS\Controller\ApiController::addArticleAction");
+
+    // API : remove an article
+    $app->delete('/api/article/{id}', "MicroCMS\Controller\ApiController::deleteArticleAction");
+
+
+Encore une fois, l'exécution des tests fonctionnels prouve que la refactorisation des contrôleurs n'a pas perturbé le fonctionnement de l'application.
+
+{{% image src="microcms_api_apptest.png" class="centered" %}}
+
+Le code source associé à cette itération est disponible sur une [branche du dépôt GitHub](https://github.com/bpesquet/MicroCMS/tree/iteration-12).
+
 # Conclusion
 
 Notre application Web d'exemple était au départ une simple page écrite en PHP classique. A présent, elle dispose d'une architecture avancée dont on peut rappeler les principales caractéristiques :
@@ -3756,7 +4359,8 @@ Notre application Web d'exemple était au départ une simple page écrite en PHP
 * tests fonctionnels automatisés.
 * journalisation et gestion des erreurs.
 * back-office d'administration complet.
+* API utilisant le format JSON.
 
-D'autres fonctionnalités comme la modélisation orientée objet des contrôleurs ou encore l'internationalisation pourraient être ajoutées en exploitant les possibilités de Silex. A vous de jouer !
+D'autres fonctionnalités comme la validation poussée des formulaires ou encore l'internationalisation pourraient être ajoutées en exploitant les possibilités de Silex. A vous de jouer !
 
 Ainsi se termine ce tutoriel qui vous aura, je l'espère, aidé à progresser en PHP.
