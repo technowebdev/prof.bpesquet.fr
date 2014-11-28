@@ -2058,7 +2058,7 @@ Dans la partie Vue, il faut tout d'abord créer la vue `login.html.twig` associ�
     </div>
     {% endblock %}
 
-Comme toutes nos vues, elle hérite de `layout.html.twig` afin d'intégrer les éléments d'interface communs (barre de navigation, pied de page, etc). Elle définit un formulaire (balise `<form>`) contenant les champs `_username` et `_password pour saisir le login et le mot de passe de l'utilisateur. L'action associée à ce formulaire utilise la fonction `path` (fournie par le composant `twig-bridge`) pour récupérer le chemin d'authentification défini lors du paramétrage du pare-feu. Le nom de ce chemin provient de la valeur du paramètre `check_path` : les `/` sont remplacés par des `_` et le `/` initial est supprimé.
+Comme toutes nos vues, elle hérite de `layout.html.twig` afin d'intégrer les éléments d'interface communs (barre de navigation, pied de page, etc). Elle définit un formulaire (balise `<form>`) contenant les champs `_username` et `_password` pour saisir le login et le mot de passe de l'utilisateur. L'action associée à ce formulaire utilise la fonction `path` (fournie par le composant `twig-bridge`) pour récupérer le chemin d'authentification défini lors du paramétrage du pare-feu. Le nom de ce chemin provient de la valeur du paramètre `check_path` : les `/` sont remplacés par des `_` et le `/` initial est supprimé.
 
 Ensuite, on modifie la vue `article.html.twig` pour obtenir un affichage adapté à la présence d'un utilisateur connecté.
 
@@ -2822,7 +2822,7 @@ Commençons par ajouter un administrateur à l'application en modifiant le fichi
     
     /* raw password is '@dm1n' */
     insert into t_user(usr_name, usr_salt, usr_password, usr_role) values
-    ('admin', 'EDDsl&fBCJB|a5XUtAlnQN8', 'gqeuP4YJ8hU3ZqGwGikB6+rcZBqefVy+7hTLQkOD+jwVkp4fkS7/  gr1rAQfn9VUKWc7bvOD7OsXrQQN5KGHbfg==', 'ROLE_ADMIN');
+    ('admin', 'EDDsl&fBCJB|a5XUtAlnQN8', 'gqeuP4YJ8hU3ZqGwGikB6+rcZBqefVy+7hTLQkOD+jwVkp4fkS7/gr1rAQfn9VUKWc7bvOD7OsXrQQN5KGHbfg==', 'ROLE_ADMIN');
     
     /* ... */
 
@@ -2952,12 +2952,16 @@ Modifiez la feuille de style `web/css/microcms.css` pour y ajouter le contenu ci
         margin-bottom: 20px;
     }
 
-Afin de limiter la taille du contenu des articles dans la page d'accueil du back-office, nous allons utiliser la fonction `truncate` fournie par l'extension `Text` de Twig. Pour cela, modifiez votre fichier `composer.json` comme indiqué ci-dessous.
+Afin de limiter la taille du contenu des articles dans la page d'accueil du back-office, nous allons utiliser la fonction `truncate` fournie par l'extension `Text` de Twig. Nous intégrons également les composants Symfony nécessaires pour valider des formulaires.
+
+Pour cela, modifiez votre fichier `composer.json` comme indiqué ci-dessous.
 
     {
         "require": {
             // ...
-            "twig/extensions": "~1.2"
+            "twig/extensions": "~1.2",
+            "symfony/validator": "~2.4",
+            "symfony/config": "~2.4"
         },
     
         // ...
@@ -2966,12 +2970,13 @@ Récupérez ce nouveau composant grâce à la commande habituelle :
 
     $ composer update
 
-Il faut ensuite modifier le fichier de configuration de l'application `app/app.php` pour intégrer la nouvelle extension. Ajoutez les lignes suivantes juste après avoir enregistré `TwigServiceProvider`.
+Il faut ensuite modifier le fichier de configuration de l'application `app/app.php` pour intégrer la nouvelle extension et les nouveaux composants. Ajoutez les lignes suivantes juste après avoir enregistré `TwigServiceProvider`.
 
     $app['twig'] = $app->share($app->extend('twig', function($twig, $app) {
         $twig->addExtension(new Twig_Extensions_Extension_Text());
         return $twig;
     }));
+    $app->register(new Silex\Provider\ValidatorServiceProvider());
 
 Enfin, créez le fichier `views/admin.html.twig` en lui donnant le contenu ci-dessous.
 
@@ -3478,7 +3483,11 @@ Ile ne nous reste plus qu'à implémenter la gestion des utilisateurs pour final
         }
     }
 
-Dans la plupart des applications Web, les mots de passe des utilisateurs sont entrés deux fois pour éviter les erreurs de saisie. Symfony supporte cette fonctionnalité : le type `repeated` permet de faire saisir un champ deux fois et effectue automatiquement la comparaison des deux valeurs. Le message défini par `invalid_message` apparaîtra si les deux valeurs sont différentes. Nous définissons le champ `role` sous la forme d'une liste (`choice`). Les deux valeurs possibles sont `ROLE_ADMIN` et `ROLE_USER`. Nous observerons plus loin comment Symfony affiche ce type de champ.
+Dans la plupart des applications Web, les mots de passe des utilisateurs sont entrés deux fois pour éviter les erreurs de saisie. Symfony supporte cette fonctionnalité : le type `repeated` permet de faire saisir un champ deux fois et effectue automatiquement la comparaison des deux valeurs. Le message défini par `invalid_message` apparaîtra si les deux valeurs sont différentes. Nous définissons le champ `role` sous la forme d'une liste (`choice`). Les deux valeurs possibles sont `ROLE_ADMIN` et `ROLE_USER`. Nous observerons plus loin comment Symfony affiche et valide ce type de champ.
+
+{{% remark %}}
+Le type de champ `repeated` implique l'utilisation du composant Symfony `validator` que nous avons intégré à l'application précédemment.
+{{% /remark %}}
 
 Ce formulaire est utilisé par la vue `views/user_form.html.twig` ci-dessous.
 
