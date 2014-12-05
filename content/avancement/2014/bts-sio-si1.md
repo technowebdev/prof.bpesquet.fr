@@ -193,3 +193,13 @@ Sauf indication contraire, les travaux à réaliser doivent être terminés pour
 
 * Quizz sur W7 et Linux.
 * Fin de la recherche de pare-feux. CR à déposer sur le réseau au plus tard lundi 1er à 8h.
+
+## Semaine 12 : 1er décembre
+
+**Cours lundi**
+
+* Cours sur la ligne de commande Linux -> fin.
+* Découverte de Linux Ubuntu partie 2 -> QCM 5 et 6.
+
+**TP groupe B** : cf semaine précédente.
+

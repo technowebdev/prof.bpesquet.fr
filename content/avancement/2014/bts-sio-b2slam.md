@@ -179,3 +179,12 @@ Pas de TP (férié).
 * Retour sur l'itération 11.
 * Démonstration du projet MusicStore.
 * Projet agile : fin des démos du sprint 1 et sprint 2 (choix et analyses des stories).
+
+## Semaine 12 : 1er décembre
+
+**TP**
+
+* Tutoriel [Développement PHP moderne](/tutoriel/developpement-php-moderne/), itération 12.
+* Projet agile : sprint 2.
+
+**Cours** : TPDS 2 (itération 12 non comprise).
