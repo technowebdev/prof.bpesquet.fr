@@ -1573,13 +1573,13 @@ L'autorisation se base sur l'attribution de **rôles** aux utilisateurs reconnus
 
 La forme la plus courante d'authentification, celle que nous allons adopter, consiste à attribuer à chaque utilisateur un login et un mot de passe. Ces identifiants (*credentials*) permettent à l'application de reconnaître l'utilisateur.
 
-Comme l'actualité nous le rappelle souvent, la gestion des mots de passe revêt une importante critique. Il est essentiel qu'une application Web stocke et manipule ses mots de passe sous forme cryptée et non directement "en clair". Les mots de passe de nos utilisateurs seront donc stockés après application d'un [algorithme de hachage cryptographique](http://fr.wikipedia.org/wiki/Fonction_de_hachage) (*digest*). Par exemple, le mot `Baptiste` donne le résultat `04ce34a463c52d41c4d0c04c9afd0abe` après application de l'algorithme de hachage [MD5](http://fr.wikipedia.org/wiki/MD5). Le résultat d'un eopération de hachage est appelée empreinte.
+Comme l'actualité nous le rappelle souvent, la gestion des mots de passe revêt une importante critique. Il est essentiel qu'une application Web stocke et manipule ses mots de passe sous forme cryptée et non directement "en clair". Les mots de passe de nos utilisateurs seront donc stockés après application d'un [algorithme de hachage cryptographique](http://fr.wikipedia.org/wiki/Fonction_de_hachage) (*digest*). Par exemple, le mot `Baptiste` donne le résultat `04ce34a463c52d41c4d0c04c9afd0abe` après application de l'algorithme de hachage [MD5](http://fr.wikipedia.org/wiki/MD5). Le résultat d'une opération de hachage est appelée empreinte.
 
 {{% image src="Hash_function_fr.svg.png" class="centered" %}}
 
 Les algorithmes de hachage ont la particularité d'être unidirectionnels : il n'existe pas de moyen de revenir de l'empreinte obtenue au mot de passe en clair initial. Le mot de passe saisi par un utilisateur sera immédiatement haché avec le même algorithme, puis comparé avec la valeur cryptée stockée : si les deux résultats sont identiques, c'est que l'utilisateur a saisi le bon mot de passe.
 
-Même si nos mots de passe sont stockées sous forme hachée, le risque subsiste qu'un individu mal intentionné arrive à s'introduire dans la base de données pour dérober ces mots de passe cryptés. Il pourrait ensuite utiliser une solution de type force brute pour hacher un très grand nombre de mots de passe et comparer le résultat avec les mots de passe volés jusqu'à trouver une correspondance. 
+Même si nos mots de passe sont stockés sous forme hachée, le risque subsiste qu'un individu mal intentionné arrive à s'introduire dans la base de données pour dérober ces mots de passe cryptés. Il pourrait ensuite utiliser une solution de type force brute pour hacher un très grand nombre de mots de passe et comparer le résultat avec les mots de passe volés jusqu'à trouver une correspondance. 
 
 Le [salage](http://fr.wikipedia.org/wiki/Salage_\(cryptographie\)) est une solution pour limiter ce risque. Cette technique consiste à ajouter plusieurs caractères au mot de passe juste avant de le hacher. Le résultat du hachage est différent de celui obtenu avec le mot de passe seul. Cela permet de protéger les mots de passe contre les attaques de type [dictionnaire](http://fr.wikipedia.org/wiki/Attaque_par_dictionnaire) (force brute avec utilisation d'une liste de mots de passe potentiels). Les données ajoutés au mot de passe sont appelées *salt*. Pour plus de sécurité, le *salt* doit être différent pour chaque mot de passe.
 
@@ -3292,6 +3292,13 @@ On aurait pu obtenir la suppression automatique des commentaires d'un article en
 
 Il ne reste plus qu'à ajouter dans le fichier `app/routes.php` les routes permettant la création, la modification et la suppresion d'un article. Ajoutez les contrôleurs ci-dessous à la fin de ce fichier.
 
+    <?php
+
+    // ...
+    use MicroCMS\Form\Type\ArticleType;
+
+    // ...
+
     // Add a new article
     $app->match('/admin/article/add', function(Request $request) use ($app) {
         $article = new Article();
@@ -3614,6 +3621,13 @@ Il faut également ajouter dans le fichier `src/MicroCMS/DAO/CommentDAO.php` la 
 
 Pour terminer, ajoutez les contrôleurs nécessaires à la fin du fichier `app/routes.php`.
 
+    <?php
+
+    // ...
+    use MicroCMS\Form\Type\UserType;
+
+    // ...
+
     // Add a user
     $app->match('/admin/user/add', function(Request $request) use ($app) {
         $user = new User();
@@ -3917,7 +3931,7 @@ L'exécution des tests nous prouve que l'application fonctionne toujours correct
 
 Jusqu'à présent, nous avons centralisé la définition de tous les contrôleurs dans le fichier `app/routes.php`. Cette organisation a le mérite de la simplicité mais commence à montrer ses limites. Chaque nouvelle route fait augmenter la taille de ce fichier, jusqu'à rendre sa lecture difficile. Il est temps de réorganiser nos contrôleurs d'une manière plus lisible et plus logique. Ils vont devenir des méthodes définies dans des classes.
 
-Créez le répertoire `src/MicroCMS/Controller`, puis le fichier `HomeController.php` dans le cépertoire créé. Donnez à ce fichier le contenu suivant.
+Créez le répertoire `src/MicroCMS/Controller`, puis le fichier `HomeController.php` dans le répertoire créé. Donnez à ce fichier le contenu suivant.
 
     <?php
 
@@ -4355,10 +4369,10 @@ Notre application Web d'exemple était au départ une simple page écrite en PHP
 * utilisation des espaces de noms et chargement automatique des classes ;
 * intégration d'un moteur de templates pour faciliter l'écriture des vues ;
 * présentation moderne et adaptée au terminal utilisé (*responsive design*) ;
-* gestion avancée de la sécurité et des formulaires.
-* tests fonctionnels automatisés.
-* journalisation et gestion des erreurs.
-* back-office d'administration complet.
+* gestion avancée de la sécurité et des formulaires ;
+* tests fonctionnels automatisés ;
+* journalisation et gestion des erreurs ;
+* back-office d'administration ;
 * API utilisant le format JSON.
 
 D'autres fonctionnalités comme la validation poussée des formulaires ou encore l'internationalisation pourraient être ajoutées en exploitant les possibilités de Silex. A vous de jouer !
