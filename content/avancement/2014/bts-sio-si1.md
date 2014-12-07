@@ -203,3 +203,16 @@ Sauf indication contraire, les travaux à réaliser doivent être terminés pour
 
 **TP groupe B** : cf semaine précédente.
 
+**Cours mercredi** : étude d'un problème de sécurité informatique (ITE 10.1.1.7).
+
+## Semaine 13 : 8 décembre
+
+**Cours lundi**
+
+* Découverte de Linux Ubuntu partie 2 -> QCM 5 et 6.
+* Cours CISCO ITE 10.2.
+
+**TP groupe A**
+
+* Sécurisation sous W7 (ITE 10.2.1.7).
+* Paramétrages avancés de W7.
