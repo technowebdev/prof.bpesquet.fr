@@ -21,7 +21,7 @@ Ce tutoriel vise à présenter une manière de concevoir une application Web en 
 
 Nous allons mettre en oeuvre les principes présentés dans ce tutoriel en construisant un exemple simple : une application Web de type [CMS](http://fr.wikipedia.org/wiki/Syst%C3%A8me_de_gestion_de_contenu). Notre micro-CMS d'exemple sera basique : il permettra de gérer une liste d'articles ainsi que les commentaires associés.
 
-L'application Web obtenue en fin de tutoriel est [accessible en ligne](http://microcms.bpesquet.fr). Le code source associé est disponible sur [GitHub](https://github.com/bpesquet/MicroCMS).
+L'application Web obtenue en fin de tutoriel est [accessible en ligne](http://microcms.bpesquet.fr). Le code source associé est disponible sur [GitHub](https://github.com/bpesquet/MicroCMS-LMD).
 
 ## Méthodologie de réalisation
 
@@ -116,7 +116,7 @@ Créez dans ce répertoire un sous-répertoire nommé `MicroCMS` qui sera le ré
             </article>
         <?php endforeach; ?>
         <footer class="footer">
-            <a href="https://github.com/bpesquet/MicroCMS">MicroCMS</a> is a minimalistic CMS built as a showcase for modern PHP development.
+            <a href="https://github.com/bpesquet/MicroCMS-LMD">MicroCMS</a> is a minimalistic CMS built as a showcase for modern PHP development.
         </footer>
     </body>
     </html>
@@ -147,7 +147,7 @@ Après avoir vérifié que votre serveur Web est bien démarré, lancez votre na
 
 {{% image src="microcms_articles_flatphp.png" class="centered" %}}
 
-Le code source associé à cette itération est disponible sur une [branche du dépôt GitHub](https://github.com/bpesquet/MicroCMS/tree/iteration-01).
+Le code source associé à cette itération est disponible sur une [branche du dépôt GitHub](https://github.com/bpesquet/MicroCMS-LMD/tree/iteration-01).
 
 ## Bilan
 
@@ -204,7 +204,7 @@ Une première amélioration consiste à séparer le code d'accès aux données d
             </article>
         <?php endforeach; ?>
         <footer class="footer">
-            <a href="https://github.com/bpesquet/MicroCMS">MicroCMS</a> is a minimalistic CMS built as a showcase for modern PHP development.
+            <a href="https://github.com/bpesquet/MicroCMS-LMD">MicroCMS</a> is a minimalistic CMS built as a showcase for modern PHP development.
         </footer>
     </body>
     </html>
@@ -231,7 +231,7 @@ On peut aller plus loin dans le découplage en regroupant le code d'affichage pr
             </article>
         <?php endforeach; ?>
         <footer class="footer">
-            <a href="https://github.com/bpesquet/MicroCMS">MicroCMS</a> is a minimalistic CMS built as a showcase for modern PHP development.
+            <a href="https://github.com/bpesquet/MicroCMS-LMD">MicroCMS</a> is a minimalistic CMS built as a showcase for modern PHP development.
         </footer>
     </body>
     </html>
@@ -285,7 +285,7 @@ Outre la feuille de style `microcms.css`, notre application Web est maintenant c
 * `view.php` (code PHP et balises HTML) pour l'affichage des articles du CMS ;
 * `index.php` (code PHP uniquement) pour faire le lien entre les deux pages précédentes.
 
-Le code source associé à cette itération est disponible sur une [branche du dépôt GitHub](https://github.com/bpesquet/MicroCMS/tree/iteration-02).
+Le code source associé à cette itération est disponible sur une [branche du dépôt GitHub](https://github.com/bpesquet/MicroCMS-LMD/tree/iteration-02).
 
 Cette nouvelle structure est plus complexe, mais les responsabilités de chaque partie sont maintenant claires. En faisant ce travail de *refactoring*, nous avons rendu notre exemple conforme à un modèle d'architecture très employé sur le Web : le modèle **MVC**. Si vous découvrez ce concept, consultez impérativement le [cours sur le modèle MVC](/cours/modele-mvc).
 
@@ -405,7 +405,7 @@ Redémarrez le serveur Web Apache pour terminer la configuration de l'hôte virt
 
 {{% image src="microcms_articles_silex_1.png" class="centered" %}}
 
-Le code source associé à cette itération est disponible sur une [branche du dépôt GitHub](https://github.com/bpesquet/MicroCMS/tree/iteration-03).
+Le code source associé à cette itération est disponible sur une [branche du dépôt GitHub](https://github.com/bpesquet/MicroCMS-LMD/tree/iteration-03).
 
 ## Bilan
 
@@ -699,7 +699,7 @@ La structure de notre application est maintenant la suivante.
 
 C'est le moment de tester notre refactorisation en accédant à l'URL http://microcms. Si tout va bien, le résultat affiché reste le même.
 
-Le code source associé à cette itération est disponible sur une [branche du dépôt GitHub](https://github.com/bpesquet/MicroCMS/tree/iteration-04).
+Le code source associé à cette itération est disponible sur une [branche du dépôt GitHub](https://github.com/bpesquet/MicroCMS-LMD/tree/iteration-04).
 
 ## Bilan
 
@@ -734,7 +734,7 @@ La partie Présentation de notre application actuelle correspond au répertoire 
             </article>
         <?php endforeach; ?>
         <footer class="footer">
-            <a href="https://github.com/bpesquet/MicroCMS">MicroCMS</a> is a minimalistic CMS built as a showcase for modern PHP development.
+            <a href="https://github.com/bpesquet/MicroCMS-LMD">MicroCMS</a> is a minimalistic CMS built as a showcase for modern PHP development.
         </footer>
     </body>
     </html>
@@ -818,7 +818,7 @@ A présent, remplaçons la vue `views/view.php` par un template Twig pour affich
         {% endfor %}
         {% endautoescape %}
         <footer class="footer">
-            <a href="https://github.com/bpesquet/MicroCMS">MicroCMS</a> is a minimalistic CMS built as a showcase for modern PHP development.
+            <a href="https://github.com/bpesquet/MicroCMS-LMD">MicroCMS</a> is a minimalistic CMS built as a showcase for modern PHP development.
         </footer>
     </body>
     </html>
@@ -845,7 +845,7 @@ Ici, on demande au service Twig (`$app['twig']`) de générer le template `index
 
 Il est temps de vérifier l'intégration de Twig en accédant à http://microcms. Même si la technologie utilisée a changé, la liste des articles s'affiche exactement comme précédemment.
 
-Le code source associé à cette itération est disponible sur une [branche du dépôt GitHub](https://github.com/bpesquet/MicroCMS/tree/iteration-05).
+Le code source associé à cette itération est disponible sur une [branche du dépôt GitHub](https://github.com/bpesquet/MicroCMS-LMD/tree/iteration-05).
 
 ## Bilan
 
@@ -923,7 +923,7 @@ Nous allons modifier la vue `index.html.twig` pour y intégrer Bootstrap. Au pas
             {% endfor %}
             {% endautoescape %}
             <footer class="footer">
-                <a href="https://github.com/bpesquet/MicroCMS">MicroCMS</a> is a minimalistic CMS built as a showcase for modern PHP development.
+                <a href="https://github.com/bpesquet/MicroCMS-LMD">MicroCMS</a> is a minimalistic CMS built as a showcase for modern PHP development.
             </footer>
         </div>
     </body>
@@ -949,7 +949,7 @@ Accédez à l'URL http://microcms depuis votre navigateur Web. Vous obtenez à p
 
 {{% image src="microcms_articles_bootstrap.png" class="centered" %}}
 
-Le code source associé à cette itération est disponible sur une [branche du dépôt GitHub](https://github.com/bpesquet/MicroCMS/tree/iteration-06).
+Le code source associé à cette itération est disponible sur une [branche du dépôt GitHub](https://github.com/bpesquet/MicroCMS-LMD/tree/iteration-06).
 
 ## Bilan
 
@@ -1376,7 +1376,7 @@ L'évolution de cette partie consiste à ajouter une vue affichant les détails 
             </p>
             {% endautoescape %}
             <footer class="footer">
-                <a href="https://github.com/bpesquet/MicroCMS">MicroCMS</a> is a minimalistic CMS built as a showcase for modern PHP development.
+                <a href="https://github.com/bpesquet/MicroCMS-LMD">MicroCMS</a> is a minimalistic CMS built as a showcase for modern PHP development.
             </footer>
         </div>
     </body>
@@ -1420,7 +1420,7 @@ Créez dans le répertoire `views` un fichier texte `layout.html.twig` qui sera 
             <div id="content">{% block content %}{% endblock %}</div>
             {% endautoescape %}
             <footer class="footer">
-                <a href="https://github.com/bpesquet/MicroCMS">MicroCMS</a> is a minimalistic CMS built as a showcase for modern PHP development.
+                <a href="https://github.com/bpesquet/MicroCMS-LMD">MicroCMS</a> is a minimalistic CMS built as a showcase for modern PHP development.
             </footer>
         </div>
     </body>
@@ -1532,7 +1532,7 @@ Si vous cliquez sur le titre d'un article sans aucun commentaire, vous obtenez u
 
 {{% image src="microcms_article_nocomments.png" class="centered" %}}
 
-Le code source associé à cette itération est disponible sur une [branche du dépôt GitHub](https://github.com/bpesquet/MicroCMS/tree/iteration-07).
+Le code source associé à cette itération est disponible sur une [branche du dépôt GitHub](https://github.com/bpesquet/MicroCMS-LMD/tree/iteration-07).
 
 ## Bilan
 
@@ -2158,7 +2158,7 @@ Lorsque l'authentification réussit, le menu déroulant de la barre de navigatio
 
 {{% image src="microms_article_authenticated_user.png" class="centered" %}}
 
-Le code source associé à cette itération est disponible sur une [branche du dépôt GitHub](https://github.com/bpesquet/MicroCMS/tree/iteration-08).
+Le code source associé à cette itération est disponible sur une [branche du dépôt GitHub](https://github.com/bpesquet/MicroCMS-LMD/tree/iteration-08).
 
 ## Bilan
 
@@ -2420,7 +2420,7 @@ Une fois le commentaire saisi et publié, l'affichage de l'article intègre le n
 
 {{% image src="microcms_comment_publish.png" class="centered" %}}
 
-Le code source associé à cette itération est disponible sur une [branche du dépôt GitHub](https://github.com/bpesquet/MicroCMS/tree/iteration-09).
+Le code source associé à cette itération est disponible sur une [branche du dépôt GitHub](https://github.com/bpesquet/MicroCMS-LMD/tree/iteration-09).
 
 ## Bilan
 
@@ -2759,7 +2759,7 @@ A présent, déclenchons volontairement une erreur en accédant à l'URL http://
 Les informations détaillées sur l'erreur sont accessibles dans le fichier de journalisation ou (en configuration de débogage) grâce à la barre d'outils Symfony.
 {{% /remark %}}
 
-Le code source associé à cette itération est disponible sur une [branche du dépôt GitHub](https://github.com/bpesquet/MicroCMS/tree/iteration-10).
+Le code source associé à cette itération est disponible sur une [branche du dépôt GitHub](https://github.com/bpesquet/MicroCMS-LMD/tree/iteration-10).
 
 ## Mise en production
 
@@ -3750,7 +3750,7 @@ Il ne reste plus qu'à lancer les tests avec PHPUnit. Voici le résultat à obte
 
 {{% image src="microcms_apptest_backoffice.png" class="centered" %}}
 
-Le code source associé à cette itération est disponible sur une [branche du dépôt GitHub](https://github.com/bpesquet/MicroCMS/tree/iteration-11).
+Le code source associé à cette itération est disponible sur une [branche du dépôt GitHub](https://github.com/bpesquet/MicroCMS-LMD/tree/iteration-11).
 
 ## Bilan
 
@@ -4357,7 +4357,7 @@ Encore une fois, l'exécution des tests fonctionnels prouve que la refactorisati
 
 {{% image src="microcms_api_apptest.png" class="centered" %}}
 
-Le code source associé à cette itération est disponible sur une [branche du dépôt GitHub](https://github.com/bpesquet/MicroCMS/tree/iteration-12).
+Le code source associé à cette itération est disponible sur une [branche du dépôt GitHub](https://github.com/bpesquet/MicroCMS-LMD/tree/iteration-12).
 
 # Conclusion
 
