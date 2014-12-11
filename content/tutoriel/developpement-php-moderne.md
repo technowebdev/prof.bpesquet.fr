@@ -1005,7 +1005,7 @@ Mettez à jour les scripts SQL `db/structure.sql` et `db/content.sql` pour ajout
 
 ### Partie Modèle
 
-En respectant les choix de design effectués dans une itération précédente, on modélise un commentaire sous la forme d'une classe `Commentaire` dans l'espace de noms `MicroCMS\Domain`. Voici le diagramme UML associé.
+En respectant les choix de design effectués dans une itération précédente, on modélise un commentaire sous la forme d'une classe `Comment` dans l'espace de noms `MicroCMS\Domain`. Voici le diagramme UML associé.
 
     {{% image src="microcms_uml_article_comment.jpeg" class="centered" %}}
 
@@ -2203,7 +2203,7 @@ Le formulaire que nous devons créer permettra à un utilisateur connecté de sa
 
 Le nouveau commentaire sera associé à un article et à un utilisateur existants. Son identifiant sera défini au moment de son insertion dans la base de données. Le seul champ que notre formulaire pemettra de saisir sera donc le contenu du commentaire.
 
-Symfony offre plusieurs manières de créer un formulaire. Nous allons employer la technique recommandée qui consiste à le définir dans sa propre classe, afin de le rendre réutilisable dans toute l'application. Dans le répertoire `src/MicroCMS/Form/Type` (à créer lui aussi), ajoutez un nouveau fichier source nommé 'CommentType.php`. Placez-y le code source suivant.
+Symfony offre plusieurs manières de créer un formulaire. Nous allons employer la technique recommandée qui consiste à le définir dans sa propre classe, afin de le rendre réutilisable dans toute l'application. Dans le répertoire `src/MicroCMS/Form/Type` (à créer lui aussi), ajoutez un nouveau fichier source nommé `CommentType.php`. Placez-y le code source suivant.
 
     <?php
     
@@ -2905,7 +2905,7 @@ L'accueil du back-office (route `/admin`) doit afficher à l'administrateur l'en
 
 Le contrôleur associé génère la vue `admin.html.twig` en lui fournissant les listes des articles, des commentaires et des utilisateurs. La méthode `findAll` existe déjà dans la classe `ArticleDAO`. Il faut créer les deux autres.
 
-Modifiez le fichier `src/MicroCMS/DAO/CommentDAO.php` pour ajouter la méthode `findAll`comme indiqué ci-dessous.
+Modifiez le fichier `src/MicroCMS/DAO/CommentDAO.php` pour ajouter la méthode `findAll` comme indiqué ci-dessous.
 
     /**
      * Returns a list of all comments, sorted by id.
@@ -2925,7 +2925,7 @@ Modifiez le fichier `src/MicroCMS/DAO/CommentDAO.php` pour ajouter la méthode `
         return $entities;
     }
 
-Modifiez le fichier `src/MicroCMS/DAO/UserDAO.php` pour ajouter la méthode `findAll`comme indiqué ci-dessous.
+Modifiez le fichier `src/MicroCMS/DAO/UserDAO.php` pour ajouter la méthode `findAll` comme indiqué ci-dessous.
 
     /**
      * Returns a list of all users, sorted by role and name.
@@ -3337,9 +3337,9 @@ Il ne reste plus qu'à ajouter dans le fichier `app/routes.php` les routes perme
         return $app->redirect('/admin');
     });
 
-Les contrôleurs de création et de modification sont similaires. L'un crée un nouvel article, alors que l'autre la récupère dans la base de données à partir de l'identifiant passé en paramètre dans l'URL. Tous deux utilisent le formulaire `ArticleType` et la vue `article_form.html.twig` définis précédemment.
+Les contrôleurs de création et de modification sont similaires. L'un crée un nouvel article, alors que l'autre le récupère dans la base de données à partir de l'identifiant passé en paramètre dans l'URL. Tous deux utilisent le formulaire `ArticleType` et la vue `article_form.html.twig` définis précédemment.
 
-le contrôleur de suppression détruit l'article passé en paramètre de l'URL après avoir supprimé les commentaires associés. Il redirige ensuite le client vers la page d'accueil du back-office.
+Le contrôleur de suppression détruit l'article passé en paramètre de l'URL après avoir supprimé les commentaires associés. Il redirige ensuite le client vers la page d'accueil du back-office.
 
 Il est temps de tester nos modifications. En tant qu'administrateur, essayez d'ajouter un nouvel article. 
 
@@ -3571,7 +3571,7 @@ Ce formulaire est utilisé par la vue `views/user_form.html.twig` ci-dessous.
 
 Cette vue affiche les champs du formulaire `UserType`. Le mot de passe est affiché sous la forme de deux champs : `userForm.password.first` et `userForm.password.second`.
 
-Comme pour les articles, il faut ajouter les méthodes de modification et de suppression d'un utilisateur dans la classe `UserDAO` (fichier `src/MicroCMS/DAO/UserDAO.php').
+Comme pour les articles, il faut ajouter les méthodes de modification et de suppression d'un utilisateur dans la classe `UserDAO` (fichier `src/MicroCMS/DAO/UserDAO.php`).
 
     /**
      * Saves a user into the database.
