@@ -2650,7 +2650,7 @@ A présent, modifiez le fichier `app/app.php` en ajoutant les lignes ci-dessous 
         'monolog.name' => 'MicroCMS',
         'monolog.level' => $app['monolog.level']
     ));
-    $app->register(new Silex\Provider\ServiceControllererviceProvider());
+    $app->register(new Silex\Provider\ServiceControllerServiceProvider());
     if (isset($app['debug']) and $app['debug']) {
         $app->register(new Silex\Provider\WebProfilerServiceProvider(), array(
             'profiler.cache_dir' => __DIR__.'/../var/cache/profiler'
