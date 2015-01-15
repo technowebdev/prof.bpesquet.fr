@@ -1,4 +1,4 @@
 bpesquet.fr
 ===========
 
-Source code for the [bpesquet.fr](http://bpesquet.fr) website.
+Source code for the [prof.bpesquet.fr](http://prof.bpesquet.fr) website.
