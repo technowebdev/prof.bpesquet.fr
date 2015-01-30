@@ -216,3 +216,36 @@ Sauf indication contraire, les travaux à réaliser doivent être terminés pour
 
 * Sécurisation sous W7 (ITE 10.2.1.7).
 * Paramétrages avancés de W7.
+
+**Cours mercredi** : étude d'un problème de sécurité informatique.
+
+## Semaine 14 : 15 décembre
+
+**Cours lundi**
+
+* Fin de l'étude d'un problème de sécurité informatique. CR à déposer sur le réseau avant 10h.
+* Création d'un diaporama sur les problèmes de sécurité pour les étudiants volontaires.
+* Cours CISCO ITE 10.2.
+
+**TP groupe B** : cf. semaine précédente.
+
+**Cours mercredi** : TPDS Linux.
+
+# Noël - Hiver
+
+## Semaine 15 : 5 janvier
+
+**Cours lundi**
+
+* Correction TPDS Linux.
+* Cours sur la sécurité du poste de travail.
+
+**TP 1h/1h**
+
+* Préparation diaporama sur la sécurité.
+* TP éléments d'administration Linux.
+
+**Cours mercredi**
+
+* Présentation des problèmes de sécurité par les étudiants volontaires.
+* Quizz récapitulatif.

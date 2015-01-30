@@ -5,6 +5,10 @@ date: 2014-07-22
 
 Découvrez comment bâtir une application Web fonctionnelle et sûre en tirant le meilleur du langage PHP.
 
+{{% warning %}}
+Une version améliorée de ce tutoriel sera publiée le 10 février 2015 sur le site [OpenClassrooms](http://openclassrooms.com/courses/evoluez-vers-une-architecture-php-professionnelle).
+{{% /warning %}}
+
 {{% image src="PHP_moderne.png" class="centered" %}}
 
 # Introduction
@@ -3881,7 +3885,7 @@ Il est temps de tester notre nouvelle API. Avant d'envoyer des requêtes avec RE
 
 {{% img microcms_api_customheader.png %}}
 
-Ensuite, envoyez vers http://microcms.api/article une requête HTTP POST dont le corps correspond au contenu JSON défini plus haut. 
+Ensuite, envoyez vers http://microcms/api/article une requête HTTP POST dont le corps correspond au contenu JSON défini plus haut. 
 
 {{% image src="microcms_api_restclient_3.png" class="centered" %}}
 

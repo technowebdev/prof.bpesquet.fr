@@ -188,3 +188,24 @@ Pas de TP (férié).
 * Projet agile : sprint 2.
 
 **Cours** : TPDS 2 (itération 12 non comprise).
+
+## Semaine 13 : 8 décembre
+
+**TP**
+
+* Projet agile : sprint 2.
+
+Pas de cours (BTS blanc).
+
+## Semaine 14 : 15 décembre
+
+**TP**
+
+* Projet agile : sprint 2.
+
+**Cours**
+
+* Correction TPDS 2 et BTS blanc.
+* Projet agile : livraison 1.
+
+
