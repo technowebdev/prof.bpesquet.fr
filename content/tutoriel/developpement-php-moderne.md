@@ -6,7 +6,7 @@ date: 2014-07-22
 Découvrez comment bâtir une application Web fonctionnelle et sûre en tirant le meilleur du langage PHP.
 
 {{% warning %}}
-Une version améliorée de ce tutoriel sera publiée le 10 février 2015 sur le site [OpenClassrooms](http://openclassrooms.com/courses/evoluez-vers-une-architecture-php-professionnelle).
+Une version améliorée de ce tutoriel est disponible sur le site [OpenClassrooms](http://openclassrooms.com/courses/evoluez-vers-une-architecture-php-professionnelle).
 {{% /warning %}}
 
 {{% image src="PHP_moderne.png" class="centered" %}}

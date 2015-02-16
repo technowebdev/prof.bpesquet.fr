@@ -53,7 +53,7 @@ Sauf indication contraire, les travaux à réaliser doivent être terminés pour
 
 * Cours : [Tableaux et listes](/cours/tableaux-listes/).
 * Création des comptes et des équipes dans [l'organisation GitHub](https://github.com/lmdsio-slam2).
-* Début du TP tableaux et listes.
+* Début du TP tableaux et listes. Remplir [cette feuille](https://docs.google.com/spreadsheets/d/19C_SDuUlL559tCZWRWG4TzDLeHSxfw8TtVi62H2bVlo/edit?usp=sharing) au fur et à mesure de votre avancement.
 * Après la pause : correction du TP révisions SI4.
 
 **PPE**
