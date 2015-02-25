@@ -208,4 +208,25 @@ Pas de cours (BTS blanc).
 * Correction TPDS 2 et BTS blanc.
 * Projet agile : livraison 1.
 
+# Février - Pâques
 
+## Semaine 15 : 23 février
+
+**TP**
+
+* Validation par les pairs de la livraison 1 des projets agiles.
+* Affectation des projets à valider : AgnamStore -> AppMusics -> CarLegends -> DreamHouses -> GameSpawn -> GamingStore -> InfoStore -> Items4Noob -> Med'Azur -> MoviesMarket -> MPMakeUp -> PokeStore -> AgnamStore.
+* Processus de validation :
+
+    * Installation locale du projet (clonage du dépôt GitHub).
+    * Test des stories annoncées comme terminées (cf Trello).
+    * Remplissage d'une fiche de validation par story terminée.
+
+**Cours**
+
+* Cours Gestion des incidents
+* Validation des projets agiles : création d'une issue GitHub par défaut détecté.
+
+**PPE**
+
+* Prépération de l'épreuve orale E6.

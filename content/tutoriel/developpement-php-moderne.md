@@ -1,12 +1,29 @@
 ---
 title: "Développement PHP moderne"
-date: 2014-07-22
 ---
 
 Découvrez comment bâtir une application Web fonctionnelle et sûre en tirant le meilleur du langage PHP.
 
 {{% warning %}}
-Une version améliorée de ce tutoriel est disponible sur le site [OpenClassrooms](http://openclassrooms.com/courses/evoluez-vers-une-architecture-php-professionnelle).
+Ce tutoriel est remplacé par le cours [Evoluez vers une architecture PHP professionnelle](http://openclassrooms.com/courses/evoluez-vers-une-architecture-php-professionnelle) publié chez OpenClassrooms en février 2015. Le tutoriel actuel sera supprimé prochainement.
+
+Les principaux changements apportés sont :
+
+* De nombreuses petites améliorations et corrections.
+* La modification de l'ordre des dernières itérations.
+* Le passage de la norme PSR-0 (désormais obsolète) à PSR-4 pour l'autochargement des classes.
+
+\
+
+Ce dernier changement se traduit par le déplacement des classes PHP (DAO, domaine, formulaires Symfony) du répertoire `src/MicroCMS/` vers le répertoire `src/`. Il faut également modifier l'autoloading de la manière suivante dans le fichier `composer.json`.
+
+```json
+"autoload": {
+    "psr-4": {"MicroCMS\\": "src"}
+}
+```
+
+Consultez le code source à obtenir sur [GitHub](https://github.com/bpesquet/OC-MicroCMS) pour valider vos modifications.
 {{% /warning %}}
 
 {{% image src="PHP_moderne.png" class="centered" %}}
