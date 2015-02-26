@@ -208,7 +208,7 @@ Pas de cours (BTS blanc).
 * Correction TPDS 2 et BTS blanc.
 * Projet agile : livraison 1.
 
-# Février - Pâques
+# Hiver - Pâques
 
 ## Semaine 15 : 23 février
 

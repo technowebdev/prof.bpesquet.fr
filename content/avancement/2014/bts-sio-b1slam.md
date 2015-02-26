@@ -62,3 +62,27 @@ Sauf indication contraire, les travaux à réaliser doivent être terminés pour
 * [Projet Atlantik](/activite/projet-atlantik) : codage et correction.
 
 **TP** : tableaux et listes.
+
+# Hiver - Pâques
+
+## Semaine 4 : 23 février
+
+**Cours**
+
+* Cours [Gestion des objets en mémoire](http://bpesquet.gitbooks.io/programmation-orientee-objet-csharp/content/chapters/03-gestion-objets-memoire.html).
+* TP Gestion des objets en mémoire.
+
+**PPE**
+
+* Début du projet Stages-Entreprises.
+
+**TP**
+
+* TP Gestion des objets en mémoire.
+
+## Semaine 5 : 2 mars
+
+**Cours**
+
+* Correction des TP "Tableaux et listes" et "Gestion des objets en mémoire".
+* TPDS 1 (révisions SI4, principaux concepts objets).
