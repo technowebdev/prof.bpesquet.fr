@@ -390,4 +390,4 @@ Il est également possible d'obtenir une barre de navigation adaptative. Son con
 
 # Conclusion
 
-Nous n'avons fait que survoler les possibilités de Bootstrap. Il existe de nombreuses ressources sur ce framework en ligne, à commencer par sa [documentation officielle](http://getbootstrap.com) ou encore les tutoriels des sites [OpenClassrooms](http://fr.openclassrooms.com/informatique/cours/prenez-en-main-bootstrap) et [Codecamedy](http://www.codecademy.com/fr/skills/make-a-website/).
+Nous n'avons fait que survoler les possibilités de Bootstrap. Il existe de nombreuses ressources sur ce framework en ligne, à commencer par sa [documentation officielle](http://getbootstrap.com) ou encore les tutoriels des sites [OpenClassrooms](http://fr.openclassrooms.com/informatique/cours/prenez-en-main-bootstrap) et [Codecademy](http://www.codecademy.com/fr/skills/make-a-website/).
