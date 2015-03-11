@@ -229,4 +229,49 @@ Pas de cours (BTS blanc).
 
 **PPE**
 
-* Prépération de l'épreuve orale E6.
+* Présentation des épreuves orales E4 et E6.
+* Début de la préparation de l'épreuve E4.
+    
+    * Présentation du contexte PHP GSB et des missions possibles.
+    * Constitution des équipes et création des dépôts GitHub.
+    * Début du travail sur les projets.
+
+## Semaine 16 : 2 mars
+
+**TP**
+
+* Projet agile : début du sprint 3.
+* Correction des incidents levés pendant la validation.
+
+**Cours**
+
+* Explications sur les stories du sprint 3 (gestion du panier).
+* Projet agile : sprint 3.
+
+**PPE**
+
+* Préparation de l'épreuve E4.
+* Remplir cette [feuille Google](https://docs.google.com/spreadsheets/d/1SsxEygZ34baoHsoimUihYbVTF2zkUV-oVUFZXj5Oy1k/edit?usp=sharing) pour indiquer vos choix de mission.
+
+## Semaine 17 : 9 mars
+
+**TP**
+
+* Projet agile : sprint 3.
+* Modélisation de la gestion du panier en BD.
+
+**Cours**
+
+* Conseils techniques pour les stories du sprint 3.
+
+    * Démonstration du projet [MusicStore](http://oc-musicstore.herokuapp.com/).
+    * Modélisation de la gestion du panier en BD et dans l'application.
+    * Centralisation du code contrôleur nécessaire pour toutes les vues.
+
+\
+
+* Projet agile : sprint 3.
+
+**PPE**
+
+* Préparation de l'épreuve E4.
