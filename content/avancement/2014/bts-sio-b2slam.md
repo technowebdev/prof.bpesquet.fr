@@ -275,3 +275,16 @@ Pas de cours (BTS blanc).
 **PPE**
 
 * Préparation de l'épreuve E4.
+* Déploiement des projets sur les serveurs gsb-xyz.
+
+## Semaine 18 : 16 mars
+
+**TP**
+
+* Projet agile : sprint 3.
+
+**Cours**
+
+* Cours : documentation d'un logiciel.
+* Projet agile : sprint 3.
+
