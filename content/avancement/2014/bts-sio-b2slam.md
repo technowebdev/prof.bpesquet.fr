@@ -288,3 +288,13 @@ Pas de cours (BTS blanc).
 * Cours : documentation d'un logiciel.
 * Projet agile : sprint 3.
 
+## Semaine 19 : 23 mars
+
+**TP**
+
+* Projet agile : sprint 3.
+
+**Cours**
+
+* Projet agile : fin du sprint 3.
+* Consignes pour la livraison 2.
