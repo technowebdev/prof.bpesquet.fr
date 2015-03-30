@@ -298,3 +298,13 @@ Pas de cours (BTS blanc).
 
 * Projet agile : fin du sprint 3.
 * Consignes pour la livraison 2.
+
+## Semaine 20 : 30 mars
+
+**TP**
+
+* Validation par les pairs de la livraison 2 des projets agiles ([consignes](/activite/validation-livraison2-projet)).
+
+**Cours**
+
+* Projet agile : correction des incidents levés pendant la validation.
