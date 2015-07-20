@@ -37,6 +37,11 @@ Pour effectuerz cette validation, mettez-vous dans la peau d'un acheteur du proj
 * Compléter le rapport de validation papier.
 * Créer ou commenter sur [GitHub](https://github.com/lmdsio) les *issues* correspondant aux incidents relevés pendant la validation (une *issue* par défaut).
 
+# Compléments
+
+* Documentation du code : seules les méthodes doivent être documentées, pas les attributs ni les accesseurs.
+* Pas d'incident si le rôle de l'utilisateur connecté est modifiable.
+
 # Consignes d'évaluation
 
 Une fois la seconde validation terminée, les deux équipes de validation se concertent puis remplissent ensemble la fiche d'évaluation comprenant la note attribuée au projet.

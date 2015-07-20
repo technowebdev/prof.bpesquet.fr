@@ -308,3 +308,7 @@ Pas de cours (BTS blanc).
 **Cours**
 
 * Projet agile : correction des incidents levés pendant la validation.
+
+## Semaine 21 : 7 avril
+
+(Pas de cours : formation académique + BTS blanc).
