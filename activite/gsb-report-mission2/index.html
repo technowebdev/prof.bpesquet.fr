@@ -1,0 +1,192 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+
+    <link href="http://prof.bpesquet.fr/vendor/bootstrap-3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://prof.bpesquet.fr/vendor/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="http://prof.bpesquet.fr/vendor/highlight.js/styles/monokai.css" rel="stylesheet">
+    <link href="http://prof.bpesquet.fr/styles/style.css" rel="stylesheet">
+
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-39897312-3', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+    <link rel="shortcut icon" href="http://prof.bpesquet.fr/images/bpesquet.ico">
+
+    <title>GSB-Report : mission 2</title>
+</head>
+<body data-spy="scroll" data-target="#TableOfContents">
+    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="http://prof.bpesquet.fr/">
+                    <span class="glyphicon glyphicon-home"></span>
+                </a>
+            </div>
+
+            <div class="collapse navbar-collapse nav-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Ressources <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="http://prof.bpesquet.fr/livre/">Livres</a></li>
+                            <li><a href="http://prof.bpesquet.fr/cours/">Cours</a></li>
+                            <li><a href="http://prof.bpesquet.fr/tutoriel/">Tutoriels</a></li>
+                            <li><a href="http://prof.bpesquet.fr/activite/">Activités</a></li>
+                            <li><a href="http://prof.bpesquet.fr/article/">Articles</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="http://prof.bpesquet.fr/avancement/">Avancements</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="mailto:bpesquet@gmail.com" title="Contact"><i class="fa fa-envelope"></i></a></li>
+                    <li><a href="https://twitter.com/bpesquet" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="https://plus.google.com/110003637459679741050?rel=author"><i class="fa fa-google-plus" title="Google+"></i></a></li>
+                    <li><a href="https://github.com/bpesquet" title="GitHub"><i class="fa fa-github"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+
+<div class="row">
+
+    <div class="col-md-9">
+        <h1 class="pageTitle">GSB-Report : mission 2</h1>
+        
+
+<h1 id="toc_0">Objectifs</h1>
+
+<ul>
+<li>Ajouter la fonctionnalité d&rsquo;authentification du visiteur.</li>
+<li>(Bonus) Permettre au visiteur connecté de mettre à jour ses informations personnelles.</li>
+</ul>
+
+<h1 id="toc_1">Expression des besoins</h1>
+
+<p>L&rsquo;application actuelle n&rsquo;est pas soumise à authentification. Il faut corriger ce problème et ne permettre l&rsquo;accès qu&rsquo;à un visiteur authentifié à l&rsquo;aide de son nom d&rsquo;utilisateur et de son mot de passe.</p>
+
+<p>La barre de navigation de l&rsquo;application affiche (en haut à droite) un menu déroulant indiquant le statut de l&rsquo;utilisateur :</p>
+
+<ul>
+<li>S&rsquo;il n&rsquo;est pas connecté, le menu affiche &ldquo;Non connecté&rdquo; et comporte un lien &ldquo;Se connnecter&rdquo; renvoyant vers le formulaire de connexion.</li>
+<li>S&rsquo;il l&rsquo;est, le menu déroulant affiche un message de bienvenue accompagné de son nom d&rsquo;utilisateur. Le menu comporte un lien &ldquo;Se déconnecter&rdquo; permettant la déconnexion.</li>
+</ul>
+
+<div class="alert alert-danger">
+    <strong>Important !</strong>
+    <p><p>La version de l&rsquo;application produite à la fin de cette mission doit donner l&rsquo;impression d&rsquo;avoir été réalisée par les mêmes développeurs que la version initiale, tant au niveau du code source que du résultat affiché à l&rsquo;écran.</p>
+</p>
+</div>
+
+<p>Voici l&rsquo;extrait de code qui permet de configurer le pare-feu Silex.</p>
+
+<pre><code>$app-&gt;register(new Silex\Provider\SecurityServiceProvider(), array(
+    'security.firewalls' =&gt; array(
+        'login' =&gt; array(
+            'pattern' =&gt; '^/login$',
+            'anonymous' =&gt; true
+        ),
+        'secured' =&gt; array(
+            'pattern' =&gt; '^.*$',
+            'logout' =&gt; true,
+            'form' =&gt; array('login_path' =&gt; '/login', 'check_path' =&gt; '/login_check'),
+            'users' =&gt; $app-&gt;share(function () use ($app) {
+                return new GSB\DAO\VisitorDAO($app['db']);
+            }),
+        ),
+    ),
+));
+</code></pre>
+
+<h1 id="toc_2">Besoins optionnels (bonus)</h1>
+
+<p>La barre de navigation comporte un lien &ldquo;Profil&rdquo; qui permet au visiteur connecté de visualiser et de modifier ses informations personnelles. Les données à afficher sont : nom, prénom, adresse, code postal, ville, date d&rsquo;embauche, nom d&rsquo;utilisateur, mot de passe. Un message de confirmation s&rsquo;affiche lorsque les modifications sont enregistrées.</p>
+
+<h1 id="toc_3">Organisation</h1>
+
+<p>Le travail est individuel. Le code source du projet est hébergé sur le dépôt GitHub GSB-Report associé au compte GitHub du développeur. En fin de mission, une étiquette <strong>mission2</strong> est posée sur le code source.</p>
+
+        <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'bpesquet';
+    var disqus_identifier = 'http:\/\/prof.bpesquet.fr\/activite\/gsb-report-mission2';
+    var disqus_title = 'GSB-Report : mission 2';
+    var disqus_url = 'http:\/\/prof.bpesquet.fr\/activite\/gsb-report-mission2';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+    <div class="col-md-3">
+        <nav id="TableOfContents">
+<ul>
+<li><a href="#toc_0">Objectifs</a></li>
+<li><a href="#toc_1">Expression des besoins</a></li>
+<li><a href="#toc_2">Besoins optionnels (bonus)</a></li>
+<li><a href="#toc_3">Organisation</a></li>
+</ul>
+</nav>
+    </div>
+
+</div>
+
+    </div> 
+
+    <footer class="footer">
+        <div class="container">
+            <p class="pull-right">
+                Créé avec <a href="http://hugo.spf13.com">Hugo</a> et <a href="http://getbootstrap.com">Bootstrap</a>.
+            </p>
+            <p>
+                <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/fr/"><img src="http://prof.bpesquet.fr/images/by-nc-sa.png" alt="Creative Commons logo" /></a>
+            </p>
+        </div>
+    </footer>
+
+    <script src="http://prof.bpesquet.fr/vendor/jquery-1.11.1/jquery.min.js"></script>
+    <script src="http://prof.bpesquet.fr/vendor/bootstrap-3.1.1/js/bootstrap.min.js"></script>
+    <script src="http://prof.bpesquet.fr/vendor/highlight.js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <script>
+        
+        $("img").addClass("img-responsive");
+        
+        
+        $("table").addClass("table");
+        
+        
+        $("#TableOfContents ul").addClass("nav");
+        $("#TableOfContents > ul").addClass("sidenav");
+        $("#TableOfContents").affix();
+
+        
+        
+        window.addEventListener("hashchange", function() { scrollBy(0, -60) });
+    </script>
+</body>
+</html>

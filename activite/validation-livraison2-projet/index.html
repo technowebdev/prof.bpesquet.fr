@@ -1,0 +1,252 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+
+    <link href="http://prof.bpesquet.fr/vendor/bootstrap-3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://prof.bpesquet.fr/vendor/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="http://prof.bpesquet.fr/vendor/highlight.js/styles/monokai.css" rel="stylesheet">
+    <link href="http://prof.bpesquet.fr/styles/style.css" rel="stylesheet">
+
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-39897312-3', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+    <link rel="shortcut icon" href="http://prof.bpesquet.fr/images/bpesquet.ico">
+
+    <title>Validation de la livraison 2 des projets agiles</title>
+</head>
+<body data-spy="scroll" data-target="#TableOfContents">
+    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="http://prof.bpesquet.fr/">
+                    <span class="glyphicon glyphicon-home"></span>
+                </a>
+            </div>
+
+            <div class="collapse navbar-collapse nav-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Ressources <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="http://prof.bpesquet.fr/livre/">Livres</a></li>
+                            <li><a href="http://prof.bpesquet.fr/cours/">Cours</a></li>
+                            <li><a href="http://prof.bpesquet.fr/tutoriel/">Tutoriels</a></li>
+                            <li><a href="http://prof.bpesquet.fr/activite/">Activités</a></li>
+                            <li><a href="http://prof.bpesquet.fr/article/">Articles</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="http://prof.bpesquet.fr/avancement/">Avancements</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="mailto:bpesquet@gmail.com" title="Contact"><i class="fa fa-envelope"></i></a></li>
+                    <li><a href="https://twitter.com/bpesquet" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="https://plus.google.com/110003637459679741050?rel=author"><i class="fa fa-google-plus" title="Google+"></i></a></li>
+                    <li><a href="https://github.com/bpesquet" title="GitHub"><i class="fa fa-github"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+
+<div class="row">
+
+    <div class="col-md-9">
+        <h1 class="pageTitle">Validation de la livraison 2 des projets agiles</h1>
+        
+
+<h1 id="toc_0">Objectif</h1>
+
+<p>L&rsquo;objectif de cette activité est de valider la seconde livraison des projets agiles réalisés en SLAM5. Cette validation est effectuée par les pairs (chaque équipe valide le projet d&rsquo;une autre équipe) et en double correction (chaque projet est validé deux fois).</p>
+
+<h1 id="toc_1">Répartition des projets à valider</h1>
+
+<table>
+<thead>
+<tr>
+<th>Equipe</th>
+<th>Projets à valider</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>AgnamStore</td>
+<td>PokeStore et MPMakeUp</td>
+</tr>
+
+<tr>
+<td>AppMusics</td>
+<td>AgnamStore et PokeStore</td>
+</tr>
+
+<tr>
+<td>CarLegends</td>
+<td>AppMusics et AgnamStore</td>
+</tr>
+
+<tr>
+<td>DreamHouses</td>
+<td>CarLegends et AppMusics</td>
+</tr>
+
+<tr>
+<td>GameSpawn</td>
+<td>DreamHouses et CarLegends</td>
+</tr>
+
+<tr>
+<td>GamingStore</td>
+<td>GameSpawn et DreamHouses</td>
+</tr>
+
+<tr>
+<td>InfoStore</td>
+<td>GamingStore et GameSpawn</td>
+</tr>
+
+<tr>
+<td>Item4Noob</td>
+<td>InfoStore et GamingStore</td>
+</tr>
+
+<tr>
+<td>Med&rsquo;Azur</td>
+<td>Item4Noob et InfoStore</td>
+</tr>
+
+<tr>
+<td>MoviesMarket</td>
+<td>Med&rsquo;Azur et Item4Noob</td>
+</tr>
+
+<tr>
+<td>MPMakeUp</td>
+<td>MoviesMarket et Med&rsquo;Azur</td>
+</tr>
+
+<tr>
+<td>PokeStore</td>
+<td>MPMakeUp et MoviesMarket</td>
+</tr>
+</tbody>
+</table>
+
+<h1 id="toc_2">Consignes de validation</h1>
+
+<div class="alert alert-danger">
+    <strong>Important !</strong>
+    <p><p>Pour effectuerz cette validation, mettez-vous dans la peau d&rsquo;un acheteur du projet. Soyez exigeants, vous en voulez pour votre argent !</p>
+</p>
+</div>
+
+<ul>
+<li>Inscrire le nom de l&rsquo;équipe sur la fiche d&rsquo;évaluation du projet.</li>
+<li>Récupérer le code source du projet sur <a href="https://github.com/lmdsio">GitHub</a> par clonage ou téléchargement.</li>
+<li>Installer le projet sur une machine locale et vérifier son bon fonctionnement (accès à la page d&rsquo;accueil).</li>
+<li>Tester en commun toutes les stories annoncées comme terminées sur <a href="https://trello.com/lmdsio">Trello</a>. Pour chaque story, remplir une fichier de validation papier.</li>
+<li>Compléter le rapport de validation papier.</li>
+<li>Créer ou commenter sur <a href="https://github.com/lmdsio">GitHub</a> les <em>issues</em> correspondant aux incidents relevés pendant la validation (une <em>issue</em> par défaut).</li>
+</ul>
+
+<h1 id="toc_3">Compléments</h1>
+
+<ul>
+<li>Documentation du code : seules les méthodes doivent être documentées, pas les attributs ni les accesseurs.</li>
+<li>Pas d&rsquo;incident si le rôle de l&rsquo;utilisateur connecté est modifiable.</li>
+</ul>
+
+<h1 id="toc_4">Consignes d&rsquo;évaluation</h1>
+
+<p>Une fois la seconde validation terminée, les deux équipes de validation se concertent puis remplissent ensemble la fiche d&rsquo;évaluation comprenant la note attribuée au projet.</p>
+
+<div class="alert alert-warning">
+    <strong>Avertissement</strong>
+    <p><p>Le barème d&rsquo;évaluation est susceptible d&rsquo;être modifié a posteriori.</p>
+</p>
+</div>
+
+        <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'bpesquet';
+    var disqus_identifier = 'http:\/\/prof.bpesquet.fr\/activite\/validation-livraison2-projet';
+    var disqus_title = 'Validation de la livraison 2 des projets agiles';
+    var disqus_url = 'http:\/\/prof.bpesquet.fr\/activite\/validation-livraison2-projet';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+    <div class="col-md-3">
+        <nav id="TableOfContents">
+<ul>
+<li><a href="#toc_0">Objectif</a></li>
+<li><a href="#toc_1">Répartition des projets à valider</a></li>
+<li><a href="#toc_2">Consignes de validation</a></li>
+<li><a href="#toc_3">Compléments</a></li>
+<li><a href="#toc_4">Consignes d&rsquo;évaluation</a></li>
+</ul>
+</nav>
+    </div>
+
+</div>
+
+    </div> 
+
+    <footer class="footer">
+        <div class="container">
+            <p class="pull-right">
+                Créé avec <a href="http://hugo.spf13.com">Hugo</a> et <a href="http://getbootstrap.com">Bootstrap</a>.
+            </p>
+            <p>
+                <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/fr/"><img src="http://prof.bpesquet.fr/images/by-nc-sa.png" alt="Creative Commons logo" /></a>
+            </p>
+        </div>
+    </footer>
+
+    <script src="http://prof.bpesquet.fr/vendor/jquery-1.11.1/jquery.min.js"></script>
+    <script src="http://prof.bpesquet.fr/vendor/bootstrap-3.1.1/js/bootstrap.min.js"></script>
+    <script src="http://prof.bpesquet.fr/vendor/highlight.js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <script>
+        
+        $("img").addClass("img-responsive");
+        
+        
+        $("table").addClass("table");
+        
+        
+        $("#TableOfContents ul").addClass("nav");
+        $("#TableOfContents > ul").addClass("sidenav");
+        $("#TableOfContents").affix();
+
+        
+        
+        window.addEventListener("hashchange", function() { scrollBy(0, -60) });
+    </script>
+</body>
+</html>

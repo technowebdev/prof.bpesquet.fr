@@ -1,3 +1,0 @@
-<!--img src="{{ .Get "src" }}" {{ if .Get "border" }} class="border" {{ end }} {{ with .Get "class" }} class="{{.}}" {{ end }} {{ if or (.Get "alt") (.Get "caption") }} alt="{{ with .Get "alt"}}{{.}}{{else}}{{ .Get "caption" }}{{ end }}"{{ end }} /-->
-
-<p><img src="/images/content/{{ .Get "src" }}" class="content {{ with .Get "class" }}{{.}}{{ end }}" alt="{{ .Get "src" }}" /></p>

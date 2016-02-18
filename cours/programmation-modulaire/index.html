@@ -1,0 +1,407 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+
+    <link href="http://prof.bpesquet.fr/vendor/bootstrap-3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://prof.bpesquet.fr/vendor/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="http://prof.bpesquet.fr/vendor/highlight.js/styles/monokai.css" rel="stylesheet">
+    <link href="http://prof.bpesquet.fr/styles/style.css" rel="stylesheet">
+
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-39897312-3', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+    <link rel="shortcut icon" href="http://prof.bpesquet.fr/images/bpesquet.ico">
+
+    <title>Programmation modulaire</title>
+</head>
+<body data-spy="scroll" data-target="#TableOfContents">
+    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="http://prof.bpesquet.fr/">
+                    <span class="glyphicon glyphicon-home"></span>
+                </a>
+            </div>
+
+            <div class="collapse navbar-collapse nav-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Ressources <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="http://prof.bpesquet.fr/livre/">Livres</a></li>
+                            <li><a href="http://prof.bpesquet.fr/cours/">Cours</a></li>
+                            <li><a href="http://prof.bpesquet.fr/tutoriel/">Tutoriels</a></li>
+                            <li><a href="http://prof.bpesquet.fr/activite/">Activités</a></li>
+                            <li><a href="http://prof.bpesquet.fr/article/">Articles</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="http://prof.bpesquet.fr/avancement/">Avancements</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="mailto:bpesquet@gmail.com" title="Contact"><i class="fa fa-envelope"></i></a></li>
+                    <li><a href="https://twitter.com/bpesquet" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="https://plus.google.com/110003637459679741050?rel=author"><i class="fa fa-google-plus" title="Google+"></i></a></li>
+                    <li><a href="https://github.com/bpesquet" title="GitHub"><i class="fa fa-github"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+
+<div class="row">
+
+    <div class="col-md-9">
+        <h1 class="pageTitle">Programmation modulaire</h1>
+        
+
+<p>L&rsquo;objectif de ce chapitre est d&rsquo;apprendre à écrire des programmes en les décomposant en différentes sous-parties.</p>
+
+<h1 id="toc_0">Introduction</h1>
+
+<h2 id="toc_1">Limites des programmes classiques</h2>
+
+<p>Jusqu&rsquo;à présent, nos programmes ont toujours été écrits d&rsquo;un bloc. Cependant, lorsque la taille d&rsquo;un programme augmente, on se rend souvent compte que certaines instructions ou groupes d&rsquo;instructions ont tendance à se répéter.</p>
+
+<p><strong>Minimiser la duplication de code</strong> est l&rsquo;un des objectifs essentiels du (bon) programmeur. En effet, dupliquer du code produit les effets négatifs suivants :</p>
+
+<ul>
+<li>la taille du programme (nombre de lignes d&rsquo;instructions) augmente,</li>
+<li>sa lisibilité diminue,</li>
+<li>les modifications du programme sont plus longues et plus complexes (risque d&rsquo;oubli).</li>
+</ul>
+
+<p>Pour éviter cela, on aimerait pouvoir &ldquo;factoriser&rdquo; certaines parties du programme, c&rsquo;est-à-dire les définir à un seul endroit puis y faire appel autant de fois que nécessaire. Ces parties sont appelées des <strong>sous-programmes</strong>.</p>
+
+<h2 id="toc_2">Un premier sous-programme</h2>
+
+<p>Voici un exemple très simple utilisant un sous-programme.</p>
+
+<pre><code>// Programme principal
+static void Main(string[] args)
+{
+    DireBonjour();
+    DireBonjour();
+    DireBonjour();
+}
+
+// Sous-programme
+static void DireBonjour()
+{
+    Console.WriteLine(&quot;Bonjour !&quot;);
+}
+</code></pre>
+
+<p><img src="http://prof.bpesquet.fr/images/content/sous_programme.jpg" class="content centered bordered" alt="sous_programme.jpg" /></p>
+
+<p>Le sous-programme défini dans cet exemple se nomme <code>DireBonjour</code>. Il est délimité par une paire d&rsquo;accolades ouvrantes et fermantes.</p>
+
+<div class="alert alert-info">
+    <strong>Définition</strong>
+    <p><p>Le bloc <code>static void Main(...)</code> constitue le point d&rsquo;entrée dans le programme, par où commence son exécution. On l&rsquo;appelle également <strong>programme principal</strong>.</p>
+</p>
+</div>
+
+<p>Dans cet exemple, le sous-programme est appelé trois fois depuis le programme principal. Chaque appel déclenche l&rsquo;affichage du message &ldquo;Bonjour !&rdquo;.</p>
+
+<div class="alert alert-info">
+    <strong>Définition</strong>
+    <p><p>Un <strong>sous-programme</strong> est un petit programme inséré dans un programme général. Un sous-programme possède un nom et est délimité par des accolades.</p>
+</p>
+</div>
+
+<h2 id="toc_3">Déroulement de l&rsquo;exécution</h2>
+
+<p>Jusqu&rsquo;à présent, les programmes que nous avons étudiés s&rsquo;exécutaient de manière linéaire, du début à la fin, même en cas de présence de boucles. L&rsquo;utilisation de sous-programmes va compliquer les choses.</p>
+
+<p>Lorsque qu&rsquo;on a besoin d&rsquo;utiliser la fonctionnalité d&rsquo;un sous-programme, on effectue un <strong>appel</strong> à celui-ci. Cet appel provoque un &ldquo;branchement&rdquo; vers le sous-programme, qui s&rsquo;exécute. Une fois l&rsquo;exécution du sous-programme terminé, le contrôle revient au niveau de l&rsquo;appelant et l&rsquo;exécution se poursuit. Ce fonctionnement est illustré par le schéma ci-après.</p>
+
+<p><img src="http://prof.bpesquet.fr/images/content/appel_sous_prog.jpg" class="content centered" alt="appel_sous_prog.jpg" /></p>
+
+<div class="alert">
+    <strong>Remarque</strong>
+    <p><p>Sans les nommer ainsi, nous avons déjà utilisé plusieurs &ldquo;sous-programmes&rdquo; fournis par l&rsquo;environnement C# comme <code>Console.WriteLine</code> ou encore <code>Convert.ToDouble</code>.</p>
+</p>
+</div>
+    
+
+<h2 id="toc_4">Intérêt des sous-programmes</h2>
+
+<p>Lorsqu&rsquo;on cherche à résoudre un problème complexe, il est généralement efficace de le <strong>décomposer</strong> en sous-problèmes plus simples. Les sous-programmes permettent d&rsquo;appliquer ce principe à la réalisation de logiciels : on va décomposer le programme en écrivant plusieurs sous-programmes plus ou moins autonomes, chacun dédié à une tâche particulière. Le programme principal fera appel aux sous-programmes au fur et à mesure de son exécution.</p>
+
+<p>Ainsi écrit sous la forme d&rsquo;une combinaison de sous-programmes, notre programme final sera plus <strong>lisible</strong> et plus facile à <strong>maintenir</strong> et à <strong>faire évoluer</strong>. De plus, il sera parfois possible de <strong>réutiliser</strong> certains sous-programmes dans d&rsquo;autre contextes.</p>
+
+<h1 id="toc_5">Ecriture de sous-programmes</h1>
+
+<h2 id="toc_6">Valeur de retour</h2>
+
+<p>Le sous-programme que nous avons étudié ne renvoit aucune valeur au programme principal.</p>
+
+<pre><code>// ...
+
+// Sous-programme
+static void DireBonjour()
+{
+    Console.WriteLine(&quot;Bonjour !&quot;);
+}
+</code></pre>
+
+<p>L&rsquo;absence de valeur de retour est indiquée en C# par le mot-clé <code>void</code> avant le nom du sous-programme. Un sous-programme qui ne renvoie pas de valeur est appelé une <strong>procédure</strong>.</p>
+
+<p>En fonction des besoins, il est également possible d&rsquo;écrire un sous-programme qui renvoie une valeur de retour, comme dans l&rsquo;exemple ci-dessous.</p>
+
+<pre><code>static void Main(string[] args)
+{
+    string messageRecu = DireBonjour();
+    Console.WriteLine(&quot;Le sous-programme vous dit : &quot; + messageRecu);
+}
+
+static string DireBonjour()
+{
+    return &quot;Bonjour !&quot;;
+}
+</code></pre>
+
+<p><img src="http://prof.bpesquet.fr/images/content/sous_prog_fonction.jpg" class="content centered bordered" alt="sous_prog_fonction.jpg" /></p>
+
+<p>Par rapport à le version précédente du sous-programme <code>DireBonjour</code>, on observe ici la présence d&rsquo;un <strong>type de retour</strong> (<code>string</code>) et le renvoi d&rsquo;une valeur en fin de sous-programme (&ldquo;Bonjour !&rdquo;) grâce au mot-clé <code>return</code>.</p>
+
+<p>Quand on crée un sous-programme qui renvoie une valeur de retour, on
+doit :</p>
+
+<ul>
+<li>préciser quel est le type de la valeur renvoyée par le sous-programme.</li>
+<li>définir quelle est la valeur renvoyée en utilisant le mot-clé <code>return</code> à la fin du sous-programme.</li>
+</ul>
+
+<p>Un sous-programme qui renvoie une valeur est appelé une <strong>fonction</strong>. L&rsquo;appel d&rsquo;un sous-programme renvoyant une valeur retourne toujours un résultat, qui peut être récupéré et utilisé ensuite par le programme appelant.</p>
+
+<h2 id="toc_7">Variables locales</h2>
+
+<p>Il est possible de déclarer des variables dans un sous-programme de la même manière que dans le programme principal. L&rsquo;utilisation de variables dans un sous-programme permet d&rsquo;améliorer sa lisibilité et de réaliser des opérations plus complexes, comme des calculs.</p>
+
+<pre><code>static void Main(string[] args)
+{
+    string messageRecu = DireBonjour();
+    Console.WriteLine(&quot;Le sous-programme vous dit : &quot; + messageRecu);
+}
+
+static string DireBonjour()
+{
+    string message = &quot;Bonjour !&quot;;
+    return message;
+}
+</code></pre>
+
+<p>Le sous-programme de l&rsquo;exemple ci-dessus comporte une variable <code>message</code> de type <code>string</code>. Son résultat d&rsquo;exécution est identique à celui de l&rsquo;exemple précédent.</p>
+
+<div class="alert alert-info">
+    <strong>Définition</strong>
+    <p><p>Une variable déclarée dans un sous-programme est appelée <strong>variable locale</strong> à ce sous-programme.</p>
+</p>
+</div>
+
+<p>Voici un autre exemple de sous-programme qui fait saisir un nombre entier et le renvoie au programme appelant.</p>
+
+<pre><code>static void Main(string[] args)
+{
+    int nombreSaisi = SaisirEntier();
+    Console.WriteLine(&quot;Le nombre saisi est &quot; + nombreSaisi);
+}
+
+static int SaisirEntier()
+{
+    Console.Write(&quot;Entrez un nombre entier : &quot;);
+    string saisie = Console.ReadLine();
+    int nombre = Convert.ToInt32(saisie);
+    return nombre;
+}
+</code></pre>
+
+<p><img src="http://prof.bpesquet.fr/images/content/saisir_entier.jpg" class="content centered bordered" alt="saisir_entier.jpg" /></p>
+
+<h2 id="toc_8">Portée des variables locales</h2>
+
+<p>Nous avons rencontré la notion de <strong>portée</strong> d&rsquo;une variable dans le chapitre précédent (TODO). Cette notion prend de l&rsquo;importance quand on pratique la programmation modulaire. Voici l&rsquo;un des exemples précédents, légèrement modifié.</p>
+
+<pre><code>static void Main(string[] args)
+{
+     string messageRecu = DireBonjour();
+     Console.WriteLine(&quot;Le sous-programme vous dit : &quot; + messageRecu);
+     Console.WriteLine(&quot;Mais peut-il vous dire &quot; + message + &quot; ?&quot;);
+}
+
+static string DireBonjour()
+{
+     string message = &quot;Bonjour !&quot;;
+     return message;
+}
+</code></pre>
+
+<p>Une tentative d&rsquo;exécution se solde par un message d&rsquo;erreur provenant du compilateur.</p>
+
+<p><img src="http://prof.bpesquet.fr/images/content/portee_variable_locale.jpg" class="content centered bordered" alt="portee_variable_locale.jpg" /></p>
+
+<p>Cette erreur prouve le fait que la variable <em>message</em>, locale au sous-programme <code>DireBonjour</code>, n&rsquo;est pas utilisable en-dehors de celui-ci.</p>
+
+<div class="alert alert-info">
+    <strong>Définition</strong>
+    <p><p>La portée d&rsquo;une variable locale se limite au sous-programme dans lequel elle est déclarée.</p>
+</p>
+</div>
+
+<p>Ne pas pouvoir utiliser de variables locales en dehors des sous-programmes où elles sont définies peut sembler une limitation. C&rsquo;est au contraire un grand avantage : chaque sous-programme peut déclarer ses propres variables sans se préoccuper des variables locales définies ailleurs.</p>
+
+<h2 id="toc_9">Variables globales</h2>
+
+<p>Il existe des situations où on souhaiterait que des variables soient utilisables depuis n&rsquo;importe quel endroit du programme.</p>
+
+<pre><code>static void Main(string[] args)
+{
+    int a = 5;
+    int b = 10;
+    Console.WriteLine(&quot;Avant l'échange, a=&quot; + &quot; et b=&quot; + b);
+    Echanger();
+    Console.WriteLine(&quot;Après l'échange, a=&quot; + &quot; et b=&quot; + b);
+}
+
+static void Echanger()
+{
+    int temp = b;
+    b = a;
+    a = temp;
+}
+</code></pre>
+
+<p>Ce programme ne peut être exécuté : les variables <code>a</code> et <code>b</code> sont déclarées dans le programme principal et ne sont pas visibles depuis le sous-programme <em>Echanger</em>. Ces variables sont locales au programme principal.</p>
+
+<p><img src="http://prof.bpesquet.fr/images/content/erreur_variable_locale.jpg" class="content centered bordered" alt="erreur_variable_locale.jpg" /></p>
+
+<p>Pour pouvoir utiliser <code>a</code> et <code>b</code> partout, il faut les déclarer en dehors du programme principal et de tout sous-programme. On appelle ces variables des <strong>variables globales</strong>.</p>
+
+<pre><code>// Déclaration des variables globales
+static int a;
+static int b;
+
+static void Main(string[] args)
+{
+    a = 5;
+    b = 10;
+    Console.WriteLine(&quot;Avant l'échange, a=&quot; + a + &quot; et b=&quot; + b);
+    Echanger();
+    Console.WriteLine(&quot;Après l'échange, a=&quot; + a + &quot; et b=&quot; + b);
+}
+
+static void Echanger()
+{
+    int temp = b;
+    b = a;
+    a = temp;
+}
+</code></pre>
+
+<p><img src="http://prof.bpesquet.fr/images/content/variable_globale.jpg" class="content centered bordered" alt="variable_globale.jpg" /></p>
+
+<p>Quand on programme de manière modulaire, il faut être attentif à l&rsquo;endroit où on déclare les variables. Les variables globales semblent plus pratiques à utiliser puisqu&rsquo;elles sont visibles depuis n&rsquo;importe quel endroit du programme.</p>
+
+<p>Cependant, elles présentent plusieurs défauts. Un sous-programme qui utilise des variables globales est plus difficile à réutiliser dans un autre contexte. De plus, une variable globale peut être utilisée depuis n&rsquo;importe quel endroit du programme, ce qui augmente le risque de modification accidentelle.</p>
+
+<div class="alert alert-success">
+    <strong>Conseil</strong>
+    <p><p>Il est conseillé de <strong>minimiser</strong> le nombre de variables globales, voire de s&rsquo;en passer complètement.</p>
+</p>
+</div>
+
+        <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'bpesquet';
+    var disqus_identifier = 'http:\/\/prof.bpesquet.fr\/cours\/programmation-modulaire';
+    var disqus_title = 'Programmation modulaire';
+    var disqus_url = 'http:\/\/prof.bpesquet.fr\/cours\/programmation-modulaire';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+    <div class="col-md-3">
+        <nav id="TableOfContents">
+<ul>
+<li><a href="#toc_0">Introduction</a>
+<ul>
+<li><a href="#toc_1">Limites des programmes classiques</a></li>
+<li><a href="#toc_2">Un premier sous-programme</a></li>
+<li><a href="#toc_3">Déroulement de l&rsquo;exécution</a></li>
+<li><a href="#toc_4">Intérêt des sous-programmes</a></li>
+</ul></li>
+<li><a href="#toc_5">Ecriture de sous-programmes</a>
+<ul>
+<li><a href="#toc_6">Valeur de retour</a></li>
+<li><a href="#toc_7">Variables locales</a></li>
+<li><a href="#toc_8">Portée des variables locales</a></li>
+<li><a href="#toc_9">Variables globales</a></li>
+</ul></li>
+</ul>
+</nav>
+    </div>
+
+</div>
+
+    </div> 
+
+    <footer class="footer">
+        <div class="container">
+            <p class="pull-right">
+                Créé avec <a href="http://hugo.spf13.com">Hugo</a> et <a href="http://getbootstrap.com">Bootstrap</a>.
+            </p>
+            <p>
+                <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/fr/"><img src="http://prof.bpesquet.fr/images/by-nc-sa.png" alt="Creative Commons logo" /></a>
+            </p>
+        </div>
+    </footer>
+
+    <script src="http://prof.bpesquet.fr/vendor/jquery-1.11.1/jquery.min.js"></script>
+    <script src="http://prof.bpesquet.fr/vendor/bootstrap-3.1.1/js/bootstrap.min.js"></script>
+    <script src="http://prof.bpesquet.fr/vendor/highlight.js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <script>
+        
+        $("img").addClass("img-responsive");
+        
+        
+        $("table").addClass("table");
+        
+        
+        $("#TableOfContents ul").addClass("nav");
+        $("#TableOfContents > ul").addClass("sidenav");
+        $("#TableOfContents").affix();
+
+        
+        
+        window.addEventListener("hashchange", function() { scrollBy(0, -60) });
+    </script>
+</body>
+</html>

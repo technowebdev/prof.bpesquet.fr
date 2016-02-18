@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>Tutoriels on  </title>
+      <generator uri="https://hugo.spf13.com">Hugo</generator>
+    <link>http://prof.bpesquet.fr/tutoriel/index.xml/</link>
+    
+    
+    
+    <updated>Mon, 21 Jul 2014 00:00:00 UTC</updated>
+    
+    <item>
+      <title>Premiers pas avec le framework Bootstrap</title>
+      <link>http://prof.bpesquet.fr/tutoriel/premiers-pas-framework-bootstrap/</link>
+      <pubDate>Mon, 21 Jul 2014 00:00:00 UTC</pubDate>
+      
+      <guid>http://prof.bpesquet.fr/tutoriel/premiers-pas-framework-bootstrap/</guid>
+      <description>
+
+&lt;p&gt;Découvrez les bases du framework &lt;a href=&#34;http://getbootstrap/&#34;&gt;Bootstrap&lt;/a&gt; par la pratique.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/content/bootstrap_responsive.jpeg&#34; class=&#34;content centered&#34; alt=&#34;bootstrap_responsive.jpeg&#34; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;toc_0&#34;&gt;Pré-requis&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Connaître les langages HTML et CSS.&lt;/li&gt;
+&lt;li&gt;(Facultatif) Avoir déjà utilisé JavaScript.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;toc_1&#34;&gt;Présentation de Bootstrap&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://getbootstrap.com/&#34;&gt;Bootstrap&lt;/a&gt; est un framework destiné à faciliter la création d&amp;rsquo;applications Web. Il regroupe une collection d&amp;rsquo;outils fournis sous la forme de classes CSS et de librairies JavaScript. Bootstrap a été créé par deux développeurs du réseau social Twitter.&lt;/p&gt;
+
+&lt;h1 id=&#34;toc_2&#34;&gt;Prise en main de Bootstrap&lt;/h1&gt;
+
+&lt;h2 id=&#34;toc_3&#34;&gt;Installation&lt;/h2&gt;
+
+&lt;p&gt;Pour pouvoir utiliser Bootstrap, il est nécessaire que le framework soit accessible pour nos pages Web. Pour cela, on peut y accéder en ligne via un &lt;a href=&#34;http://fr.wikipedia.org/wiki/Content_delivery_network&#34;&gt;CDN&lt;/a&gt; (&lt;em&gt;Content Delivery Network&lt;/em&gt;) ou bien l&amp;rsquo;installer localement. Nous allons utiliser cette seconde solution.&lt;/p&gt;
+
+&lt;p&gt;Créez dans votre répertoire personnel un sous-répertoire nommé &lt;code&gt;hello-world-bootstrap&lt;/code&gt; qui sera le répertoire racine de notre exemple. Dans ce répertoire, créez un sous-répertoire &lt;code&gt;bootstrap&lt;/code&gt;. Ensuite, téléchargez la version courante de Bootstrap sur &lt;a href=&#34;http://getbootstrap.com/getting-started/#download&#34;&gt;cette page&lt;/a&gt;. Ensuite, décompressez le contenu de l&amp;rsquo;archive dans le répertoire &lt;code&gt;bootstrap&lt;/code&gt; créé précédemment. Vous devez obtenir l&amp;rsquo;arborescence ci-dessous.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/content/bootstrap_arborescence_initiale.png&#34; class=&#34;content centered bordered&#34; alt=&#34;bootstrap_arborescence_initiale.png&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;On observe que le framework se compose de définitions CSS et JavaScript ainsi que d&amp;rsquo;images compressées. Les fichiers contenant le mot &lt;code&gt;min&lt;/code&gt; correspondent aux versions minimales des sources, compressées mais peu lisibles pour le développeur. On les utilise souvent en production afin de réduire le volume de données nécessaire pour afficher une ressource Web.&lt;/p&gt;
+
+&lt;h2 id=&#34;toc_4&#34;&gt;Une première page Web&lt;/h2&gt;
+
+&lt;p&gt;Créez dans le répertoire &lt;code&gt;hello-world-bootstrap&lt;/code&gt; un fichier HTML nommé &lt;code&gt;index.html&lt;/code&gt;. Recopiez le code ci-dessous dans ce fichier.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;!doctype html&amp;gt;
+&amp;lt;html&amp;gt;
+    &amp;lt;head&amp;gt;
+        &amp;lt;meta charset=&amp;quot;utf-8&amp;quot;&amp;gt;
+        &amp;lt;meta http-equiv=&amp;quot;X-UA-Compatible&amp;quot; content=&amp;quot;IE=edge&amp;quot;&amp;gt;
+        &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width, initial-scale=1.0&amp;quot;&amp;gt;
+        &amp;lt;link href=&amp;quot;bootstrap/css/bootstrap.min.css&amp;quot; rel=&amp;quot;stylesheet&amp;quot;&amp;gt;
+        &amp;lt;title&amp;gt;Hello world with Bootstrap&amp;lt;/title&amp;gt;    
+    &amp;lt;/head&amp;gt;
+    &amp;lt;body&amp;gt;
+        &amp;lt;h1&amp;gt;Hello world!&amp;lt;/h1&amp;gt;
+
+        &amp;lt;script src=&amp;quot;https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+        &amp;lt;script src=&amp;quot;bootstrap/js/bootstrap.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+    &amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Il s&amp;rsquo;agit d&amp;rsquo;une page Web classique avec quelques éléments spécifiques :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;une balise &lt;code&gt;&amp;lt;link&amp;gt;&lt;/code&gt; vers la feuille de style Bootstrap ;&lt;/li&gt;
+&lt;li&gt;une balise &lt;code&gt;&amp;lt;meta name=&amp;quot;viewport&amp;quot;&amp;gt;&lt;/code&gt; définissant le &lt;em&gt;viewport&lt;/em&gt;, c&amp;rsquo;est-à-dire la surface de la fenêtre du navigateur qui affiche la page. Cela va permettre à la page de s&amp;rsquo;adapter à la dimension du terminal client ;&lt;/li&gt;
+&lt;li&gt;une balise &lt;code&gt;&amp;lt;meta&amp;gt;&lt;/code&gt; permettant un affichage correct sur le navigateur Internet Explorer ;&lt;/li&gt;
+&lt;li&gt;des balises &lt;code&gt;&amp;lt;script&amp;gt;&lt;/code&gt; qui activent les plugins jQuery de Bootstrap. Ces plugins sont nécessaires pour animer les composants Bootstrap.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&#34;alert&#34;&gt;
+    &lt;strong&gt;Remarque&lt;/strong&gt;
+    &lt;p&gt;&lt;p&gt;jQuery est ici inclus en ligne via le CDN Google. Il est également possible de le télécharger et de l&amp;rsquo;installer localement.&lt;/p&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Ouvrez cette page dans votre navigateur Web favori. Vous obtenez le résultat ci-dessous.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/content/hello_world_bootstrap.png&#34; class=&#34;content centered&#34; alt=&#34;hello_world_bootstrap.png&#34; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;toc_5&#34;&gt;Principe de fonctionnement&lt;/h1&gt;
+
+&lt;p&gt;Bootstrap est avant tout une bibliothèque CSS qui fournit plusieurs classes CSS prédéfinies. Il suffit de réutiliser ces classes pour profiter des fonctionnalités de Bootstrap.&lt;/p&gt;
+
+&lt;h2 id=&#34;toc_6&#34;&gt;Le conteneur et la grille Bootstrap&lt;/h2&gt;
+
+&lt;p&gt;Bootstrap fournit une classe CSS &lt;code&gt;container&lt;/code&gt; utilisée pour regrouper d&amp;rsquo;autres éléments.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;div class=&amp;quot;container&amp;quot;&amp;gt;
+  &amp;lt;!-- ... --&amp;gt;    
+&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;A l&amp;rsquo;intérieur d&amp;rsquo;un &lt;code&gt;container&lt;/code&gt;, Bootstrap gère la zone d&amp;rsquo;affichage sous la forme d&amp;rsquo;une &lt;strong&gt;grille&lt;/strong&gt; de 12 colonnes. La classe Bootstrap &lt;code&gt;row&lt;/code&gt; crée une &lt;strong&gt;ligne&lt;/strong&gt; dans cette grille, et chaque classe Bootstrap &lt;code&gt;col-*&lt;/code&gt; crée une &lt;strong&gt;cellule&lt;/strong&gt; qui regroupe * colonnes dans cette ligne.&lt;/p&gt;
+
+&lt;p&gt;Dans chaque ligne, la taille totale des colonnes doit être égale à 12. On peut donc choisir de diviser la surface d&amp;rsquo;affichage en 12 colonnes de taille 1, ou bien en 3 colonnes de taille 4, ou encore en une colonne de taille 4 et une colonne de taille 8.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/content/bootstrap_grid.png&#34; class=&#34;content centered&#34; alt=&#34;bootstrap_grid.png&#34; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;toc_7&#34;&gt;Démonstration&lt;/h2&gt;
+
+&lt;p&gt;Créez dans le répertoire &lt;code&gt;hello-world-bootstrap&lt;/code&gt; un fichier CSS &lt;code&gt;style.css&lt;/code&gt; contenant le code ci-dessous.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;.row {
+    margin-bottom: 15px;
+}
+
+.row [class^=&amp;quot;col-&amp;quot;] {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #eee;
+    border: 1px solid #ddd;
+    background-color: rgba(86,61,124,.15);
+    border: 1px solid rgba(86,61,124,.2);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Ce fichier permettra de mieux visualiser les éléments de la grille Bootstrap.&lt;/p&gt;
+
+&lt;p&gt;Ensuite, éditez le fichier &lt;code&gt;index.html&lt;/code&gt; comme indiqué ci-dessous.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;!doctype html&amp;gt;
+&amp;lt;html&amp;gt;
+&amp;lt;head&amp;gt;
+    &amp;lt;meta charset=&amp;quot;utf-8&amp;quot;&amp;gt;
+    &amp;lt;meta http-equiv=&amp;quot;X-UA-Compatible&amp;quot; content=&amp;quot;IE=edge&amp;quot;&amp;gt;
+    &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width, initial-scale=1.0&amp;quot;&amp;gt;
+    &amp;lt;link href=&amp;quot;bootstrap/css/bootstrap.min.css&amp;quot; rel=&amp;quot;stylesheet&amp;quot;&amp;gt;
+    &amp;lt;link href=&amp;quot;style.css&amp;quot; rel=&amp;quot;stylesheet&amp;quot;&amp;gt;
+    &amp;lt;title&amp;gt;Hello world with Bootstrap&amp;lt;/title&amp;gt;
+&amp;lt;/head&amp;gt;
+&amp;lt;body&amp;gt;
+    &amp;lt;div class=&amp;quot;container&amp;quot;&amp;gt;
+        &amp;lt;h1&amp;gt;Hello world!&amp;lt;/h1&amp;gt;
+        &amp;lt;div class=&amp;quot;row&amp;quot;&amp;gt;
+            &amp;lt;div class=&amp;quot;col-md-3&amp;quot;&amp;gt;
+                Zone de gauche
+            &amp;lt;/div&amp;gt;
+            &amp;lt;div class=&amp;quot;col-md-7&amp;quot;&amp;gt;
+                Zone du centre
+            &amp;lt;/div&amp;gt;
+            &amp;lt;div class=&amp;quot;col-md-2&amp;quot;&amp;gt;
+                Zone de droite
+            &amp;lt;/div&amp;gt;
+        &amp;lt;/div&amp;gt;
+    &amp;lt;/div&amp;gt;
+
+    &amp;lt;script src=&amp;quot;https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+    &amp;lt;script src=&amp;quot;bootstrap/js/bootstrap.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+&amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;On remarque au passage que le total des tailles des colonnes (3+7+2) est bien égal à 12. Ouvrez cette page dans un navigateur Web. Le placement des colonnes s&amp;rsquo;adapte à la surface d&amp;rsquo;affichage disponible.&lt;/p&gt;
+
+&lt;p&gt;Voici le rendu avec une surface d&amp;rsquo;affichage importante.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/content/bootstrap_grid_large.png&#34; class=&#34;content centered&#34; alt=&#34;bootstrap_grid_large.png&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Voici le rendu lorsque la surface d&amp;rsquo;affichage diminue.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/content/bootstrap_grid_small.png&#34; class=&#34;content centered&#34; alt=&#34;bootstrap_grid_small.png&#34; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;toc_8&#34;&gt;Bootstrap et le design Web adaptatif&lt;/h2&gt;
+
+&lt;p&gt;D&amp;rsquo;où vient le comportement que l&amp;rsquo;on vient d&amp;rsquo;observer ? Depuis sa version 3, Bootstrap est pensé d&amp;rsquo;abord pour les terminaux mobiles dont la surface d&amp;rsquo;affichage est limitée. Il adapte automatiquement la disposition des éléments à la zone d&amp;rsquo;affichage, détectée grâce à la balise &lt;code&gt;&amp;lt;meta name=&amp;quot;viewport&amp;quot;&amp;gt;&lt;/code&gt; vue plus haut.&lt;/p&gt;
+
+&lt;p&gt;Pour chaque taille de colonne (de 1 à 12), Bootstrap fournit quatre classes &lt;code&gt;col-*&lt;/code&gt; dont le comportement diffère en fonction du terminal d&amp;rsquo;affichage utilisé pour afficher la page Web.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;Smartphones&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;Tablettes&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;Desktop&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;Desktop large&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Limite de largeur d&amp;rsquo;affichage&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&amp;lt; 768px&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&amp;gt;= 768 px&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&amp;gt;= 992 px&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&amp;gt;= 1170 px&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Préfixe des classes colonne&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;code&gt;col-xs-*&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;code&gt;col-sm-*&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;code&gt;col-md-*&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;code&gt;col-lg-*&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Placement des colonnes&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;Horizontal&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;(*)&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;(*)&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;(*)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;(*) : Les colonnes seront placées horizontalement (côte à côte) uniquement si la largeur d&amp;rsquo;affichage est suffisante.&lt;/p&gt;
+
+&lt;p&gt;Par exemple, la classe Bootstrap &lt;code&gt;col-md-6&lt;/code&gt; désigne une colonne de taille 6 affichée horizontalement uniquement si la largeur d&amp;rsquo;affichage est au minimum celle d&amp;rsquo;un écran de bureau (desktop). Dans le cas contraire, la colonne sera placée verticalement, c&amp;rsquo;est-à-dire positionnée sous les autres.&lt;/p&gt;
+
+&lt;p&gt;Dans notre exemple, nous avons utilisé des colonnes desktop (&lt;code&gt;col-md-*&lt;/code&gt;). Le tableau ci-dessus montre que ces colonnes ne sont placées horizontalement que si la largeur d&amp;rsquo;affichage est supérieure ou égale à 992px. Dans le cas contraire, elles se superposent verticalement. Cela explique le comportement observé.&lt;/p&gt;
+
+&lt;p&gt;Modifiez le fichier &lt;code&gt;index.html&lt;/code&gt; et remplacez les classes &lt;code&gt;col-md-*&lt;/code&gt; par des classes &lt;code&gt;col-xs-*&lt;/code&gt; de même taille. Ouvrez ce fichier dans un navigateur. Quelle que soit la surface d&amp;rsquo;affichage, les colonnes restent placées horizontalement.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/content/bootstrap_grid_col_xs.png&#34; class=&#34;content centered&#34; alt=&#34;bootstrap_grid_col_xs.png&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Comme indiqué dans le tableau ci-dessus, les colonnes &lt;code&gt;col-xs-*&lt;/code&gt; ne sont jamais superposées verticalement.&lt;/p&gt;
+
+&lt;h2 id=&#34;toc_9&#34;&gt;Aller plus loin&lt;/h2&gt;
+
+&lt;p&gt;Il est possible de contrôler plus finement l&amp;rsquo;organisation de la page Web en combinant plusieurs classes colonne. Imaginons par exemple qu&amp;rsquo;on souhaite garder notre design actuel pour un affichage sur écran de bureau, mais agrandir la zone de gauche et diminuer la taille de la zone centrale pour un affichage sur tablette. Voici le code à modifier dans le fichier &lt;code&gt;index.html&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;!-- ... --&amp;gt;
+&amp;lt;div class=&amp;quot;row&amp;quot;&amp;gt;
+    &amp;lt;!-- Taille 4 sur tablettes, 3 sur desktop et plus --&amp;gt;
+    &amp;lt;div class=&amp;quot;col-sm-4 col-md-3&amp;quot;&amp;gt;
+        Zone de gauche
+    &amp;lt;/div&amp;gt;
+    &amp;lt;!-- Taille 6 sur tablettes, 7 sur desktop et plus --&amp;gt;
+    &amp;lt;div class=&amp;quot;col-sm-6 col-md-7&amp;quot;&amp;gt;
+        Zone du centre
+    &amp;lt;/div&amp;gt;
+    &amp;lt;!-- Taille 2 sur tablettes et plus --&amp;gt;
+    &amp;lt;div class=&amp;quot;col-sm-2&amp;quot;&amp;gt;
+        Zone de droite
+    &amp;lt;/div&amp;gt;
+&amp;lt;/div&amp;gt;
+&amp;lt;!-- ... --&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Modifiez &lt;code&gt;index.html&lt;/code&gt; puis affcihez-le dans un navigateur. On constate que la colonne de gauche passe de 25% à 33% de la largeur totale lorsque la surface d&amp;rsquo;affichage correspond à celle d&amp;rsquo;une tablette.&lt;/p&gt;
+
+&lt;div class=&#34;alert&#34;&gt;
+    &lt;strong&gt;Remarque&lt;/strong&gt;
+    &lt;p&gt;&lt;p&gt;On vérifie bien que la somme des tailles des colonnes est égale à 12 dans chaque configuration d&amp;rsquo;affichage (4+6+2 en mode tablette, 3+7+2 en desktop et plus).&lt;/p&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Il est même possible de masquer ou de faire apparaître certains éléments en fonction de la surface d&amp;rsquo;affichage grâce aux classes &lt;code&gt;visible-*&lt;/code&gt; et &lt;code&gt;hidden-*&lt;/code&gt;. Par exemple, on souhaite qu&amp;rsquo;en contexte smartphone, la zone de droite soit masquée et que les zones de gauche et du centre prennent chacune 50% de la place disponible. Voici le code source associé.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;!-- ... --&amp;gt;
+&amp;lt;div class=&amp;quot;row&amp;quot;&amp;gt;
+    &amp;lt;!-- Taille 6 sur smartphones, 4 sur tablettes, 3 sur desktop et plus --&amp;gt;
+    &amp;lt;div class=&amp;quot;col-xs-6 col-sm-4 col-md-3&amp;quot;&amp;gt;
+        Zone de gauche
+    &amp;lt;/div&amp;gt;
+    &amp;lt;!-- Taille 6 sur smartphones et tablettes, 7 sur desktop et plus --&amp;gt;
+    &amp;lt;div class=&amp;quot;col-xs-6 col-md-7&amp;quot;&amp;gt;
+        Zone du centre
+    &amp;lt;/div&amp;gt;
+    &amp;lt;!-- Masquée sur smartphones, taille 2 sur tablettes et plus --&amp;gt;
+    &amp;lt;div class=&amp;quot;col-sm-2 hidden-xs&amp;quot;&amp;gt;
+        Zone de droite
+    &amp;lt;/div&amp;gt;
+&amp;lt;/div&amp;gt;
+!-- ... --&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Vous pouvez tester ce code pour observer le comportement décrit plus haut.&lt;/p&gt;
+
+&lt;h2 id=&#34;toc_10&#34;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;En remplaçant la gestion CSS manuelle du positionnement (&lt;code&gt;float : left;&lt;/code&gt;, etc) par l&amp;rsquo;utilisation des classes Bootstrap &lt;code&gt;row&lt;/code&gt; et &lt;code&gt;col-*&lt;/code&gt;, on rend la mise en page Web à la fois plus simple et plus souple.&lt;/p&gt;
+
+&lt;p&gt;Les exemples ci-dessus ne donnent qu&amp;rsquo;un aperçu des possibilités de Bootstrap. Consultez la &lt;a href=&#34;http://getbootstrap.com/css&#34;&gt;documentation&lt;/a&gt; du framework pour plus de détails.&lt;/p&gt;
+
+&lt;h1 id=&#34;toc_11&#34;&gt;Aperçu de quelques composants Bootstrap&lt;/h1&gt;
+
+&lt;p&gt;Outre les classes de mise en page déjà étudiées, Bootstrap fournit de nombreux composants prêts à être intégrés dans nos pages Web.&lt;/p&gt;
+
+&lt;h2 id=&#34;toc_12&#34;&gt;Images et icônes&lt;/h2&gt;
+
+&lt;p&gt;Bootstrap est livré avec environ 200 mini-images (&lt;em&gt;glyphicons&lt;/em&gt;) librement utilisables.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Je boirais bien un &amp;lt;span class=&amp;quot;glyphicon glyphicon-glass&amp;quot;&amp;gt;&amp;lt;/span&amp;gt; avant  d&#39;aller écouter de la &amp;lt;span class=&amp;quot;glyphicon glyphicon-music&amp;quot;&amp;gt;&amp;lt;/span&amp;gt; avec ma &amp;lt;span class=&amp;quot;glyphicon glyphicon-heart&amp;quot;&amp;gt;&amp;lt;/span&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Ce qui donne le résultat suivant : Je boirais bien un &lt;span class=&#34;glyphicon glyphicon-glass&#34;&gt;&lt;/span&gt; avant  d&amp;rsquo;aller écouter de la &lt;span class=&#34;glyphicon glyphicon-music&#34;&gt;&lt;/span&gt; avec ma &lt;span class=&#34;glyphicon glyphicon-heart&#34;&gt;&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;De plus, Bootstrap fournit une classe &lt;code&gt;img-responsive&lt;/code&gt; qui permet aux images (balises HTML &lt;code&gt;&amp;lt;img&amp;gt;&lt;/code&gt;) de se redimensionner automatiquement à la taille de leur conteneur parent.&lt;/p&gt;
+
+&lt;h2 id=&#34;toc_13&#34;&gt;Boutons&lt;/h2&gt;
+
+&lt;p&gt;Bootstrap fournit un moyen simple d&amp;rsquo;obtenir des boutons élégants et personnalisables.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;button type=&amp;quot;button&amp;quot; class=&amp;quot;btn btn-default&amp;quot;&amp;gt;Action&amp;lt;/button&amp;gt;
+&amp;lt;button type=&amp;quot;button&amp;quot; class=&amp;quot;btn btn-warning btn-lg&amp;quot;&amp;gt;Attention&amp;lt;/button&amp;gt;
+&amp;lt;button type=&amp;quot;button&amp;quot; class=&amp;quot;btn btn-danger btn-xs&amp;quot;&amp;gt;Danger&amp;lt;/button&amp;gt;
+&amp;lt;button type=&amp;quot;button&amp;quot; class=&amp;quot;btn btn-primary&amp;quot;&amp;gt;&amp;lt;span class=&amp;quot;glyphicon glyphicon-shopping-cart&amp;quot;&amp;gt;&amp;lt;/span&amp;gt; Panier&amp;lt;/button&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;button type=&#34;button&#34; class=&#34;btn btn-default&#34;&gt;Action&lt;/button&gt;
+&lt;button type=&#34;button&#34; class=&#34;btn btn-warning btn-lg&#34;&gt;Attention&lt;/button&gt;
+&lt;button type=&#34;button&#34; class=&#34;btn btn-danger btn-xs&#34;&gt;Danger&lt;/button&gt;
+&lt;button type=&#34;button&#34; class=&#34;btn btn-primary&#34;&gt;&lt;span class=&#34;glyphicon glyphicon-shopping-cart&#34;&gt;&lt;/span&gt; Panier&lt;/button&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;toc_14&#34;&gt;Messages&lt;/h2&gt;
+
+&lt;p&gt;Bootstrap permet de définir des messages faciles à repérer dans une page Web.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;div class=&amp;quot;alert alert-success&amp;quot;&amp;gt;Bravo !&amp;lt;/div&amp;gt;
+&amp;lt;div class=&amp;quot;alert alert-info&amp;quot;&amp;gt;Terminé&amp;lt;/div&amp;gt;
+&amp;lt;div class=&amp;quot;alert alert-warning&amp;quot;&amp;gt;Attention...&amp;lt;/div&amp;gt;
+&amp;lt;div class=&amp;quot;alert alert-danger&amp;quot;&amp;gt;Erreur !&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div class=&#34;alert alert-success&#34;&gt;Bravo !&lt;/div&gt;
+&lt;div class=&#34;alert alert-info&#34;&gt;Terminé&lt;/div&gt;
+&lt;div class=&#34;alert alert-warning&#34;&gt;Attention...&lt;/div&gt;
+&lt;div class=&#34;alert alert-danger&#34;&gt;Erreur !&lt;/div&gt;
+
+&lt;h2 id=&#34;toc_15&#34;&gt;Menus de navigation&lt;/h2&gt;
+
+&lt;p&gt;Il existe deux possibilités pour concevoir un menu de navigation :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;utiliser la classe &lt;code&gt;nav&lt;/code&gt; ;&lt;/li&gt;
+&lt;li&gt;utiliser la classe &lt;code&gt;list-group&lt;/code&gt; ;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Le code ci-dessous définit une mise en page sur trois colonnes, avec deux menus et une zone de contenu.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;div class=&amp;quot;row&amp;quot;&amp;gt;
+    &amp;lt;div class=&amp;quot;col-xs-3&amp;quot;&amp;gt;
+        &amp;lt;ul class=&amp;quot;nav nav-pills nav-stacked&amp;quot;&amp;gt;
+            &amp;lt;li class=&amp;quot;active&amp;quot;&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;Menu avec nav&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+            &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;Profil&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+            &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;Messages&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+        &amp;lt;/ul&amp;gt;
+    &amp;lt;/div&amp;gt;
+    &amp;lt;div class=&amp;quot;col-xs-3&amp;quot;&amp;gt;
+        &amp;lt;div class=&amp;quot;list-group&amp;quot;&amp;gt;
+            &amp;lt;a class=&amp;quot;list-group-item&amp;quot; href=&amp;quot;&amp;quot;&amp;gt;Menu avec list-group&amp;lt;/a&amp;gt;
+            &amp;lt;a class=&amp;quot;list-group-item active&amp;quot; href=&amp;quot;&amp;quot;&amp;gt;Profil&amp;lt;/a&amp;gt;
+            &amp;lt;a class=&amp;quot;list-group-item&amp;quot; href=&amp;quot;&amp;quot;&amp;gt;Messages&amp;lt;/a&amp;gt;
+        &amp;lt;/div&amp;gt;
+    &amp;lt;/div&amp;gt;
+    &amp;lt;div class=&amp;quot;col-xs-6&amp;quot;&amp;gt;
+        Contenu
+    &amp;lt;/div&amp;gt;
+&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div class=&#34;row&#34;&gt;
+    &lt;div class=&#34;col-xs-3&#34;&gt;
+        &lt;ul class=&#34;nav nav-pills nav-stacked&#34;&gt;
+            &lt;li class=&#34;active&#34;&gt;&lt;a href=&#34;&#34;&gt;Menu avec nav&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&#34;&#34;&gt;Profil&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&#34;&#34;&gt;Messages&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;col-xs-3&#34;&gt;
+        &lt;div class=&#34;list-group&#34;&gt;
+            &lt;a class=&#34;list-group-item&#34; href=&#34;&#34;&gt;Menu avec list-group&lt;/a&gt;
+            &lt;a class=&#34;list-group-item active&#34; href=&#34;&#34;&gt;Profil&lt;/a&gt;
+            &lt;a class=&#34;list-group-item&#34; href=&#34;&#34;&gt;Messages&lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;col-xs-6&#34;&gt;
+        Contenu
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&#34;toc_16&#34;&gt;Barre de navigation&lt;/h2&gt;
+
+&lt;p&gt;On peut ajouter facilement une barre de navigation horizontale grâce à la classe Bootstrap &lt;code&gt;navbar&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;nav class=&amp;quot;navbar navbar-default&amp;quot; role=&amp;quot;navigation&amp;quot;&amp;gt;
+    &amp;lt;a class=&amp;quot;navbar-brand&amp;quot; href=&amp;quot;#&amp;quot;&amp;gt;Mon site Web&amp;lt;/a&amp;gt;
+    &amp;lt;ul class=&amp;quot;nav navbar-nav&amp;quot;&amp;gt;
+        &amp;lt;li class=&amp;quot;active&amp;quot;&amp;gt;&amp;lt;a href=&amp;quot;#&amp;quot;&amp;gt;Rubrique 1&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+        &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;#&amp;quot;&amp;gt;Rubrique 2&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+    &amp;lt;/ul&amp;gt;
+    &amp;lt;ul class=&amp;quot;nav navbar-nav navbar-right&amp;quot;&amp;gt;
+        &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;#&amp;quot;&amp;gt;Rubrique 3&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+    &amp;lt;/ul&amp;gt;
+&amp;lt;/nav&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;nav class=&#34;navbar navbar-default&#34; role=&#34;navigation&#34;&gt;
+    &lt;a class=&#34;navbar-brand&#34; href=&#34;#&#34;&gt;Mon site Web&lt;/a&gt;
+    &lt;ul class=&#34;nav navbar-nav&#34;&gt;
+        &lt;li class=&#34;active&#34;&gt;&lt;a href=&#34;#&#34;&gt;Rubrique 1&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#&#34;&gt;Rubrique 2&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;ul class=&#34;nav navbar-nav navbar-right&#34;&gt;
+        &lt;li&gt;&lt;a href=&#34;#&#34;&gt;Rubrique 3&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;&lt;/p&gt;
+
+&lt;p&gt;Il est également possible d&amp;rsquo;obtenir une barre de navigation adaptative. Son contenu est masqué et remplacé par un simple bouton d&amp;rsquo;accès lorsque la surface d&amp;rsquo;affichage est insuffisante.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;div class=&amp;quot;navbar navbar-default&amp;quot; role=&amp;quot;navigation&amp;quot;&amp;gt;
+    &amp;lt;!-- Partie de la barre toujours affichée --&amp;gt;
+    &amp;lt;div class=&amp;quot;navbar-header&amp;quot;&amp;gt;
+        &amp;lt;!-- Bouton d&#39;accès affiché à droite si la zone d&#39;affichage est trop petite --&amp;gt;
+        &amp;lt;button type=&amp;quot;button&amp;quot; class=&amp;quot;navbar-toggle&amp;quot; data-toggle=&amp;quot;collapse&amp;quot; data-target=&amp;quot;#navbar-collapse-target&amp;quot;&amp;gt;
+            &amp;lt;span class=&amp;quot;sr-only&amp;quot;&amp;gt;Activer la navigation&amp;lt;/span&amp;gt;
+            &amp;lt;span class=&amp;quot;icon-bar&amp;quot;&amp;gt;&amp;lt;/span&amp;gt;
+            &amp;lt;span class=&amp;quot;icon-bar&amp;quot;&amp;gt;&amp;lt;/span&amp;gt;
+            &amp;lt;span class=&amp;quot;icon-bar&amp;quot;&amp;gt;&amp;lt;/span&amp;gt;
+        &amp;lt;/button&amp;gt;
+        &amp;lt;a class=&amp;quot;navbar-brand&amp;quot; href=&amp;quot;#&amp;quot;&amp;gt;Mon site Web&amp;lt;/a&amp;gt;
+    &amp;lt;/div&amp;gt;
+    &amp;lt;!-- Partie de la barre masquée si la surface d&#39;affichage est insuffisante --&amp;gt;
+    &amp;lt;div class=&amp;quot;collapse navbar-collapse&amp;quot; id=&amp;quot;navbar-collapse-target&amp;quot;&amp;gt;
+        &amp;lt;ul class=&amp;quot;nav navbar-nav&amp;quot;&amp;gt;
+            &amp;lt;li class=&amp;quot;active&amp;quot;&amp;gt;&amp;lt;a href=&amp;quot;#&amp;quot;&amp;gt;Rubrique 1&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+            &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;#&amp;quot;&amp;gt;Rubrique 2&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+        &amp;lt;/ul&amp;gt;
+        &amp;lt;ul class=&amp;quot;nav navbar-nav navbar-right&amp;quot;&amp;gt;
+            &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;#&amp;quot;&amp;gt;Rubrique 3&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+        &amp;lt;/ul&amp;gt;
+    &amp;lt;/div&amp;gt;
+&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div class=&#34;navbar navbar-default&#34; role=&#34;navigation&#34;&gt;
+    &lt;!-- Partie de la barre toujours affichée --&gt;
+    &lt;div class=&#34;navbar-header&#34;&gt;
+        &lt;!-- Bouton d&#39;accès affiché à droite si la zone d&#39;affichage est trop petite --&gt;
+        &lt;button type=&#34;button&#34; class=&#34;navbar-toggle&#34; data-toggle=&#34;collapse&#34; data-target=&#34;#navbar-collapse-target&#34;&gt;
+            &lt;span class=&#34;sr-only&#34;&gt;Activer la navigation&lt;/span&gt;
+            &lt;span class=&#34;icon-bar&#34;&gt;&lt;/span&gt;
+            &lt;span class=&#34;icon-bar&#34;&gt;&lt;/span&gt;
+            &lt;span class=&#34;icon-bar&#34;&gt;&lt;/span&gt;
+        &lt;/button&gt;
+        &lt;a class=&#34;navbar-brand&#34; href=&#34;#&#34;&gt;Mon site Web&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;!-- Partie de la barre masquée si la surface d&#39;affichage est insuffisante --&gt;
+    &lt;div class=&#34;collapse navbar-collapse&#34; id=&#34;navbar-collapse-target&#34;&gt;
+        &lt;ul class=&#34;nav navbar-nav&#34;&gt;
+            &lt;li class=&#34;active&#34;&gt;&lt;a href=&#34;#&#34;&gt;Rubrique 1&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&#34;#&#34;&gt;Rubrique 2&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+        &lt;ul class=&#34;nav navbar-nav navbar-right&#34;&gt;
+            &lt;li&gt;&lt;a href=&#34;#&#34;&gt;Rubrique 3&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h1 id=&#34;toc_17&#34;&gt;Conclusion&lt;/h1&gt;
+
+&lt;p&gt;Nous n&amp;rsquo;avons fait que survoler les possibilités de Bootstrap. Il existe de nombreuses ressources sur ce framework en ligne, à commencer par sa &lt;a href=&#34;http://getbootstrap.com&#34;&gt;documentation officielle&lt;/a&gt; ou encore les tutoriels des sites &lt;a href=&#34;http://fr.openclassrooms.com/informatique/cours/prenez-en-main-bootstrap&#34;&gt;OpenClassrooms&lt;/a&gt; et &lt;a href=&#34;http://www.codecademy.com/fr/skills/make-a-website/&#34;&gt;Codecademy&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Développement PHP moderne</title>
+      <link>http://prof.bpesquet.fr/tutoriel/developpement-php-moderne/</link>
+      <pubDate>Tue, 01 Jan 2008 00:00:00 UTC</pubDate>
+      
+      <guid>http://prof.bpesquet.fr/tutoriel/developpement-php-moderne/</guid>
+      <description>&lt;p&gt;Découvrez comment bâtir une application Web fonctionnelle et sûre en tirant le meilleur du langage PHP.&lt;/p&gt;
+
+&lt;div class=&#34;alert alert-danger&#34;&gt;
+    &lt;strong&gt;Danger !&lt;/strong&gt;
+    &lt;p&gt;&lt;p&gt;Ce tutoriel est remplacé par le cours &lt;a href=&#34;http://openclassrooms.com/courses/evoluez-vers-une-architecture-php-professionnelle&#34;&gt;Evoluez vers une architecture PHP professionnelle&lt;/a&gt; publié chez OpenClassrooms en février 2015.&lt;/p&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

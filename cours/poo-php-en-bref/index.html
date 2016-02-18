@@ -1,0 +1,298 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+
+    <link href="http://prof.bpesquet.fr/vendor/bootstrap-3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://prof.bpesquet.fr/vendor/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="http://prof.bpesquet.fr/vendor/highlight.js/styles/monokai.css" rel="stylesheet">
+    <link href="http://prof.bpesquet.fr/styles/style.css" rel="stylesheet">
+
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-39897312-3', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+    <link rel="shortcut icon" href="http://prof.bpesquet.fr/images/bpesquet.ico">
+
+    <title>La POO avec PHP en bref</title>
+</head>
+<body data-spy="scroll" data-target="#TableOfContents">
+    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="http://prof.bpesquet.fr/">
+                    <span class="glyphicon glyphicon-home"></span>
+                </a>
+            </div>
+
+            <div class="collapse navbar-collapse nav-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Ressources <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="http://prof.bpesquet.fr/livre/">Livres</a></li>
+                            <li><a href="http://prof.bpesquet.fr/cours/">Cours</a></li>
+                            <li><a href="http://prof.bpesquet.fr/tutoriel/">Tutoriels</a></li>
+                            <li><a href="http://prof.bpesquet.fr/activite/">Activités</a></li>
+                            <li><a href="http://prof.bpesquet.fr/article/">Articles</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="http://prof.bpesquet.fr/avancement/">Avancements</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="mailto:bpesquet@gmail.com" title="Contact"><i class="fa fa-envelope"></i></a></li>
+                    <li><a href="https://twitter.com/bpesquet" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="https://plus.google.com/110003637459679741050?rel=author"><i class="fa fa-google-plus" title="Google+"></i></a></li>
+                    <li><a href="https://github.com/bpesquet" title="GitHub"><i class="fa fa-github"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+
+<div class="row">
+
+    <div class="col-md-9">
+        <h1 class="pageTitle">La POO avec PHP en bref</h1>
+        
+
+<p>Le langage PHP permet d&rsquo;utiliser la programmation orientée objet, avec toutefois quelques spécificités par rapport à d&rsquo;autres langages comme Java ou C#. Nous allons faire un tour d&rsquo;horizon des possibilités de PHP en matière de POO au travers de l&rsquo;exemple classique des comptes bancaires.</p>
+
+<h1 id="toc_0">Exemple de mise en oeuvre</h1>
+
+<p>Voici la définition PHP d&rsquo;une classe <code>CompteBancaire</code>.</p>
+
+<pre><code>&lt;?php
+
+class CompteBancaire
+{
+    private $devise;
+    private $solde;
+    private $titulaire;
+
+    public function __construct($devise, $solde, $titulaire)
+    {
+        $this-&gt;devise = $devise;
+        $this-&gt;solde = $solde;
+        $this-&gt;titulaire = $titulaire;
+    }
+
+    public function getDevise()
+    {
+        return $this-&gt;devise;
+    }
+
+    public function getSolde()
+    {
+        return $this-&gt;solde;
+    }
+
+    protected function setSolde($solde)
+    {
+        $this-&gt;solde = $solde;
+    }
+
+    public function getTitulaire()
+    {
+        return $this-&gt;titulaire;
+    }
+
+    public function crediter($montant) {
+        $this-&gt;solde += $montant;
+    }
+
+    public function __toString()
+    {
+        return &quot;Le solde du compte de $this-&gt;titulaire est de &quot; .
+            $this-&gt;solde . &quot; &quot; . $this-&gt;devise;
+    }
+}
+</code></pre>
+
+<p>En complément, voici la définition d&rsquo;une classe <code>CompteEpargne</code> qui hérite de la classe <code>CompteBancaire</code>.</p>
+
+<pre><code>&lt;?php
+
+require_once 'CompteBancaire.php';
+
+class CompteEpargne extends CompteBancaire
+{
+    private $tauxInteret;
+
+    public function __construct($devise, $solde, $titulaire, $tauxInteret)
+    {
+        parent::__construct($devise, $solde, $titulaire);
+        $this-&gt;tauxInteret = $tauxInteret;
+    }
+
+    public function getTauxInteret()
+    {
+        return $this-&gt;tauxInteret;
+    }
+
+    public function calculerInterets($ajouterAuSolde = false)
+    {
+        $interets = $this-&gt;getSolde() * $this-&gt;tauxInteret;
+        if ($ajouterAuSolde == true)
+            $this-&gt;setSolde($this-&gt;getSolde() + $interets);
+        return $interets;
+    }
+
+    public function __toString()
+    {
+        return parent::__toString() . 
+            '. Son taux d\'interet est de ' . $this-&gt;tauxInteret * 100 . '%.';
+    }
+}
+</code></pre>
+
+<div class="alert">
+    <strong>Remarque</strong>
+    <p><p>L&rsquo;instruction <a href="http://php.net/manual/fr/function.require-once.php">require_once</a> est similaire à <a href="http://php.net/manual/fr/function.require.php">require</a> mais n&rsquo;inclut le fichier demandé qu&rsquo;une seule fois. Elle est utile pour éviter, comme ici, les définitions multiples de classes.</p>
+</p>
+</div>
+
+<p>Voici un exemple d&rsquo;utilisation de ces deux classes.</p>
+
+<pre><code>&lt;?php
+
+require 'CompteBancaire.php';
+require 'CompteEpargne.php';
+
+$compteJean = new CompteBancaire(&quot;euros&quot;, 150, &quot;Jean&quot;);
+echo $compteJean . '&lt;br /&gt;';
+$compteJean-&gt;crediter(100);
+echo $compteJean . '&lt;br /&gt;';
+
+$comptePaul = new CompteEpargne(&quot;dollars&quot;, 200, &quot;Paul&quot;, 0.05);
+echo $comptePaul . '&lt;br /&gt;';
+echo 'Interets pour ce compte : ' . $comptePaul-&gt;calculerInterets() . 
+    ' ' . $comptePaul-&gt;getDevise() . '&lt;br /&gt;';
+$comptePaul-&gt;calculerInterets(true);
+echo $comptePaul . '&lt;br /&gt;';
+</code></pre>
+
+<p>Enfin, voici le résultat de son exécution.</p>
+
+<p><img src="http://prof.bpesquet.fr/images/content/poo-php-comptesbancaires.jpg" class="content centered bordered" alt="poo-php-comptesbancaires.jpg" /></p>
+
+<h1 id="toc_1">Caractéristiques du modèle objet de PHP</h1>
+
+<p>L&rsquo;observation des exemples précédents nous permet de retrouver certains concepts bien connus de la POO, repris par PHP :</p>
+
+<ul>
+<li>une <strong>classe</strong> se compose d&rsquo;<strong>attributs</strong> et de <strong>méthodes</strong> ;</li>
+<li>le mot-clé <code>class</code> permet de définir une classe ;</li>
+<li>les différents niveaux d&rsquo;accessibilité sont <code>public</code>, <code>protected</code> et <code>private</code> ;</li>
+<li>le mot-clé <code>extends</code> permet de définir une classe dérivée (comme en Java) ;</li>
+<li>le mot-clé <code>$this</code> permet d&rsquo;accéder aux membres de l&rsquo;objet courant.</li>
+</ul>
+
+<h1 id="toc_2">Spécificités du modèle objet de PHP</h1>
+
+<p>Même s&rsquo;il est similaire à ceux de C#, Java ou C++, le modèle objet de PHP possède certaines particularités  :</p>
+
+<ul>
+<li>PHP étant un langage à typage dynamique, on ne précise pas les types des attributs et des méthodes, mais seulement leur niveau d&rsquo;accessibilité ;</li>
+<li>le mot-clé <code>function</code> permet de déclarer une méthode, quelle que soit son type de retour ;</li>
+<li>le mot-clé <code>parent</code> permet d&rsquo;accéder au parent de l&rsquo;objet courant. Il joue en PHP le même rôle que <code>base</code> en C# et <code>super</code> en Java ;</li>
+<li>le constructeur d&rsquo;une classe s&rsquo;écrit <code>__construct</code> ;</li>
+<li>la méthode <code>__toString</code> détermine comment l&rsquo;objet est affiché en tant que chaîne de caractères ;</li>
+<li>on peut redéfinir (<em>override</em>) une méthode, comme ici <code>__toString</code>, sans mot-clé particulier ;</li>
+<li>il est possible de définir une valeur par défaut pour les paramètres d&rsquo;une méthode. Elle est utilisée lorsque l&rsquo;argument (paramètre effectif) n&rsquo;est pas précisé au moment de l&rsquo;appel.
+Remarques :</li>
+</ul>
+
+<div class="alert alert-danger">
+    <strong>Danger !</strong>
+    <p><p>L&rsquo;utilisation de <code>$this-&gt;</code> est <strong>obligatoire</strong> pour accéder aux membres de l&rsquo;objet courant. Son utilisation est optionnelle en C# et en Java, et souvent limitée à la levée des ambiguïtés entre attributs et paramètres ;</p>
+</p>
+</div> 
+
+<div class="alert">
+    <strong>Remarque</strong>
+    <p><p>Les méthodes <code>__construct</code> et <code>__toString</code> font partie de ce qu&rsquo;on appelle les <a href="http://php.net/manual/fr/language.oop5.magic.php">méthodes magiques PHP</a>.</p>
+</p>
+</div>
+
+        <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'bpesquet';
+    var disqus_identifier = 'http:\/\/prof.bpesquet.fr\/cours\/poo-php-en-bref';
+    var disqus_title = 'La POO avec PHP en bref';
+    var disqus_url = 'http:\/\/prof.bpesquet.fr\/cours\/poo-php-en-bref';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+    <div class="col-md-3">
+        <nav id="TableOfContents">
+<ul>
+<li><a href="#toc_0">Exemple de mise en oeuvre</a></li>
+<li><a href="#toc_1">Caractéristiques du modèle objet de PHP</a></li>
+<li><a href="#toc_2">Spécificités du modèle objet de PHP</a></li>
+</ul>
+</nav>
+    </div>
+
+</div>
+
+    </div> 
+
+    <footer class="footer">
+        <div class="container">
+            <p class="pull-right">
+                Créé avec <a href="http://hugo.spf13.com">Hugo</a> et <a href="http://getbootstrap.com">Bootstrap</a>.
+            </p>
+            <p>
+                <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/fr/"><img src="http://prof.bpesquet.fr/images/by-nc-sa.png" alt="Creative Commons logo" /></a>
+            </p>
+        </div>
+    </footer>
+
+    <script src="http://prof.bpesquet.fr/vendor/jquery-1.11.1/jquery.min.js"></script>
+    <script src="http://prof.bpesquet.fr/vendor/bootstrap-3.1.1/js/bootstrap.min.js"></script>
+    <script src="http://prof.bpesquet.fr/vendor/highlight.js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <script>
+        
+        $("img").addClass("img-responsive");
+        
+        
+        $("table").addClass("table");
+        
+        
+        $("#TableOfContents ul").addClass("nav");
+        $("#TableOfContents > ul").addClass("sidenav");
+        $("#TableOfContents").affix();
+
+        
+        
+        window.addEventListener("hashchange", function() { scrollBy(0, -60) });
+    </script>
+</body>
+</html>

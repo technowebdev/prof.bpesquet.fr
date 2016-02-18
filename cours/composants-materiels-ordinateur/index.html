@@ -1,0 +1,1138 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+
+    <link href="http://prof.bpesquet.fr/vendor/bootstrap-3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://prof.bpesquet.fr/vendor/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="http://prof.bpesquet.fr/vendor/highlight.js/styles/monokai.css" rel="stylesheet">
+    <link href="http://prof.bpesquet.fr/styles/style.css" rel="stylesheet">
+
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-39897312-3', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+    <link rel="shortcut icon" href="http://prof.bpesquet.fr/images/bpesquet.ico">
+
+    <title>Composants matériels de l&#39;ordinateur</title>
+</head>
+<body data-spy="scroll" data-target="#TableOfContents">
+    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="http://prof.bpesquet.fr/">
+                    <span class="glyphicon glyphicon-home"></span>
+                </a>
+            </div>
+
+            <div class="collapse navbar-collapse nav-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Ressources <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="http://prof.bpesquet.fr/livre/">Livres</a></li>
+                            <li><a href="http://prof.bpesquet.fr/cours/">Cours</a></li>
+                            <li><a href="http://prof.bpesquet.fr/tutoriel/">Tutoriels</a></li>
+                            <li><a href="http://prof.bpesquet.fr/activite/">Activités</a></li>
+                            <li><a href="http://prof.bpesquet.fr/article/">Articles</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="http://prof.bpesquet.fr/avancement/">Avancements</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="mailto:bpesquet@gmail.com" title="Contact"><i class="fa fa-envelope"></i></a></li>
+                    <li><a href="https://twitter.com/bpesquet" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="https://plus.google.com/110003637459679741050?rel=author"><i class="fa fa-google-plus" title="Google+"></i></a></li>
+                    <li><a href="https://github.com/bpesquet" title="GitHub"><i class="fa fa-github"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+
+<div class="row">
+
+    <div class="col-md-9">
+        <h1 class="pageTitle">Composants matériels de l&#39;ordinateur</h1>
+        
+
+<p>L&rsquo;objectif de ce chapitre est de vous présenter ce qu&rsquo;est un ordinateur
+ainsi que les bases de son fonctionnement.</p>
+
+<p><img src="http://prof.bpesquet.fr/images/content/calvin_computer.jpg" class="content centered" alt="calvin_computer.jpg" /></p>
+
+<h1 id="toc_0">Généralités sur les ordinateurs</h1>
+
+<h2 id="toc_1">Qu&rsquo;est-ce qu&rsquo;un ordinateur ?</h2>
+
+<p>Le dictionnaire Larousse définit l&rsquo;ordinateur de la manière suivante :</p>
+
+<blockquote>
+<p>Un ordinateur est une machine automatique de traitement de l&rsquo;information, obéissant à des programmes formés par des suites d&rsquo;opérations arithmétiques et logiques.</p>
+</blockquote>
+
+<p>L&rsquo;ordinateur n&rsquo;est donc rien de plus qu&rsquo;une machine qui effectue des opérations logiques et arithmétiques à la chaîne.</p>
+
+<div class="alert">
+    <strong>Remarque</strong>
+    <p><p>Le terme &ldquo;ordinateur&rdquo; est générique. Il peut désigner aussi bien un ordinateur de bureau classique qu&rsquo;un serveur de calcul ou encore un terminal mobile.</p>
+</p>
+</div>
+
+<div class="alert alert-info">
+    <strong>Question</strong>
+    <p><p>Trouvez des exemples d&rsquo;ordinateurs.</p>
+</p>
+</div>
+
+<p>Tout ordinateur, même très performant, n&rsquo;est qu&rsquo;une <strong>machine</strong> capable d&rsquo;exécuter automatiquement une série d&rsquo;opérations qu&rsquo;on lui a demandées. Il ne dispose par lui-même d&rsquo;aucune capacité d&rsquo;apprentissage, de jugement, d&rsquo;improvisation, bref d&rsquo;aucune &ldquo;intelligence&rdquo;. Il se contente de <strong>faire ce qu&rsquo;on lui dit de faire</strong>. L&rsquo;intérêt des ordinateurs est de savoir manipuler très rapidement et sans erreur d&rsquo;énormes quantités d&rsquo;informations.</p>
+
+<p>Tout ordinateur est composé de plusieurs types d&rsquo;éléments en interaction :</p>
+
+<ul>
+<li>Des éléments matériels : processeur, mémoire, etc.</li>
+<li>Un système d&rsquo;exploitation qui permet d&rsquo;exploiter les éléments matériels.</li>
+<li>Des applications, logiciels utilisant le système d&rsquo;exploitation pour offrir des fonctionnalités à l&rsquo;utilisateur de l&rsquo;ordinateur.</li>
+</ul>
+
+<h2 id="toc_2">Un peu d&rsquo;histoire</h2>
+
+<p>Même si l&rsquo;histoire ancienne a vu l&rsquo;apparition de diverses machines à compter et à calculer (boulier, Pascaline, etc), l&rsquo;informatique est une science très récente dont voici les principales étapes.</p>
+
+<h3 id="toc_3">1945-1956 : les ordinateurs mécaniques</h3>
+
+<p>Les ordinateurs de cette génération sont surtout caractérisés par le fait que les instructions qu&rsquo;ils comprennent correspondent spécialement à la tâche pour laquelle l&rsquo;ordinateur a été conçu. Ils n&rsquo;avaient aucune souplesse et des possibilités très limitées, concentrées sur une seule tâche précise. Ils utilisent également des tubes à vide (également appelées des lampes), ce qui explique leur taille, leur poids et leur consommation immense.</p>
+
+<p><strong>ENIAC</strong> (<em>Electronic Numerical Integrator And Computer</em>) est un très bon exemple d&rsquo;ordinateur de première génération. Il n&rsquo;était qu&rsquo;une gigantesque et rapide calculatrice. On définissait un &ldquo;programme&rdquo; en branchant tout un ensemble de câbles.</p>
+
+<p><img src="http://prof.bpesquet.fr/images/content/eniac.jpg" class="content centered bordered" alt="eniac.jpg" /></p>
+
+<h3 id="toc_4">1956-1963 : les ordinateurs à transistors</h3>
+
+<p>L&rsquo;invention du <strong>transistor</strong> en 1947 bouleverse le développement des ordinateurs. Remplaçant les tubes à vide un peu partout (télévisions, radios), il a été utilisé dans un ordinateur pour la première fois en 1956, par Bell.</p>
+
+<p><img src="http://prof.bpesquet.fr/images/content/premier_transistor.jpg" class="content centered bordered" alt="premier_transistor.jpg" /></p>
+
+<p>Cette même année, IBM (<em>International Business Machines</em>, société fondée en 1940) met au point le premier disque dur, constitué d&rsquo;une pile de 50 plateaux de 61 cm de diamètre. Il peut stocker 5 Mo.</p>
+
+<p><img src="http://prof.bpesquet.fr/images/content/premier_disque_dur.jpg" class="content centered bordered" alt="premier_disque_dur.jpg" /></p>
+
+<p>À partir de 1960, les ordinateurs à transistors commençaient à incorporer efficacement des périphériques que l&rsquo;on considère maintenant comme courants: disques magnétiques, enregistreurs à bandes magnétiques, imprimantes, mémoire. Ils avaient également des systèmes d&rsquo;exploitation rudimentaires et on pouvait stocker des programmes en mémoire.</p>
+
+<p>Ces programmes stockés en mémoire et la possibilité d&rsquo;aller modifier ces programmes pour leur faire réaliser d&rsquo;autres fonctions ont donné à l&rsquo;ordinateur la flexibilité qui leur manquait. Ils permettaient d&rsquo;utiliser des mots, des phrases et des formules mathématiques plus proches du langage humain.  L&rsquo;industrie du logiciel a commencé à se développer.</p>
+
+<h3 id="toc_5">1964-1971 : les ordinateurs à circuits intégrés</h3>
+
+<p>Le transistor était un bon pas en avant par rapport aux tubes à vide, mais il générait beaucoup de chaleur et endommageait souvent les parties internes sensibles de l&rsquo;ordinateur. L&rsquo;apparition du circuit intégré en 1964 a révolutionné le monde de l&rsquo;informatique. Le premier circuit intégré réunissait trois composants électroniques sur un même (petit) support. Son arrivée a permis de diminuer encore la taille des ordinateurs, ainsi que leur consommation et leur émission de chaleur.</p>
+
+<p>En 1967, IBM construit le premier lecteur de disquettes, qui devient un moyen populaire de stocker des données temporairement beaucoup plus pratique que les bandes magnétiques.</p>
+
+<p>Un autre développement propre à la troisième génération: l&rsquo;amélioration et l&rsquo;utilisation courante des systèmes d&rsquo;exploitation, un programme central qui gérait la mémoire de l&rsquo;ordinateur et permettait de faire
+tourner plusieurs programmes sur un même ordinateur – les ancêtres de Windows !</p>
+
+<h3 id="toc_6">Depuis 1971 : la micro-informatique</h3>
+
+<p>Avec l&rsquo;apparition des circuits intégrés, la tendance est allée vers la miniaturisation. Depuis les années 80, on est capable de mettre plusieurs centaines de milliers, voire des millions de composants sur un support de la même surface. Tout ceci permis de réduire considérablement la taille et le coût des ordinateurs, tout en améliorant leur puissance et leur fiabilité. Le microprocesseur est né.</p>
+
+<p>Sa généralisation pousse des compagnies comme Tandy, Commodore et Apple à commercialiser les premiers ordinateurs personnels. En 1981, IBM lance son premier ordinateur personnel: l&rsquo;IBM PC (il crée du même coup officiellement le terme). IBM donnant le droit à n&rsquo;importe qui de copier son architecture : les clones de PC apparaissent partout, faisant baisser grandement les prix et rendant le PC le choix de millions d&rsquo;utilisateurs.</p>
+
+<p><img src="http://prof.bpesquet.fr/images/content/ibm_pc.jpg" class="content centered bordered" alt="ibm_pc.jpg" /></p>
+
+<p>En 1984, le premier concurrent direct du PC d&rsquo;IBM fait son entrée sur le marché: le MacIntosh d&rsquo;Apple. Il est le premier à offrir un système d&rsquo;exploitation graphique, laissant l&rsquo;usager déplacer des icônes et des fenêtres avec une souris plutôt que de taper des commandes étranges avec un clavier.</p>
+
+<p><img src="http://prof.bpesquet.fr/images/content/apple_macintosh.jpg" class="content centered" alt="apple_macintosh.jpg" /></p>
+
+<p>C&rsquo;est à cette époque qu&rsquo;apparaissent les premiers ordinateurs portables, ou plutôt transportables tant leur poids (plus de 10 kg) et leur prix étaient dissuasifs.</p>
+
+<p><img src="http://prof.bpesquet.fr/images/content/premier_transportable.jpg" class="content centered bordered" alt="premier_transportable.jpg" /></p>
+
+<h3 id="toc_7">De nos jours : des ordinateurs partout</h3>
+
+<p>L&rsquo;époque actuelle se caractérise par une course à la puissance et à la miniaturisation des composants de l&rsquo;ordinateur, liée à la concurrence que se livrent les fabricants de matériel.</p>
+
+<p>Cette évolution, ainsi que la généralisation de l&rsquo;accès aux réseaux, a eu pour conséquence l&rsquo;explosion de l&rsquo;informatique mobile, avec des terminaux (smartphones, tablettes) disposant de la même puissance que les ordinateurs de bureau d&rsquo;il y a quelques années&hellip;</p>
+
+<p><img src="http://prof.bpesquet.fr/images/content/familles_ordinateurs.jpg" class="content centered" alt="familles_ordinateurs.jpg" /></p>
+
+<h1 id="toc_8">Généralités sur les logiciels</h1>
+
+<h2 id="toc_9">Définition</h2>
+
+<div class="alert alert-info">
+    <strong>Question</strong>
+    <p><p>Faites une liste de logiciels que vous connaissez.</p>
+</p>
+</div>
+
+<p>Chaque logiciel assure une tâche particulière pour répondre à un besoin précis.</p>
+
+<blockquote>
+<p>Un logiciel est un programme qui permet à un système informatique d&rsquo;assurer une tâche particulière (Wikipédia).</p>
+</blockquote>
+
+<p>Pour fonctionner, un logiciel exploite les ressources matérielles du système informatique qui l&rsquo;héberge.</p>
+
+<h2 id="toc_10">Les différents types de logiciels</h2>
+
+<p>On distingue deux grandes familles de logiciels :</p>
+
+<ul>
+<li>Les logiciels système, appelés égalements <strong>systèmes d&rsquo;exploitation</strong>.</li>
+<li>Les logiciels d&rsquo;application</li>
+</ul>
+
+<div class="alert alert-info">
+    <strong>Question</strong>
+    <p><p>Trouvez des exemples de logiciels système.</p>
+</p>
+</div>
+
+<p>On peut catégoriser les logiciels d&rsquo;application selon le type de tâche qu&rsquo;ils réalisent.</p>
+
+<div class="alert alert-info">
+    <strong>Question</strong>
+    <p><p>Trouvez des catégories de logiciels d&rsquo;application.</p>
+</p>
+</div>
+
+<p>Les logiciels d&rsquo;application utilisent les services offerts par le logiciel système qui les accueille.</p>
+
+<p><img src="http://prof.bpesquet.fr/images/content/imbrication_logiciels.jpg" class="content centered" alt="imbrication_logiciels.jpg" /></p>
+
+<h2 id="toc_11">La création d&rsquo;un logiciel</h2>
+
+<h3 id="toc_12">Le processus de création</h3>
+
+<p>L&rsquo;origine d&rsquo;un logiciel est un ensemble de fichiers appelé <strong>code source</strong>. Ces fichiers sont écrits par un ou plusieurs programmeurs dans un langage particulier. En fonction du langage choisi, les fichiers source sont :</p>
+
+<ul>
+<li>transformés par un logiciel appelé <strong>compilateur</strong> en un ou plusieurs fichiers exécutables (extension <em>.exe</em> sous Windows).</li>
+<li>directement exécutés par un <strong>interpréteur</strong>.</li>
+</ul>
+
+<p>De nos jours, de nombreux outils aident les programmeurs à créer des logiciels plus rapidement (génération d&rsquo;une partie du code source, création de l&rsquo;interface graphique&hellip;).</p>
+
+<h3 id="toc_13">Les erreurs (bogues)</h3>
+
+<p>Plus le logiciel créé est complexe, plus il est difficile d&rsquo;éviter les bogues (<em>bugs</em>) dans sa conception.</p>
+
+<div class="alert alert-info">
+    <strong>Définition</strong>
+    <p><p>Un bogue est une erreur dans le code source du logiciel qui provoque un effet inattendu pendant son exécution.</p>
+</p>
+</div>
+
+<h2 id="toc_14">La distribution d&rsquo;un logiciel</h2>
+
+<p>Le logiciel, création de l&rsquo;esprit, est protégé par le droit. Son auteur est libre de choisir son mode de distribution à travers le choix d&rsquo;une licence. On peut classer les logiciels en quatre catégories principales selon leur mode de distribution :</p>
+
+<ul>
+<li>Les <strong>logiciels commerciaux</strong> sont propriétaires et payants.</li>
+<li>Les <strong>partagiciels</strong> (<em>sharewares</em>) sont gratuits pour une période donnée, puis payants.</li>
+<li>Les <strong>graticiels</strong> (<em>freewares</em>) sont disponibles gratuitement, parfois en version bridée.</li>
+<li>Les <strong>logiciels libres</strong> donnent à toute personne qui en possède une copie le droit de les utiliser, de les étudier, de les modifier et de les redistribuer. Ils sont fournis avec leur code source, et on rencontre parfois l&rsquo;expression &ldquo;open source&rdquo; pour qualifier ces logiciels.</li>
+</ul>
+
+<p><img src="http://prof.bpesquet.fr/images/content/copyleft.png" class="content centered" alt="copyleft.png" /></p>
+
+<div class="alert alert-info">
+    <strong>Question</strong>
+    <p><p>Trouvez des exemples de logiciels pour chaque mode de distribution.</p>
+</p>
+</div>
+
+<p>Il existe d&rsquo;autres modes de distribution plus &ldquo;exotiques&rdquo; (carticiel, abandogiciel&hellip;).</p>
+
+<h1 id="toc_15">Architecture d&rsquo;un ordinateur</h1>
+
+<p>Même si un ordinateur peut prendre des formes très différentes, du serveur au smartphone en passant par le PC du bureau, son architecture de base est identique d&rsquo;un modèle à l&rsquo;autre. Seule la taille (et les performances) de ses éléments changent.</p>
+
+<p>Un ordinateur se compose de plusieurs éléments matériels en interaction. L&rsquo;image ci-dessous illustre l&rsquo;architecture d&rsquo;un PC de bureau (source : Wikipedia).</p>
+
+<p><img src="http://prof.bpesquet.fr/images/content/eclate_ordinateur.png" class="content centered" alt="eclate_ordinateur.png" /></p>
+
+<h1 id="toc_16">La carte mère</h1>
+
+<div class="alert">
+    <strong>Remarque</strong>
+    <p><p>Ce paragraphe reprend un cours de mon collègue Pascal Chemin.</p>
+</p>
+</div>
+
+<h2 id="toc_17">Le rôle de la carte mère</h2>
+
+<p>La carte mère est l’élément central d’un ordinateur.</p>
+
+<p><img src="http://prof.bpesquet.fr/images/content/carte_mere.png" class="content centered bordered" alt="carte_mere.png" /></p>
+
+<p>Elle assure l&rsquo;interconnexion entre tous les autres composants.</p>
+
+<h2 id="toc_18">Le format (ou facteur d’encombrement)</h2>
+
+<p>Le format d’une carte mère définit :</p>
+
+<ul>
+<li>ses dimensions,</li>
+<li>les emplacements des points de fixation,</li>
+<li>le type d’alimentation à utiliser.</li>
+</ul>
+
+<p>Les formats des cartes mère sont fortement liés aux formats des boîtiers.</p>
+
+<p>On trouve essentiellement trois types de formats pour une carte mère récente.</p>
+
+<table>
+<thead>
+<tr>
+<th><strong>Format</strong></th>
+<th><strong>Format de boitier</strong></th>
+<th><strong>Dimensions</strong></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>ATX</td>
+<td>Ordinateur de bureau</td>
+<td>305x244 mm</td>
+</tr>
+
+<tr>
+<td>Micro ATX</td>
+<td>Ordinateurs de bureau compacts</td>
+<td>244x244 mm</td>
+</tr>
+
+<tr>
+<td>ITX</td>
+<td>Mini PC</td>
+<td>177x177mm</td>
+</tr>
+</tbody>
+</table>
+
+<p><img src="http://prof.bpesquet.fr/images/content/form_factors.png" class="content centered" alt="form_factors.png" /></p>
+
+<ul>
+<li><p><strong>Le format ATX</strong>. Ce sont les cartes mères de plus grande taille. Il faudra généralement un boîtier spacieux pour l’accueillir, muni d’une alimentation ATX. C’est le format de carte mère le plus répandu.</p></li>
+
+<li><p><strong>Le format micro ATX</strong>. Format de carte compact. Il convient généralement aux boîtiers de type munis d’une alimentation ATX.</p></li>
+
+<li><p><strong>Le format ITX</strong>. Format de carte mère ultracompact destiné exclusivement aux PC munis d’une alimentation ITX.</p></li>
+</ul>
+
+<h2 id="toc_19">Le support processeur (socket)</h2>
+
+<div class="alert alert-info">
+    <strong>Définition</strong>
+    <p><p>Le socket est le support qui permet au processeur d&rsquo;être branché sur la carte mère.</p>
+</p>
+</div>
+
+<p><img src="http://prof.bpesquet.fr/images/content/socket.png" class="content centered" alt="socket.png" /></p>
+
+<p>Le socket est un réceptacle couvert de contacts. Le processeur va s’emboîter dans le réceptacle, les différents contacts vont s’établir par une pression sur un levier.</p>
+
+<p>Le type de support de votre carte mère peut être identifié grâce à des logiciels de diagnostic comme <a href="http://www.aida64.com/">AIDA64</a> ou <a href="http://www.sisoftware.net">Sandra</a></p>
+
+<p>La <a href="http://fr.wikipedia.org/wiki/Socket_(processeur)">page Wikipedia associée au socket</a> donne toutes les informations nécessaires.</p>
+
+<h2 id="toc_20">Le support mémoire</h2>
+
+<p>Les cartes mères disposent de plusieurs supports mémoire permettant de connecter de la <strong>mémoire vive</strong> (RAM, <em>Random Access Memory</em>) sous la forme de barrettes.</p>
+
+<p><img src="http://prof.bpesquet.fr/images/content/carte_mere_ram.jpg" class="content centered bordered" alt="carte_mere_ram.jpg" /></p>
+
+<p>Avant un achat, il est important de vérifier la compatibilité des barrettes avec la carte mère.</p>
+
+<h2 id="toc_21">Les <em>chipsets</em></h2>
+
+<p>Les chipsets sont des <strong>composants</strong> de la carte mère chargés de gérer les flux entre les différents composants de l’ordinateur.</p>
+
+<p>On trouve deux composants essentiels à la carte mère qui se partagent les communications en fonction de la vitesse de communication et du nombre d’informations échangés :</p>
+
+<ul>
+<li><p>Le <em>northbridge</em> (&ldquo;pont nord&rdquo;) gère les échanges de données entre les composants ayant besoin d’échanger un très grand nombre d’informations dans un laps de temps très faible :</p>
+
+<ul>
+<li>Processeur,</li>
+<li>Mémoire vive</li>
+<li>Carte graphique</li>
+</ul></li>
+</ul>
+
+<p></p>
+
+<ul>
+<li>Le <em>southbridge</em> (&ldquo;pont sud&rdquo;) gére les échanges de données entre les composants ayant besoin d’échanger un nombre plus faible d’informations : les périphériques d’entrée et sortie.</li>
+</ul>
+
+<p><img src="http://prof.bpesquet.fr/images/content/schema_bus_CM.png" class="content centered" alt="schema_bus_CM.png" /></p>
+
+<p>Les chipsets déterminent quels composants sont supportés :</p>
+
+<ul>
+<li>le processeur,</li>
+<li>les mémoires,</li>
+<li>les types de ports gérés (USB, PCI Express, AGP, SATA, etc.).</li>
+</ul>
+
+<div class="alert alert-info">
+    <strong>Question</strong>
+    <p><p>Trouvez les noms des principaux constructeurs de <em>chipsets</em>.</p>
+</p>
+</div>
+
+<p>Evolutions récentes :</p>
+
+<ul>
+<li><p>Le northbridge traditionnel est destiné à disparaître.</p></li>
+
+<li><p>Le contrôleur mémoire, qui assure la communication entre le processeur et la RAM, a été intégré dans le cœur des processeurs AMD64 ou Intel Core i7.</p></li>
+</ul>
+
+<h2 id="toc_22">Les ports internes</h2>
+
+<p>Parmi les ports interne d&rsquo;une carte mère, les <strong>ports d’extension</strong> permettent de connecter des cartes supplémentaires dans votre PC. Les cartes les plus courantes sont :</p>
+
+<ul>
+<li>les cartes graphiques,</li>
+<li>les cartes son,</li>
+<li>les cartes réseau.</li>
+</ul>
+
+<h3 id="toc_23">Les port PCI et PCI Express</h3>
+
+<p>Le port PCI se trouve encore sur les cartes mères, mais ce type de port est en perte de vitesse. Il propose des débits trop faibles pour supporter certaines cartes. Il est remplacé par les ports PCI Express. Le débit de ces ports est beaucoup plus important.</p>
+
+<p><img src="http://prof.bpesquet.fr/images/content/ports_pciexpress.jpg" class="content centered bordered" alt="ports_pciexpress.jpg" /></p>
+
+<p>Ces ports sont différents physiquement comme le montre ce schéma. Plus l’indice multiplicateur est élevé plus le débit proposé est important.</p>
+
+<h3 id="toc_24">Le port ATA</h3>
+
+<p>Il est destiné à la connexion de disques durs ou de lecteurs optiques. Il s&rsquo;agit d&rsquo;une ancienne norme en voie de disparition. La connexion du composant se fait grâce à une nappe plate de 40 à 80 fils munie de 3 connecteurs.</p>
+
+<p><img src="http://prof.bpesquet.fr/images/content/port_pata.png" class="content centered bordered" alt="port_pata.png" /></p>
+
+<p>Les connecteurs ATA sur les cartes mères sont encore largement répandus, mais leur nombre a diminué : la plupart des cartes mères n’offrent plus qu’un seul port ATA.</p>
+
+<h3 id="toc_25">Les ports SATA (SATA2, SATA3)</h3>
+
+<p>Cette norme vient remplacer l’ancien standard ATA. Cette technologie propose des débits plus importants que la norme ATA particulièrement pour les normes SATA2 et SATA3 qui offrent un débit théorique plusieurs fois supérieur au SATA1.</p>
+
+<p><img src="http://prof.bpesquet.fr/images/content/port_sata.png" class="content centered bordered" alt="port_sata.png" /></p>
+
+<p>La norme SATA présente d’autres avantages :</p>
+
+<ul>
+<li>Les câbles Serial ATA peuvent mesurer jusqu’à 1 mètre de long (contre 45 cm pour les nappes ATA).</li>
+<li>Le faible nombre de fils dans la gaine donne plus de souplesse au câble et contribue à une meilleure circulation de l’air dans le boîtier.</li>
+<li>Les périphériques SATA sont seuls sur chaque câble et il n’est plus nécessaire de définir des périphériques ATA maîtres et esclaves.</li>
+</ul>
+
+<h2 id="toc_26">Les ports externes</h2>
+
+<p><img src="http://prof.bpesquet.fr/images/content/ports_externes_CM.png" class="content centered" alt="ports_externes_CM.png" /></p>
+
+<h3 id="toc_27">Le port USB</h3>
+
+<p>C’est un port extrêmement connu pour son caractère universel. On peut connecter une multitude de périphériques sur ce type de port (imprimante, scanner, disque dur, clavier, webcam, clé&hellip;).</p>
+
+<p>Il existe trois types de port USB, les types USB1, USB2 et USB3. Le type USB2 est deux fois plus rapide que le type USB1 en termes de débit. Le type USB3 est encore plus rapide que l’USB2.</p>
+
+<h3 id="toc_28">Le port eSata</h3>
+
+<p>Ce type de port est apparu récemment sur les cartes mères. C&rsquo;est une version externe des ports SATA.</p>
+
+<p><img src="http://prof.bpesquet.fr/images/content/port_esata.png" class="content centered bordered" alt="port_esata.png" /></p>
+
+<p>Le débit proposé par cette technologie est très rapide, les taux de transfert sont identiques à la version interne. Ce type de port est donc particulièrement adapté pour des disques durs externes.</p>
+
+<h3 id="toc_29">Les ports PS2, parallèle, série</h3>
+
+<p>L’ensemble de ces ports a quasiment disparu des cartes mères actuelles.</p>
+
+<ul>
+<li>Le port PS2 est destiné à connecter un clavier ou une souris.</li>
+<li>Les ports parallèles autorisent l’utilisation d’une imprimante.</li>
+<li>Les ports série (ports RS-232) sont fréquemment utilisées dans l&rsquo;industrie pour connecter différents appareils électroniques (automate, appareil de mesure, etc.) et des actifs réseau (routeurs).</li>
+</ul>
+
+<p>Les ports série sont souvent désignés par les noms COM1, COM2, etc. Cela leur a valu le surnom de « ports COM », encore utilisé de nos jours.</p>
+
+<h2 id="toc_30">Le réseau</h2>
+
+<h3 id="toc_31">Réseau filaire</h3>
+
+<p>La quasi-totalité des cartes mères possède une voire plusieurs prises réseaux (RJ45). Ces connecteurs supportent différents taux de transfert, les plus courants sont 100 Mbit/s ou 1 Gbit/s (1000 Mbit/s).</p>
+
+<p><img src="http://prof.bpesquet.fr/images/content/port_rj45.png" class="content centered bordered" alt="port_rj45.png" /></p>
+
+<h3 id="toc_32">Réseau sans fil</h3>
+
+<p>Certaines cartes mères récentes intègrent les fonctionnalités des cartes Wi-Fi. Elles prennent en charge la plupart des normes actuelles à savoir 802.11b et 802.11g. Ces cartes mères sont généralement pourvues d’un connecteur pour une antenne Wi-Fi.</p>
+
+<h2 id="toc_33">Le multimédia</h2>
+
+<h3 id="toc_34">Audio</h3>
+
+<p>Les cartes mères intègrent depuis de nombreuses années des cartes son. Autrefois de piètre qualité et limitées à la stéréo, les cartes son intégrées ont beaucoup progressé en qualité et délivrent désormais un son multicanal (5.1, 7.1). Néanmoins, elles n’arrivent pas au degré de qualité et de performance que peut offrir une carte son séparée connectée sur un port PCI ou PCI Express.</p>
+
+<h3 id="toc_35">Vidéo</h3>
+
+<p>Les cartes mères récentes intègrent souvent un circuit graphique intégré qui joue le rôle de carte graphique. Les performances de ces circuits sont souvent modestes et peu en adéquation avec une utilisation ludique du PC (jeux !).</p>
+
+<p>Une carte mère récente propose maintenant :</p>
+
+<ul>
+<li>un connecteur VGA (signal analogique) et</li>
+<li>un connecteur DVI (Digital Visual Interface, signal numérique)) et/ou</li>
+<li>un connecteur HDMI (High Definition Multimedia Interface, signal numérique qui délivre à la fois l’image et le son).</li>
+</ul>
+
+<h2 id="toc_36">Le BIOS</h2>
+
+<div class="alert alert-info">
+    <strong>Définition</strong>
+    <p><p>Le BIOS est le programme chargé d’initialiser l’ordinateur avant le démarrage du système d’exploitation.</p>
+</p>
+</div>
+
+<p>Les informations de base concernant la configuration du matériel d’un ordinateur sont stockées dans une puce appelé CMOS (Complementary Metal Oxide Semiconductor) qui est gardée sous alimentation constante par la batterie de sauvegarde (pile ou accumulateur) de l&rsquo;ordinateur. L’utilisateur peut paramétrer le BIOS selon ses besoins.</p>
+
+<p>Les BIOS varient d’un constructeur à l’autre, par le nombre d’options et l’ergonomie. Des mises à jour du BIOS sont régulièrement disponibles sur le site du constructeur. Ceci pour corriger des problèmes de conception du programme ou proposer des fonctionnalités ou des technologies supplémentaires</p>
+
+<p><img src="http://prof.bpesquet.fr/images/content/bios.png" class="content centered bordered" alt="bios.png" /></p>
+
+<p>Pour accéder au paramétrage du BIOS, il faut souvent au démarrage du PC utiliser une touche ou une combinaison de touches : <code>DEL</code>, <code>F2</code>, <code>F10</code>&hellip;</p>
+
+<h2 id="toc_37">La notion de bus</h2>
+
+<div class="alert alert-info">
+    <strong>Définition</strong>
+    <p><p>Un bus informatique est un système de communication partagé entre plusieurs composants d&rsquo;un système numérique. Il s&rsquo;agit d&rsquo;un ensemble de liaisons physiques (câbles, pistes de circuits imprimés, etc.) pouvant être exploitées en commun par plusieurs éléments matériels afin de communiquer.</p>
+</p>
+</div>
+
+<p>Au sein d&rsquo;une carte mère coexistent différents <strong>bus</strong>.</p>
+
+<ul>
+<li><p><strong>Bus mémoire</strong> (ou <strong>bus processeur</strong> ou <em>front-side-bus</em>, noté <strong>FSB</strong>) : permet au processeur de communiquer avec la mémoire vive du système.</p></li>
+
+<li><p><strong>Bus de données interne</strong> : véhicule les instructions en provenance ou
+à destination du processeur.</p></li>
+
+<li><p><strong>DMA</strong> (<em>Direct Memory Access</em>) : bus qui permet l&rsquo;accès direct à la mémoire vive sans passer par le
+processeur (permet ainsi une accélération importante des performances).</p></li>
+</ul>
+
+<p>Le rôle d&rsquo;un bus est le transport de données. Sa vitesse, appelée débit binaire, est la quantité de bits pouvant y transiter par unité de temps. Il se calculera en bits par seconde, ou en octets par seconde.</p>
+
+<p>La vitesse d&rsquo;un bus dépend du nombre de lignes physiques sur lesquelles les données sont envoyées de manière simultanée. Une nappe de 32 fils permet ainsi de transmettre 32 bits en parallèle. On parle ainsi de
+largeur pour désigner le nombre de bits qu&rsquo;un bus peut transmettre simultanément.</p>
+
+<p>D&rsquo;autre part, la vitesse du bus est également définie par sa fréquence (exprimée en Hertz), c&rsquo;est-à-dire le nombre de paquets de données envoyés ou reçus par seconde. On parle de cycle pour désigner chaque envoi ou réception de données.</p>
+
+<p>Lorsque les bits sont convoyés les uns à la suite des autres sur une seule et même ligne, on parle alors de *<em>bus série* (*serial bus</em>). Exemples : USB, SATA.</p>
+
+<p>Lorsque les bits sont véhiculés simultanément sur plusieurs lignes parallèles, on parle alors, ô surprise, de <strong>bus parallèle</strong> (<em>parallel bus</em>). Exemple : PATA.</p>
+
+<p><img src="http://prof.bpesquet.fr/images/content/bus_serie_parallele.png" class="content centered" alt="bus_serie_parallele.png" /></p>
+
+<h1 id="toc_38">Le processeur</h1>
+
+<h2 id="toc_39">Introduction</h2>
+
+<p>Le processeur, appelé en anglais CPU (<em>Central Processing Unit</em>) est à la
+fois le cerveau et le coeur de l&rsquo;ordinateur :</p>
+
+<ul>
+<li><p>Le cerveau, car son rôle est d&rsquo;exécuter les instructions qui composent les programmes informatiques.</p></li>
+
+<li><p>Le coeur, parce qu&rsquo;il exécute ces instructions au rythme (très rapide) de son horloge interne, appelé sa fréquence.</p></li>
+</ul>
+
+<p>Il est le plus souvent construit en un seul composant électronique (ou puce électronique) appelé <strong>circuit intégré</strong>. On l&rsquo;appelle alors microprocesseur. Sur ce circuit sont assemblés un nombre énorme (actuellement plus d&rsquo;un milliard) de composants électroniques semi-conducteurs appelés des transistors.</p>
+
+<p><img src="http://prof.bpesquet.fr/images/content/processeur.jpg" class="content centered" alt="processeur.jpg" /></p>
+
+<h2 id="toc_40">Histoire des processeurs</h2>
+
+<p>Les premiers processeurs sont apparus en même temps que les premiers ordinateurs, dans les années 1940. A l&rsquo;époque, ils étaient prévus spécifiquement pour une machine donnée. Dans les années 1970 sont apparus les premiers processeurs capables de fonctionner sur plusieurs machines (la société Intel a fabriqué son premier processeur en 1971). Cette standardisation s&rsquo;est accélérée avec l&rsquo;apparition des circuits intégrés, qui ont permis la miniaturisation des processeurs.</p>
+
+<p>Depuis, les progrès scientifiques et industriels ont conduit à une augmentation constante de la densité de transistors sur un même circuit intégré. Le co-fondateur d&rsquo;Intel, Gordon Moore, a formulé en 1965 une prédiction célèbre appelée depuis <strong>loi de Moore</strong> : &ldquo;le nombre de transistors sur un microprocesseur doublera approximativement tous les deux ans&rdquo;.</p>
+
+<p>A l&rsquo;époque, le circuit le plus performant comportant 64 transistors. De nos jours, un processeur Core i7 comporte plus d&rsquo;un milliard de transistors !</p>
+
+<p><img src="http://prof.bpesquet.fr/images/content/processeur_nombre_transistors.jpg" class="content centered bordered" alt="processeur_nombre_transistors.jpg" /></p>
+
+<div class="alert alert-info">
+    <strong>Question</strong>
+    <p><p>Trouvez les noms des principaux fabricants de processeurs.</p>
+</p>
+</div>
+
+<h2 id="toc_41">Types de processeur</h2>
+
+<h3 id="toc_42">Pour ordinateur de bureau</h3>
+
+<p>Les ordinateurs de bureau permettent généralement d’exécuter des applications telles que des logiciels de traitement de texte, des feuilles de calcul et des applications réseau de type messagerie et navigation Web.</p>
+
+<p>Exemples de processeurs de bureau récents pour Intel et AMD : Celeron, Pentium, Core i3, i5, i7, Phenom, Athlon, Sempron.</p>
+
+<h3 id="toc_43">Pour ordinateur portable</h3>
+
+<p>Les processeurs pour ordinateur portable sont conçus pour avoir une consommation d’énergie réduite. L’autonomie d’un ordinateur portable lorsqu’il fonctionne sur batterie est une caractéristique importante. Pour obtenir une consommation moindre, les processeurs d’ordinateurs portables sont alimentés par une tension plus faible et fonctionnent généralement à des fréquences moins élevées que les ordinateurs de bureau.</p>
+
+<p>AMD et Intel déclinent pour les ordinateurs portables des versions de leurs processeurs pour ordinateur de bureau.</p>
+
+<h3 id="toc_44">Pour station de travail</h3>
+
+<p>Les stations de travail sont de puissants ordinateurs d’entreprise. Elles sont conçues pour exécuter des applications de pointe, spécialisées, comme les programmes d’ingénierie, par exemple la CAO (Conception Assistée par Ordinateur). Les stations de travail sont utilisées dans la conception d’images 3D, l’animation vidéo. Elles peuvent également servir de stations de gestion d’équipements médicaux ou de télécommunications.</p>
+
+<p><img src="http://prof.bpesquet.fr/images/content/station-travail.png" class="content centered" alt="station-travail.png" /></p>
+
+<p>Les stations de travail possèdent plusieurs processeurs qui doivent gérer une importante quantité de mémoire vive et plusieurs disques durs haute capacité, très rapides.</p>
+
+<p>Exemples pour Intel et AMD : Xeon, Itanium, Opteron + séries E et C.</p>
+
+<h3 id="toc_45">Pour serveur</h3>
+
+<p>Le matériel serveur est optimisé afin de fournir des réponses rapides à différentes requêtes réseau. Les serveurs peuvent être sollicités par plusieurs dizaines à plusieurs milliers de logiciels clients à la fois.</p>
+
+<p>Il existe plusieurs formats de serveurs :</p>
+
+<ul>
+<li>Serveurs tour : adaptés aux plus petites entreprises.</li>
+<li>Serveur rack : empilables dans des baies dédiées.</li>
+<li>Serveurs lame (<em>blade</em>) : concentrent le maximum de puissance et d’évolutivité</li>
+</ul>
+
+<p><img src="http://prof.bpesquet.fr/images/content/format-serveurs.jpg" class="content centered" alt="format-serveurs.jpg" /></p>
+
+<p>Les serveurs sont dotés de plusieurs processeurs qui accèdent à une quantité importante de mémoire vive.</p>
+
+<p>Exemples pour Intel et AMD : Xeon, Opteron série 4000 et 6000.</p>
+
+<h2 id="toc_46">Caractéristiques des processeurs</h2>
+
+<h3 id="toc_47">La fréquence</h3>
+
+<p>La fréquence ou vitesse d&rsquo;horloge est un concept relativement simple à
+comprendre. Elle se mesure actuellement en GigaHertz (GHz) et correspond
+au nombre d’opérations élémentaires que le processeur est capable
+d’effectuer en une seconde.</p>
+
+<p>Ainsi, un processeur fonctionnant à une fréquence de 3 Ghz peut traiter 3 milliards d&rsquo;opérations élémentaires à la seconde.</p>
+
+<h3 id="toc_48">Les registres</h3>
+
+<p>Lorsque le processeur exécute des instructions, les données sont temporairement stockées dans de petites mémoires rapides de 8, 16, 32 ou 64 bits que l&rsquo;on appelle registres.</p>
+
+<p>Un registre est un emplacement de mémoire interne à un processeur. Les registres se situent au sommet de la hiérarchie mémoire : il s&rsquo;agit de la mémoire au meilleur temps d&rsquo;accès, mais dont le coût de fabrication est le plus élevé.</p>
+
+<p>La largeur d’un processeur est un concept plus complexe, car trois caractéristiques du processeur s’expriment sous la forme d’une largeur :</p>
+
+<ul>
+<li>le bus d’entrées/sorties de données;</li>
+<li>le bus d’adresses;</li>
+<li>les registres internes.</li>
+</ul>
+
+<p><img src="http://prof.bpesquet.fr/images/content/processeur-largeur-registres.png" class="content centered bordered" alt="processeur-largeur-registres.png" /></p>
+
+<p>Le bus de données du processeur se nomme également FSB (<em>Front-Side Bus</em>), PSB (<em>Processor Side Bus</em>) ou simplement bus processeur. Tous ces termes font référence au bus qui se trouve entre le processeur et le pont nord (North Bridge).</p>
+
+<h3 id="toc_49">Les instructions</h3>
+
+<p>Une instruction est l&rsquo;opération élémentaire que le processeur peut
+accomplir. Les instructions sont stockées dans la mémoire principale, en
+vue d&rsquo;être traitée par le processeur.</p>
+
+<p>Une instruction est composée de deux champs :</p>
+
+<ul>
+<li>le code opération, représentant l&rsquo;action que le processeur doit accomplir ;</li>
+<li>le code opérande, définissant les paramètres de l&rsquo;action. Le code opérande dépend de l&rsquo;opération. Il peut s&rsquo;agir d&rsquo;une donnée ou bien d&rsquo;une adresse mémoire.</li>
+</ul>
+
+<p>Par exemple, l&rsquo;opération A = B + C peut être traduite par la séquence suivante :</p>
+
+<ul>
+<li><strong>LOAD B R1</strong> copie le contenu de l&rsquo;adresse B dans le registre R1</li>
+<li><strong>ADD C R1</strong> ajoute le contenu de l&rsquo;adresse C dans ce registre</li>
+<li><strong>STORE R1 A</strong> stocke le contenu du registre à l&rsquo;adresse A</li>
+</ul>
+
+<p><img src="http://prof.bpesquet.fr/images/content/processeur-instructions.png" class="content centered" alt="processeur-instructions.png" /></p>
+
+<p>Chaque type de processeur gère un ensemble d’instructions appelé jeu d’instructions.</p>
+
+<p>Le jeu d&rsquo;instructions est l&rsquo;ensemble des opérations qu&rsquo;un processeur peut exécuter,c&rsquo;est-à-dire l&rsquo;ensemble des circuits logiques qui y sont câblés. Ces circuits permettent d&rsquo;effectuer des opérations élémentaires (addition, ET logique…) ou plus complexes (division, puissance…).</p>
+
+<p>De ce point de vue, il existe deux familles : les processeurs <strong>CISC</strong> (<em>Complex Instruction Set Computer</em>) et les processeurs <strong>RISC</strong> (R pour <em>Reduced</em>).</p>
+
+<ul>
+<li><p>Les processeurs CISC embarquent de nombreuses instructions souvent très complexes mais prenant plusieurs cycles d&rsquo;horloge.</p></li>
+
+<li><p>À l&rsquo;opposé, les processeurs RISC ont un jeu d&rsquo;instructions plus réduit mais chaque instruction n&rsquo;utilise que quelques cycles d&rsquo;horloge.</p></li>
+</ul>
+
+<p>Chaque nouvelle génération de processeur étend le jeu d’instructions standard pour permettre d&rsquo;améliorer les performances dans des domaines spécifiques (3D, multimédia, etc). Voici quelques exemples : instructions MMX (1997), SSE (1999), SSE4 (2007).</p>
+
+<h3 id="toc_50">La mémoire cache</h3>
+
+<p>La mémoire cache est une mémoire très rapide permettant de réduire les délais d&rsquo;attente des informations stockées en mémoire vive. En effet, la mémoire centrale (RAM) de l&rsquo;ordinateur possède une vitesse bien moins importante que le processeur.</p>
+
+<p>Les processeurs modernes utilisent plusieurs mémoires caches s’intercalant entre le processeur et la mémoire centrale. On parle alors de niveau de cache : L1, L2 et L3 (L = Level). Le cache L1 est le plus rapide et le plus proche du microprocesseur, tandis que le cache L3 est le plus lent et plus proche de la mémoire vive.</p>
+
+<p><img src="http://prof.bpesquet.fr/images/content/processeur-memoire-cache.png" class="content centered" alt="processeur-memoire-cache.png" /></p>
+
+<h3 id="toc_51">Le type de support (socket)</h3>
+
+<p>Chaque processeur est conçu pour être monté sur un support de carte mère précis, appelé <strong>socket</strong>.</p>
+
+<h3 id="toc_52">La finesse de gravure</h3>
+
+<p>La finesse de gravure d’un processeur correspond au procédé de fabrication utilisé pour fabriquer le cœur du processeur. Le procédé de fabrication consiste à &ldquo;écrire&rdquo; le plus finement possible les transistors qui sont la base de tout processeur pour assembler un plus grand nombre de transistors dans un espace plus réduit.</p>
+
+<p>La finesse de gravure est exprimée en nanomètres (nm, 10-9 m). Elle représente le diamètre (en nanomètres) du plus petit fil reliant deux composantes du microprocesseur. En comparaison, l&rsquo;épaisseur d&rsquo;un cheveu humain est de 100 microns = 100 000 nm.</p>
+
+<p>Plus la gravure est fine, plus le processeur va pouvoir :</p>
+
+<ul>
+<li>fonctionner rapidement.</li>
+<li>dissiper moins de chaleur.</li>
+<li>consommer moins de courant électrique.</li>
+</ul>
+
+<div class="alert alert-info">
+    <strong>Question</strong>
+    <p><p>Trouvez la finesse de gravure des processeurs PC récents.</p>
+</p>
+</div>
+
+<h3 id="toc_53">La consommation électrique</h3>
+
+<p>La consommation d’un processeur est exprimée en Watts. Elle dépend de nombreux facteurs et en particulier de la vitesse d&rsquo;horloge.</p>
+
+<p>Depuis quelques années, les préoccupations économiques et environnementales, ainsi que l&rsquo;explosion du marché de la mobilité, ont conduit les fabricants de CPU à tenter de minimiser cette consommation, en particulier dans les versions mobiles de leurs processeurs.</p>
+
+<h2 id="toc_54">Technologies des processeurs</h2>
+
+<h3 id="toc_55">La technologie du pipeline</h3>
+
+<p>Afin d&rsquo;optimiser le rendement, la technique du pipeline est apparue sur les processeurs 80386 d&rsquo;Intel en 1985. Le pipeline permet de commencer à traiter l&rsquo;instruction suivante avant d&rsquo;avoir terminé la précédente via un mécanisme de &ldquo;travail à la chaîne&rdquo;.</p>
+
+<p>Cette technologie permet d&rsquo;économiser de nombreux cycles d&rsquo;horloge et donc d&rsquo;augmenter les performances.</p>
+
+<h3 id="toc_56">La technologie Hyper-Threading</h3>
+
+<p>L&rsquo;hyperthreading consiste à émuler au sein d&rsquo;un seul processeur physique deux processeurs logiques, ce qui permet d’occuper le processeur de plus d&rsquo;instructions et améliore son rendement. Ces deux processeurs logiques partagent les éléments du cœur de processeur, le cache et le bus système. Ainsi, deux processus peuvent être traités simultanément par le même processeur.</p>
+
+<p><img src="http://prof.bpesquet.fr/images/content/processeur-hyperthreading.png" class="content centered bordered" alt="processeur-hyperthreading.png" /></p>
+
+<div class="alert alert-info">
+    <strong>Définition</strong>
+    <p><p>Un <em>thread</em> (ou fil) est une tâche élémentaire d&rsquo;un programme en cours d&rsquo;exécution. Les threads d&rsquo;un programme peuvent s&rsquo;exécuter en parallèle.</p>
+</p>
+</div>
+
+<p>Sous Windows, on peut observer le nombre de threads grâce au
+gestionnaire de tâches.</p>
+
+<h3 id="toc_57">La technologie multicœurs</h3>
+
+<p>Un processeur multicoeurs contient en réalité deux noyaux de processeur, ou plus, sur la même puce. De l’extérieur, il ressemble à un seul processeur. Un processeur multicoeurs possède tous les avantages d’un ensemble de processeurs physiques séparés, pour un coût moindre.</p>
+
+<p><img src="http://prof.bpesquet.fr/images/content/processeur-multicoeur.png" class="content centered bordered" alt="processeur-multicoeur.png" /></p>
+
+<h1 id="toc_58">La mémoire</h1>
+
+<div class="alert">
+    <strong>Remarque</strong>
+    <p><p>Ce paragraphe s&rsquo;inspire d&rsquo;un cours de mon collègue Pascal Chemin.</p>
+</p>
+</div>
+
+<h2 id="toc_59">Généralités</h2>
+
+<p>Dans un ordinateur, la mémoire sert à stocker les informations manipulées par le processeur. Il existe plusieurs catégories de mémoire, adaptées à des usages différents. On peut les classifier en fonction de l’éloignement par rapport au processeur.</p>
+
+<p><img src="http://prof.bpesquet.fr/images/content/memoire-triangle-vitesse.png" class="content centered bordered" alt="memoire-triangle-vitesse.png" /></p>
+
+<p>Plus la mémoire est proche du processeur, plus elle est rapide, de faible capacité et chère.</p>
+
+<h2 id="toc_60">La mémoire vive (RAM)</h2>
+
+<h3 id="toc_61">Définition</h3>
+
+<p>La mémoire vive ou RAM (<em>Random Access Memory</em>) est la principale mémoire de travail de l&rsquo;ordinateur. Elle est <strong>volatile</strong> : les données stockées en mémoire vive sont perdues à l&rsquo;extinction de la machine. En contrepartie, la RAM est très rapide.</p>
+
+<div class="alert alert-info">
+    <strong>Question</strong>
+    <p><p>Estimez le débit des mémoires RAM actuelles.</p>
+</p>
+</div>
+
+<p>Les informations sont stockés dans les composants de mémoire vive, sous forme de charges électriques dans de minuscules condensateurs. Un condensateur chargé représente un 1 et un condensateur non chargé représente un 0. Les condensateurs se décharger naturellement, il faut entretenir la charge périodiquement. Ce processus est appelé <strong>rafraîchissement de la mémoire</strong>. La mémoire de ce type (nécessitant un rafraîchissement périodique) est appelée mémoire dynamique ou DRAM.</p>
+
+<h3 id="toc_62">Echanges avec le processeur</h3>
+
+<p>On peut envisager la mémoire vive comme un gigantesque ensemble de cases, que le processeur utilise pour stocker des informations. Les échanges entre RAM et processeur se font au travers de différents bus : commandes, adresses, données.</p>
+
+<p><img src="http://prof.bpesquet.fr/images/content/memoire-echanges-proc.png" class="content centered bordered" alt="memoire-echanges-proc.png" /></p>
+
+<h3 id="toc_63">Format des barrettes de RAM</h3>
+
+<p>Il existe de nombreux types de mémoires vives. Celles-ci se présentent toutes sous la forme de barrettes de mémoire enfichables sur la carte-mère.</p>
+
+<p><img src="http://prof.bpesquet.fr/images/content/memoire-ram.png" class="content centered" alt="memoire-ram.png" /></p>
+
+<p>Les premières DRAM étaient de type asynchrone. Depuis 1997, elles sont synchrones(SD-RAM), elles échangent des données en se synchronisant avec le signal d’horloge. Depuis 2000, un nouveau standard est mis au point par Nec, Samsung et Toshiba : le DDR (<em>Double Data Rate</em>). Cette technologie permet de <strong>doubler le taux de transfert</strong> des DRAM. La technologie DDR2 est apparue en 2003, c’est une amélioration de DDR (débit plus important, consommation électrique réduite, dissipation thermique moins importante). La <strong>technologie DDR3</strong> est apparue en 2007. Les améliorations apportées sont de la même nature que DDR2.</p>
+
+<p>La <strong>dénomination</strong> d’une mémoire DDR est fonction de son type DDR,
+DDR2, DDR3 et de sa fréquence. Par exemple une mémoire DDR fonctionnant
+à 333 MHz aura comme dénomination DDR333.</p>
+
+<h3 id="toc_64">Quantité de RAM</h3>
+
+<p>La capacité des mémoires vives actuelles est exprimée en GigaOctets (Go). PLus cette capacité est importante, plus l&rsquo;ordinateur peut exécuter d&rsquo;applications en parallèle ou lancer des logiciels gourmands en RAM (retouche photo ou vidéo, jeux, etc).</p>
+
+<p><strong>Windows XP</strong> nécessite un minimum de 256 Mo, de 512 Mo à 1 Go pour un usage bureautique, de 1 Go à 2 Go pour un usage avancé (retouche photo, montage vidéo, jeux).</p>
+
+<p><strong>Windows 7</strong> nécessite plus de mémoire, 1 Go minimum, de 1 Go à 2 Go pour un usage bureautique, de 2 Go à 4 Go pour un usage avancé (retouche photo, montage vidéo, jeux).</p>
+
+<p><img src="http://prof.bpesquet.fr/images/content/w7-proprietes-syst.png" class="content centered bordered" alt="w7-proprietes-syst.png" /></p>
+
+<h3 id="toc_65">Fréquence de la RAM</h3>
+
+<p>Comme nous l’avons vu dans le chapitre sur la carte mère, la mémoire RAM est synchronisée sur la vitesse du bus (le FSB : <em>Front Side Bus</em>) de la carte mère dépendant du processeur qui l’équipe. Il convient donc d’utiliser des RAM se rapprochant le plus de cette fréquence sous peine que les performances soient diminuées. Pour un fonctionnement optimal, la RAM doit être &ldquo;synchronisée&rdquo; avec le processeur.</p>
+
+<h3 id="toc_66">Temps de latence</h3>
+
+<p>La latence d’une mémoire est le temps nécessaire pour réaliser une opération de lecture ou d’écriture. Plus la latence est faible plus la mémoire est réactive&hellip; et plus son prix est élevé. La latence CAS (en anglais CAS Latence) permet d’évaluer les performances d’une mémoire. Le CAS Latence correspond au nombre de
+cycles d’horloge nécessaires entre deux accès.</p>
+
+<p>Sur le marché, vous trouverez des barrettes mémoires avec les
+appellations (CL2, CL2.5, CL3, CL4 ou CL5). CL est l’abréviation de CAS
+Latence suivi du nombre de cycles d’horloge.</p>
+
+<p><img src="http://prof.bpesquet.fr/images/content/memoire-latence.png" class="content centered bordered" alt="memoire-latence.png" /></p>
+
+<h3 id="toc_67">Correction d’erreurs</h3>
+
+<p>Les mémoires standard, installées dans nos PC sont des mémoires non-ECC. Cette abréviation précise qu’elles ne contiennent aucun système de correction d’erreur. Il existe sur le marché des barrettes mémoires de type ECC (<em>Error-Correcting Code</em>) intégrant une technologie de correction d’erreur. Le mécanisme ECC détecte et corrige les erreurs ou les données corrompues. Ce type de mémoire est surtout utilisé pour les serveurs d’entreprise où la fiabilité et l’intégrité des données en mémoire vive sont très importantes.</p>
+
+<p>Il existe des barrettes de mémoire de 32 bits ou 36 bits. Une barrette de mémoire de 32 bits contient exactement la même quantité de données qu&rsquo;une barrette de 36 bits. Les quatre bits supplémentaires ne servent qu&rsquo;à contrôler la validité des huit bits qui les précèdent (un <strong>bit de parité</strong> par groupe de huit bits). Le principe consiste à faire la somme des huit bits de données, puis à donner au neuvième la valeur 1 si le résultat est pair, et 0 si le résultat est impair. (On peut également faire le contraire. On parlera de <strong>parité paire</strong> dans le premier cas, et de <strong>parité impaire</strong> dans le second.)</p>
+
+<p>De cette façon, si un des bits change de valeur par accident, l&rsquo;erreur sera repérable car le bit de parité ne correspondra plus au résultat. Il peut sembler que la sécurité ainsi obtenue ne soit pas de très haut niveau. En effet, si un deuxième bit change de valeur, la parité est de nouveau correcte. Cependant, s&rsquo;il y a une chance sur mille (par exemple) qu&rsquo;une erreur se produise sur un bit, il y aura une chance sur un million pour que deux bits soient erronés. La sécurité obtenue n&rsquo;est donc pas négligeable. Toutefois, le bit de parité ne permet pas de retrouver le bit erroné.</p>
+
+<h3 id="toc_68">Technologie Dual Channel</h3>
+
+<p>Les processeurs modernes ont des besoins très élevés en bande passante. La technologie Dual Channel est une réponse à ces nouveaux besoins. Le principe est d’associer deux canaux à deux barrettes de mémoires DDR pour doubler le débit entre la mémoire et le processeur.</p>
+
+<p>Pour bénéficier de cette technologie, il faut que votre carte mère la supporte et installer deux barrettes de mémoire identiques dans les emplacements appropriés. Les emplacements Dual Channel sont d’une couleur différente du noir</p>
+
+<p><img src="http://prof.bpesquet.fr/images/content/memoire-dual-channel.png" class="content centered bordered" alt="memoire-dual-channel.png" /></p>
+
+<h2 id="toc_69">La mémoire morte (ROM)</h2>
+
+<p>Ce type de mémoire est non volatile mais plus lente que la mémoire vive. Elle est utilisée pour stocker les données indispensables au démarrage de l’ordinateur :</p>
+
+<ul>
+<li><p>Le <strong>BIOS</strong>, Basic Input/Output System, programme permettant de piloter les interfaces d&rsquo;entrée-sortie principales du système</p></li>
+
+<li><p>Le <strong>Power-On Self Test</strong> (POST), programme exécuté automatiquement à l&rsquo;amorçage du système permettant de faire un test du système (comptage de la RAM par exemple).</p></li>
+</ul>
+
+<p><img src="http://prof.bpesquet.fr/images/content/memoire-rom.png" class="content centered bordered" alt="memoire-rom.png" /></p>
+
+<p>Les ROM ont évolué de mémoires mortes figées à des mémoires programmables, puis reprogrammables :</p>
+
+<ul>
+<li>ROM : <strong>Read Only Memory</strong></li>
+<li>PROM : <strong>Programmable ROM</strong>,</li>
+<li>EPROM : <strong>Erasable PROM</strong>,</li>
+<li>EEPROM : <strong>Electrically EPROM, effaçables par un courant électrique d’où le terme de flash</strong>,</li>
+<li>Flash qui est devenu un intermédiaire entre la mémoire morte initiale et la mémoire vive. Nous la reverrons avec les disques SSD (<em>Solid State Drive</em>).</li>
+</ul>
+
+<h2 id="toc_70">Le disque dur</h2>
+
+<h3 id="toc_71">Description</h3>
+
+<p>Le disque dur est un type de mémoire de masse (non volatile) encore très répandu.</p>
+
+<p><img src="http://prof.bpesquet.fr/images/content/disque-dur-exterieur.png" class="content centered" alt="disque-dur-exterieur.png" /></p>
+
+<p>Il est constitué d&rsquo;un ou plusieurs plateaux et d&rsquo;un bras mobile sur lequel se trouvent les têtes de lecture. Chaque face du plateau est divisée en pistes circulaires concentriques. Chaque piste se divise en secteurs qui sont des portions de pistes limitées par deux rayons. En général, un secteur contient 512 octets.</p>
+
+<p><img src="http://prof.bpesquet.fr/images/content/disque-dur-interieur.png" class="content centered" alt="disque-dur-interieur.png" /></p>
+
+<p>Les disques durs sont des mécanismes de haute précision, sensibles au choc. L’électronique, aussi appelée <strong>contrôleur disque dur</strong>, est chargée de piloter la rotation des plateaux ainsi que l’ensemble bras/tête pour
+effectuer les lectures et les écritures. Son autre rôle est d’interpréter les signaux électriques reçus par les têtes pour les convertir en bits (0 ou 1) ou de réaliser l’opération dans le sens inverse pour les opérations d’écriture.</p>
+
+<p>Le nombre de plateaux varie de 1 à 5. Un nombre de plateaux important
+est généralement nécessaire pour les disques durs de fortes capacités.</p>
+
+<h3 id="toc_72">Format</h3>
+
+<p>Il existe plusieurs formats de disques durs :</p>
+
+<ul>
+<li><p>Format 1,8&rdquo; : pour les ordinateurs ultraportables. Ses performances sont souvent modestes à cause de faibles vitesses de rotation : 4200 ou 5400 tours/min.</p></li>
+
+<li><p>Format 2,5&rdquo; : le format le plus courant pour les ordinateurs portables : 4200, 5400 et 7200 tours/min.</p></li>
+
+<li><p>Format 3,5&rdquo; : pour les ordinateurs de bureau et les serveurs. Ce sont les plus performants : 7200, 10000,15000 tours/min.</p></li>
+</ul>
+
+<h3 id="toc_73">Mémoire cache</h3>
+
+<p>Cette mémoire de faible capacité permet d’améliorer les performances d’un disque dur en stockant les informations les plus souvent utilisées.</p>
+
+<div class="alert alert-info">
+    <strong>Question</strong>
+    <p><p>Quelle est la taille des mémoires cache embarquées sur les disques durs actuels ?</p>
+</p>
+</div>
+
+<h3 id="toc_74">Interfaces avec l&rsquo;ordinateur</h3>
+
+<p>Les interfaces internes (connexion à l&rsquo;intérieur du boîtier de l&rsquo;ordinateur) peuvent être :</p>
+
+<ul>
+<li><p>ATA, également nommée PATA ou IDE. N’existe plus sur les DD récents.</p></li>
+
+<li><p>SATA (<em>Serial ATA</em>). Standard actuel.</p></li>
+
+<li><p>SCSI (<em>Small Computer System Interface</em>). Surtout utilisée pour les serveurs d’entreprise.</p></li>
+</ul>
+
+<p>Les interfaces externes (connexion à l&rsquo;extérieur du boîtier) sont :</p>
+
+<ul>
+<li><p>USB : les disques durs externes proposés sur le marché sont compatibles avec la norme 3.0.</p></li>
+
+<li><p>eSATA : version externe de la technologie SATA utilisée pour les disques internes.</p></li>
+</ul>
+
+<h2 id="toc_75">Le disque SSD</h2>
+
+<p>À la différence d’un disque dur utilisant le principe magnétique, un disque SSD (<em>Solid State Drive</em>) est constitué de <strong>puces de mémoires flash,</strong> qui sont des puces électroniques possédant les caractéristiques d’une mémoire vive, mais dont les données ne disparaissent pas lors d’une mise hors tension. Ils ne contiennent donc aucune pièce mécanique.</p>
+
+<p><img src="http://prof.bpesquet.fr/images/content/ssd.jpeg" class="content centered" alt="ssd.jpeg" /></p>
+
+<p>Les SSD présentent de nombreux avantages par rapport à un disque dur traditionnel :</p>
+
+<ul>
+<li>Insensibilité aux chocs.</li>
+<li>Temps d’accès plus rapide.</li>
+<li>Fonctionnement totalement silencieux.</li>
+<li>Débits importants et stables.</li>
+<li>Probabilité de panne beaucoup plus faible, liée à l’absence de pièces mécaniques en mouvements.</li>
+</ul>
+
+<p>En contrepartie, la technologie SSD a certaines inconvénients :</p>
+
+<ul>
+<li>Prix beaucoup plus élevé que celui d’un disque dur à capacité égale. Les capacités des SSD sont aussi inférieures aux disques durs avec une capacité maximale autour de 1 To.</li>
+<li>Durée de vie limitée : une puce de mémoire ne fonctionnera plus au-delà d&rsquo;un (grand) nombre de lecture/écriture. En répartissant les opérations de lecture/écriture sur l&rsquo;ensemble du disque, la technologie <a href="http://fr.wikipedia.org/wiki/TRIM">TRIM</a> permet de prolonger la durée de vie d&rsquo;un SSD.</li>
+</ul>
+
+<div class="alert alert-info">
+    <strong>Question</strong>
+    <p><p>Combien coûte un SSD de 500 Go ? Et un disque dur de même capacité ?</p>
+</p>
+</div>
+
+<p>Les SSD sont vraisemblablement appelés à remplacer les disques durs dans un proche avenir.</p>
+
+        <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'bpesquet';
+    var disqus_identifier = 'http:\/\/prof.bpesquet.fr\/cours\/composants-materiels-ordinateur';
+    var disqus_title = 'Composants matériels de l\x27ordinateur';
+    var disqus_url = 'http:\/\/prof.bpesquet.fr\/cours\/composants-materiels-ordinateur';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+    <div class="col-md-3">
+        <nav id="TableOfContents">
+<ul>
+<li><a href="#toc_0">Généralités sur les ordinateurs</a>
+<ul>
+<li><a href="#toc_1">Qu&rsquo;est-ce qu&rsquo;un ordinateur ?</a></li>
+<li><a href="#toc_2">Un peu d&rsquo;histoire</a>
+<ul>
+<li><a href="#toc_3">1945-1956 : les ordinateurs mécaniques</a></li>
+<li><a href="#toc_4">1956-1963 : les ordinateurs à transistors</a></li>
+<li><a href="#toc_5">1964-1971 : les ordinateurs à circuits intégrés</a></li>
+<li><a href="#toc_6">Depuis 1971 : la micro-informatique</a></li>
+<li><a href="#toc_7">De nos jours : des ordinateurs partout</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#toc_8">Généralités sur les logiciels</a>
+<ul>
+<li><a href="#toc_9">Définition</a></li>
+<li><a href="#toc_10">Les différents types de logiciels</a></li>
+<li><a href="#toc_11">La création d&rsquo;un logiciel</a>
+<ul>
+<li><a href="#toc_12">Le processus de création</a></li>
+<li><a href="#toc_13">Les erreurs (bogues)</a></li>
+</ul></li>
+<li><a href="#toc_14">La distribution d&rsquo;un logiciel</a></li>
+</ul></li>
+<li><a href="#toc_15">Architecture d&rsquo;un ordinateur</a></li>
+<li><a href="#toc_16">La carte mère</a>
+<ul>
+<li><a href="#toc_17">Le rôle de la carte mère</a></li>
+<li><a href="#toc_18">Le format (ou facteur d’encombrement)</a></li>
+<li><a href="#toc_19">Le support processeur (socket)</a></li>
+<li><a href="#toc_20">Le support mémoire</a></li>
+<li><a href="#toc_21">Les <em>chipsets</em></a></li>
+<li><a href="#toc_22">Les ports internes</a>
+<ul>
+<li><a href="#toc_23">Les port PCI et PCI Express</a></li>
+<li><a href="#toc_24">Le port ATA</a></li>
+<li><a href="#toc_25">Les ports SATA (SATA2, SATA3)</a></li>
+</ul></li>
+<li><a href="#toc_26">Les ports externes</a>
+<ul>
+<li><a href="#toc_27">Le port USB</a></li>
+<li><a href="#toc_28">Le port eSata</a></li>
+<li><a href="#toc_29">Les ports PS2, parallèle, série</a></li>
+</ul></li>
+<li><a href="#toc_30">Le réseau</a>
+<ul>
+<li><a href="#toc_31">Réseau filaire</a></li>
+<li><a href="#toc_32">Réseau sans fil</a></li>
+</ul></li>
+<li><a href="#toc_33">Le multimédia</a>
+<ul>
+<li><a href="#toc_34">Audio</a></li>
+<li><a href="#toc_35">Vidéo</a></li>
+</ul></li>
+<li><a href="#toc_36">Le BIOS</a></li>
+<li><a href="#toc_37">La notion de bus</a></li>
+</ul></li>
+<li><a href="#toc_38">Le processeur</a>
+<ul>
+<li><a href="#toc_39">Introduction</a></li>
+<li><a href="#toc_40">Histoire des processeurs</a></li>
+<li><a href="#toc_41">Types de processeur</a>
+<ul>
+<li><a href="#toc_42">Pour ordinateur de bureau</a></li>
+<li><a href="#toc_43">Pour ordinateur portable</a></li>
+<li><a href="#toc_44">Pour station de travail</a></li>
+<li><a href="#toc_45">Pour serveur</a></li>
+</ul></li>
+<li><a href="#toc_46">Caractéristiques des processeurs</a>
+<ul>
+<li><a href="#toc_47">La fréquence</a></li>
+<li><a href="#toc_48">Les registres</a></li>
+<li><a href="#toc_49">Les instructions</a></li>
+<li><a href="#toc_50">La mémoire cache</a></li>
+<li><a href="#toc_51">Le type de support (socket)</a></li>
+<li><a href="#toc_52">La finesse de gravure</a></li>
+<li><a href="#toc_53">La consommation électrique</a></li>
+</ul></li>
+<li><a href="#toc_54">Technologies des processeurs</a>
+<ul>
+<li><a href="#toc_55">La technologie du pipeline</a></li>
+<li><a href="#toc_56">La technologie Hyper-Threading</a></li>
+<li><a href="#toc_57">La technologie multicœurs</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#toc_58">La mémoire</a>
+<ul>
+<li><a href="#toc_59">Généralités</a></li>
+<li><a href="#toc_60">La mémoire vive (RAM)</a>
+<ul>
+<li><a href="#toc_61">Définition</a></li>
+<li><a href="#toc_62">Echanges avec le processeur</a></li>
+<li><a href="#toc_63">Format des barrettes de RAM</a></li>
+<li><a href="#toc_64">Quantité de RAM</a></li>
+<li><a href="#toc_65">Fréquence de la RAM</a></li>
+<li><a href="#toc_66">Temps de latence</a></li>
+<li><a href="#toc_67">Correction d’erreurs</a></li>
+<li><a href="#toc_68">Technologie Dual Channel</a></li>
+</ul></li>
+<li><a href="#toc_69">La mémoire morte (ROM)</a></li>
+<li><a href="#toc_70">Le disque dur</a>
+<ul>
+<li><a href="#toc_71">Description</a></li>
+<li><a href="#toc_72">Format</a></li>
+<li><a href="#toc_73">Mémoire cache</a></li>
+<li><a href="#toc_74">Interfaces avec l&rsquo;ordinateur</a></li>
+</ul></li>
+<li><a href="#toc_75">Le disque SSD</a></li>
+</ul></li>
+</ul>
+</nav>
+    </div>
+
+</div>
+
+    </div> 
+
+    <footer class="footer">
+        <div class="container">
+            <p class="pull-right">
+                Créé avec <a href="http://hugo.spf13.com">Hugo</a> et <a href="http://getbootstrap.com">Bootstrap</a>.
+            </p>
+            <p>
+                <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/fr/"><img src="http://prof.bpesquet.fr/images/by-nc-sa.png" alt="Creative Commons logo" /></a>
+            </p>
+        </div>
+    </footer>
+
+    <script src="http://prof.bpesquet.fr/vendor/jquery-1.11.1/jquery.min.js"></script>
+    <script src="http://prof.bpesquet.fr/vendor/bootstrap-3.1.1/js/bootstrap.min.js"></script>
+    <script src="http://prof.bpesquet.fr/vendor/highlight.js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <script>
+        
+        $("img").addClass("img-responsive");
+        
+        
+        $("table").addClass("table");
+        
+        
+        $("#TableOfContents ul").addClass("nav");
+        $("#TableOfContents > ul").addClass("sidenav");
+        $("#TableOfContents").affix();
+
+        
+        
+        window.addEventListener("hashchange", function() { scrollBy(0, -60) });
+    </script>
+</body>
+</html>

@@ -1,0 +1,305 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+
+    <link href="http://prof.bpesquet.fr/vendor/bootstrap-3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://prof.bpesquet.fr/vendor/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="http://prof.bpesquet.fr/vendor/highlight.js/styles/monokai.css" rel="stylesheet">
+    <link href="http://prof.bpesquet.fr/styles/style.css" rel="stylesheet">
+
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-39897312-3', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+    <link rel="shortcut icon" href="http://prof.bpesquet.fr/images/bpesquet.ico">
+
+    <title>Introduction à la programmation</title>
+</head>
+<body data-spy="scroll" data-target="#TableOfContents">
+    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="http://prof.bpesquet.fr/">
+                    <span class="glyphicon glyphicon-home"></span>
+                </a>
+            </div>
+
+            <div class="collapse navbar-collapse nav-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Ressources <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="http://prof.bpesquet.fr/livre/">Livres</a></li>
+                            <li><a href="http://prof.bpesquet.fr/cours/">Cours</a></li>
+                            <li><a href="http://prof.bpesquet.fr/tutoriel/">Tutoriels</a></li>
+                            <li><a href="http://prof.bpesquet.fr/activite/">Activités</a></li>
+                            <li><a href="http://prof.bpesquet.fr/article/">Articles</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="http://prof.bpesquet.fr/avancement/">Avancements</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="mailto:bpesquet@gmail.com" title="Contact"><i class="fa fa-envelope"></i></a></li>
+                    <li><a href="https://twitter.com/bpesquet" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="https://plus.google.com/110003637459679741050?rel=author"><i class="fa fa-google-plus" title="Google+"></i></a></li>
+                    <li><a href="https://github.com/bpesquet" title="GitHub"><i class="fa fa-github"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+
+<div class="row">
+
+    <div class="col-md-9">
+        <h1 class="pageTitle">Introduction à la programmation</h1>
+        
+
+<p>L&rsquo;objectif de ce chapitre est de découvrir les notions fondamentales liées à la programmation.</p>
+
+<p><img src="http://prof.bpesquet.fr/images/content/evolution.jpg" class="content centered bordered" alt="evolution.jpg" /></p>
+
+<h1 id="toc_0">Un programme, c&rsquo;est quoi ?</h1>
+
+<h2 id="toc_1">Le rôle d&rsquo;un programme</h2>
+
+<p>Depuis son invention dans les années 1950, l&rsquo;informatique a révolutionné bien des domaines de notre vie quotidienne. Le calcul d&rsquo;un itinéraire depuis un site Internet ou un GPS, la réservation à distance d&rsquo;un billet de train ou d&rsquo;avion, ou encore la possibilité de voir et de parler avec des amis à l&rsquo;autre bout du monde : tous ces actes courants sont possibles grâce aux <strong>ordinateurs</strong>.</p>
+
+<div class="alert">
+    <strong>Remarque</strong>
+    <p><p>Le terme <strong>ordinateur</strong> est ici à prendre dans son sens le plus général, celui d&rsquo;une &ldquo;machine électronique capable d&rsquo;exécuter des opérations arithmétiques et logiques&rdquo; (<a href="http://fr.wikipedia.org/wiki/Ordinateur">Wikipedia</a>). Il peut désigner aussi bien un ordinateur de bureau classique (PC, Mac) qu&rsquo;un serveur de calcul ou encore un terminal mobile (tablette, <em>smartphone</em>).</p>
+</p>
+</div>
+
+<p>Cependant un ordinateur, même très performant, n&rsquo;est qu&rsquo;une <strong>machine</strong> capable d&rsquo;exécuter automatiquement une série d&rsquo;opérations simples qu&rsquo;on lui a demandées. Il ne dispose par lui-même d&rsquo;aucune capacité d&rsquo;apprentissage, de jugement, d&rsquo;improvisation, bref d&rsquo;aucune &ldquo;intelligence&rdquo;. Il se contente de <strong>faire ce qu&rsquo;on lui dit de faire</strong>. L&rsquo;intérêt des ordinateurs est de savoir manipuler très rapidement et sans erreur d&rsquo;énormes quantités d&rsquo;informations.</p>
+
+<p>Une intervention humaine est nécessaire pour qu&rsquo;un ordinateur puisse accomplir des tâches utiles. C&rsquo;est le rôle du <strong>programmeur</strong> (appelé également <strong>développeur</strong>). Il va fournir les ordres que la machine doit exécuter en écrivant des programmes. De manière générale, un programme sert à <strong>automatiser un traitement sur des données</strong>. Son résultat dépend des données qui lui sont fournies. On peut schématiser un programme de manière suivante : <strong>E-T-R</strong> (Entrées–Traitements-Résultats). L&rsquo;objectif du programmeur est donc d&rsquo;écrire un programme qui, une fois exécuté par l&rsquo;ordinateur, donnera les résultats attendus en fonction des données d&rsquo;entrée.</p>
+
+<div class="alert alert-info">
+    <strong>Définition</strong>
+    <p><p>Un <strong>programme informatique</strong> est une liste d&rsquo;ordres indiquant à un ordinateur ce qu&rsquo;il doit faire (<a href="http://fr.wikipedia.org/wiki/Programme_informatique">Wikipedia</a>).</p>
+</p>
+</div>
+
+<h2 id="toc_2">Création d&rsquo;un programme</h2>
+
+<p>Pour créer des programmes informatiques, le programmeur utilise un <strong>langage de programmation</strong>. Il en existe un grand nombre, par exemple C++, C#, Java, Python ou encore PHP. Un programme informatique se présente concrètement sous la forme d&rsquo;un (ou le plus souvent plusieurs) fichiers texte, contenant des commandes spécifiques au langage : ce sont les ordres données à la machine, qu&rsquo;on appelle également <strong>instructions</strong>. L&rsquo;ensemble des fichiers représente le <strong>code source</strong> du programme. Chaque langage de programmation dispose de sa propre syntaxe et d&rsquo;instructions spécifiques.</p>
+
+<p>Voici un exemple de programme très simple écrit en utilisant le langage
+Python.</p>
+
+<pre><code>print(&quot;Bonjour le monde.&quot;)
+</code></pre>
+
+<p>On peut écrire le même programme en utilisant le langage PHP.</p>
+
+<pre><code>&lt;?php
+echo(&quot;Bonjour le monde.&quot;);
+?&gt;
+</code></pre>
+
+<p>Même exemple avec le langage C#.</p>
+
+<pre><code>class Program {
+    static void Main(string[] args) {
+        Console.WriteLine(&quot;Bonjour le monde.&quot;);
+    }
+}
+</code></pre>
+
+<p>Et voici le même programme, écrit cette fois en langage Java.</p>
+
+<pre><code>public class Program {
+    public static void main(String[] args) {
+        System.out.println(&quot;Bonjour le monde.&quot;);
+    }
+}
+</code></pre>
+
+<p>Tout éditeur de texte peut a priori permettre d&rsquo;écrire des programmes. Pour gagner du temps lors de l&rsquo;écriture du code source, les langages disposent de plate-formes d&rsquo;édition très abouties appelées IDE (<em>Integrated Development Environment</em>), comme par exemple Visual Studio ou Eclipse.</p>
+
+<h2 id="toc_3">Exécution d&rsquo;un programme</h2>
+
+<p>Le seul langage directement compréhensible par un ordinateur est le langage machine (ou <strong>assembleur</strong>). Il s&rsquo;agit d&rsquo;instructions élémentaires liées à un type de processeur et qui permettent de manipuler directement la mémoire de la machine.</p>
+
+<p>Voici le programme précédent, réécrit en assembleur (<a href="http://fr.wikipedia.org/wiki/Assembleur#Afficher_Bonjour">Wikipedia</a>).</p>
+
+<pre><code>str:
+ .ascii &quot;Bonjour le monde.\n&quot;
+ .global _start
+
+_start:
+movl $4, %eax
+movl $1, %ebx
+movl $str, %ecx
+movl $19, %edx
+int $0x80
+movl $1, %eax
+movl $0, %ebx
+int $0x80
+</code></pre>
+
+<p>L&rsquo;écriture de programmes en langage machine offre une rapidité maximale mais représente une tâche très complexe. Toute erreur peut se traduire par la corruption d&rsquo;une zone mémoire, avec des conséquences parfois graves. Il s&rsquo;agit donc d&rsquo;un langage à réserver à des usages très spécifiques (écriture de pilotes pour un matériel, etc).</p>
+
+<p>Tout programme écrit dans un autre langage devra être <strong>traduit</strong> en langage machine pour être exécuté par le processeur. Ce processus de traduction peut se faire de trois manières différentes et dépend du langage choisi.</p>
+
+<p>Par exemple, le programme Python précédent s&rsquo;exécute en lançant la commande ci-dessous (on suppose que le fichier <code>bonjour.py</code> contient les instructions du code source) :</p>
+
+<pre><code>$ python bonjour.py
+</code></pre>
+
+<p>Lors de l&rsquo;appel de la commande ci-dessus, les instructions Python contenues dans ce fichier sont traduites en langage machine. Chaque ligne est exécutée au fur et à mesure de sa lecture : on dit que Python est un langage
+<a href="http://fr.wikipedia.org/wiki/Interpr%C3%A8te_(informatique">interprété</a>#Principe).</p>
+
+<p>Une autre possibilité consiste à créer à partir du code source un fichier directement exécutable (extension <strong>.exe</strong> sous Windows), en utilisant un programme intermédiaire appelé <a href="http://fr.wikipedia.org/wiki/Compilateur">compilateur</a>. Exemples de langages utilisant un compilateur : C, C++.</p>
+
+<p>Une troisième option consiste à utiliser un <strong>pseudo-compilateur</strong> pour générer à partir du code source un ensemble de fichiers pouvant être exécutés sur n&rsquo;importe quelle plate-forme supportant l&rsquo;environnement. C&rsquo;est le cas du langage Java et des langages de la plate-forme Microsoft .NET (VB.NET, C#).</p>
+
+<h1 id="toc_4">Apprendre à écrire des programmes</h1>
+
+<h2 id="toc_5">La démarche</h2>
+
+<p>Sauf dans des cas très simples, on ne crée pas un programme en se lançant directement dans l&rsquo;écriture du code source. En se précipitant sur sa machine, on court plusieurs risques :</p>
+
+<ul>
+<li>ne pas traiter le problème dans son intégralité, en se concentrant sur une seule partie.</li>
+<li>se laisser guider par les contraintes du langage utilisé.</li>
+<li>aboutir à un programme fonctionnel mais peu lisible, peu performant et comportant beaucoup d&rsquo;erreurs (<strong>bogues</strong>). Dans ce cas, le temps gagné initialement sera perdu plusieurs fois à corriger ses défauts.</li>
+</ul>
+
+<p>Il est donc d&rsquo;abord nécessaire d&rsquo;analyser le problème pour trouver la suite d&rsquo;opérations à réaliser pour le résoudre. Cette analyse a pour objectif de décomposer le problème en plusieurs sous-problèmes plus simples.</p>
+
+<p>Prenons un exemple concret tiré de la vie courante (source : A. Tarlowski) : je souhaite me préparer un plat de pâtes. Quelles sont les étapes qui vont me permettre d&rsquo;atteindre mon objectif ? On peut imaginer la solution ci-dessous.</p>
+
+<p><strong>Début</strong></p>
+
+<ol>
+<li>Sortir une casserole</li>
+<li>Mettre de l&rsquo;eau dans la casserole</li>
+<li>Ajouter du sel</li>
+<li>Mettre la casserole sur le feu</li>
+<li>Tant que l&rsquo;eau ne bout pas : attendre</li>
+<li>Sortir les pâtes du placard</li>
+<li>Verser les pâtes dans la casserole</li>
+<li>Tant que les pâtes ne sont pas cuites : attendre</li>
+<li>Verser les pâtes dans une passoire</li>
+<li>Egoutter les pâtes</li>
+<li>Verser les pâtes dans un plat</li>
+<li>Si les pâtes sont trop fades : ajouter du sel</li>
+</ol>
+
+<p><strong>Fin</strong></p>
+
+<p><img src="http://prof.bpesquet.fr/images/content/recette.jpg" class="content centered bordered" alt="recette.jpg" /></p>
+
+<p>On constate qu&rsquo;on arrive à l&rsquo;objectif visé en déroulant un ensemble d&rsquo;actions dans un ordre précis. On peut distinguer différents types d&rsquo;actions : les <strong>actions simples</strong> (<code>Sortir une casserole</code>), des <strong>actions conditionnelles</strong> (<code>Si</code>) et des <strong>actions répétitives</strong> (<code>Tant que</code>). Nous avons employé une notation simple, compréhensible et indépendante de tout langage de programmation. En fait, nous venons d&rsquo;écrire ce qu&rsquo;on appelle un <strong>algorithme</strong>.</p>
+
+<div class="alert alert-info">
+    <strong>Définition</strong>
+    <p><p>Un <strong>algorithme</strong> est une une suite ordonnée d&rsquo;opérations permettant de résoudre un problème donné (<a href="http://fr.wikipedia.org/wiki/Algorithme">Wikipedia</a>).</p>
+</p>
+</div>
+
+<h2 id="toc_6">L&rsquo;algorithmique</h2>
+
+<p>L&rsquo;avantage de la représentation d&rsquo;un problème sous forme d&rsquo;un algorithme est que cette représentation est compréhensible par un être humain et indépendante d&rsquo;un quelconque langage. En revanche, elle ne permet pas
+d&rsquo;employer les particularités de tel ou tel langage.</p>
+
+<p>Un algorithme n&rsquo;est pas directement exécutable par un ordinateur. Pour cela, il faut le traduire dans le langage de programmation choisi. C&rsquo;est ce qu&rsquo;on appelle la phase de <strong>codage</strong> ou <strong>d&rsquo;implémentation</strong>.
+Cependant, on peut très bien simuler l&rsquo;exécution d&rsquo;un algorithme par une sorte de &ldquo;pseudo-machine&rdquo; sachant exécuter ses opérations.</p>
+
+<p>Résoudre un problème sous la forme d&rsquo;un algorithme permet de se détacher des particularités d&rsquo;un langage informatique pour aboutir à une solution générale, qui pourra très bien être ensuite exprimée dans un (ou
+plusieurs) langages. <strong>Apprendre à (bien) écrire des algorithmes est le moyen le plus efficace pour apprendre à (bien) programmer</strong>, quel que soit le langage utilisé.</p>
+
+<p>Plus le problème à résoudre est complexe, plus la phase de recherche d&rsquo;un l&rsquo;algorithme adapté prend d&rsquo;importance (et de temps !).</p>
+
+        <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'bpesquet';
+    var disqus_identifier = 'http:\/\/prof.bpesquet.fr\/cours\/introduction-programmation';
+    var disqus_title = 'Introduction à la programmation';
+    var disqus_url = 'http:\/\/prof.bpesquet.fr\/cours\/introduction-programmation';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+    <div class="col-md-3">
+        <nav id="TableOfContents">
+<ul>
+<li><a href="#toc_0">Un programme, c&rsquo;est quoi ?</a>
+<ul>
+<li><a href="#toc_1">Le rôle d&rsquo;un programme</a></li>
+<li><a href="#toc_2">Création d&rsquo;un programme</a></li>
+<li><a href="#toc_3">Exécution d&rsquo;un programme</a></li>
+</ul></li>
+<li><a href="#toc_4">Apprendre à écrire des programmes</a>
+<ul>
+<li><a href="#toc_5">La démarche</a></li>
+<li><a href="#toc_6">L&rsquo;algorithmique</a></li>
+</ul></li>
+</ul>
+</nav>
+    </div>
+
+</div>
+
+    </div> 
+
+    <footer class="footer">
+        <div class="container">
+            <p class="pull-right">
+                Créé avec <a href="http://hugo.spf13.com">Hugo</a> et <a href="http://getbootstrap.com">Bootstrap</a>.
+            </p>
+            <p>
+                <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/fr/"><img src="http://prof.bpesquet.fr/images/by-nc-sa.png" alt="Creative Commons logo" /></a>
+            </p>
+        </div>
+    </footer>
+
+    <script src="http://prof.bpesquet.fr/vendor/jquery-1.11.1/jquery.min.js"></script>
+    <script src="http://prof.bpesquet.fr/vendor/bootstrap-3.1.1/js/bootstrap.min.js"></script>
+    <script src="http://prof.bpesquet.fr/vendor/highlight.js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <script>
+        
+        $("img").addClass("img-responsive");
+        
+        
+        $("table").addClass("table");
+        
+        
+        $("#TableOfContents ul").addClass("nav");
+        $("#TableOfContents > ul").addClass("sidenav");
+        $("#TableOfContents").affix();
+
+        
+        
+        window.addEventListener("hashchange", function() { scrollBy(0, -60) });
+    </script>
+</body>
+</html>

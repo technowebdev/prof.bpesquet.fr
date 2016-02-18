@@ -1,9 +1,0 @@
----
-contentdir: "content"
-layoutdir: "layouts"
-publishdir: "public"
-builddrafts: false
-baseurl: http://prof.bpesquet.fr
-canonifyurls: true
-disqusShortname: "bpesquet"
----

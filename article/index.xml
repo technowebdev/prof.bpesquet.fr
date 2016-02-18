@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>Articles on  </title>
+      <generator uri="https://hugo.spf13.com">Hugo</generator>
+    <link>http://prof.bpesquet.fr/article/index.xml/</link>
+    
+    
+    
+    <updated>Tue, 01 Jan 2008 00:00:00 UTC</updated>
+    
+    <item>
+      <title>A propos de ce site</title>
+      <link>http://prof.bpesquet.fr/about</link>
+      <pubDate>Tue, 01 Jan 2008 00:00:00 UTC</pubDate>
+      
+      <guid>http://prof.bpesquet.fr/about</guid>
+      <description>&lt;p&gt;Ingénieur informaticien de formation, je suis actuellement professeur en BTS SIO au lycée &lt;a href=&#34;http://www.martiniere-duchere.fr&#34;&gt;La Martinière Duchère&lt;/a&gt; de Lyon après sept années passées dans une &lt;a href=&#34;http://www.artal.fr&#34;&gt;société de services informatiques toulousaine&lt;/a&gt;. Pour plus de précisions sur mon parcours, consultez mon &lt;a href=&#34;/CV_BPE.pdf&#34;&gt;CV&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Ce site a pour objectif premier de mettre à disposition de mes étudiants des ressources d&amp;rsquo;apprentissage. Cette &lt;a href=&#34;/demo&#34;&gt;page de démonstration&lt;/a&gt; illustre ses possibilités d&amp;rsquo;affichage.&lt;/p&gt;
+
+&lt;p&gt;Il est en cours d&amp;rsquo;enrichissement.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Démonstration des possibilités d&#39;affichage</title>
+      <link>http://prof.bpesquet.fr/demo</link>
+      <pubDate>Tue, 01 Jan 2008 00:00:00 UTC</pubDate>
+      
+      <guid>http://prof.bpesquet.fr/demo</guid>
+      <description>
+
+&lt;p&gt;Cette page illustre les différentes possibilités d&amp;rsquo;affichage du site.&lt;/p&gt;
+
+&lt;h1 id=&#34;toc_0&#34;&gt;Texte et listes&lt;/h1&gt;
+
+&lt;p&gt;Voici un texte &lt;em&gt;en italiques&lt;/em&gt;, un autre &lt;strong&gt;en gras&lt;/strong&gt; et un dernier &lt;code&gt;sous forme de code&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;toc_1&#34;&gt;Liste non ordonnée&lt;/h2&gt;
+
+&lt;p&gt;Voici une liste non ordonnée :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Elément 1&lt;/li&gt;
+&lt;li&gt;Elément 2&lt;/li&gt;
+&lt;li&gt;Elément 3
+
+&lt;ul&gt;
+&lt;li&gt;Sous-élément 1&lt;/li&gt;
+&lt;li&gt;Sous-élément 2&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&amp;hellip;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;toc_2&#34;&gt;Liste ordonnée&lt;/h2&gt;
+
+&lt;p&gt;Et voici une liste ordonnée :&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Elément 1&lt;/li&gt;
+&lt;li&gt;Elément 2&lt;/li&gt;
+&lt;li&gt;Etc&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&#34;toc_3&#34;&gt;Code source&lt;/h1&gt;
+
+&lt;p&gt;Les extraits de code source sont mis en valeur selon le langage.&lt;/p&gt;
+
+&lt;p&gt;Du PHP :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;?php
+echo(&amp;quot;Bonjour le monde.&amp;quot;);
+?&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Du C# :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;class Program {
+    static void Main(string[] args) {
+        Console.WriteLine(&amp;quot;Bonjour le monde.&amp;quot;);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Du Java :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;public class Program {
+    public static void main(String[] args) {
+        System.out.println(&amp;quot;Bonjour le monde.&amp;quot;);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;toc_4&#34;&gt;Liens vers des ressources&lt;/h1&gt;
+
+&lt;h2 id=&#34;toc_5&#34;&gt;Lien interne au document (ancre)&lt;/h2&gt;
+
+&lt;p&gt;Attention, &lt;a href=&#34;#toc_15&#34;&gt;danger&lt;/a&gt; !&lt;/p&gt;
+
+&lt;h2 id=&#34;toc_6&#34;&gt;Lien vers un autre document&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;/site/&#34;&gt;Cette page&lt;/a&gt; présente ce site Web.&lt;/p&gt;
+
+&lt;h2 id=&#34;toc_7&#34;&gt;Lien externe&lt;/h2&gt;
+
+&lt;p&gt;Allons faire un tour sur &lt;a href=&#34;http://fr.wikipedia.org/&#34;&gt;Wikipedia&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;toc_8&#34;&gt;Lien explicite&lt;/h3&gt;
+
+&lt;p&gt;On peut aussi utiliser un lien explicite : &lt;a href=&#34;http://fr.wikipedia.org&#34;&gt;http://fr.wikipedia.org&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;toc_9&#34;&gt;Images&lt;/h2&gt;
+
+&lt;p&gt;Une image est insérée ci-dessous. Par défaut, les images sont centrées et possèdent une bordure 3D.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/content/lemoncat.jpg&#34; class=&#34;content centered bordered&#34; alt=&#34;lemoncat.jpg&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;On peut également insérer une image en choisissant ses attributs (bordure, centrage, etc).&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/content/lemoncat.jpg&#34; class=&#34;content centered&#34; alt=&#34;lemoncat.jpg&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;L&amp;rsquo;image ci-dessous ne possède aucun attribut.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/content/lemoncat.jpg&#34; class=&#34;content &#34; alt=&#34;lemoncat.jpg&#34; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;toc_10&#34;&gt;Paragraphes spéciaux&lt;/h1&gt;
+
+&lt;h2 id=&#34;toc_11&#34;&gt;Citation&lt;/h2&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;C&amp;rsquo;est au pied du mur qu&amp;rsquo;on voit le mieux le mur.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;toc_12&#34;&gt;Définition&lt;/h2&gt;
+
+&lt;div class=&#34;alert alert-info&#34;&gt;
+    &lt;strong&gt;Définition&lt;/strong&gt;
+    &lt;p&gt;&lt;p&gt;La &lt;strong&gt;procrastination&lt;/strong&gt; est la tendance à remettre systématiquement au lendemain des actions.&lt;/p&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&#34;toc_13&#34;&gt;Remarque&lt;/h2&gt;
+
+&lt;div class=&#34;alert&#34;&gt;
+    &lt;strong&gt;Remarque&lt;/strong&gt;
+    &lt;p&gt;&lt;p&gt;Rien de spécial.&lt;/p&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&#34;toc_14&#34;&gt;Conseil&lt;/h2&gt;
+
+&lt;div class=&#34;alert alert-success&#34;&gt;
+    &lt;strong&gt;Conseil&lt;/strong&gt;
+    &lt;p&gt;&lt;p&gt;Faisez gaffe aux pigeons.&lt;/p&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&#34;toc_15&#34;&gt;Avertissement&lt;/h2&gt;
+
+&lt;div class=&#34;alert alert-warning&#34;&gt;
+    &lt;strong&gt;Avertissement&lt;/strong&gt;
+    &lt;p&gt;&lt;p&gt;A long terme, nous serons tous morts.&lt;/p&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&#34;toc_16&#34;&gt;Danger&lt;/h2&gt;
+
+&lt;div class=&#34;alert alert-danger&#34;&gt;
+    &lt;strong&gt;Danger !&lt;/strong&gt;
+    &lt;p&gt;&lt;p&gt;Ne jamais croiser les effluves !&lt;/p&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;h1 id=&#34;toc_17&#34;&gt;Tableaux&lt;/h1&gt;
+
+&lt;p&gt;Les tableaux au format Markdown sont gérés.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Nom&lt;/th&gt;
+&lt;th&gt;Age&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Julie&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;29&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Lionel&lt;/td&gt;
+&lt;td&gt;47&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Martin&lt;/td&gt;
+&lt;td&gt;32&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h1 id=&#34;toc_18&#34;&gt;Questions/réponses&lt;/h1&gt;
+
+&lt;p&gt;Il est possible d&amp;rsquo;ajouter une question comme ci-dessous.&lt;/p&gt;
+
+&lt;p&gt;&lt;button type=&#34;button&#34; class=&#34;btn btn-primary&#34; data-toggle=&#34;collapse&#34; data-target=&#34;#demo&#34;&gt;
+    Quelle est la couleur du cheval blanc d&amp;#39;Henri IV ?
+&lt;/button&gt;&lt;/p&gt;
+
+&lt;div id=&#34;demo&#34; class=&#34;collapse out&#34;&gt;&lt;p&gt;Il est blanc comme vous l&amp;rsquo;aurez deviné.&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

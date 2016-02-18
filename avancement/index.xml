@@ -1,0 +1,854 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>Avancements on  </title>
+      <generator uri="https://hugo.spf13.com">Hugo</generator>
+    <link>http://prof.bpesquet.fr/avancement/index.xml/</link>
+    
+    
+    
+    <updated>Tue, 01 Jan 2008 00:00:00 UTC</updated>
+    
+    <item>
+      <title>Avancement SI1 2014/2015</title>
+      <link>http://prof.bpesquet.fr/avancement/2014/bts-sio-si1/</link>
+      <pubDate>Tue, 01 Jan 2008 00:00:00 UTC</pubDate>
+      
+      <guid>http://prof.bpesquet.fr/avancement/2014/bts-sio-si1/</guid>
+      <description>
+
+&lt;p&gt;Sauf indication contraire, les travaux à réaliser doivent être terminés pour la séance de la semaine suivante.&lt;/p&gt;
+
+&lt;h1 id=&#34;toc_0&#34;&gt;Rentrée - Toussaint&lt;/h1&gt;
+
+&lt;h2 id=&#34;toc_1&#34;&gt;Semaine 1 : 1er septembre&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours mercredi&lt;/strong&gt; : absence professeur. Reporté au vendredi 12 de 9h à 10h.&lt;/p&gt;
+
+&lt;h2 id=&#34;toc_2&#34;&gt;Semaine 2 : 8 septembre&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours lundi&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Présentation du module SI1 et de la &lt;a href=&#34;https://docs.google.com/spreadsheet/ccc?key=0Ai28xIJg0K-zdE4talZQc1hrSFZUaEZDSDcyamdRLVE&amp;amp;usp=sharing&#34;&gt;progression prévue sur le semestre&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Cours &lt;a href=&#34;/cours/composants-materiels-ordinateur&#34;&gt;Composants matériels de l&amp;rsquo;ordinateur&lt;/a&gt; étudié jusqu&amp;rsquo;à la carte mère.&lt;/li&gt;
+&lt;li&gt;Début de l&amp;rsquo;activité &lt;a href=&#34;/activite/composants-materiels-ordinateur&#34;&gt;Composants matériels de l&amp;rsquo;ordinateur&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;TP groupe A&lt;/strong&gt; : TP découverte et identification des composants.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours mercredi&lt;/strong&gt; : TD sur l&amp;rsquo;information binaire.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours vendredi&lt;/strong&gt; : suite du TD sur l&amp;rsquo;information binaire.&lt;/p&gt;
+
+&lt;h2 id=&#34;toc_3&#34;&gt;Semaine 3 : 15 septembre&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours lundi&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;TODO : activité &lt;a href=&#34;/activite/composants-materiels-ordinateur&#34;&gt;Composants matériels de l&amp;rsquo;ordinateur&lt;/a&gt;, questions 1 à 6.&lt;/li&gt;
+&lt;li&gt;Présentation du campus SIO.&lt;/li&gt;
+&lt;li&gt;Cours &lt;a href=&#34;/cours/composants-materiels-ordinateur&#34;&gt;Composants matériels de l&amp;rsquo;ordinateur&lt;/a&gt; : le processeur.&lt;/li&gt;
+&lt;li&gt;Diaporama sur la fabrication d&amp;rsquo;un processeur.&lt;/li&gt;
+&lt;li&gt;Correction de l&amp;rsquo;activité &lt;a href=&#34;/activite/composants-materiels-ordinateur&#34;&gt;Composants matériels de l&amp;rsquo;ordinateur&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Activité &lt;a href=&#34;/activite/composants-materiels-ordinateur&#34;&gt;Composants matériels de l&amp;rsquo;ordinateur&lt;/a&gt;, questions 7 et 8.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;TP groupe B&lt;/strong&gt; : absence professeur. Reporté au vendredi 19 de 8h à 10h.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours mercredi&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Fin du TD sur l&amp;rsquo;information binaire.&lt;/li&gt;
+&lt;li&gt;Fin de l&amp;rsquo;activité &lt;a href=&#34;/activite/composants-materiels-ordinateur&#34;&gt;Composants matériels de l&amp;rsquo;ordinateur&lt;/a&gt;, questions 7 et 8.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;toc_4&#34;&gt;Semaine 4 : 22 septembre&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours lundi&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;TODO&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Etudier le cours &lt;a href=&#34;/cours/composants-materiels-ordinateur&#34;&gt;Composants matériels de l&amp;rsquo;ordinateur&lt;/a&gt; : la mémoire.&lt;/li&gt;
+&lt;li&gt;Répondre au questionnaire en ligne reçu par courriel.&lt;/li&gt;
+&lt;li&gt;Terminer l&amp;rsquo;activité &lt;a href=&#34;/activite/composants-materiels-ordinateur&#34;&gt;Composants matériels de l&amp;rsquo;ordinateur&lt;/a&gt;, question 7.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Cours &lt;a href=&#34;/cours/composants-materiels-ordinateur&#34;&gt;Composants matériels de l&amp;rsquo;ordinateur&lt;/a&gt; : la mémoire.&lt;/li&gt;
+&lt;li&gt;Correction du questionnaire en ligne.&lt;/li&gt;
+&lt;li&gt;Diaporama sur la virtualisation.&lt;/li&gt;
+&lt;li&gt;Activité &lt;a href=&#34;/activite/composants-materiels-ordinateur&#34;&gt;Composants matériels de l&amp;rsquo;ordinateur&lt;/a&gt;, questions 8 à 11.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;TP groupe A&lt;/strong&gt; : TP installation et paramétrage MV W7.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours mercredi&lt;/strong&gt; : TD sur le codage des images.&lt;/p&gt;
+
+&lt;h2 id=&#34;toc_5&#34;&gt;Semaine 5 : 29 septembre&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours lundi&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;TODO : terminer l&amp;rsquo;activité &lt;a href=&#34;/activite/composants-materiels-ordinateur&#34;&gt;Composants matériels de l&amp;rsquo;ordinateur&lt;/a&gt;, questions 8 et 9.&lt;/li&gt;
+&lt;li&gt;Présentation de la plate-forme &lt;a href=&#34;https://www.netacad.com&#34;&gt;CISCO Netacad&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Activité &lt;a href=&#34;/activite/composants-materiels-ordinateur&#34;&gt;Composants matériels de l&amp;rsquo;ordinateur&lt;/a&gt;, questions 10 et 11.&lt;/li&gt;
+&lt;li&gt;Quizz sur le cours &lt;a href=&#34;/cours/composants-materiels-ordinateur&#34;&gt;Composants matériels de l&amp;rsquo;ordinateur&lt;/a&gt; et le TD sur l&amp;rsquo;information binaire.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;TP groupe B&lt;/strong&gt; : TP installation et paramétrage MV W7.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours mercredi&lt;/strong&gt; : suite du TD sur le codage des images.&lt;/p&gt;
+
+&lt;h2 id=&#34;toc_6&#34;&gt;Semaine 6 : 6 octobre&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours lundi&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;TODO : terminer l&amp;rsquo;activité &lt;a href=&#34;/activite/composants-materiels-ordinateur&#34;&gt;Composants matériels de l&amp;rsquo;ordinateur&lt;/a&gt; et soumettre le travail associé sur le campus SIO.&lt;/li&gt;
+&lt;li&gt;Correction de l&amp;rsquo;activité &lt;a href=&#34;/activite/composants-materiels-ordinateur&#34;&gt;Composants matériels de l&amp;rsquo;ordinateur&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Etude du cours &lt;a href=&#34;https://static-course-assets.s3.amazonaws.com/ITE50FR/module5/index.html#5.0.1.1&#34;&gt;CISCO ITE chapitre 5&lt;/a&gt;, paragraphes 5.0 à 5.2 inclus.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;TP groupe A&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;TP gestion des partitions sous W7 (ITE 5.2.4.3).&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Ajouter 1 Go au disque dur virtuel de la MV W7 (&amp;ldquo;Settings&amp;rdquo; -&amp;gt; &amp;ldquo;Hard disk&amp;rdquo; -&amp;gt; &amp;ldquo;Expand&amp;rdquo;).&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;TP gestion des processus sous W7 (ITE 5.3.1.5).&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Bonus de fin de TP : installer &lt;a href=&#34;https://www.mozilla.org/fr/firefox/new/&#34;&gt;Mozilla Firefox&lt;/a&gt; sur la MV W7.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;CR du TP à déposer d&amp;rsquo;ici la fin de la semaine.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours mercredi&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Révisions sur l&amp;rsquo;information binaire et/ou&lt;/li&gt;
+&lt;li&gt;Etude du cours &lt;a href=&#34;https://static-course-assets.s3.amazonaws.com/ITE50FR/module5/index.html#5.0.1.1&#34;&gt;CISCO ITE chapitre 5&lt;/a&gt;, parties 5.0 à 5.2. Pour les plus rapides : revoir les parties 1.x et 3.x.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;toc_7&#34;&gt;Semaine 7 : 13 octobre&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours lundi&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;TODO : étudier le cours &lt;a href=&#34;https://static-course-assets.s3.amazonaws.com/ITE50FR/module5/index.html#5.0.1.1&#34;&gt;CISCO ITE chapitre 5&lt;/a&gt;, parties 5.0 à 5.2.&lt;/li&gt;
+&lt;li&gt;Construction collaborative du &lt;a href=&#34;/cours/systemes-exploitation&#34;&gt;cours sur les systèmes d&amp;rsquo;exploitation&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Questionnaire (&lt;em&gt;space race&lt;/em&gt;) sur le cours CISCO ITE.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;TP groupe B&lt;/strong&gt; : gestion des partitions et des processus sous W7.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours mercredi&lt;/strong&gt; : quizz récapitulatif sur l&amp;rsquo;ensemble des cours/TP/TD.&lt;/p&gt;
+
+&lt;h1 id=&#34;toc_8&#34;&gt;Toussaint - Noël&lt;/h1&gt;
+
+&lt;h2 id=&#34;toc_9&#34;&gt;Semaine 8 : 3 novembre&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours lundi&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Activité &lt;a href=&#34;/activite/logiciels-libres&#34;&gt;Logiciels libres&lt;/a&gt;, partie 1&lt;/li&gt;
+&lt;li&gt;Etude du cours &lt;a href=&#34;https://static-course-assets.s3.amazonaws.com/ITE50FR/module5/index.html#5.0.1.1&#34;&gt;CISCO ITE chapitre 5&lt;/a&gt;, parties 5.3 à 5.7.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;TP groupe A&lt;/strong&gt; : TP W7&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Installation d&amp;rsquo;un logiciel (ITE 5.3.1.11).&lt;/li&gt;
+&lt;li&gt;Création d&amp;rsquo;utilisateurs (ITE 5.3.2.3).&lt;/li&gt;
+&lt;li&gt;Maintenance du disque dur (ITE 5.3.4.2).&lt;/li&gt;
+&lt;li&gt;CR à déposer en fin de TP.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours mercredi&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Fin de la construction collaborative du &lt;a href=&#34;/cours/systemes-exploitation&#34;&gt;cours sur les systèmes d&amp;rsquo;exploitation&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Activité &lt;a href=&#34;/activite/logiciels-libres&#34;&gt;Logiciels libres&lt;/a&gt;, partie 2.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;toc_10&#34;&gt;Semaine 9 : 10 novembre&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours lundi&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Installation MV Linux Ubuntu.&lt;/li&gt;
+&lt;li&gt;Découverte de Linux Ubuntu (partie 1).&lt;/li&gt;
+&lt;li&gt;Construction individuelle d&amp;rsquo;un mémento sur les commandes Linux.&lt;/li&gt;
+&lt;li&gt;Debriefing du support en fin de séance.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;TP groupe B&lt;/strong&gt; : cf semaine précédente.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours mercredi&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Recherche de trois antivirus pour Windows 7, y compris gratuits (ITE 10.2.3.2).&lt;/li&gt;
+&lt;li&gt;Calcul du coût pour 50 postes sur 1 an.&lt;/li&gt;
+&lt;li&gt;CR à déposer sur le réseau au plus tard lundi 17 à 8h.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;toc_11&#34;&gt;Semaine 10 : 17 novembre&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours lundi&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Fin de la découverte de Linux Ubuntu partie 1 (QCM 3 et 4). Bonus : installer les VMWare Tools.&lt;/li&gt;
+&lt;li&gt;Correction découverte Linux Ubuntu partie 1.&lt;/li&gt;
+&lt;li&gt;Cours sur la ligne de commande Linux -&amp;gt; page 3.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;TP 1h/1h&lt;/strong&gt; : TP W7&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Gestion des fichiers système (ITE 5.3.4.6).&lt;/li&gt;
+&lt;li&gt;Utilitaires en ligne de commande (ITE 5.3.7.4).&lt;/li&gt;
+&lt;li&gt;Restauration du système (ITE 5.5.1.11).&lt;/li&gt;
+&lt;li&gt;Bonus : gestion du menu Démarrer (ITE 5.5.1.2).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours mercredi&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Retour sur le PPE1 SI1.&lt;/li&gt;
+&lt;li&gt;Recherche de pare-feux logiciels et matériels (ITE 10.2.3.2).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;toc_12&#34;&gt;Semaine 11 : 24 novembre&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours lundi&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Cours sur la ligne de commande Linux -&amp;gt; chapitre 4 compris.&lt;/li&gt;
+&lt;li&gt;Découverte de Linux Ubuntu partie 2 -&amp;gt; QCM 5.&lt;/li&gt;
+&lt;li&gt;Fin de la recherche de pare-feux.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;TP groupe A&lt;/strong&gt; : TP W7&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Restauration du système (ITE 5.5.1.11).&lt;/li&gt;
+&lt;li&gt;Sauvegarde et restauration de données (ITE 10.3.1.4).&lt;/li&gt;
+&lt;li&gt;Bonus : gestion du menu Démarrer (ITE 5.5.1.2).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours mercredi&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Quizz sur W7 et Linux.&lt;/li&gt;
+&lt;li&gt;Fin de la recherche de pare-feux. CR à déposer sur le réseau au plus tard lundi 1er à 8h.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;toc_13&#34;&gt;Semaine 12 : 1er décembre&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours lundi&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Cours sur la ligne de commande Linux -&amp;gt; fin.&lt;/li&gt;
+&lt;li&gt;Découverte de Linux Ubuntu partie 2 -&amp;gt; QCM 5 et 6.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;TP groupe B&lt;/strong&gt; : cf semaine précédente.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours mercredi&lt;/strong&gt; : étude d&amp;rsquo;un problème de sécurité informatique (ITE 10.1.1.7).&lt;/p&gt;
+
+&lt;h2 id=&#34;toc_14&#34;&gt;Semaine 13 : 8 décembre&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours lundi&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Découverte de Linux Ubuntu partie 2 -&amp;gt; QCM 5 et 6.&lt;/li&gt;
+&lt;li&gt;Cours CISCO ITE 10.2.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;TP groupe A&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Sécurisation sous W7 (ITE 10.2.1.7).&lt;/li&gt;
+&lt;li&gt;Paramétrages avancés de W7.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours mercredi&lt;/strong&gt; : étude d&amp;rsquo;un problème de sécurité informatique.&lt;/p&gt;
+
+&lt;h2 id=&#34;toc_15&#34;&gt;Semaine 14 : 15 décembre&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours lundi&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Fin de l&amp;rsquo;étude d&amp;rsquo;un problème de sécurité informatique. CR à déposer sur le réseau avant 10h.&lt;/li&gt;
+&lt;li&gt;Création d&amp;rsquo;un diaporama sur les problèmes de sécurité pour les étudiants volontaires.&lt;/li&gt;
+&lt;li&gt;Cours CISCO ITE 10.2.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;TP groupe B&lt;/strong&gt; : cf. semaine précédente.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours mercredi&lt;/strong&gt; : TPDS Linux.&lt;/p&gt;
+
+&lt;h1 id=&#34;toc_16&#34;&gt;Noël - Hiver&lt;/h1&gt;
+
+&lt;h2 id=&#34;toc_17&#34;&gt;Semaine 15 : 5 janvier&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours lundi&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Correction TPDS Linux.&lt;/li&gt;
+&lt;li&gt;Cours sur la sécurité du poste de travail.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;TP 1h/1h&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Préparation diaporama sur la sécurité.&lt;/li&gt;
+&lt;li&gt;TP éléments d&amp;rsquo;administration Linux.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours mercredi&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Présentation des problèmes de sécurité par les étudiants volontaires.&lt;/li&gt;
+&lt;li&gt;Quizz récapitulatif.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Avancement SLAM2/PPE 2014/2015</title>
+      <link>http://prof.bpesquet.fr/avancement/2014/bts-sio-b1slam/</link>
+      <pubDate>Tue, 01 Jan 2008 00:00:00 UTC</pubDate>
+      
+      <guid>http://prof.bpesquet.fr/avancement/2014/bts-sio-b1slam/</guid>
+      <description>
+
+&lt;p&gt;Sauf indication contraire, les travaux à réaliser doivent être terminés pour la séance de la semaine suivante.&lt;/p&gt;
+
+&lt;h1 id=&#34;toc_0&#34;&gt;Noël - Hiver&lt;/h1&gt;
+
+&lt;h2 id=&#34;toc_1&#34;&gt;Semaine 1 : 19 janvier&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Présentation du module SLAM2 : place parmi les modules, référentiel, organisation.&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Révisions SI4. Voici les cours associés :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;/cours/introduction-programmation/&#34;&gt;Introduction à la programmation&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/cours/variables/&#34;&gt;Les variables&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/cours/programmer-variables/&#34;&gt;Programmer avec des variables&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/cours/structures-alternatives/&#34;&gt;Structures alternatives&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/cours/structures-repetitives/&#34;&gt;Structures répétitives&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/cours/programmation-modulaire/&#34;&gt;Programmation modulaire&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/cours/passage-parametres/&#34;&gt;Passage de paramètres&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/cours/tableaux-listes/&#34;&gt;Tableaux et listes&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;TP révisions SI4. Remplir &lt;a href=&#34;https://docs.google.com/spreadsheets/d/1GlhptsEPKeWuXo21WTfiUeZWz4_tA9uYfoc8nxRBy_4/edit?usp=sharing&#34;&gt;cette feuille&lt;/a&gt; au fur et à mesure de votre avancement. Bonus quand tous les exercices sont terminés &lt;em&gt;et validés&lt;/em&gt; : &lt;a href=&#34;http://lightbot.com/hocflash.html&#34;&gt;LightBot&lt;/a&gt; puis éventuellement &lt;a href=&#34;https://codecombat.com/&#34;&gt;CodeCombat&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Corrections des exercices 1 et 2 du TP.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;PPE&lt;/strong&gt; : TP révisions SI4 / Projet Mastermind.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;TP&lt;/strong&gt; : révisions SI4.&lt;/p&gt;
+
+&lt;h2 id=&#34;toc_2&#34;&gt;Semaine 2 : 26 janvier&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Cours : &lt;a href=&#34;http://bpesquet.gitbooks.io/programmation-orientee-objet-csharp/content/chapters/01-initiation-poo.html&#34;&gt;initiation à la POO&lt;/a&gt; et &lt;a href=&#34;http://bpesquet.gitbooks.io/programmation-orientee-objet-csharp/content/chapters/02-principaux-concepts-objets.html&#34;&gt;principaux concepts objets&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Suite du TP révisions SI4.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;PPE&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Distribution des règles de nommage SLAM.&lt;/li&gt;
+&lt;li&gt;Correction des exercices 3 à 11 du TP révisions SI4.&lt;/li&gt;
+&lt;li&gt;Correction projet Mastermind.&lt;/li&gt;
+&lt;li&gt;TP révisions SI4 / Codage des exemples du cours SLAM2 / &lt;a href=&#34;/activite/projet-adresse-ip&#34;&gt;Projet @IP&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;TP&lt;/strong&gt; : révisions SI4.&lt;/p&gt;
+
+&lt;h2 id=&#34;toc_3&#34;&gt;Semaine 3 : 2 février&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Cours : &lt;a href=&#34;/cours/tableaux-listes/&#34;&gt;Tableaux et listes&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Création des comptes et des équipes dans &lt;a href=&#34;https://github.com/lmdsio-slam2&#34;&gt;l&amp;rsquo;organisation GitHub&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Début du TP tableaux et listes. Remplir &lt;a href=&#34;https://docs.google.com/spreadsheets/d/19C_SDuUlL559tCZWRWG4TzDLeHSxfw8TtVi62H2bVlo/edit?usp=sharing&#34;&gt;cette feuille&lt;/a&gt; au fur et à mesure de votre avancement.&lt;/li&gt;
+&lt;li&gt;Après la pause : correction du TP révisions SI4.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;PPE&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Correction du &lt;a href=&#34;/activite/projet-adresse-ip&#34;&gt;projet @IP&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/activite/projet-atlantik&#34;&gt;Projet Atlantik&lt;/a&gt; : codage et correction.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;TP&lt;/strong&gt; : tableaux et listes.&lt;/p&gt;
+
+&lt;h1 id=&#34;toc_4&#34;&gt;Hiver - Pâques&lt;/h1&gt;
+
+&lt;div class=&#34;alert alert-warning&#34;&gt;
+    &lt;strong&gt;Avertissement&lt;/strong&gt;
+    &lt;p&gt;&lt;p&gt;Suite au basculement vers le nouvel ENT du lycée, l&amp;rsquo;avancement SLAM2/PPE est maintenant disponible dans la rubrique &lt;a href=&#34;http://martiniere-duchere.elycee.rhonealpes.fr/sg.do?PROC=CDT&#34;&gt;Cahier de textes&lt;/a&gt; de cet ENT.&lt;/p&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Avancement SLAM5/PPE 2014/2015</title>
+      <link>http://prof.bpesquet.fr/avancement/2014/bts-sio-b2slam/</link>
+      <pubDate>Tue, 01 Jan 2008 00:00:00 UTC</pubDate>
+      
+      <guid>http://prof.bpesquet.fr/avancement/2014/bts-sio-b2slam/</guid>
+      <description>
+
+&lt;p&gt;Sauf indication contraire, les travaux à réaliser doivent être terminés pour la séance de la semaine suivante.&lt;/p&gt;
+
+&lt;h1 id=&#34;toc_0&#34;&gt;Rentrée - Toussaint&lt;/h1&gt;
+
+&lt;h2 id=&#34;toc_1&#34;&gt;Semaine 1 : 1er septembre&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Accueil des étudiants&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Présentation de SLAM5, des objectifs et de la &lt;a href=&#34;https://docs.google.com/spreadsheet/ccc?key=0Ai28xIJg0K-zdFhYV1p1UHc3T3ItaENkYWtEQnRWYkE&amp;amp;usp=sharing&#34;&gt;progression prévue sur l&amp;rsquo;année&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Démonstration du projet MusicStore (clients desktop et mobile)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;SLAM5&lt;/strong&gt; : pas de cours ni de TP cette semaine (rentrée scolaire)&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;PPE&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;TODO : rechercher des informations sur les méthodes agiles.&lt;/li&gt;
+&lt;li&gt;Initiation à SCRUM avec des LEGO (3h).&lt;/li&gt;
+&lt;li&gt;Initialisation de l&amp;rsquo;environnement de développement Web (Netbeans + XAMPP sur la partition M:).&lt;/li&gt;
+&lt;li&gt;Début de l&amp;rsquo;activité &lt;a href=&#34;/activite/acces-donnees-php&#34;&gt;Accès aux données avec PHP&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;toc_2&#34;&gt;Semaine 2 : 8 septembre&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;TP&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;TODO&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Etudier les cours de rappels sur &lt;a href=&#34;/cours/introduction-developpement-web/&#34;&gt;le développement Web&lt;/a&gt;, &lt;a href=&#34;/cours/html5-en-bref&#34;&gt;HTML5&lt;/a&gt; et &lt;a href=&#34;/cours/php-en-bref/&#34;&gt;PHP&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Terminer la partie 1 de l&amp;rsquo;activité &lt;a href=&#34;/activite/acces-donnees-php&#34;&gt;Accès aux données avec PHP&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Installation de XAMPP en salle 4009B (un par étudiant).&lt;/li&gt;
+&lt;li&gt;Tutoriel &lt;a href=&#34;/tutoriel/developpement-php-moderne/&#34;&gt;Développement PHP moderne&lt;/a&gt;, itérations 1 et 2.&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Tutoriel &lt;a href=&#34;/tutoriel/premiers-pas-framework-php-silex/&#34;&gt;Premiers pas avec Silex&lt;/a&gt;.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Remplacer &lt;code&gt;hello-world-silex&lt;/code&gt; par &lt;code&gt;localhost1&lt;/code&gt; dans la définition de l&amp;rsquo;hôte virtuel Apache (champ &lt;code&gt;ServerName&lt;/code&gt; uniquement).&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Retour sur le &lt;a href=&#34;/cours/modele-mvc&#34;&gt;modèle MVC&lt;/a&gt; et sur le &lt;a href=&#34;/tutoriel/premiers-pas-framework-php-silex/&#34;&gt;framework Silex&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Tutoriel &lt;a href=&#34;/tutoriel/developpement-php-moderne/&#34;&gt;Développement PHP moderne&lt;/a&gt;, itération 3.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;toc_3&#34;&gt;Semaine 3 : 15 septembre&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;TP&lt;/strong&gt; : tutoriel SDZ &lt;a href=&#34;http://fr.openclassrooms.com/informatique/cours/programmez-en-oriente-objet-en-php&#34;&gt;POO en PHP&lt;/a&gt;, chapitres &amp;ldquo;Introduction à la POO&amp;rdquo; et &amp;ldquo;Utiliser la classe&amp;rdquo; uniquement.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours&lt;/strong&gt; :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Retour sur la &lt;a href=&#34;/cours/poo-php-en-bref/&#34;&gt;POO avec PHP&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Activité &lt;a href=&#34;/activite/acces-donnees-php-silex/&#34;&gt;Accès aux données avec PHP et Silex&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;toc_4&#34;&gt;Semaine 4 : 22 septembre&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;TP&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;TODO&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Terminer le tutoriel &lt;a href=&#34;/tutoriel/developpement-php-moderne/&#34;&gt;Développement PHP moderne&lt;/a&gt;, itération 3.&lt;/li&gt;
+&lt;li&gt;Terminer l&amp;rsquo;activité &lt;a href=&#34;/activite/acces-donnees-php-silex/&#34;&gt;Accès aux données avec PHP et Silex&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Réunion profs à 11h : TP de 2x1h30.&lt;/li&gt;
+&lt;li&gt;Correction de l&amp;rsquo;activité &lt;a href=&#34;/activite/acces-donnees-php-silex/&#34;&gt;Accès aux données avec PHP et Silex&lt;/a&gt; disponible sur &lt;a href=&#34;https://github.com/lmdsio/MesNews-silex&#34;&gt;GitHub&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Tutoriel SDZ &lt;a href=&#34;http://fr.openclassrooms.com/informatique/cours/les-espaces-de-noms-en-php&#34;&gt;Espaces de noms en PHP&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Tutoriel &lt;a href=&#34;/tutoriel/developpement-php-moderne/&#34;&gt;Développement PHP moderne&lt;/a&gt;, itération 4.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Explications sur l&amp;rsquo;itération 4 du tutoriel &lt;a href=&#34;/tutoriel/developpement-php-moderne/&#34;&gt;Développement PHP moderne&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Tutoriel &lt;a href=&#34;/tutoriel/developpement-php-moderne/&#34;&gt;Développement PHP moderne&lt;/a&gt;, itérations 4 et 5.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;toc_5&#34;&gt;Semaine 5 : 29 septembre&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;TP&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Tutoriel &lt;a href=&#34;/tutoriel/developpement-php-moderne/&#34;&gt;Développement PHP moderne&lt;/a&gt;, itération 5.&lt;/li&gt;
+&lt;li&gt;Tutoriel &lt;a href=&#34;/tutoriel/premiers-pas-framework-bootstrap/&#34;&gt;Premiers pas avec le framework Bootstrap&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Tutoriel &lt;a href=&#34;/tutoriel/developpement-php-moderne/&#34;&gt;Développement PHP moderne&lt;/a&gt;, itération 6.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Retour sur les itérations 5 et 6 et sur le framework &lt;a href=&#34;http://getbootstrap.com&#34;&gt;Bootstrap&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Tutoriel &lt;a href=&#34;/tutoriel/developpement-php-moderne/&#34;&gt;Développement PHP moderne&lt;/a&gt;, itération 7.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;PPE&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;TODO : terminer le tutoriel &lt;a href=&#34;/tutoriel/developpement-php-moderne/&#34;&gt;Développement PHP moderne&lt;/a&gt;, itération 7.&lt;/li&gt;
+&lt;li&gt;Rappels sur les formulaires Web.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/activite/gsb-report-mission1&#34;&gt;GSB-Report : mission 1&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;toc_6&#34;&gt;Semaine 6 : 6 octobre&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;TP&lt;/strong&gt; : tutoriel &lt;a href=&#34;/tutoriel/developpement-php-moderne/&#34;&gt;Développement PHP moderne&lt;/a&gt;, itération 8.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Retour sur l&amp;rsquo;itération 8.&lt;/li&gt;
+&lt;li&gt;Quizz sur l&amp;rsquo;ensemble des notions étudiées depuis le début de l&amp;rsquo;année.&lt;/li&gt;
+&lt;li&gt;Tutoriel &lt;a href=&#34;/tutoriel/developpement-php-moderne/&#34;&gt;Développement PHP moderne&lt;/a&gt;, itération 9.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;PPE&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;TODO : terminer la mission 1 GSB-Report.&lt;/li&gt;
+&lt;li&gt;Correction de la mission 1 (&lt;a href=&#34;http://gsb-report-1.bpesquet.fr&#34;&gt;Résultat à obtenir&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/activite/gsb-report-mission2&#34;&gt;GSB-Report : mission 2&lt;/a&gt; (&lt;a href=&#34;http://gsb-report-2.bpesquet.fr&#34;&gt;Résultat à obtenir&lt;/a&gt;).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;toc_7&#34;&gt;Semaine 7 : 13 octobre&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;TP&lt;/strong&gt; : Rattrapage des tutoriels ou missions PPE, révisions ou appronfondissements (&lt;a href=&#34;http://fr.openclassrooms.com/informatique/cours/prenez-en-main-bootstrap&#34;&gt;idée 1&lt;/a&gt;, &lt;a href=&#34;http://fr.openclassrooms.com/informatique/cours/programmez-en-oriente-objet-en-php&#34;&gt;idée 2&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours&lt;/strong&gt; : TPDS 1 (refactorisation d&amp;rsquo;un site Web pour introduire l&amp;rsquo;architecture étudiée en cours).&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;PPE&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;TODO : terminer la mission 2 GSB-Report.&lt;/li&gt;
+&lt;li&gt;Intervention d&amp;rsquo;un professionnel sur la gestion de projet agile.&lt;/li&gt;
+&lt;li&gt;Correction de la mission 2 (&lt;a href=&#34;https://github.com/lmdsio/GSB-Report-correction&#34;&gt;Code source&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/activite/gsb-report-mission3&#34;&gt;GSB-Report : mission 3&lt;/a&gt; (&lt;a href=&#34;http://gsb-report-3.bpesquet.fr&#34;&gt;Résultat à obtenir&lt;/a&gt;).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;toc_8&#34;&gt;Toussaint - Noël&lt;/h1&gt;
+
+&lt;h2 id=&#34;toc_9&#34;&gt;Semaine 8 : 3 novembre&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;TP&lt;/strong&gt; : initialisation du projet agile e-commerce&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Constitution des équipes (deux personnes).&lt;/li&gt;
+&lt;li&gt;Choix du thème et du nom des projets (remplir &lt;a href=&#34;https://docs.google.com/spreadsheets/d/1sy6pItWwDct-MpJ9yaKjm9T4VAcN363ybROOIIaxN0U/edit?usp=sharing&#34;&gt;cette feuille&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Présentation de l&amp;rsquo;organisation, du backlog et des paramètres.&lt;/li&gt;
+&lt;li&gt;Inscription sur &lt;a href=&#34;http://trello.com&#34;&gt;Trello&lt;/a&gt;, création des planches et attribution des droits pour chaque projet.&lt;/li&gt;
+&lt;li&gt;Création des dépôts GitHub et attribution des droits pour chaque projet.&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Début du sprint 1&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Choix des stories du sprint.&lt;/li&gt;
+&lt;li&gt;Création des listes de tâches et de tests pour chaque story du sprint.&lt;/li&gt;
+&lt;li&gt;Début du développement.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Correction du TPDS 1.&lt;/li&gt;
+&lt;li&gt;Projet agile : sprint 1.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;toc_10&#34;&gt;Semaine 9 : 10 novembre&lt;/h2&gt;
+
+&lt;p&gt;Pas de TP (férié).&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours&lt;/strong&gt; : projet agile&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Récupération du répertoire &lt;code&gt;vendor&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Sprint 1.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;toc_11&#34;&gt;Semaine 10 : 17 novembre&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;TP&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Tutoriel &lt;a href=&#34;/tutoriel/developpement-php-moderne/&#34;&gt;Développement PHP moderne&lt;/a&gt;, itération 10.&lt;/li&gt;
+&lt;li&gt;Projet agile : sprint 1.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Retour sur l&amp;rsquo;itération 10.&lt;/li&gt;
+&lt;li&gt;Projet agile : sprint 1.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;toc_12&#34;&gt;Semaine 11 : 24 novembre&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;TP&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Tutoriel &lt;a href=&#34;/tutoriel/developpement-php-moderne/&#34;&gt;Développement PHP moderne&lt;/a&gt;, itération 11.&lt;/li&gt;
+&lt;li&gt;Projet agile : démo du sprint 1 et début du sprint 2.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Retour sur l&amp;rsquo;itération 11.&lt;/li&gt;
+&lt;li&gt;Démonstration du projet MusicStore.&lt;/li&gt;
+&lt;li&gt;Projet agile : fin des démos du sprint 1 et sprint 2 (choix et analyses des stories).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;toc_13&#34;&gt;Semaine 12 : 1er décembre&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;TP&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Tutoriel &lt;a href=&#34;/tutoriel/developpement-php-moderne/&#34;&gt;Développement PHP moderne&lt;/a&gt;, itération 12.&lt;/li&gt;
+&lt;li&gt;Projet agile : sprint 2.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours&lt;/strong&gt; : TPDS 2 (itération 12 non comprise).&lt;/p&gt;
+
+&lt;h2 id=&#34;toc_14&#34;&gt;Semaine 13 : 8 décembre&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;TP&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Projet agile : sprint 2.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Pas de cours (BTS blanc).&lt;/p&gt;
+
+&lt;h2 id=&#34;toc_15&#34;&gt;Semaine 14 : 15 décembre&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;TP&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Projet agile : sprint 2.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Correction TPDS 2 et BTS blanc.&lt;/li&gt;
+&lt;li&gt;Projet agile : livraison 1.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;toc_16&#34;&gt;Hiver - Pâques&lt;/h1&gt;
+
+&lt;h2 id=&#34;toc_17&#34;&gt;Semaine 15 : 23 février&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;TP&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Validation par les pairs de la livraison 1 des projets agiles.&lt;/li&gt;
+&lt;li&gt;Affectation des projets à valider : AgnamStore -&amp;gt; AppMusics -&amp;gt; CarLegends -&amp;gt; DreamHouses -&amp;gt; GameSpawn -&amp;gt; GamingStore -&amp;gt; InfoStore -&amp;gt; Items4Noob -&amp;gt; Med&amp;rsquo;Azur -&amp;gt; MoviesMarket -&amp;gt; MPMakeUp -&amp;gt; PokeStore -&amp;gt; AgnamStore.&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Processus de validation :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Installation locale du projet (clonage du dépôt GitHub).&lt;/li&gt;
+&lt;li&gt;Test des stories annoncées comme terminées (cf Trello).&lt;/li&gt;
+&lt;li&gt;Remplissage d&amp;rsquo;une fiche de validation par story terminée.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Cours Gestion des incidents&lt;/li&gt;
+&lt;li&gt;Validation des projets agiles : création d&amp;rsquo;une issue GitHub par défaut détecté.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;PPE&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Présentation des épreuves orales E4 et E6.&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Début de la préparation de l&amp;rsquo;épreuve E4.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Présentation du contexte PHP GSB et des missions possibles.&lt;/li&gt;
+&lt;li&gt;Constitution des équipes et création des dépôts GitHub.&lt;/li&gt;
+&lt;li&gt;Début du travail sur les projets.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;toc_18&#34;&gt;Semaine 16 : 2 mars&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;TP&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Projet agile : début du sprint 3.&lt;/li&gt;
+&lt;li&gt;Correction des incidents levés pendant la validation.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Explications sur les stories du sprint 3 (gestion du panier).&lt;/li&gt;
+&lt;li&gt;Projet agile : sprint 3.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;PPE&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Préparation de l&amp;rsquo;épreuve E4.&lt;/li&gt;
+&lt;li&gt;Remplir cette &lt;a href=&#34;https://docs.google.com/spreadsheets/d/1SsxEygZ34baoHsoimUihYbVTF2zkUV-oVUFZXj5Oy1k/edit?usp=sharing&#34;&gt;feuille Google&lt;/a&gt; pour indiquer vos choix de mission.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;toc_19&#34;&gt;Semaine 17 : 9 mars&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;TP&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Projet agile : sprint 3.&lt;/li&gt;
+&lt;li&gt;Modélisation de la gestion du panier en BD.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Conseils techniques pour les stories du sprint 3.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Démonstration du projet &lt;a href=&#34;http://oc-musicstore.herokuapp.com/&#34;&gt;MusicStore&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Modélisation de la gestion du panier en BD et dans l&amp;rsquo;application.&lt;/li&gt;
+&lt;li&gt;Centralisation du code contrôleur nécessaire pour toutes les vues.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Projet agile : sprint 3.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;PPE&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Préparation de l&amp;rsquo;épreuve E4.&lt;/li&gt;
+&lt;li&gt;Déploiement des projets sur les serveurs gsb-xyz.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;toc_20&#34;&gt;Semaine 18 : 16 mars&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;TP&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Projet agile : sprint 3.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Cours : documentation d&amp;rsquo;un logiciel.&lt;/li&gt;
+&lt;li&gt;Projet agile : sprint 3.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;toc_21&#34;&gt;Semaine 19 : 23 mars&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;TP&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Projet agile : sprint 3.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Projet agile : fin du sprint 3.&lt;/li&gt;
+&lt;li&gt;Consignes pour la livraison 2.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;toc_22&#34;&gt;Semaine 20 : 30 mars&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;TP&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Validation par les pairs de la livraison 2 des projets agiles (&lt;a href=&#34;/activite/validation-livraison2-projet&#34;&gt;consignes&lt;/a&gt;).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Projet agile : correction des incidents levés pendant la validation.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;toc_23&#34;&gt;Semaine 21 : 7 avril&lt;/h2&gt;
+
+&lt;p&gt;(Pas de cours : formation académique + BTS blanc).&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

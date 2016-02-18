@@ -1,0 +1,342 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+
+    <link href="http://prof.bpesquet.fr/vendor/bootstrap-3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://prof.bpesquet.fr/vendor/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="http://prof.bpesquet.fr/vendor/highlight.js/styles/monokai.css" rel="stylesheet">
+    <link href="http://prof.bpesquet.fr/styles/style.css" rel="stylesheet">
+
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-39897312-3', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+    <link rel="shortcut icon" href="http://prof.bpesquet.fr/images/bpesquet.ico">
+
+    <title>La norme HTML5 en bref</title>
+</head>
+<body data-spy="scroll" data-target="#TableOfContents">
+    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="http://prof.bpesquet.fr/">
+                    <span class="glyphicon glyphicon-home"></span>
+                </a>
+            </div>
+
+            <div class="collapse navbar-collapse nav-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Ressources <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="http://prof.bpesquet.fr/livre/">Livres</a></li>
+                            <li><a href="http://prof.bpesquet.fr/cours/">Cours</a></li>
+                            <li><a href="http://prof.bpesquet.fr/tutoriel/">Tutoriels</a></li>
+                            <li><a href="http://prof.bpesquet.fr/activite/">Activités</a></li>
+                            <li><a href="http://prof.bpesquet.fr/article/">Articles</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="http://prof.bpesquet.fr/avancement/">Avancements</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="mailto:bpesquet@gmail.com" title="Contact"><i class="fa fa-envelope"></i></a></li>
+                    <li><a href="https://twitter.com/bpesquet" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="https://plus.google.com/110003637459679741050?rel=author"><i class="fa fa-google-plus" title="Google+"></i></a></li>
+                    <li><a href="https://github.com/bpesquet" title="GitHub"><i class="fa fa-github"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+
+<div class="row">
+
+    <div class="col-md-9">
+        <h1 class="pageTitle">La norme HTML5 en bref</h1>
+        
+
+<h1 id="toc_0">Présentation</h1>
+
+<p>Le langage HTML (<em>HyperText Markup Language</em>) a été inventé pour décrire une page Web. Il emploie des balises structurantes. Le terme HTML5 regroupe un ensemble d&rsquo;évolutions du langage HTML visant à enrichir le langage pour faciliter l&rsquo;écriture de clients Web riches tout en maintenant une rétrocompatibilité optimale avec l&rsquo;existant.</p>
+
+<p><img src="http://prof.bpesquet.fr/images/content/html5_logo.png" class="content centered" alt="html5_logo.png" /></p>
+
+<h1 id="toc_1">Support par les navigateurs actuels</h1>
+
+<p>HTML5 n&rsquo;est pas encore un standard officiel et aucun navigateur n&rsquo;offre un support exhaustif de la norme (dont certaines parties sont de toute façon susceptibles d&rsquo;être modifiées&hellip;). A moins d&rsquo;être dans un contexte Intranet, le développeur Web ne maîtrise pas le choix du navigateur utilisé par les utilisateurs qui visitent son site.</p>
+
+<p><img src="http://prof.bpesquet.fr/images/content/html5_browser_support.png" class="content centered" alt="html5_browser_support.png" /></p>
+
+<p>Il faut savoir que des versions antérieures d&rsquo;Internet Explorer, notamment la tristement fameuse version 6, sont toujours utilisées par une part non négligeable des utilisateurs de Web.</p>
+
+<p>Cela dit, tous les éditeurs de navigateurs améliorent le support à chaque nouvelle version de leur logiciel. Il est également possible d&rsquo;utiliser des bibliothèques Javascript comme Modernizr ou html5shiv qui émulent les nouvelles fonctionnalités sur les anciens navigateurs. Plusieurs sites inventorient l&rsquo;état du support des différentes parties de la norme et permettent au développeur Web de savoir à quoi s&rsquo;attendre.</p>
+
+<ul>
+<li><a href="http://html5test.com">http://html5test.com</a></li>
+<li><a href="http://caniuse.com">http://caniuse.com</a></li>
+<li><a href="http://html5readiness.com">http://html5readiness.com</a></li>
+</ul>
+
+<p>Le site <a href="http://html5please.com">http://html5please.com</a> est particulièrement intéressant, puisqu&rsquo;il fournit de précieux conseils sur les éléments de la norme prêts à être utilisés en production et ceux qu&rsquo;il vaut mieux laisser mûrir.</p>
+
+<h1 id="toc_2">Quelques nouveautés de HTML5</h1>
+
+<h2 id="toc_3">Les balises sectionnantes</h2>
+
+<p>Lorsqu&rsquo;on voulait réaliser une mise en page moderne avec la version précédente d&rsquo;HTML, on devait utiliser abondamment l&rsquo;élément <code>&lt;div&gt;</code> (associé à une feuille de style) afin de définir les différentes parties de la page et leurs positions respectives.</p>
+
+<pre><code>&lt;div id=&quot;en_tete&quot;&gt;
+    &lt;!-- Bannière --&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;menu&quot;&gt;
+    &lt;!-- Menu de navigation --&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;corps&quot;&gt;
+    &lt;!-- Contenu principal de la page --&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;pied_de_page&quot;&gt;
+    &lt;!-- Nom de l'auteur... --&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p><img src="http://prof.bpesquet.fr/images/content/html_div_layout.jpg" class="content centered" alt="html_div_layout.jpg" /></p>
+
+<p>HTML5 a pris en compte ce besoin récurrent et apporte de nouvelles balises pour y répondre. Elles permettent de mettre en forme une page Web comme décrit ci-dessous.</p>
+
+<p><img src="http://prof.bpesquet.fr/images/content/html5_sematic_layout.jpg" class="content centered" alt="html5_sematic_layout.jpg" /></p>
+
+<p>Les informations de l&rsquo;en-tête, ou la bannière sont placées à l&rsquo;intérieur de la balise <code>&lt;header&gt;</code>. Dans cette partie, on peut placer des  images, des liens, des textes…</p>
+
+<pre><code>&lt;header&gt;
+    &lt;!-- contenu de l'en-tête de la page --&gt;
+&lt;/header&gt;
+</code></pre>
+
+<p>Les principaux liens de navigation sont regroupés dans la balise <code>&lt;nav&gt;</code>.  Généralement, le menu est réalisé sous forme de liste à puces à l&rsquo;intérieur de la balise.</p>
+
+<pre><code>&lt;nav&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&quot;index.html&quot;&gt;Accueil&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;contact.html&quot;&gt;Contact&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;pagebts.html&quot;&gt;BTS SIO&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;equipe.html&quot;&gt;L'équipe&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;
+</code></pre>
+
+<p>La balise <code>&lt;section&gt;</code> sert à découper une page Web en plusieurs sous-parties : introduction, news, chapitres, etc.</p>
+
+<pre><code>&lt;section&gt;
+    &lt;h1&gt;Voici une section de page&lt;/h1&gt;
+    &lt;p&gt;et mon contenu de section&lt;/p&gt;
+&lt;/section&gt;
+</code></pre>
+
+<p>La balise <code>&lt;aside&gt;</code> contient des informations complémentaires à la page, placées par exemple sur le coté droit (une explication complémentaire, une photo, etc).  On peut  avoir plusieurs blocs <code>&lt;aside&gt;</code> dans la page.</p>
+
+<pre><code>&lt;aside&gt;
+    &lt;!-- informations complémentaires --&gt;
+&lt;/aside&gt;
+</code></pre>
+
+<p>La balise <code>&lt;article&gt;</code> contient une partie autonome de la page, par exemple des actualités. Un article est susceptible d&rsquo;être syndiqué via un flux RSS.</p>
+
+<pre><code>&lt;article&gt;
+    &lt;h1&gt;Mon article&lt;/h1&gt;
+    &lt;p&gt;rédaction …&lt;/p&gt;
+&lt;/article&gt;
+</code></pre>
+
+<p>Les informations du pied de page sont placées à l&rsquo;intérieur de la balise <code>&lt;footer&gt;</code>. On y trouve des informations comme des liens de contact, le nom de l&rsquo;auteur, les mentions légales, etc.</p>
+
+<pre><code>&lt;footer&gt;
+    &lt;!-- contenu du pied de page --&gt;
+&lt;/footer&gt;
+</code></pre>
+
+<p>Ces nouvelles balises rendent la mise en page du site plus lisible, améliorent son rendu sur les différents types de terminaux Web (tablettes, smartphones, etc) et facilitent l&rsquo;indexation du contenu de la page par les moteurs de recherche.</p>
+
+<p>Cependant; l&rsquo;usage de balises <code>&lt;div&gt;</code> pour la mise en page reste toujours possible, comme dans l&rsquo;exemple ci-dessous. Il illustre le cas où une page ne comporte qu&rsquo;une seule section de contenu.</p>
+
+<p><img src="http://prof.bpesquet.fr/images/content/html5_div_layout.jpg" class="content centered" alt="html5_div_layout.jpg" /></p>
+
+<h2 id="toc_4">Les balises sémantiques</h2>
+
+<p>HTML5 apporte également de nouvelles balises destinées à donner plus de sémantique (plus de sens, de signification) à vos pages Web. Cela permet une meilleure compréhension de votre code par les humains et les machines (navigateurs Web, moteurs de recherche, etc).</p>
+
+<p>Citons par exemple la balise <code>&lt;time&gt;</code> qui permet d&rsquo;indiquer une date/heure dans une page.</p>
+
+<pre><code>&lt;time datetime=&quot;2012-11-08&quot;&gt;8 Novembre 2012&lt;/time&gt;
+</code></pre>
+
+<p>L&rsquo;attribut <code>datetime</code> permet de faire comprendre aux machines la vraie date, afin de faciliter les opérations d&rsquo;affichage, de tri, etc. Le contenu de la balise représente le texte affiché à l&rsquo;utilisateur.</p>
+
+<p>Il en existe d&rsquo;autres, par exemple <code>&lt;figure&gt;</code> qui définit une illustration accompagnée de la légende.</p>
+
+<h2 id="toc_5">Les formulaires enrichis</h2>
+
+<h3 id="toc_6">Nouveaux champs de saisie</h3>
+
+<p>Voici quelques-uns des nouveaux types de champs utilisables dans les formulaires HTML5 :</p>
+
+<ul>
+<li>email</li>
+<li>search</li>
+<li>tel</li>
+<li>url</li>
+<li>date</li>
+<li>number</li>
+<li>range</li>
+<li>color</li>
+</ul>
+
+<p>Chacun permet de saisir une donnée du type associé : un champ <code>email</code> permettra de saisir une adresse de courriel, un champ <code>date</code> permettra de saisir une date, etc. Ces nouveaux champs améliorent l&rsquo;ergonomie des formulaires Web en les rapprochant des formulaires qu&rsquo;on peut trouver sur un client lourd. Certains disposent d&rsquo;attributs supplémentaires qui restreignent les possibilités de saisie, comme dans cet exemple.</p>
+
+<pre><code>&lt;input type=&quot;number&quot; min=&quot;0&quot; max=&quot;100&quot; step=&quot;5&quot; value=&quot;50&quot; /&gt;
+</code></pre>
+
+<p>Voici son rendu sur votre navigateur : <input type="number" min="0" max="100" step="5" value="50" /></p>
+
+<p>Ici, l&rsquo;utilisateur pourra saisir un nombre compris entre 0 et 100. La valeur initiale du champ sera 50 et elle augmentera ou diminuera par pas de 5.</p>
+
+<p>La page <a href="http://html5demo.braincracking.org/demo/input.php">http://html5demo.braincracking.org/demo/input.php</a> fournit une démonstration de l&rsquo;utilisation de ces champs.</p>
+
+<div class="alert alert-warning">
+    <strong>Avertissement</strong>
+    <p><p>Le rendu de ces nouveaux champs varie assez fortement d&rsquo;un navigateur à l&rsquo;autre.</p>
+</p>
+</div>
+
+<h3 id="toc_7">Aide à la saisie</h3>
+
+<p>Deux attributs des balises de saisie permettent d&rsquo;aider l&rsquo;utilisateur du formulaire :</p>
+
+<ul>
+<li><code>autofocus</code> (booléen) place le focus sur le champ au chargement du formulaire.</li>
+<li><code>placeholder</code> définit le contenu par défaut du champ.</li>
+</ul>
+
+<p></p>
+
+<pre><code>&lt;input type=&quot;email&quot; autofocus placeholder=&quot;utilisateur@domaine.fr&quot; /&gt;
+</code></pre>
+
+<div class="alert">
+    <strong>Remarque</strong>
+    <p><p>Les attributs booléens sont une autre nouveauté de HTML5.</p>
+</p>
+</div>
+
+<h3 id="toc_8">Validation des entrées</h3>
+
+<p>Si la validation finale des valeurs saisies dans un formulaire doit toujours se faire côté serveur (par exemple avec PHP) pour des raisons de sécurité, HTML5 permet de mieux guider l&rsquo;utilisateur dans sa saisie sans avoir besoin de recourir au Javascript ou à d&rsquo;autres bibliothèques.</p>
+
+<p>Pour commencer, les nouveaux champs de saisie impliquent une restriction automatique des valeurs qu&rsquo;il est possible d&rsquo;entrer. Par exemple, voici la définition d&rsquo;un champ de type courriel.</p>
+
+<pre><code>&lt;input type=&quot;email&quot; /&gt;
+</code></pre>
+
+<p>Si l&rsquo;utilisateur saisit une chaîne non conforme au format d&rsquo;une adresse de courriel, le navigateur compatible avec HTML5 affichera un message d&rsquo;erreur.</p>
+
+<p><img src="http://prof.bpesquet.fr/images/content/html5_email_validation.jpg" class="content centered" alt="html5_email_validation.jpg" /></p>
+
+<p>Il est également possible de rendre un champ obligatoire grâce à l&rsquo;attribut booléen <code>required</code>.</p>
+
+<pre><code>&lt;input type=&quot;email&quot; required /&gt;
+</code></pre>
+
+        <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'bpesquet';
+    var disqus_identifier = 'http:\/\/prof.bpesquet.fr\/cours\/html5-en-bref';
+    var disqus_title = 'La norme HTML5 en bref';
+    var disqus_url = 'http:\/\/prof.bpesquet.fr\/cours\/html5-en-bref';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+    <div class="col-md-3">
+        <nav id="TableOfContents">
+<ul>
+<li><a href="#toc_0">Présentation</a></li>
+<li><a href="#toc_1">Support par les navigateurs actuels</a></li>
+<li><a href="#toc_2">Quelques nouveautés de HTML5</a>
+<ul>
+<li><a href="#toc_3">Les balises sectionnantes</a></li>
+<li><a href="#toc_4">Les balises sémantiques</a></li>
+<li><a href="#toc_5">Les formulaires enrichis</a>
+<ul>
+<li><a href="#toc_6">Nouveaux champs de saisie</a></li>
+<li><a href="#toc_7">Aide à la saisie</a></li>
+<li><a href="#toc_8">Validation des entrées</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+    </div>
+
+</div>
+
+    </div> 
+
+    <footer class="footer">
+        <div class="container">
+            <p class="pull-right">
+                Créé avec <a href="http://hugo.spf13.com">Hugo</a> et <a href="http://getbootstrap.com">Bootstrap</a>.
+            </p>
+            <p>
+                <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/fr/"><img src="http://prof.bpesquet.fr/images/by-nc-sa.png" alt="Creative Commons logo" /></a>
+            </p>
+        </div>
+    </footer>
+
+    <script src="http://prof.bpesquet.fr/vendor/jquery-1.11.1/jquery.min.js"></script>
+    <script src="http://prof.bpesquet.fr/vendor/bootstrap-3.1.1/js/bootstrap.min.js"></script>
+    <script src="http://prof.bpesquet.fr/vendor/highlight.js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <script>
+        
+        $("img").addClass("img-responsive");
+        
+        
+        $("table").addClass("table");
+        
+        
+        $("#TableOfContents ul").addClass("nav");
+        $("#TableOfContents > ul").addClass("sidenav");
+        $("#TableOfContents").affix();
+
+        
+        
+        window.addEventListener("hashchange", function() { scrollBy(0, -60) });
+    </script>
+</body>
+</html>

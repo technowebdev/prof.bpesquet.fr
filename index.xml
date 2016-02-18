@@ -1,0 +1,2294 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>Recent Content on  </title>
+      <generator uri="https://hugo.spf13.com">Hugo</generator>
+    <link>http://prof.bpesquet.fr/index.xml/</link>
+    
+    
+    
+    <updated>Mon, 21 Jul 2014 00:00:00 UTC</updated>
+    
+    <item>
+      <title>Premiers pas avec le framework Bootstrap</title>
+      <link>http://prof.bpesquet.fr/tutoriel/premiers-pas-framework-bootstrap/</link>
+      <pubDate>Mon, 21 Jul 2014 00:00:00 UTC</pubDate>
+      
+      <guid>http://prof.bpesquet.fr/tutoriel/premiers-pas-framework-bootstrap/</guid>
+      <description>
+
+&lt;p&gt;Découvrez les bases du framework &lt;a href=&#34;http://getbootstrap/&#34;&gt;Bootstrap&lt;/a&gt; par la pratique.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/content/bootstrap_responsive.jpeg&#34; class=&#34;content centered&#34; alt=&#34;bootstrap_responsive.jpeg&#34; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;toc_0&#34;&gt;Pré-requis&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Connaître les langages HTML et CSS.&lt;/li&gt;
+&lt;li&gt;(Facultatif) Avoir déjà utilisé JavaScript.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;toc_1&#34;&gt;Présentation de Bootstrap&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://getbootstrap.com/&#34;&gt;Bootstrap&lt;/a&gt; est un framework destiné à faciliter la création d&amp;rsquo;applications Web. Il regroupe une collection d&amp;rsquo;outils fournis sous la forme de classes CSS et de librairies JavaScript. Bootstrap a été créé par deux développeurs du réseau social Twitter.&lt;/p&gt;
+
+&lt;h1 id=&#34;toc_2&#34;&gt;Prise en main de Bootstrap&lt;/h1&gt;
+
+&lt;h2 id=&#34;toc_3&#34;&gt;Installation&lt;/h2&gt;
+
+&lt;p&gt;Pour pouvoir utiliser Bootstrap, il est nécessaire que le framework soit accessible pour nos pages Web. Pour cela, on peut y accéder en ligne via un &lt;a href=&#34;http://fr.wikipedia.org/wiki/Content_delivery_network&#34;&gt;CDN&lt;/a&gt; (&lt;em&gt;Content Delivery Network&lt;/em&gt;) ou bien l&amp;rsquo;installer localement. Nous allons utiliser cette seconde solution.&lt;/p&gt;
+
+&lt;p&gt;Créez dans votre répertoire personnel un sous-répertoire nommé &lt;code&gt;hello-world-bootstrap&lt;/code&gt; qui sera le répertoire racine de notre exemple. Dans ce répertoire, créez un sous-répertoire &lt;code&gt;bootstrap&lt;/code&gt;. Ensuite, téléchargez la version courante de Bootstrap sur &lt;a href=&#34;http://getbootstrap.com/getting-started/#download&#34;&gt;cette page&lt;/a&gt;. Ensuite, décompressez le contenu de l&amp;rsquo;archive dans le répertoire &lt;code&gt;bootstrap&lt;/code&gt; créé précédemment. Vous devez obtenir l&amp;rsquo;arborescence ci-dessous.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/content/bootstrap_arborescence_initiale.png&#34; class=&#34;content centered bordered&#34; alt=&#34;bootstrap_arborescence_initiale.png&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;On observe que le framework se compose de définitions CSS et JavaScript ainsi que d&amp;rsquo;images compressées. Les fichiers contenant le mot &lt;code&gt;min&lt;/code&gt; correspondent aux versions minimales des sources, compressées mais peu lisibles pour le développeur. On les utilise souvent en production afin de réduire le volume de données nécessaire pour afficher une ressource Web.&lt;/p&gt;
+
+&lt;h2 id=&#34;toc_4&#34;&gt;Une première page Web&lt;/h2&gt;
+
+&lt;p&gt;Créez dans le répertoire &lt;code&gt;hello-world-bootstrap&lt;/code&gt; un fichier HTML nommé &lt;code&gt;index.html&lt;/code&gt;. Recopiez le code ci-dessous dans ce fichier.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;!doctype html&amp;gt;
+&amp;lt;html&amp;gt;
+    &amp;lt;head&amp;gt;
+        &amp;lt;meta charset=&amp;quot;utf-8&amp;quot;&amp;gt;
+        &amp;lt;meta http-equiv=&amp;quot;X-UA-Compatible&amp;quot; content=&amp;quot;IE=edge&amp;quot;&amp;gt;
+        &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width, initial-scale=1.0&amp;quot;&amp;gt;
+        &amp;lt;link href=&amp;quot;bootstrap/css/bootstrap.min.css&amp;quot; rel=&amp;quot;stylesheet&amp;quot;&amp;gt;
+        &amp;lt;title&amp;gt;Hello world with Bootstrap&amp;lt;/title&amp;gt;    
+    &amp;lt;/head&amp;gt;
+    &amp;lt;body&amp;gt;
+        &amp;lt;h1&amp;gt;Hello world!&amp;lt;/h1&amp;gt;
+
+        &amp;lt;script src=&amp;quot;https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+        &amp;lt;script src=&amp;quot;bootstrap/js/bootstrap.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+    &amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Il s&amp;rsquo;agit d&amp;rsquo;une page Web classique avec quelques éléments spécifiques :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;une balise &lt;code&gt;&amp;lt;link&amp;gt;&lt;/code&gt; vers la feuille de style Bootstrap ;&lt;/li&gt;
+&lt;li&gt;une balise &lt;code&gt;&amp;lt;meta name=&amp;quot;viewport&amp;quot;&amp;gt;&lt;/code&gt; définissant le &lt;em&gt;viewport&lt;/em&gt;, c&amp;rsquo;est-à-dire la surface de la fenêtre du navigateur qui affiche la page. Cela va permettre à la page de s&amp;rsquo;adapter à la dimension du terminal client ;&lt;/li&gt;
+&lt;li&gt;une balise &lt;code&gt;&amp;lt;meta&amp;gt;&lt;/code&gt; permettant un affichage correct sur le navigateur Internet Explorer ;&lt;/li&gt;
+&lt;li&gt;des balises &lt;code&gt;&amp;lt;script&amp;gt;&lt;/code&gt; qui activent les plugins jQuery de Bootstrap. Ces plugins sont nécessaires pour animer les composants Bootstrap.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&#34;alert&#34;&gt;
+    &lt;strong&gt;Remarque&lt;/strong&gt;
+    &lt;p&gt;&lt;p&gt;jQuery est ici inclus en ligne via le CDN Google. Il est également possible de le télécharger et de l&amp;rsquo;installer localement.&lt;/p&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Ouvrez cette page dans votre navigateur Web favori. Vous obtenez le résultat ci-dessous.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/content/hello_world_bootstrap.png&#34; class=&#34;content centered&#34; alt=&#34;hello_world_bootstrap.png&#34; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;toc_5&#34;&gt;Principe de fonctionnement&lt;/h1&gt;
+
+&lt;p&gt;Bootstrap est avant tout une bibliothèque CSS qui fournit plusieurs classes CSS prédéfinies. Il suffit de réutiliser ces classes pour profiter des fonctionnalités de Bootstrap.&lt;/p&gt;
+
+&lt;h2 id=&#34;toc_6&#34;&gt;Le conteneur et la grille Bootstrap&lt;/h2&gt;
+
+&lt;p&gt;Bootstrap fournit une classe CSS &lt;code&gt;container&lt;/code&gt; utilisée pour regrouper d&amp;rsquo;autres éléments.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;div class=&amp;quot;container&amp;quot;&amp;gt;
+  &amp;lt;!-- ... --&amp;gt;    
+&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;A l&amp;rsquo;intérieur d&amp;rsquo;un &lt;code&gt;container&lt;/code&gt;, Bootstrap gère la zone d&amp;rsquo;affichage sous la forme d&amp;rsquo;une &lt;strong&gt;grille&lt;/strong&gt; de 12 colonnes. La classe Bootstrap &lt;code&gt;row&lt;/code&gt; crée une &lt;strong&gt;ligne&lt;/strong&gt; dans cette grille, et chaque classe Bootstrap &lt;code&gt;col-*&lt;/code&gt; crée une &lt;strong&gt;cellule&lt;/strong&gt; qui regroupe * colonnes dans cette ligne.&lt;/p&gt;
+
+&lt;p&gt;Dans chaque ligne, la taille totale des colonnes doit être égale à 12. On peut donc choisir de diviser la surface d&amp;rsquo;affichage en 12 colonnes de taille 1, ou bien en 3 colonnes de taille 4, ou encore en une colonne de taille 4 et une colonne de taille 8.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/content/bootstrap_grid.png&#34; class=&#34;content centered&#34; alt=&#34;bootstrap_grid.png&#34; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;toc_7&#34;&gt;Démonstration&lt;/h2&gt;
+
+&lt;p&gt;Créez dans le répertoire &lt;code&gt;hello-world-bootstrap&lt;/code&gt; un fichier CSS &lt;code&gt;style.css&lt;/code&gt; contenant le code ci-dessous.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;.row {
+    margin-bottom: 15px;
+}
+
+.row [class^=&amp;quot;col-&amp;quot;] {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #eee;
+    border: 1px solid #ddd;
+    background-color: rgba(86,61,124,.15);
+    border: 1px solid rgba(86,61,124,.2);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Ce fichier permettra de mieux visualiser les éléments de la grille Bootstrap.&lt;/p&gt;
+
+&lt;p&gt;Ensuite, éditez le fichier &lt;code&gt;index.html&lt;/code&gt; comme indiqué ci-dessous.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;!doctype html&amp;gt;
+&amp;lt;html&amp;gt;
+&amp;lt;head&amp;gt;
+    &amp;lt;meta charset=&amp;quot;utf-8&amp;quot;&amp;gt;
+    &amp;lt;meta http-equiv=&amp;quot;X-UA-Compatible&amp;quot; content=&amp;quot;IE=edge&amp;quot;&amp;gt;
+    &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width, initial-scale=1.0&amp;quot;&amp;gt;
+    &amp;lt;link href=&amp;quot;bootstrap/css/bootstrap.min.css&amp;quot; rel=&amp;quot;stylesheet&amp;quot;&amp;gt;
+    &amp;lt;link href=&amp;quot;style.css&amp;quot; rel=&amp;quot;stylesheet&amp;quot;&amp;gt;
+    &amp;lt;title&amp;gt;Hello world with Bootstrap&amp;lt;/title&amp;gt;
+&amp;lt;/head&amp;gt;
+&amp;lt;body&amp;gt;
+    &amp;lt;div class=&amp;quot;container&amp;quot;&amp;gt;
+        &amp;lt;h1&amp;gt;Hello world!&amp;lt;/h1&amp;gt;
+        &amp;lt;div class=&amp;quot;row&amp;quot;&amp;gt;
+            &amp;lt;div class=&amp;quot;col-md-3&amp;quot;&amp;gt;
+                Zone de gauche
+            &amp;lt;/div&amp;gt;
+            &amp;lt;div class=&amp;quot;col-md-7&amp;quot;&amp;gt;
+                Zone du centre
+            &amp;lt;/div&amp;gt;
+            &amp;lt;div class=&amp;quot;col-md-2&amp;quot;&amp;gt;
+                Zone de droite
+            &amp;lt;/div&amp;gt;
+        &amp;lt;/div&amp;gt;
+    &amp;lt;/div&amp;gt;
+
+    &amp;lt;script src=&amp;quot;https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+    &amp;lt;script src=&amp;quot;bootstrap/js/bootstrap.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+&amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;On remarque au passage que le total des tailles des colonnes (3+7+2) est bien égal à 12. Ouvrez cette page dans un navigateur Web. Le placement des colonnes s&amp;rsquo;adapte à la surface d&amp;rsquo;affichage disponible.&lt;/p&gt;
+
+&lt;p&gt;Voici le rendu avec une surface d&amp;rsquo;affichage importante.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/content/bootstrap_grid_large.png&#34; class=&#34;content centered&#34; alt=&#34;bootstrap_grid_large.png&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Voici le rendu lorsque la surface d&amp;rsquo;affichage diminue.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/content/bootstrap_grid_small.png&#34; class=&#34;content centered&#34; alt=&#34;bootstrap_grid_small.png&#34; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;toc_8&#34;&gt;Bootstrap et le design Web adaptatif&lt;/h2&gt;
+
+&lt;p&gt;D&amp;rsquo;où vient le comportement que l&amp;rsquo;on vient d&amp;rsquo;observer ? Depuis sa version 3, Bootstrap est pensé d&amp;rsquo;abord pour les terminaux mobiles dont la surface d&amp;rsquo;affichage est limitée. Il adapte automatiquement la disposition des éléments à la zone d&amp;rsquo;affichage, détectée grâce à la balise &lt;code&gt;&amp;lt;meta name=&amp;quot;viewport&amp;quot;&amp;gt;&lt;/code&gt; vue plus haut.&lt;/p&gt;
+
+&lt;p&gt;Pour chaque taille de colonne (de 1 à 12), Bootstrap fournit quatre classes &lt;code&gt;col-*&lt;/code&gt; dont le comportement diffère en fonction du terminal d&amp;rsquo;affichage utilisé pour afficher la page Web.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;Smartphones&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;Tablettes&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;Desktop&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;Desktop large&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Limite de largeur d&amp;rsquo;affichage&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&amp;lt; 768px&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&amp;gt;= 768 px&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&amp;gt;= 992 px&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&amp;gt;= 1170 px&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Préfixe des classes colonne&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;code&gt;col-xs-*&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;code&gt;col-sm-*&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;code&gt;col-md-*&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;code&gt;col-lg-*&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Placement des colonnes&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;Horizontal&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;(*)&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;(*)&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;(*)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;(*) : Les colonnes seront placées horizontalement (côte à côte) uniquement si la largeur d&amp;rsquo;affichage est suffisante.&lt;/p&gt;
+
+&lt;p&gt;Par exemple, la classe Bootstrap &lt;code&gt;col-md-6&lt;/code&gt; désigne une colonne de taille 6 affichée horizontalement uniquement si la largeur d&amp;rsquo;affichage est au minimum celle d&amp;rsquo;un écran de bureau (desktop). Dans le cas contraire, la colonne sera placée verticalement, c&amp;rsquo;est-à-dire positionnée sous les autres.&lt;/p&gt;
+
+&lt;p&gt;Dans notre exemple, nous avons utilisé des colonnes desktop (&lt;code&gt;col-md-*&lt;/code&gt;). Le tableau ci-dessus montre que ces colonnes ne sont placées horizontalement que si la largeur d&amp;rsquo;affichage est supérieure ou égale à 992px. Dans le cas contraire, elles se superposent verticalement. Cela explique le comportement observé.&lt;/p&gt;
+
+&lt;p&gt;Modifiez le fichier &lt;code&gt;index.html&lt;/code&gt; et remplacez les classes &lt;code&gt;col-md-*&lt;/code&gt; par des classes &lt;code&gt;col-xs-*&lt;/code&gt; de même taille. Ouvrez ce fichier dans un navigateur. Quelle que soit la surface d&amp;rsquo;affichage, les colonnes restent placées horizontalement.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/content/bootstrap_grid_col_xs.png&#34; class=&#34;content centered&#34; alt=&#34;bootstrap_grid_col_xs.png&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Comme indiqué dans le tableau ci-dessus, les colonnes &lt;code&gt;col-xs-*&lt;/code&gt; ne sont jamais superposées verticalement.&lt;/p&gt;
+
+&lt;h2 id=&#34;toc_9&#34;&gt;Aller plus loin&lt;/h2&gt;
+
+&lt;p&gt;Il est possible de contrôler plus finement l&amp;rsquo;organisation de la page Web en combinant plusieurs classes colonne. Imaginons par exemple qu&amp;rsquo;on souhaite garder notre design actuel pour un affichage sur écran de bureau, mais agrandir la zone de gauche et diminuer la taille de la zone centrale pour un affichage sur tablette. Voici le code à modifier dans le fichier &lt;code&gt;index.html&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;!-- ... --&amp;gt;
+&amp;lt;div class=&amp;quot;row&amp;quot;&amp;gt;
+    &amp;lt;!-- Taille 4 sur tablettes, 3 sur desktop et plus --&amp;gt;
+    &amp;lt;div class=&amp;quot;col-sm-4 col-md-3&amp;quot;&amp;gt;
+        Zone de gauche
+    &amp;lt;/div&amp;gt;
+    &amp;lt;!-- Taille 6 sur tablettes, 7 sur desktop et plus --&amp;gt;
+    &amp;lt;div class=&amp;quot;col-sm-6 col-md-7&amp;quot;&amp;gt;
+        Zone du centre
+    &amp;lt;/div&amp;gt;
+    &amp;lt;!-- Taille 2 sur tablettes et plus --&amp;gt;
+    &amp;lt;div class=&amp;quot;col-sm-2&amp;quot;&amp;gt;
+        Zone de droite
+    &amp;lt;/div&amp;gt;
+&amp;lt;/div&amp;gt;
+&amp;lt;!-- ... --&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Modifiez &lt;code&gt;index.html&lt;/code&gt; puis affcihez-le dans un navigateur. On constate que la colonne de gauche passe de 25% à 33% de la largeur totale lorsque la surface d&amp;rsquo;affichage correspond à celle d&amp;rsquo;une tablette.&lt;/p&gt;
+
+&lt;div class=&#34;alert&#34;&gt;
+    &lt;strong&gt;Remarque&lt;/strong&gt;
+    &lt;p&gt;&lt;p&gt;On vérifie bien que la somme des tailles des colonnes est égale à 12 dans chaque configuration d&amp;rsquo;affichage (4+6+2 en mode tablette, 3+7+2 en desktop et plus).&lt;/p&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Il est même possible de masquer ou de faire apparaître certains éléments en fonction de la surface d&amp;rsquo;affichage grâce aux classes &lt;code&gt;visible-*&lt;/code&gt; et &lt;code&gt;hidden-*&lt;/code&gt;. Par exemple, on souhaite qu&amp;rsquo;en contexte smartphone, la zone de droite soit masquée et que les zones de gauche et du centre prennent chacune 50% de la place disponible. Voici le code source associé.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;!-- ... --&amp;gt;
+&amp;lt;div class=&amp;quot;row&amp;quot;&amp;gt;
+    &amp;lt;!-- Taille 6 sur smartphones, 4 sur tablettes, 3 sur desktop et plus --&amp;gt;
+    &amp;lt;div class=&amp;quot;col-xs-6 col-sm-4 col-md-3&amp;quot;&amp;gt;
+        Zone de gauche
+    &amp;lt;/div&amp;gt;
+    &amp;lt;!-- Taille 6 sur smartphones et tablettes, 7 sur desktop et plus --&amp;gt;
+    &amp;lt;div class=&amp;quot;col-xs-6 col-md-7&amp;quot;&amp;gt;
+        Zone du centre
+    &amp;lt;/div&amp;gt;
+    &amp;lt;!-- Masquée sur smartphones, taille 2 sur tablettes et plus --&amp;gt;
+    &amp;lt;div class=&amp;quot;col-sm-2 hidden-xs&amp;quot;&amp;gt;
+        Zone de droite
+    &amp;lt;/div&amp;gt;
+&amp;lt;/div&amp;gt;
+!-- ... --&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Vous pouvez tester ce code pour observer le comportement décrit plus haut.&lt;/p&gt;
+
+&lt;h2 id=&#34;toc_10&#34;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;En remplaçant la gestion CSS manuelle du positionnement (&lt;code&gt;float : left;&lt;/code&gt;, etc) par l&amp;rsquo;utilisation des classes Bootstrap &lt;code&gt;row&lt;/code&gt; et &lt;code&gt;col-*&lt;/code&gt;, on rend la mise en page Web à la fois plus simple et plus souple.&lt;/p&gt;
+
+&lt;p&gt;Les exemples ci-dessus ne donnent qu&amp;rsquo;un aperçu des possibilités de Bootstrap. Consultez la &lt;a href=&#34;http://getbootstrap.com/css&#34;&gt;documentation&lt;/a&gt; du framework pour plus de détails.&lt;/p&gt;
+
+&lt;h1 id=&#34;toc_11&#34;&gt;Aperçu de quelques composants Bootstrap&lt;/h1&gt;
+
+&lt;p&gt;Outre les classes de mise en page déjà étudiées, Bootstrap fournit de nombreux composants prêts à être intégrés dans nos pages Web.&lt;/p&gt;
+
+&lt;h2 id=&#34;toc_12&#34;&gt;Images et icônes&lt;/h2&gt;
+
+&lt;p&gt;Bootstrap est livré avec environ 200 mini-images (&lt;em&gt;glyphicons&lt;/em&gt;) librement utilisables.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Je boirais bien un &amp;lt;span class=&amp;quot;glyphicon glyphicon-glass&amp;quot;&amp;gt;&amp;lt;/span&amp;gt; avant  d&#39;aller écouter de la &amp;lt;span class=&amp;quot;glyphicon glyphicon-music&amp;quot;&amp;gt;&amp;lt;/span&amp;gt; avec ma &amp;lt;span class=&amp;quot;glyphicon glyphicon-heart&amp;quot;&amp;gt;&amp;lt;/span&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Ce qui donne le résultat suivant : Je boirais bien un &lt;span class=&#34;glyphicon glyphicon-glass&#34;&gt;&lt;/span&gt; avant  d&amp;rsquo;aller écouter de la &lt;span class=&#34;glyphicon glyphicon-music&#34;&gt;&lt;/span&gt; avec ma &lt;span class=&#34;glyphicon glyphicon-heart&#34;&gt;&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;De plus, Bootstrap fournit une classe &lt;code&gt;img-responsive&lt;/code&gt; qui permet aux images (balises HTML &lt;code&gt;&amp;lt;img&amp;gt;&lt;/code&gt;) de se redimensionner automatiquement à la taille de leur conteneur parent.&lt;/p&gt;
+
+&lt;h2 id=&#34;toc_13&#34;&gt;Boutons&lt;/h2&gt;
+
+&lt;p&gt;Bootstrap fournit un moyen simple d&amp;rsquo;obtenir des boutons élégants et personnalisables.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;button type=&amp;quot;button&amp;quot; class=&amp;quot;btn btn-default&amp;quot;&amp;gt;Action&amp;lt;/button&amp;gt;
+&amp;lt;button type=&amp;quot;button&amp;quot; class=&amp;quot;btn btn-warning btn-lg&amp;quot;&amp;gt;Attention&amp;lt;/button&amp;gt;
+&amp;lt;button type=&amp;quot;button&amp;quot; class=&amp;quot;btn btn-danger btn-xs&amp;quot;&amp;gt;Danger&amp;lt;/button&amp;gt;
+&amp;lt;button type=&amp;quot;button&amp;quot; class=&amp;quot;btn btn-primary&amp;quot;&amp;gt;&amp;lt;span class=&amp;quot;glyphicon glyphicon-shopping-cart&amp;quot;&amp;gt;&amp;lt;/span&amp;gt; Panier&amp;lt;/button&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;button type=&#34;button&#34; class=&#34;btn btn-default&#34;&gt;Action&lt;/button&gt;
+&lt;button type=&#34;button&#34; class=&#34;btn btn-warning btn-lg&#34;&gt;Attention&lt;/button&gt;
+&lt;button type=&#34;button&#34; class=&#34;btn btn-danger btn-xs&#34;&gt;Danger&lt;/button&gt;
+&lt;button type=&#34;button&#34; class=&#34;btn btn-primary&#34;&gt;&lt;span class=&#34;glyphicon glyphicon-shopping-cart&#34;&gt;&lt;/span&gt; Panier&lt;/button&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;toc_14&#34;&gt;Messages&lt;/h2&gt;
+
+&lt;p&gt;Bootstrap permet de définir des messages faciles à repérer dans une page Web.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;div class=&amp;quot;alert alert-success&amp;quot;&amp;gt;Bravo !&amp;lt;/div&amp;gt;
+&amp;lt;div class=&amp;quot;alert alert-info&amp;quot;&amp;gt;Terminé&amp;lt;/div&amp;gt;
+&amp;lt;div class=&amp;quot;alert alert-warning&amp;quot;&amp;gt;Attention...&amp;lt;/div&amp;gt;
+&amp;lt;div class=&amp;quot;alert alert-danger&amp;quot;&amp;gt;Erreur !&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div class=&#34;alert alert-success&#34;&gt;Bravo !&lt;/div&gt;
+&lt;div class=&#34;alert alert-info&#34;&gt;Terminé&lt;/div&gt;
+&lt;div class=&#34;alert alert-warning&#34;&gt;Attention...&lt;/div&gt;
+&lt;div class=&#34;alert alert-danger&#34;&gt;Erreur !&lt;/div&gt;
+
+&lt;h2 id=&#34;toc_15&#34;&gt;Menus de navigation&lt;/h2&gt;
+
+&lt;p&gt;Il existe deux possibilités pour concevoir un menu de navigation :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;utiliser la classe &lt;code&gt;nav&lt;/code&gt; ;&lt;/li&gt;
+&lt;li&gt;utiliser la classe &lt;code&gt;list-group&lt;/code&gt; ;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Le code ci-dessous définit une mise en page sur trois colonnes, avec deux menus et une zone de contenu.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;div class=&amp;quot;row&amp;quot;&amp;gt;
+    &amp;lt;div class=&amp;quot;col-xs-3&amp;quot;&amp;gt;
+        &amp;lt;ul class=&amp;quot;nav nav-pills nav-stacked&amp;quot;&amp;gt;
+            &amp;lt;li class=&amp;quot;active&amp;quot;&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;Menu avec nav&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+            &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;Profil&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+            &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;Messages&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+        &amp;lt;/ul&amp;gt;
+    &amp;lt;/div&amp;gt;
+    &amp;lt;div class=&amp;quot;col-xs-3&amp;quot;&amp;gt;
+        &amp;lt;div class=&amp;quot;list-group&amp;quot;&amp;gt;
+            &amp;lt;a class=&amp;quot;list-group-item&amp;quot; href=&amp;quot;&amp;quot;&amp;gt;Menu avec list-group&amp;lt;/a&amp;gt;
+            &amp;lt;a class=&amp;quot;list-group-item active&amp;quot; href=&amp;quot;&amp;quot;&amp;gt;Profil&amp;lt;/a&amp;gt;
+            &amp;lt;a class=&amp;quot;list-group-item&amp;quot; href=&amp;quot;&amp;quot;&amp;gt;Messages&amp;lt;/a&amp;gt;
+        &amp;lt;/div&amp;gt;
+    &amp;lt;/div&amp;gt;
+    &amp;lt;div class=&amp;quot;col-xs-6&amp;quot;&amp;gt;
+        Contenu
+    &amp;lt;/div&amp;gt;
+&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div class=&#34;row&#34;&gt;
+    &lt;div class=&#34;col-xs-3&#34;&gt;
+        &lt;ul class=&#34;nav nav-pills nav-stacked&#34;&gt;
+            &lt;li class=&#34;active&#34;&gt;&lt;a href=&#34;&#34;&gt;Menu avec nav&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&#34;&#34;&gt;Profil&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&#34;&#34;&gt;Messages&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;col-xs-3&#34;&gt;
+        &lt;div class=&#34;list-group&#34;&gt;
+            &lt;a class=&#34;list-group-item&#34; href=&#34;&#34;&gt;Menu avec list-group&lt;/a&gt;
+            &lt;a class=&#34;list-group-item active&#34; href=&#34;&#34;&gt;Profil&lt;/a&gt;
+            &lt;a class=&#34;list-group-item&#34; href=&#34;&#34;&gt;Messages&lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;col-xs-6&#34;&gt;
+        Contenu
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&#34;toc_16&#34;&gt;Barre de navigation&lt;/h2&gt;
+
+&lt;p&gt;On peut ajouter facilement une barre de navigation horizontale grâce à la classe Bootstrap &lt;code&gt;navbar&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;nav class=&amp;quot;navbar navbar-default&amp;quot; role=&amp;quot;navigation&amp;quot;&amp;gt;
+    &amp;lt;a class=&amp;quot;navbar-brand&amp;quot; href=&amp;quot;#&amp;quot;&amp;gt;Mon site Web&amp;lt;/a&amp;gt;
+    &amp;lt;ul class=&amp;quot;nav navbar-nav&amp;quot;&amp;gt;
+        &amp;lt;li class=&amp;quot;active&amp;quot;&amp;gt;&amp;lt;a href=&amp;quot;#&amp;quot;&amp;gt;Rubrique 1&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+        &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;#&amp;quot;&amp;gt;Rubrique 2&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+    &amp;lt;/ul&amp;gt;
+    &amp;lt;ul class=&amp;quot;nav navbar-nav navbar-right&amp;quot;&amp;gt;
+        &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;#&amp;quot;&amp;gt;Rubrique 3&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+    &amp;lt;/ul&amp;gt;
+&amp;lt;/nav&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;nav class=&#34;navbar navbar-default&#34; role=&#34;navigation&#34;&gt;
+    &lt;a class=&#34;navbar-brand&#34; href=&#34;#&#34;&gt;Mon site Web&lt;/a&gt;
+    &lt;ul class=&#34;nav navbar-nav&#34;&gt;
+        &lt;li class=&#34;active&#34;&gt;&lt;a href=&#34;#&#34;&gt;Rubrique 1&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#&#34;&gt;Rubrique 2&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;ul class=&#34;nav navbar-nav navbar-right&#34;&gt;
+        &lt;li&gt;&lt;a href=&#34;#&#34;&gt;Rubrique 3&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;&lt;/p&gt;
+
+&lt;p&gt;Il est également possible d&amp;rsquo;obtenir une barre de navigation adaptative. Son contenu est masqué et remplacé par un simple bouton d&amp;rsquo;accès lorsque la surface d&amp;rsquo;affichage est insuffisante.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;div class=&amp;quot;navbar navbar-default&amp;quot; role=&amp;quot;navigation&amp;quot;&amp;gt;
+    &amp;lt;!-- Partie de la barre toujours affichée --&amp;gt;
+    &amp;lt;div class=&amp;quot;navbar-header&amp;quot;&amp;gt;
+        &amp;lt;!-- Bouton d&#39;accès affiché à droite si la zone d&#39;affichage est trop petite --&amp;gt;
+        &amp;lt;button type=&amp;quot;button&amp;quot; class=&amp;quot;navbar-toggle&amp;quot; data-toggle=&amp;quot;collapse&amp;quot; data-target=&amp;quot;#navbar-collapse-target&amp;quot;&amp;gt;
+            &amp;lt;span class=&amp;quot;sr-only&amp;quot;&amp;gt;Activer la navigation&amp;lt;/span&amp;gt;
+            &amp;lt;span class=&amp;quot;icon-bar&amp;quot;&amp;gt;&amp;lt;/span&amp;gt;
+            &amp;lt;span class=&amp;quot;icon-bar&amp;quot;&amp;gt;&amp;lt;/span&amp;gt;
+            &amp;lt;span class=&amp;quot;icon-bar&amp;quot;&amp;gt;&amp;lt;/span&amp;gt;
+        &amp;lt;/button&amp;gt;
+        &amp;lt;a class=&amp;quot;navbar-brand&amp;quot; href=&amp;quot;#&amp;quot;&amp;gt;Mon site Web&amp;lt;/a&amp;gt;
+    &amp;lt;/div&amp;gt;
+    &amp;lt;!-- Partie de la barre masquée si la surface d&#39;affichage est insuffisante --&amp;gt;
+    &amp;lt;div class=&amp;quot;collapse navbar-collapse&amp;quot; id=&amp;quot;navbar-collapse-target&amp;quot;&amp;gt;
+        &amp;lt;ul class=&amp;quot;nav navbar-nav&amp;quot;&amp;gt;
+            &amp;lt;li class=&amp;quot;active&amp;quot;&amp;gt;&amp;lt;a href=&amp;quot;#&amp;quot;&amp;gt;Rubrique 1&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+            &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;#&amp;quot;&amp;gt;Rubrique 2&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+        &amp;lt;/ul&amp;gt;
+        &amp;lt;ul class=&amp;quot;nav navbar-nav navbar-right&amp;quot;&amp;gt;
+            &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;#&amp;quot;&amp;gt;Rubrique 3&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+        &amp;lt;/ul&amp;gt;
+    &amp;lt;/div&amp;gt;
+&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div class=&#34;navbar navbar-default&#34; role=&#34;navigation&#34;&gt;
+    &lt;!-- Partie de la barre toujours affichée --&gt;
+    &lt;div class=&#34;navbar-header&#34;&gt;
+        &lt;!-- Bouton d&#39;accès affiché à droite si la zone d&#39;affichage est trop petite --&gt;
+        &lt;button type=&#34;button&#34; class=&#34;navbar-toggle&#34; data-toggle=&#34;collapse&#34; data-target=&#34;#navbar-collapse-target&#34;&gt;
+            &lt;span class=&#34;sr-only&#34;&gt;Activer la navigation&lt;/span&gt;
+            &lt;span class=&#34;icon-bar&#34;&gt;&lt;/span&gt;
+            &lt;span class=&#34;icon-bar&#34;&gt;&lt;/span&gt;
+            &lt;span class=&#34;icon-bar&#34;&gt;&lt;/span&gt;
+        &lt;/button&gt;
+        &lt;a class=&#34;navbar-brand&#34; href=&#34;#&#34;&gt;Mon site Web&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;!-- Partie de la barre masquée si la surface d&#39;affichage est insuffisante --&gt;
+    &lt;div class=&#34;collapse navbar-collapse&#34; id=&#34;navbar-collapse-target&#34;&gt;
+        &lt;ul class=&#34;nav navbar-nav&#34;&gt;
+            &lt;li class=&#34;active&#34;&gt;&lt;a href=&#34;#&#34;&gt;Rubrique 1&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&#34;#&#34;&gt;Rubrique 2&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+        &lt;ul class=&#34;nav navbar-nav navbar-right&#34;&gt;
+            &lt;li&gt;&lt;a href=&#34;#&#34;&gt;Rubrique 3&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h1 id=&#34;toc_17&#34;&gt;Conclusion&lt;/h1&gt;
+
+&lt;p&gt;Nous n&amp;rsquo;avons fait que survoler les possibilités de Bootstrap. Il existe de nombreuses ressources sur ce framework en ligne, à commencer par sa &lt;a href=&#34;http://getbootstrap.com&#34;&gt;documentation officielle&lt;/a&gt; ou encore les tutoriels des sites &lt;a href=&#34;http://fr.openclassrooms.com/informatique/cours/prenez-en-main-bootstrap&#34;&gt;OpenClassrooms&lt;/a&gt; et &lt;a href=&#34;http://www.codecademy.com/fr/skills/make-a-website/&#34;&gt;Codecademy&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Projet Atlantik</title>
+      <link>http://prof.bpesquet.fr/activite/projet-atlantik</link>
+      <pubDate>Tue, 01 Jan 2008 00:00:00 UTC</pubDate>
+      
+      <guid>http://prof.bpesquet.fr/activite/projet-atlantik</guid>
+      <description>
+
+&lt;h1 id=&#34;toc_0&#34;&gt;Objectif&lt;/h1&gt;
+
+&lt;p&gt;Ce projet a pour but de coder les classes et le programme principal associés au cas Atlantik.&lt;/p&gt;
+
+&lt;div class=&#34;alert alert-warning&#34;&gt;
+    &lt;strong&gt;Avertissement&lt;/strong&gt;
+    &lt;p&gt;&lt;p&gt;Il est important d&amp;rsquo;obtenir exactement le même résultat que dans les captures d&amp;rsquo;écran du DS, y compris concernant l&amp;rsquo;orthographe et les retours à la ligne.&lt;/p&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;h1 id=&#34;toc_1&#34;&gt;Bonus&lt;/h1&gt;
+
+&lt;p&gt;Trouver comment faire pour que le sous-programme &lt;code&gt;AfficherListeBateaux&lt;/code&gt; se résume au code source ci-dessous.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;foreach (BateauVoyageur unBateauV in lesBateauxVoyageurs)       
+    Console.WriteLine(unBateauV.Decrire());
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Le résultat affiché doit être exactement le suivant.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/content/slam2_atlantik2015_bonus.png&#34; class=&#34;content centered&#34; alt=&#34;slam2_atlantik2015_bonus.png&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Projet AdresseIP</title>
+      <link>http://prof.bpesquet.fr/activite/projet-adresse-ip</link>
+      <pubDate>Tue, 01 Jan 2008 00:00:00 UTC</pubDate>
+      
+      <guid>http://prof.bpesquet.fr/activite/projet-adresse-ip</guid>
+      <description>
+
+&lt;h1 id=&#34;toc_0&#34;&gt;Objectif&lt;/h1&gt;
+
+&lt;p&gt;Ce projet a pour objectif d&amp;rsquo;analyser une adresse IPv4 saisie par l&amp;rsquo;utilisateur.&lt;/p&gt;
+
+&lt;p&gt;L&amp;rsquo;adresse IP sera modélisée sous la forme d&amp;rsquo;une classe &lt;code&gt;AdresseIP&lt;/code&gt; dont voici le diagramme initial (seuls les membres publics sont affichés).&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/content/SLAM2_AdresseIP.png&#34; class=&#34;content centered&#34; alt=&#34;SLAM2_AdresseIP.png&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Le programme principal fait saisir les 4 octets de l&amp;rsquo;adresse, puis vérifie sa validité et affiche sa valeur binaire si elle est valide.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/content/slam2_adresseip_valbin.png&#34; class=&#34;content centered&#34; alt=&#34;slam2_adresseip_valbin.png&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/content/slam2_adresseip_invalid.png&#34; class=&#34;content centered&#34; alt=&#34;slam2_adresseip_invalid.png&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Vous trouverez plus bas le code source permettant de convertir un octet du décimal vers le binaire.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;BONUS&lt;/strong&gt; : ne pas utiliser ce code source.&lt;/p&gt;
+
+&lt;h1 id=&#34;toc_1&#34;&gt;Etapes de travail&lt;/h1&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Créez une nouvelle solution Visual Studio nommée &lt;strong&gt;AdresseIP&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Ajoutez à cette solution une application console nommée &lt;strong&gt;AppIP&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Ajoutez à cette solution une bibliothèque de classes nommée &lt;strong&gt;LibIP&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Créez dans &lt;strong&gt;LibIP&lt;/strong&gt; une nouvelle classe nommée &lt;code&gt;AdresseIP&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Codez les fonctionnalités demandées en les testant au fur et à mesure.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&#34;toc_2&#34;&gt;Bonus&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Calculer et afficher la classe de l&amp;rsquo;adresse. Valeurs possibles : A, B, C, D, E.&lt;/li&gt;
+&lt;li&gt;Calculer et afficher le type de l&amp;rsquo;adresse. Valeurs possibles : Publique, Privée, Réseau, Diffusion, Réservée, Multicast, Expérimentale.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/content/slam2_adresseip_bonus.png&#34; class=&#34;content centered&#34; alt=&#34;slam2_adresseip_bonus.png&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Le tableau ci-dessous regroupe quelques résultats possibles qui vous permettront de tester votre application.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Adresse&lt;/th&gt;
+&lt;th&gt;Classe&lt;/th&gt;
+&lt;th&gt;Type&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;10.0.0.0&lt;/td&gt;
+&lt;td&gt;A&lt;/td&gt;
+&lt;td&gt;Réseau&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;10.0.0.1&lt;/td&gt;
+&lt;td&gt;A&lt;/td&gt;
+&lt;td&gt;Privée&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;127.0.0.1&lt;/td&gt;
+&lt;td&gt;A&lt;/td&gt;
+&lt;td&gt;Réservée&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;172.16.0.0&lt;/td&gt;
+&lt;td&gt;B&lt;/td&gt;
+&lt;td&gt;Réseau&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;172.16.100.0&lt;/td&gt;
+&lt;td&gt;B&lt;/td&gt;
+&lt;td&gt;Privée&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;172.32.100.0&lt;/td&gt;
+&lt;td&gt;B&lt;/td&gt;
+&lt;td&gt;Publique&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;192.100.100.254&lt;/td&gt;
+&lt;td&gt;C&lt;/td&gt;
+&lt;td&gt;Publique&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;192.100.100.255&lt;/td&gt;
+&lt;td&gt;C&lt;/td&gt;
+&lt;td&gt;Diffusion&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;225.0.0.1&lt;/td&gt;
+&lt;td&gt;D&lt;/td&gt;
+&lt;td&gt;Multicast&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;240.0.0.1&lt;/td&gt;
+&lt;td&gt;E&lt;/td&gt;
+&lt;td&gt;Expérimentale&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h1 id=&#34;toc_3&#34;&gt;Annexe : code source de la méthode ConvertirEnBinaire&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;/// &amp;lt;summary&amp;gt;
+/// Calcule la valeur binaire d&#39;un octet décimal
+/// &amp;lt;/summary&amp;gt;
+/// &amp;lt;param name=&amp;quot;valeurDecimale&amp;quot;&amp;gt;L&#39;octet sous forme décimale&amp;lt;/param&amp;gt;
+/// &amp;lt;returns&amp;gt;L&#39;octet sous forme binaire&amp;lt;/returns&amp;gt;
+private string ConvertirEnBinaire(int valeurDecimale)
+{
+    string resultat = &amp;quot;&amp;quot;;
+
+    // Méthode de la division
+    // On divise le nombre décimal par 2 jusqu&#39;à ce que le quotient soit nul
+    // Les restes de chaque division constituent la valeur binaire
+    int d = valeurDecimale;
+    int r;
+    int nbBits = 0;
+    string valeurBit;
+    while (d &amp;gt; 0)
+    {
+        r = d % 2;
+        d = d / 2;
+        if (r != 0)
+            valeurBit = &amp;quot;1&amp;quot;;
+        else
+            valeurBit = &amp;quot;0&amp;quot;;
+        // On ajoute le bit résultat au début de la chaîne
+        resultat = valeurBit + resultat;
+        nbBits++;
+    }
+    // On complète la valeur binaire avec des 0 pour obtenir 8 bits
+    for (int i = nbBits; i &amp;lt; 8; i++)
+        resultat = &amp;quot;0&amp;quot; + resultat;
+
+    return resultat;
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Accès aux données avec PHP et Silex</title>
+      <link>http://prof.bpesquet.fr/activite/acces-donnees-php-silex</link>
+      <pubDate>Tue, 01 Jan 2008 00:00:00 UTC</pubDate>
+      
+      <guid>http://prof.bpesquet.fr/activite/acces-donnees-php-silex</guid>
+      <description>
+
+&lt;h1 id=&#34;toc_0&#34;&gt;Contexte&lt;/h1&gt;
+
+&lt;p&gt;Le contexte est identique à celui de l&amp;rsquo;activité &lt;a href=&#34;/activite/acces-donnees-php/&#34;&gt;Accès aux données avec PHP&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h1 id=&#34;toc_1&#34;&gt;Travail à réaliser&lt;/h1&gt;
+
+&lt;p&gt;Dans un dossier &lt;code&gt;MesNews-silex&lt;/code&gt; à créer sur votre serveur Web, écrivez l&amp;rsquo;application Web qui récupère et affiche la liste des news issue de la base de données en utilisant le framework Silex.&lt;/p&gt;
+
+&lt;p&gt;Vous devez parvenir au résultat ci-dessous.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/content/mesnews.png&#34; class=&#34;content centered&#34; alt=&#34;mesnews.png&#34; /&gt;&lt;/p&gt; 
+</description>
+    </item>
+    
+    <item>
+      <title>Composants matériels de l&#39;ordinateur</title>
+      <link>http://prof.bpesquet.fr/activite/composants-materiels-ordinateur</link>
+      <pubDate>Tue, 01 Jan 2008 00:00:00 UTC</pubDate>
+      
+      <guid>http://prof.bpesquet.fr/activite/composants-materiels-ordinateur</guid>
+      <description>
+
+&lt;p&gt;Créez un document bureautique nommé &lt;code&gt;VotreNom_SI1_ComposantsOrdi.xxx&lt;/code&gt; (&lt;code&gt;xxx&lt;/code&gt; est à remplacer par l&amp;rsquo;extension du logiciel utilisé, par exemple &lt;code&gt;docx&lt;/code&gt; ou &lt;code&gt;odt&lt;/code&gt;). Dans ce document, répondez aux questions ci-dessous.&lt;/p&gt;
+
+&lt;h1 id=&#34;toc_0&#34;&gt;Question 1&lt;/h1&gt;
+
+&lt;p&gt;Après avoir regardé &lt;a href=&#34;https://www.youtube.com/watch?v=yf8G90v2Rz4&#34;&gt;cette vidéo&lt;/a&gt;, trouvez les éléments ci-dessous pour la carte mère présentée :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Format&lt;/li&gt;
+&lt;li&gt;Chipset&lt;/li&gt;
+&lt;li&gt;Socket processeur&lt;/li&gt;
+&lt;li&gt;Nombre de ports SATA&lt;/li&gt;
+&lt;li&gt;Nombre de ports USB 3.0 à l&amp;rsquo;arrière&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;toc_1&#34;&gt;Question 2&lt;/h1&gt;
+
+&lt;p&gt;Trouvez et insérez dans votre document une image pour chacun des types d&amp;rsquo;ordinateurs suivants :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;PC de bureau&lt;/li&gt;
+&lt;li&gt;Ordinateur portable&lt;/li&gt;
+&lt;li&gt;Station de travail&lt;/li&gt;
+&lt;li&gt;Serveur&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;toc_2&#34;&gt;Question 3&lt;/h1&gt;
+
+&lt;p&gt;En quelles années sont sortis le premier IBM PC et le premier Macintosh Apple ?&lt;/p&gt;
+
+&lt;h1 id=&#34;toc_3&#34;&gt;Question 4&lt;/h1&gt;
+
+&lt;p&gt;On vous fournit la photo de la carte mère ci-dessous.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/content/carte_mere_mystere.jpg&#34; class=&#34;content centered bordered&#34; alt=&#34;carte_mere_mystere.jpg&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Insérez cette image dans votre document, puis identifiez (avec des flèches ou des numéros) les éléments ci-dessous :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Socket processeur&lt;/li&gt;
+&lt;li&gt;Supports mémoire (RAM)&lt;/li&gt;
+&lt;li&gt;Connecteur PCI Express&lt;/li&gt;
+&lt;li&gt;Connecteur PCI&lt;/li&gt;
+&lt;li&gt;Ports SATA&lt;/li&gt;
+&lt;li&gt;Connecteur VGA&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;toc_4&#34;&gt;Question 5&lt;/h1&gt;
+
+&lt;p&gt;Cette &lt;a href=&#34;http://www.ldlc.com/fiche/PB00166673.html&#34;&gt;carte mère&lt;/a&gt; peut-elle accueillir ce &lt;a href=&#34;http://www.ldlc.com/fiche/PB00148536.html&#34;&gt;processeur&lt;/a&gt; ? Justifiez votre réponse.&lt;/p&gt;
+
+&lt;p&gt;Même question avec cette &lt;a href=&#34;http://www.ldlc.com/fiche/PB00153454.html&#34;&gt;carte mère&lt;/a&gt; et ce &lt;a href=&#34;http://www.ldlc.com/fiche/PB00137881.html&#34;&gt;processeur&lt;/a&gt;. La réponse doit également être justifiée.&lt;/p&gt;
+
+&lt;h1 id=&#34;toc_5&#34;&gt;Question 6&lt;/h1&gt;
+
+&lt;p&gt;Réalisez un tableau dans lequel vous indiquerez les débits théoriques des standards suivants : PCI 2.0, PCI Express, PCI Express x16, PATA, SATA, SATA 2, SATA 3, eSATA, USB 1.1, USB 2.0, USB 3.0, câble réseau cat. 5, 6, 7, Wifi 802.11g, 802.11n, 802.11ac. Votre tableau aura la forme ci-dessous.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Standard&lt;/th&gt;
+&lt;th&gt;Débit théorique&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;PCI 2.0&lt;/td&gt;
+&lt;td&gt;&amp;hellip;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;PCI Express&lt;/td&gt;
+&lt;td&gt;&amp;hellip;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&amp;hellip;&lt;/td&gt;
+&lt;td&gt;&amp;hellip;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h1 id=&#34;toc_6&#34;&gt;Question 7&lt;/h1&gt;
+
+&lt;p&gt;Réalisez un tableau dans lequel vous rassemblerez des informations sur les processeurs suivants : Intel 8088, 80486, Pentium, Pentium 4, Core 2 Duo Penryn, Core i5 Sandy Bridge, Core i7 Haswell, Core M Broadwell, AMD Athlon, Athlon II. Votre tableau aura la forme ci-dessous.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Processeur&lt;/th&gt;
+&lt;th&gt;Année d&amp;rsquo;apparition&lt;/th&gt;
+&lt;th&gt;Nombre de coeurs&lt;/th&gt;
+&lt;th&gt;Fréquence&lt;/th&gt;
+&lt;th&gt;Mémoire cache&lt;/th&gt;
+&lt;th&gt;Finesse de gravure&lt;/th&gt;
+&lt;th&gt;Enveloppe thermique (TDP)&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;8088&lt;/td&gt;
+&lt;td&gt;&amp;hellip;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;80486&lt;/td&gt;
+&lt;td&gt;&amp;hellip;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&amp;hellip;&lt;/td&gt;
+&lt;td&gt;&amp;hellip;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h1 id=&#34;toc_7&#34;&gt;Question 8&lt;/h1&gt;
+
+&lt;p&gt;Votre cousin souhaite renouveler son ordinateur de bureau et se demande quel processeur choisir. Il utilise son PC
+pour naviguer sur Internet, regarder des films et jouer à des jeux peu gourmands. Son budget est limité.&lt;/p&gt;
+
+&lt;p&gt;Quel modèle de processeur lui conseillez-vous ? Justifier votre choix.&lt;/p&gt;
+
+&lt;h1 id=&#34;toc_8&#34;&gt;Question 9&lt;/h1&gt;
+
+&lt;p&gt;Réalisez un tableau dans lequel vous indiquerez les quantités minimales et recommandées de RAM pour les systèmes d&amp;rsquo;exploitation suivants : Windows 95, Windows 2000, Windows XP, Windows 7, Windows 8, Mac OS X 10.0 &amp;ldquo;Cheetah&amp;rdquo;, Mac OS X 10.9 &amp;ldquo;Mavericks&amp;rdquo;, Linux Ubuntu Desktop 14. Votre tableau aura la forme ci-dessous.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Système d&amp;rsquo;exploitation&lt;/th&gt;
+&lt;th&gt;Année de sortie&lt;/th&gt;
+&lt;th&gt;RAM minimale&lt;/th&gt;
+&lt;th&gt;RAM recommandée&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Windows 95&lt;/td&gt;
+&lt;td&gt;&amp;hellip;&lt;/td&gt;
+&lt;td&gt;&amp;hellip;&lt;/td&gt;
+&lt;td&gt;&amp;hellip;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Windows 2000&lt;/td&gt;
+&lt;td&gt;&amp;hellip;&lt;/td&gt;
+&lt;td&gt;&amp;hellip;&lt;/td&gt;
+&lt;td&gt;&amp;hellip;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&amp;hellip;&lt;/td&gt;
+&lt;td&gt;&amp;hellip;&lt;/td&gt;
+&lt;td&gt;&amp;hellip;&lt;/td&gt;
+&lt;td&gt;&amp;hellip;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h1 id=&#34;toc_9&#34;&gt;Question 10&lt;/h1&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/content/memoire-ecc.png&#34; class=&#34;content centered&#34; alt=&#34;memoire-ecc.png&#34; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;toc_10&#34;&gt;Question 11&lt;/h1&gt;
+
+&lt;p&gt;Un développeur Web auto-entrepeneur souhaite acheter son nouvel ordinateur de bureau. Sa machine doit être compacte et lui permettre d&amp;rsquo;exploiter au maximum ses logiciels de développement, gourmands en temps de calcul et en RAM. Son budget est de 1000 euros écran compris. Il souhaite faire monter son PC plutôt que d&amp;rsquo;acheter un modèle de marque.&lt;/p&gt;
+
+&lt;p&gt;Etablissez la liste de tous les composants nécessaires au montage de son nouveau PC, en respectant son budhet et ses exigences. Vous justifierez le choix de chaque composant.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>GSB-Report : mission 2</title>
+      <link>http://prof.bpesquet.fr/activite/gsb-report-mission2</link>
+      <pubDate>Tue, 01 Jan 2008 00:00:00 UTC</pubDate>
+      
+      <guid>http://prof.bpesquet.fr/activite/gsb-report-mission2</guid>
+      <description>
+
+&lt;h1 id=&#34;toc_0&#34;&gt;Objectifs&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Ajouter la fonctionnalité d&amp;rsquo;authentification du visiteur.&lt;/li&gt;
+&lt;li&gt;(Bonus) Permettre au visiteur connecté de mettre à jour ses informations personnelles.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;toc_1&#34;&gt;Expression des besoins&lt;/h1&gt;
+
+&lt;p&gt;L&amp;rsquo;application actuelle n&amp;rsquo;est pas soumise à authentification. Il faut corriger ce problème et ne permettre l&amp;rsquo;accès qu&amp;rsquo;à un visiteur authentifié à l&amp;rsquo;aide de son nom d&amp;rsquo;utilisateur et de son mot de passe.&lt;/p&gt;
+
+&lt;p&gt;La barre de navigation de l&amp;rsquo;application affiche (en haut à droite) un menu déroulant indiquant le statut de l&amp;rsquo;utilisateur :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;S&amp;rsquo;il n&amp;rsquo;est pas connecté, le menu affiche &amp;ldquo;Non connecté&amp;rdquo; et comporte un lien &amp;ldquo;Se connnecter&amp;rdquo; renvoyant vers le formulaire de connexion.&lt;/li&gt;
+&lt;li&gt;S&amp;rsquo;il l&amp;rsquo;est, le menu déroulant affiche un message de bienvenue accompagné de son nom d&amp;rsquo;utilisateur. Le menu comporte un lien &amp;ldquo;Se déconnecter&amp;rdquo; permettant la déconnexion.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&#34;alert alert-danger&#34;&gt;
+    &lt;strong&gt;Important !&lt;/strong&gt;
+    &lt;p&gt;&lt;p&gt;La version de l&amp;rsquo;application produite à la fin de cette mission doit donner l&amp;rsquo;impression d&amp;rsquo;avoir été réalisée par les mêmes développeurs que la version initiale, tant au niveau du code source que du résultat affiché à l&amp;rsquo;écran.&lt;/p&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Voici l&amp;rsquo;extrait de code qui permet de configurer le pare-feu Silex.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$app-&amp;gt;register(new Silex\Provider\SecurityServiceProvider(), array(
+    &#39;security.firewalls&#39; =&amp;gt; array(
+        &#39;login&#39; =&amp;gt; array(
+            &#39;pattern&#39; =&amp;gt; &#39;^/login$&#39;,
+            &#39;anonymous&#39; =&amp;gt; true
+        ),
+        &#39;secured&#39; =&amp;gt; array(
+            &#39;pattern&#39; =&amp;gt; &#39;^.*$&#39;,
+            &#39;logout&#39; =&amp;gt; true,
+            &#39;form&#39; =&amp;gt; array(&#39;login_path&#39; =&amp;gt; &#39;/login&#39;, &#39;check_path&#39; =&amp;gt; &#39;/login_check&#39;),
+            &#39;users&#39; =&amp;gt; $app-&amp;gt;share(function () use ($app) {
+                return new GSB\DAO\VisitorDAO($app[&#39;db&#39;]);
+            }),
+        ),
+    ),
+));
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;toc_2&#34;&gt;Besoins optionnels (bonus)&lt;/h1&gt;
+
+&lt;p&gt;La barre de navigation comporte un lien &amp;ldquo;Profil&amp;rdquo; qui permet au visiteur connecté de visualiser et de modifier ses informations personnelles. Les données à afficher sont : nom, prénom, adresse, code postal, ville, date d&amp;rsquo;embauche, nom d&amp;rsquo;utilisateur, mot de passe. Un message de confirmation s&amp;rsquo;affiche lorsque les modifications sont enregistrées.&lt;/p&gt;
+
+&lt;h1 id=&#34;toc_3&#34;&gt;Organisation&lt;/h1&gt;
+
+&lt;p&gt;Le travail est individuel. Le code source du projet est hébergé sur le dépôt GitHub GSB-Report associé au compte GitHub du développeur. En fin de mission, une étiquette &lt;strong&gt;mission2&lt;/strong&gt; est posée sur le code source.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Validation de la livraison 2 des projets agiles</title>
+      <link>http://prof.bpesquet.fr/activite/validation-livraison2-projet</link>
+      <pubDate>Tue, 01 Jan 2008 00:00:00 UTC</pubDate>
+      
+      <guid>http://prof.bpesquet.fr/activite/validation-livraison2-projet</guid>
+      <description>
+
+&lt;h1 id=&#34;toc_0&#34;&gt;Objectif&lt;/h1&gt;
+
+&lt;p&gt;L&amp;rsquo;objectif de cette activité est de valider la seconde livraison des projets agiles réalisés en SLAM5. Cette validation est effectuée par les pairs (chaque équipe valide le projet d&amp;rsquo;une autre équipe) et en double correction (chaque projet est validé deux fois).&lt;/p&gt;
+
+&lt;h1 id=&#34;toc_1&#34;&gt;Répartition des projets à valider&lt;/h1&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Equipe&lt;/th&gt;
+&lt;th&gt;Projets à valider&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;AgnamStore&lt;/td&gt;
+&lt;td&gt;PokeStore et MPMakeUp&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;AppMusics&lt;/td&gt;
+&lt;td&gt;AgnamStore et PokeStore&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;CarLegends&lt;/td&gt;
+&lt;td&gt;AppMusics et AgnamStore&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;DreamHouses&lt;/td&gt;
+&lt;td&gt;CarLegends et AppMusics&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;GameSpawn&lt;/td&gt;
+&lt;td&gt;DreamHouses et CarLegends&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;GamingStore&lt;/td&gt;
+&lt;td&gt;GameSpawn et DreamHouses&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;InfoStore&lt;/td&gt;
+&lt;td&gt;GamingStore et GameSpawn&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Item4Noob&lt;/td&gt;
+&lt;td&gt;InfoStore et GamingStore&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Med&amp;rsquo;Azur&lt;/td&gt;
+&lt;td&gt;Item4Noob et InfoStore&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;MoviesMarket&lt;/td&gt;
+&lt;td&gt;Med&amp;rsquo;Azur et Item4Noob&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;MPMakeUp&lt;/td&gt;
+&lt;td&gt;MoviesMarket et Med&amp;rsquo;Azur&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;PokeStore&lt;/td&gt;
+&lt;td&gt;MPMakeUp et MoviesMarket&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h1 id=&#34;toc_2&#34;&gt;Consignes de validation&lt;/h1&gt;
+
+&lt;div class=&#34;alert alert-danger&#34;&gt;
+    &lt;strong&gt;Important !&lt;/strong&gt;
+    &lt;p&gt;&lt;p&gt;Pour effectuerz cette validation, mettez-vous dans la peau d&amp;rsquo;un acheteur du projet. Soyez exigeants, vous en voulez pour votre argent !&lt;/p&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Inscrire le nom de l&amp;rsquo;équipe sur la fiche d&amp;rsquo;évaluation du projet.&lt;/li&gt;
+&lt;li&gt;Récupérer le code source du projet sur &lt;a href=&#34;https://github.com/lmdsio&#34;&gt;GitHub&lt;/a&gt; par clonage ou téléchargement.&lt;/li&gt;
+&lt;li&gt;Installer le projet sur une machine locale et vérifier son bon fonctionnement (accès à la page d&amp;rsquo;accueil).&lt;/li&gt;
+&lt;li&gt;Tester en commun toutes les stories annoncées comme terminées sur &lt;a href=&#34;https://trello.com/lmdsio&#34;&gt;Trello&lt;/a&gt;. Pour chaque story, remplir une fichier de validation papier.&lt;/li&gt;
+&lt;li&gt;Compléter le rapport de validation papier.&lt;/li&gt;
+&lt;li&gt;Créer ou commenter sur &lt;a href=&#34;https://github.com/lmdsio&#34;&gt;GitHub&lt;/a&gt; les &lt;em&gt;issues&lt;/em&gt; correspondant aux incidents relevés pendant la validation (une &lt;em&gt;issue&lt;/em&gt; par défaut).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;toc_3&#34;&gt;Compléments&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Documentation du code : seules les méthodes doivent être documentées, pas les attributs ni les accesseurs.&lt;/li&gt;
+&lt;li&gt;Pas d&amp;rsquo;incident si le rôle de l&amp;rsquo;utilisateur connecté est modifiable.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;toc_4&#34;&gt;Consignes d&amp;rsquo;évaluation&lt;/h1&gt;
+
+&lt;p&gt;Une fois la seconde validation terminée, les deux équipes de validation se concertent puis remplissent ensemble la fiche d&amp;rsquo;évaluation comprenant la note attribuée au projet.&lt;/p&gt;
+
+&lt;div class=&#34;alert alert-warning&#34;&gt;
+    &lt;strong&gt;Avertissement&lt;/strong&gt;
+    &lt;p&gt;&lt;p&gt;Le barème d&amp;rsquo;évaluation est susceptible d&amp;rsquo;être modifié a posteriori.&lt;/p&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Accès aux données avec PHP</title>
+      <link>http://prof.bpesquet.fr/activite/acces-donnees-php</link>
+      <pubDate>Tue, 01 Jan 2008 00:00:00 UTC</pubDate>
+      
+      <guid>http://prof.bpesquet.fr/activite/acces-donnees-php</guid>
+      <description>
+
+&lt;h1 id=&#34;toc_0&#34;&gt;Contexte&lt;/h1&gt;
+
+&lt;p&gt;On vous fournit le script SQL suivant qui définit une liste de news.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;drop table if exists T_NEWS;
+drop table if exists T_CATEGORIE;
+
+create table T_CATEGORIE (
+    CAT_ID integer primary key auto_increment,
+    CAT_NOM varchar(100) not null
+) ENGINE=INNODB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+
+create table T_NEWS (
+    NEWS_ID integer primary key auto_increment,
+    NEWS_TITRE varchar(100) not null,
+    NEWS_CONTENU varchar(500) not null,
+    CAT_ID integer not null,
+    constraint fk_news_cat foreign key(CAT_ID) references T_CATEGORIE(CAT_ID)
+) ENGINE=INNODB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+
+insert into T_CATEGORIE(CAT_NOM) values (&#39;Développement&#39;);
+insert into T_CATEGORIE(CAT_NOM) values (&#39;Système&#39;);
+insert into T_CATEGORIE(CAT_NOM) values (&#39;Internet&#39;);
+
+insert into T_NEWS(NEWS_TITRE, NEWS_CONTENU, CAT_ID) values
+(&#39;Le meilleur langage pour le développement cross-platform est-il le C++ ?&#39;,
+    &#39;Lorsqu\’il s\’agit de développement mobile, les langages mis en avant pour la création d\’applications multiplateformes sont couramment HTML et JavaScript.
+Pour le développement natif, en fonction des écosystèmes, les développeurs s\’orientent le plus souvent vers objective-c ou Java.
+Pourtant, ceux qui cherchent à créer des applications cross-platform tout en bénéficiant d\’une approche efficace pour la réduction des coûts peuvent trouver leur bonheur au sein du C++.&#39;, 1);
+insert into T_NEWS(NEWS_TITRE, NEWS_CONTENU, CAT_ID) values
+(&#39;Bousculé par Google et Apple, Windows n\&#39;anime plus qu\&#39;un terminal sur cinq&#39;,
+    &#39;Si Windows  peut se vanter d\&#39;être le système d\&#39;exploitation le plus présent sur les PC, il n\&#39;en n\&#39;est plus de même lorsque les calculs comparent l\&#39;ensemble des terminaux. Microsoft n\&#39;arrive alors qu\&#39;en troisième position après Google et Apple.&#39;, 2);
+insert into T_NEWS(NEWS_TITRE, NEWS_CONTENU, CAT_ID) values
+(&#39;Linux 3.7 sort en version stable&#39;, 
+&#39;Près de deux mois après la sortie du noyau Linux 3.6, Linus Torvalds annonce la publication de la version stable de Linux 3.7, avec un nombre important de nouvelles fonctionnalités : support de multiples plateformes ARM, améliorations de Btrfs, Ext4, TCP Fast Open et IPv6&#39;, 2);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;toc_1&#34;&gt;Travail à réaliser&lt;/h1&gt;
+
+&lt;h2 id=&#34;toc_2&#34;&gt;Partie 1&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Créez sous MySQL une base de données &lt;code&gt;mesnews&lt;/code&gt; puis implantez-y le schéma relationnel et les données d&amp;rsquo;exemple.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Créez l&amp;rsquo;utilisateur MySQL &lt;code&gt;mesnews_user&lt;/code&gt; avec le mot de passe &lt;code&gt;secret&lt;/code&gt; et tous les droits sur la base &lt;code&gt;mesnews&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Dans un dossier &lt;code&gt;MesNews&lt;/code&gt; à créer sur votre serveur Web, écrivez la page PHP &lt;code&gt;index.php&lt;/code&gt; qui récupère et affiche la liste des news issue de la base de données. Voici les contraintes techniques associées :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;La technologie de connexion à la BD doit être PDO.&lt;/li&gt;
+&lt;li&gt;L&amp;rsquo;utilisateur MySQL employé pour se connecter à la BD depuis &lt;code&gt;index.php&lt;/code&gt; doit être &lt;code&gt;mesnews_user&lt;/code&gt; et non pas &lt;code&gt;root&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Les balises HTML5 &lt;code&gt;&amp;lt;header&amp;gt;&lt;/code&gt;, &lt;code&gt;&amp;lt;article&amp;gt;&lt;/code&gt; et &lt;code&gt;&amp;lt;footer&amp;gt;&lt;/code&gt; doivent être utilisées.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Créez la feuille de style &lt;code&gt;mesnews.css&lt;/code&gt; afin de parvenir au résultat ci-dessous.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/content/mesnews.png&#34; class=&#34;content centered&#34; alt=&#34;mesnews.png&#34; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;toc_3&#34;&gt;Partie 2&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Ajoutez dans la page &lt;code&gt;index.php&lt;/code&gt; (entre le titre et les articles) un lien vers &lt;code&gt;ajout.php&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Dans votre dossier &lt;code&gt;MesNews&lt;/code&gt;, écrivez la page PHP &lt;code&gt;ajout.php&lt;/code&gt; qui affiche un formulaire permettant à l&amp;rsquo;utilisateur de saisir les propriétés d&amp;rsquo;une news. Voici les contraintes techniques associées :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Le formulaire renvoie vers la page &lt;code&gt;ajout_post.php&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Sa mise en forme est secondaire.&lt;/li&gt;
+&lt;li&gt;Les champs &lt;strong&gt;Titre&lt;/strong&gt; et &lt;strong&gt;Contenu&lt;/strong&gt; sont obligatoires.&lt;/li&gt;
+&lt;li&gt;La liste des catégories provient de la base de données.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/content/mesnews_ajout.png&#34; class=&#34;content centered&#34; alt=&#34;mesnews_ajout.png&#34; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Dans votre dossier &lt;code&gt;MesNews&lt;/code&gt;, écrivez la page PHP &lt;code&gt;ajout_post.php&lt;/code&gt; qui utilise les données reçues du formulaire afin d&amp;rsquo;ajouter une news dans la base de données. Elle affiche un message en fin d&amp;rsquo;opération, ainsi qu&amp;rsquo;un lien vers la page &lt;code&gt;index.php&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/content/mesnews_ajoutok.png&#34; class=&#34;content centered&#34; alt=&#34;mesnews_ajoutok.png&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>A propos de ce site</title>
+      <link>http://prof.bpesquet.fr/about</link>
+      <pubDate>Tue, 01 Jan 2008 00:00:00 UTC</pubDate>
+      
+      <guid>http://prof.bpesquet.fr/about</guid>
+      <description>&lt;p&gt;Ingénieur informaticien de formation, je suis actuellement professeur en BTS SIO au lycée &lt;a href=&#34;http://www.martiniere-duchere.fr&#34;&gt;La Martinière Duchère&lt;/a&gt; de Lyon après sept années passées dans une &lt;a href=&#34;http://www.artal.fr&#34;&gt;société de services informatiques toulousaine&lt;/a&gt;. Pour plus de précisions sur mon parcours, consultez mon &lt;a href=&#34;/CV_BPE.pdf&#34;&gt;CV&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Ce site a pour objectif premier de mettre à disposition de mes étudiants des ressources d&amp;rsquo;apprentissage. Cette &lt;a href=&#34;/demo&#34;&gt;page de démonstration&lt;/a&gt; illustre ses possibilités d&amp;rsquo;affichage.&lt;/p&gt;
+
+&lt;p&gt;Il est en cours d&amp;rsquo;enrichissement.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>GSB-Report : mission 1</title>
+      <link>http://prof.bpesquet.fr/activite/gsb-report-mission1</link>
+      <pubDate>Tue, 01 Jan 2008 00:00:00 UTC</pubDate>
+      
+      <guid>http://prof.bpesquet.fr/activite/gsb-report-mission1</guid>
+      <description>
+
+&lt;h1 id=&#34;toc_0&#34;&gt;Objectifs&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Comprendre le fonctionnement de la version initiale de GSB-Report.&lt;/li&gt;
+&lt;li&gt;Ajouter à l&amp;rsquo;application les fonctionnalités de gestion des praticiens.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;toc_1&#34;&gt;Expression des besoins&lt;/h1&gt;
+
+&lt;p&gt;Les nouveaux besoins associés à la gestion des praticiens sont les suivants :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Consultation de la liste des praticiens. Les informations à afficher sont (dans cet ordre) : nom, prénom, ville et type de praticien.&lt;/li&gt;
+&lt;li&gt;Affichage des détails sur un praticien. A l&amp;rsquo;exception de son identifiant, toutes les informations sur le praticien sont à afficher, ainsi que son type.&lt;/li&gt;
+&lt;li&gt;Recherche de praticiens à partir de leur type.&lt;/li&gt;
+&lt;li&gt;(BONUS) Recherche avancée de praticiens à partir de leurs nom et ville.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;On attend un travail soigné jusque dans les détails : commentaires dans le code, orthographe correcte partout dans l&amp;rsquo;application, et surtout respect strict des choix effectués et du mode de fonctionnement existant.&lt;/p&gt;
+
+&lt;div class=&#34;alert alert-danger&#34;&gt;
+    &lt;strong&gt;Important !&lt;/strong&gt;
+    &lt;p&gt;&lt;p&gt;La version de l&amp;rsquo;application produite à la fin de cette mission doit donner l&amp;rsquo;impression d&amp;rsquo;avoir été réalisée par les mêmes développeurs que la version initiale, tant au niveau du code source que du résultat affiché à l&amp;rsquo;écran.&lt;/p&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;p&gt;La clé de la réussite consiste à comprendre le fonctionnement de la gestion des médicaments. Les fonctionnalités demandées pour les praticiens sont les mêmes et doivent être réalisées de la même manière.&lt;/p&gt;
+
+&lt;h1 id=&#34;toc_2&#34;&gt;Organisation&lt;/h1&gt;
+
+&lt;p&gt;Le travail est individuel. Le code source du projet est hébergé sur un dépôt GitHub nommé GSB-Report associé au compte GitHub du développeur. En fin de mission, une étiquette &lt;strong&gt;mission1&lt;/strong&gt; est posée sur le code source.&lt;/p&gt;
+
+&lt;h1 id=&#34;toc_3&#34;&gt;Etapes de travail&lt;/h1&gt;
+
+&lt;p&gt;L&amp;rsquo;ordre ci-dessous doit impérativement être respecté.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Lire attentivement les documents présentant le contexte métier et l&amp;rsquo;application Web.&lt;/li&gt;
+&lt;li&gt;Créer le dépôt GitHub GSB-Report puis le cloner dans un dossier local.&lt;/li&gt;
+&lt;li&gt;Copier le code source de la version initiale de GSB-Report dans le dossier local.&lt;/li&gt;
+&lt;li&gt;Créer localement la base de données gsb, y ajouter la structure puis les données de test.&lt;/li&gt;
+&lt;li&gt;Faire les paramétrages Apache nécessaires pour définir un hôte virtuel.&lt;/li&gt;
+&lt;li&gt;Vérifier le bon fonctionnement de l&amp;rsquo;application GSB-Report en local.&lt;/li&gt;
+&lt;li&gt;Analyser le code source de l&amp;rsquo;application afin de comprendre son fonctionnement.&lt;/li&gt;
+&lt;li&gt;Ajouter à l&amp;rsquo;application les fonctionnalités demandées en les testant au fur et à mesure.&lt;/li&gt;
+&lt;li&gt;Commiter, pousser vers le dépôt GitHub et poser l&amp;rsquo;étiquette mission1 en fin de mission.&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>GSB-Report : mission 3</title>
+      <link>http://prof.bpesquet.fr/activite/gsb-report-mission3</link>
+      <pubDate>Tue, 01 Jan 2008 00:00:00 UTC</pubDate>
+      
+      <guid>http://prof.bpesquet.fr/activite/gsb-report-mission3</guid>
+      <description>
+
+&lt;h1 id=&#34;toc_0&#34;&gt;Objectifs&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Ajouter la possibilité de consulter les comptes-rendus du visiteur connecté.&lt;/li&gt;
+&lt;li&gt;Ajouter la possibilité d&amp;rsquo;ajouter un nouveau rapport de visite.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;toc_1&#34;&gt;Expression des besoins&lt;/h1&gt;
+
+&lt;p&gt;L&amp;rsquo;application doit permettre au visiteur connecté de consulter les comptes-rendus qu&amp;rsquo;il a déjà saisis. Les informations à afficher sont la date du compte-rendu, le praticien concerné (nom et prénom), la ville du praticien et le motif de la visite. Un message d&amp;rsquo;information avertit le visiteur s&amp;rsquo;il n&amp;rsquo;a saisi aucun compte-rendu.&lt;/p&gt;
+
+&lt;p&gt;Le visiteur pourra également ajouter un nouveau compte-rendu de visite. Il devra choisir le praticien associé dans une liste déroulante et saisir les date, motif et bilan de la visite (champs obligatoires). Un clic sur le bouton Ajouter déclenche l&amp;rsquo;insertion du compte-rendu dans la base de données puis l&amp;rsquo;affichage d&amp;rsquo;un message indiquant le succès de l&amp;rsquo;opération.&lt;/p&gt;
+
+&lt;div class=&#34;alert alert-danger&#34;&gt;
+    &lt;strong&gt;Important !&lt;/strong&gt;
+    &lt;p&gt;&lt;p&gt;La version de l&amp;rsquo;application produite à la fin de cette mission doit donner l&amp;rsquo;impression d&amp;rsquo;avoir été réalisée par les mêmes développeurs que la version initiale, tant au niveau du code source que du résultat affiché à l&amp;rsquo;écran.&lt;/p&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;h1 id=&#34;toc_2&#34;&gt;Organisation&lt;/h1&gt;
+
+&lt;p&gt;Le travail est individuel. Le code source du projet est hébergé sur le dépôt GitHub GSB-Report associé au compte GitHub du développeur. En fin de mission, une étiquette &lt;strong&gt;mission3&lt;/strong&gt; est posée sur le code source.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Avancement SLAM2/PPE 2014/2015</title>
+      <link>http://prof.bpesquet.fr/avancement/2014/bts-sio-b1slam/</link>
+      <pubDate>Tue, 01 Jan 2008 00:00:00 UTC</pubDate>
+      
+      <guid>http://prof.bpesquet.fr/avancement/2014/bts-sio-b1slam/</guid>
+      <description>
+
+&lt;p&gt;Sauf indication contraire, les travaux à réaliser doivent être terminés pour la séance de la semaine suivante.&lt;/p&gt;
+
+&lt;h1 id=&#34;toc_0&#34;&gt;Noël - Hiver&lt;/h1&gt;
+
+&lt;h2 id=&#34;toc_1&#34;&gt;Semaine 1 : 19 janvier&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Présentation du module SLAM2 : place parmi les modules, référentiel, organisation.&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Révisions SI4. Voici les cours associés :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;/cours/introduction-programmation/&#34;&gt;Introduction à la programmation&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/cours/variables/&#34;&gt;Les variables&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/cours/programmer-variables/&#34;&gt;Programmer avec des variables&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/cours/structures-alternatives/&#34;&gt;Structures alternatives&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/cours/structures-repetitives/&#34;&gt;Structures répétitives&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/cours/programmation-modulaire/&#34;&gt;Programmation modulaire&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/cours/passage-parametres/&#34;&gt;Passage de paramètres&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/cours/tableaux-listes/&#34;&gt;Tableaux et listes&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;TP révisions SI4. Remplir &lt;a href=&#34;https://docs.google.com/spreadsheets/d/1GlhptsEPKeWuXo21WTfiUeZWz4_tA9uYfoc8nxRBy_4/edit?usp=sharing&#34;&gt;cette feuille&lt;/a&gt; au fur et à mesure de votre avancement. Bonus quand tous les exercices sont terminés &lt;em&gt;et validés&lt;/em&gt; : &lt;a href=&#34;http://lightbot.com/hocflash.html&#34;&gt;LightBot&lt;/a&gt; puis éventuellement &lt;a href=&#34;https://codecombat.com/&#34;&gt;CodeCombat&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Corrections des exercices 1 et 2 du TP.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;PPE&lt;/strong&gt; : TP révisions SI4 / Projet Mastermind.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;TP&lt;/strong&gt; : révisions SI4.&lt;/p&gt;
+
+&lt;h2 id=&#34;toc_2&#34;&gt;Semaine 2 : 26 janvier&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Cours : &lt;a href=&#34;http://bpesquet.gitbooks.io/programmation-orientee-objet-csharp/content/chapters/01-initiation-poo.html&#34;&gt;initiation à la POO&lt;/a&gt; et &lt;a href=&#34;http://bpesquet.gitbooks.io/programmation-orientee-objet-csharp/content/chapters/02-principaux-concepts-objets.html&#34;&gt;principaux concepts objets&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Suite du TP révisions SI4.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;PPE&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Distribution des règles de nommage SLAM.&lt;/li&gt;
+&lt;li&gt;Correction des exercices 3 à 11 du TP révisions SI4.&lt;/li&gt;
+&lt;li&gt;Correction projet Mastermind.&lt;/li&gt;
+&lt;li&gt;TP révisions SI4 / Codage des exemples du cours SLAM2 / &lt;a href=&#34;/activite/projet-adresse-ip&#34;&gt;Projet @IP&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;TP&lt;/strong&gt; : révisions SI4.&lt;/p&gt;
+
+&lt;h2 id=&#34;toc_3&#34;&gt;Semaine 3 : 2 février&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Cours : &lt;a href=&#34;/cours/tableaux-listes/&#34;&gt;Tableaux et listes&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Création des comptes et des équipes dans &lt;a href=&#34;https://github.com/lmdsio-slam2&#34;&gt;l&amp;rsquo;organisation GitHub&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Début du TP tableaux et listes. Remplir &lt;a href=&#34;https://docs.google.com/spreadsheets/d/19C_SDuUlL559tCZWRWG4TzDLeHSxfw8TtVi62H2bVlo/edit?usp=sharing&#34;&gt;cette feuille&lt;/a&gt; au fur et à mesure de votre avancement.&lt;/li&gt;
+&lt;li&gt;Après la pause : correction du TP révisions SI4.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;PPE&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Correction du &lt;a href=&#34;/activite/projet-adresse-ip&#34;&gt;projet @IP&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/activite/projet-atlantik&#34;&gt;Projet Atlantik&lt;/a&gt; : codage et correction.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;TP&lt;/strong&gt; : tableaux et listes.&lt;/p&gt;
+
+&lt;h1 id=&#34;toc_4&#34;&gt;Hiver - Pâques&lt;/h1&gt;
+
+&lt;div class=&#34;alert alert-warning&#34;&gt;
+    &lt;strong&gt;Avertissement&lt;/strong&gt;
+    &lt;p&gt;&lt;p&gt;Suite au basculement vers le nouvel ENT du lycée, l&amp;rsquo;avancement SLAM2/PPE est maintenant disponible dans la rubrique &lt;a href=&#34;http://martiniere-duchere.elycee.rhonealpes.fr/sg.do?PROC=CDT&#34;&gt;Cahier de textes&lt;/a&gt; de cet ENT.&lt;/p&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Démonstration des possibilités d&#39;affichage</title>
+      <link>http://prof.bpesquet.fr/demo</link>
+      <pubDate>Tue, 01 Jan 2008 00:00:00 UTC</pubDate>
+      
+      <guid>http://prof.bpesquet.fr/demo</guid>
+      <description>
+
+&lt;p&gt;Cette page illustre les différentes possibilités d&amp;rsquo;affichage du site.&lt;/p&gt;
+
+&lt;h1 id=&#34;toc_0&#34;&gt;Texte et listes&lt;/h1&gt;
+
+&lt;p&gt;Voici un texte &lt;em&gt;en italiques&lt;/em&gt;, un autre &lt;strong&gt;en gras&lt;/strong&gt; et un dernier &lt;code&gt;sous forme de code&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;toc_1&#34;&gt;Liste non ordonnée&lt;/h2&gt;
+
+&lt;p&gt;Voici une liste non ordonnée :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Elément 1&lt;/li&gt;
+&lt;li&gt;Elément 2&lt;/li&gt;
+&lt;li&gt;Elément 3
+
+&lt;ul&gt;
+&lt;li&gt;Sous-élément 1&lt;/li&gt;
+&lt;li&gt;Sous-élément 2&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&amp;hellip;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;toc_2&#34;&gt;Liste ordonnée&lt;/h2&gt;
+
+&lt;p&gt;Et voici une liste ordonnée :&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Elément 1&lt;/li&gt;
+&lt;li&gt;Elément 2&lt;/li&gt;
+&lt;li&gt;Etc&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&#34;toc_3&#34;&gt;Code source&lt;/h1&gt;
+
+&lt;p&gt;Les extraits de code source sont mis en valeur selon le langage.&lt;/p&gt;
+
+&lt;p&gt;Du PHP :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;?php
+echo(&amp;quot;Bonjour le monde.&amp;quot;);
+?&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Du C# :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;class Program {
+    static void Main(string[] args) {
+        Console.WriteLine(&amp;quot;Bonjour le monde.&amp;quot;);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Du Java :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;public class Program {
+    public static void main(String[] args) {
+        System.out.println(&amp;quot;Bonjour le monde.&amp;quot;);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;toc_4&#34;&gt;Liens vers des ressources&lt;/h1&gt;
+
+&lt;h2 id=&#34;toc_5&#34;&gt;Lien interne au document (ancre)&lt;/h2&gt;
+
+&lt;p&gt;Attention, &lt;a href=&#34;#toc_15&#34;&gt;danger&lt;/a&gt; !&lt;/p&gt;
+
+&lt;h2 id=&#34;toc_6&#34;&gt;Lien vers un autre document&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;/site/&#34;&gt;Cette page&lt;/a&gt; présente ce site Web.&lt;/p&gt;
+
+&lt;h2 id=&#34;toc_7&#34;&gt;Lien externe&lt;/h2&gt;
+
+&lt;p&gt;Allons faire un tour sur &lt;a href=&#34;http://fr.wikipedia.org/&#34;&gt;Wikipedia&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;toc_8&#34;&gt;Lien explicite&lt;/h3&gt;
+
+&lt;p&gt;On peut aussi utiliser un lien explicite : &lt;a href=&#34;http://fr.wikipedia.org&#34;&gt;http://fr.wikipedia.org&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;toc_9&#34;&gt;Images&lt;/h2&gt;
+
+&lt;p&gt;Une image est insérée ci-dessous. Par défaut, les images sont centrées et possèdent une bordure 3D.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/content/lemoncat.jpg&#34; class=&#34;content centered bordered&#34; alt=&#34;lemoncat.jpg&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;On peut également insérer une image en choisissant ses attributs (bordure, centrage, etc).&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/content/lemoncat.jpg&#34; class=&#34;content centered&#34; alt=&#34;lemoncat.jpg&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;L&amp;rsquo;image ci-dessous ne possède aucun attribut.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/content/lemoncat.jpg&#34; class=&#34;content &#34; alt=&#34;lemoncat.jpg&#34; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;toc_10&#34;&gt;Paragraphes spéciaux&lt;/h1&gt;
+
+&lt;h2 id=&#34;toc_11&#34;&gt;Citation&lt;/h2&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;C&amp;rsquo;est au pied du mur qu&amp;rsquo;on voit le mieux le mur.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;toc_12&#34;&gt;Définition&lt;/h2&gt;
+
+&lt;div class=&#34;alert alert-info&#34;&gt;
+    &lt;strong&gt;Définition&lt;/strong&gt;
+    &lt;p&gt;&lt;p&gt;La &lt;strong&gt;procrastination&lt;/strong&gt; est la tendance à remettre systématiquement au lendemain des actions.&lt;/p&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&#34;toc_13&#34;&gt;Remarque&lt;/h2&gt;
+
+&lt;div class=&#34;alert&#34;&gt;
+    &lt;strong&gt;Remarque&lt;/strong&gt;
+    &lt;p&gt;&lt;p&gt;Rien de spécial.&lt;/p&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&#34;toc_14&#34;&gt;Conseil&lt;/h2&gt;
+
+&lt;div class=&#34;alert alert-success&#34;&gt;
+    &lt;strong&gt;Conseil&lt;/strong&gt;
+    &lt;p&gt;&lt;p&gt;Faisez gaffe aux pigeons.&lt;/p&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&#34;toc_15&#34;&gt;Avertissement&lt;/h2&gt;
+
+&lt;div class=&#34;alert alert-warning&#34;&gt;
+    &lt;strong&gt;Avertissement&lt;/strong&gt;
+    &lt;p&gt;&lt;p&gt;A long terme, nous serons tous morts.&lt;/p&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&#34;toc_16&#34;&gt;Danger&lt;/h2&gt;
+
+&lt;div class=&#34;alert alert-danger&#34;&gt;
+    &lt;strong&gt;Danger !&lt;/strong&gt;
+    &lt;p&gt;&lt;p&gt;Ne jamais croiser les effluves !&lt;/p&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;h1 id=&#34;toc_17&#34;&gt;Tableaux&lt;/h1&gt;
+
+&lt;p&gt;Les tableaux au format Markdown sont gérés.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Nom&lt;/th&gt;
+&lt;th&gt;Age&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Julie&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;29&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Lionel&lt;/td&gt;
+&lt;td&gt;47&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Martin&lt;/td&gt;
+&lt;td&gt;32&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h1 id=&#34;toc_18&#34;&gt;Questions/réponses&lt;/h1&gt;
+
+&lt;p&gt;Il est possible d&amp;rsquo;ajouter une question comme ci-dessous.&lt;/p&gt;
+
+&lt;p&gt;&lt;button type=&#34;button&#34; class=&#34;btn btn-primary&#34; data-toggle=&#34;collapse&#34; data-target=&#34;#demo&#34;&gt;
+    Quelle est la couleur du cheval blanc d&amp;#39;Henri IV ?
+&lt;/button&gt;&lt;/p&gt;
+
+&lt;div id=&#34;demo&#34; class=&#34;collapse out&#34;&gt;&lt;p&gt;Il est blanc comme vous l&amp;rsquo;aurez deviné.&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Avancement SI1 2014/2015</title>
+      <link>http://prof.bpesquet.fr/avancement/2014/bts-sio-si1/</link>
+      <pubDate>Tue, 01 Jan 2008 00:00:00 UTC</pubDate>
+      
+      <guid>http://prof.bpesquet.fr/avancement/2014/bts-sio-si1/</guid>
+      <description>
+
+&lt;p&gt;Sauf indication contraire, les travaux à réaliser doivent être terminés pour la séance de la semaine suivante.&lt;/p&gt;
+
+&lt;h1 id=&#34;toc_0&#34;&gt;Rentrée - Toussaint&lt;/h1&gt;
+
+&lt;h2 id=&#34;toc_1&#34;&gt;Semaine 1 : 1er septembre&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours mercredi&lt;/strong&gt; : absence professeur. Reporté au vendredi 12 de 9h à 10h.&lt;/p&gt;
+
+&lt;h2 id=&#34;toc_2&#34;&gt;Semaine 2 : 8 septembre&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours lundi&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Présentation du module SI1 et de la &lt;a href=&#34;https://docs.google.com/spreadsheet/ccc?key=0Ai28xIJg0K-zdE4talZQc1hrSFZUaEZDSDcyamdRLVE&amp;amp;usp=sharing&#34;&gt;progression prévue sur le semestre&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Cours &lt;a href=&#34;/cours/composants-materiels-ordinateur&#34;&gt;Composants matériels de l&amp;rsquo;ordinateur&lt;/a&gt; étudié jusqu&amp;rsquo;à la carte mère.&lt;/li&gt;
+&lt;li&gt;Début de l&amp;rsquo;activité &lt;a href=&#34;/activite/composants-materiels-ordinateur&#34;&gt;Composants matériels de l&amp;rsquo;ordinateur&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;TP groupe A&lt;/strong&gt; : TP découverte et identification des composants.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours mercredi&lt;/strong&gt; : TD sur l&amp;rsquo;information binaire.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours vendredi&lt;/strong&gt; : suite du TD sur l&amp;rsquo;information binaire.&lt;/p&gt;
+
+&lt;h2 id=&#34;toc_3&#34;&gt;Semaine 3 : 15 septembre&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours lundi&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;TODO : activité &lt;a href=&#34;/activite/composants-materiels-ordinateur&#34;&gt;Composants matériels de l&amp;rsquo;ordinateur&lt;/a&gt;, questions 1 à 6.&lt;/li&gt;
+&lt;li&gt;Présentation du campus SIO.&lt;/li&gt;
+&lt;li&gt;Cours &lt;a href=&#34;/cours/composants-materiels-ordinateur&#34;&gt;Composants matériels de l&amp;rsquo;ordinateur&lt;/a&gt; : le processeur.&lt;/li&gt;
+&lt;li&gt;Diaporama sur la fabrication d&amp;rsquo;un processeur.&lt;/li&gt;
+&lt;li&gt;Correction de l&amp;rsquo;activité &lt;a href=&#34;/activite/composants-materiels-ordinateur&#34;&gt;Composants matériels de l&amp;rsquo;ordinateur&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Activité &lt;a href=&#34;/activite/composants-materiels-ordinateur&#34;&gt;Composants matériels de l&amp;rsquo;ordinateur&lt;/a&gt;, questions 7 et 8.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;TP groupe B&lt;/strong&gt; : absence professeur. Reporté au vendredi 19 de 8h à 10h.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours mercredi&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Fin du TD sur l&amp;rsquo;information binaire.&lt;/li&gt;
+&lt;li&gt;Fin de l&amp;rsquo;activité &lt;a href=&#34;/activite/composants-materiels-ordinateur&#34;&gt;Composants matériels de l&amp;rsquo;ordinateur&lt;/a&gt;, questions 7 et 8.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;toc_4&#34;&gt;Semaine 4 : 22 septembre&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours lundi&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;TODO&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Etudier le cours &lt;a href=&#34;/cours/composants-materiels-ordinateur&#34;&gt;Composants matériels de l&amp;rsquo;ordinateur&lt;/a&gt; : la mémoire.&lt;/li&gt;
+&lt;li&gt;Répondre au questionnaire en ligne reçu par courriel.&lt;/li&gt;
+&lt;li&gt;Terminer l&amp;rsquo;activité &lt;a href=&#34;/activite/composants-materiels-ordinateur&#34;&gt;Composants matériels de l&amp;rsquo;ordinateur&lt;/a&gt;, question 7.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Cours &lt;a href=&#34;/cours/composants-materiels-ordinateur&#34;&gt;Composants matériels de l&amp;rsquo;ordinateur&lt;/a&gt; : la mémoire.&lt;/li&gt;
+&lt;li&gt;Correction du questionnaire en ligne.&lt;/li&gt;
+&lt;li&gt;Diaporama sur la virtualisation.&lt;/li&gt;
+&lt;li&gt;Activité &lt;a href=&#34;/activite/composants-materiels-ordinateur&#34;&gt;Composants matériels de l&amp;rsquo;ordinateur&lt;/a&gt;, questions 8 à 11.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;TP groupe A&lt;/strong&gt; : TP installation et paramétrage MV W7.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours mercredi&lt;/strong&gt; : TD sur le codage des images.&lt;/p&gt;
+
+&lt;h2 id=&#34;toc_5&#34;&gt;Semaine 5 : 29 septembre&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours lundi&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;TODO : terminer l&amp;rsquo;activité &lt;a href=&#34;/activite/composants-materiels-ordinateur&#34;&gt;Composants matériels de l&amp;rsquo;ordinateur&lt;/a&gt;, questions 8 et 9.&lt;/li&gt;
+&lt;li&gt;Présentation de la plate-forme &lt;a href=&#34;https://www.netacad.com&#34;&gt;CISCO Netacad&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Activité &lt;a href=&#34;/activite/composants-materiels-ordinateur&#34;&gt;Composants matériels de l&amp;rsquo;ordinateur&lt;/a&gt;, questions 10 et 11.&lt;/li&gt;
+&lt;li&gt;Quizz sur le cours &lt;a href=&#34;/cours/composants-materiels-ordinateur&#34;&gt;Composants matériels de l&amp;rsquo;ordinateur&lt;/a&gt; et le TD sur l&amp;rsquo;information binaire.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;TP groupe B&lt;/strong&gt; : TP installation et paramétrage MV W7.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours mercredi&lt;/strong&gt; : suite du TD sur le codage des images.&lt;/p&gt;
+
+&lt;h2 id=&#34;toc_6&#34;&gt;Semaine 6 : 6 octobre&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours lundi&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;TODO : terminer l&amp;rsquo;activité &lt;a href=&#34;/activite/composants-materiels-ordinateur&#34;&gt;Composants matériels de l&amp;rsquo;ordinateur&lt;/a&gt; et soumettre le travail associé sur le campus SIO.&lt;/li&gt;
+&lt;li&gt;Correction de l&amp;rsquo;activité &lt;a href=&#34;/activite/composants-materiels-ordinateur&#34;&gt;Composants matériels de l&amp;rsquo;ordinateur&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Etude du cours &lt;a href=&#34;https://static-course-assets.s3.amazonaws.com/ITE50FR/module5/index.html#5.0.1.1&#34;&gt;CISCO ITE chapitre 5&lt;/a&gt;, paragraphes 5.0 à 5.2 inclus.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;TP groupe A&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;TP gestion des partitions sous W7 (ITE 5.2.4.3).&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Ajouter 1 Go au disque dur virtuel de la MV W7 (&amp;ldquo;Settings&amp;rdquo; -&amp;gt; &amp;ldquo;Hard disk&amp;rdquo; -&amp;gt; &amp;ldquo;Expand&amp;rdquo;).&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;TP gestion des processus sous W7 (ITE 5.3.1.5).&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Bonus de fin de TP : installer &lt;a href=&#34;https://www.mozilla.org/fr/firefox/new/&#34;&gt;Mozilla Firefox&lt;/a&gt; sur la MV W7.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;CR du TP à déposer d&amp;rsquo;ici la fin de la semaine.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours mercredi&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Révisions sur l&amp;rsquo;information binaire et/ou&lt;/li&gt;
+&lt;li&gt;Etude du cours &lt;a href=&#34;https://static-course-assets.s3.amazonaws.com/ITE50FR/module5/index.html#5.0.1.1&#34;&gt;CISCO ITE chapitre 5&lt;/a&gt;, parties 5.0 à 5.2. Pour les plus rapides : revoir les parties 1.x et 3.x.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;toc_7&#34;&gt;Semaine 7 : 13 octobre&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours lundi&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;TODO : étudier le cours &lt;a href=&#34;https://static-course-assets.s3.amazonaws.com/ITE50FR/module5/index.html#5.0.1.1&#34;&gt;CISCO ITE chapitre 5&lt;/a&gt;, parties 5.0 à 5.2.&lt;/li&gt;
+&lt;li&gt;Construction collaborative du &lt;a href=&#34;/cours/systemes-exploitation&#34;&gt;cours sur les systèmes d&amp;rsquo;exploitation&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Questionnaire (&lt;em&gt;space race&lt;/em&gt;) sur le cours CISCO ITE.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;TP groupe B&lt;/strong&gt; : gestion des partitions et des processus sous W7.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours mercredi&lt;/strong&gt; : quizz récapitulatif sur l&amp;rsquo;ensemble des cours/TP/TD.&lt;/p&gt;
+
+&lt;h1 id=&#34;toc_8&#34;&gt;Toussaint - Noël&lt;/h1&gt;
+
+&lt;h2 id=&#34;toc_9&#34;&gt;Semaine 8 : 3 novembre&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours lundi&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Activité &lt;a href=&#34;/activite/logiciels-libres&#34;&gt;Logiciels libres&lt;/a&gt;, partie 1&lt;/li&gt;
+&lt;li&gt;Etude du cours &lt;a href=&#34;https://static-course-assets.s3.amazonaws.com/ITE50FR/module5/index.html#5.0.1.1&#34;&gt;CISCO ITE chapitre 5&lt;/a&gt;, parties 5.3 à 5.7.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;TP groupe A&lt;/strong&gt; : TP W7&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Installation d&amp;rsquo;un logiciel (ITE 5.3.1.11).&lt;/li&gt;
+&lt;li&gt;Création d&amp;rsquo;utilisateurs (ITE 5.3.2.3).&lt;/li&gt;
+&lt;li&gt;Maintenance du disque dur (ITE 5.3.4.2).&lt;/li&gt;
+&lt;li&gt;CR à déposer en fin de TP.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours mercredi&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Fin de la construction collaborative du &lt;a href=&#34;/cours/systemes-exploitation&#34;&gt;cours sur les systèmes d&amp;rsquo;exploitation&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Activité &lt;a href=&#34;/activite/logiciels-libres&#34;&gt;Logiciels libres&lt;/a&gt;, partie 2.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;toc_10&#34;&gt;Semaine 9 : 10 novembre&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours lundi&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Installation MV Linux Ubuntu.&lt;/li&gt;
+&lt;li&gt;Découverte de Linux Ubuntu (partie 1).&lt;/li&gt;
+&lt;li&gt;Construction individuelle d&amp;rsquo;un mémento sur les commandes Linux.&lt;/li&gt;
+&lt;li&gt;Debriefing du support en fin de séance.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;TP groupe B&lt;/strong&gt; : cf semaine précédente.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours mercredi&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Recherche de trois antivirus pour Windows 7, y compris gratuits (ITE 10.2.3.2).&lt;/li&gt;
+&lt;li&gt;Calcul du coût pour 50 postes sur 1 an.&lt;/li&gt;
+&lt;li&gt;CR à déposer sur le réseau au plus tard lundi 17 à 8h.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;toc_11&#34;&gt;Semaine 10 : 17 novembre&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours lundi&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Fin de la découverte de Linux Ubuntu partie 1 (QCM 3 et 4). Bonus : installer les VMWare Tools.&lt;/li&gt;
+&lt;li&gt;Correction découverte Linux Ubuntu partie 1.&lt;/li&gt;
+&lt;li&gt;Cours sur la ligne de commande Linux -&amp;gt; page 3.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;TP 1h/1h&lt;/strong&gt; : TP W7&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Gestion des fichiers système (ITE 5.3.4.6).&lt;/li&gt;
+&lt;li&gt;Utilitaires en ligne de commande (ITE 5.3.7.4).&lt;/li&gt;
+&lt;li&gt;Restauration du système (ITE 5.5.1.11).&lt;/li&gt;
+&lt;li&gt;Bonus : gestion du menu Démarrer (ITE 5.5.1.2).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours mercredi&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Retour sur le PPE1 SI1.&lt;/li&gt;
+&lt;li&gt;Recherche de pare-feux logiciels et matériels (ITE 10.2.3.2).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;toc_12&#34;&gt;Semaine 11 : 24 novembre&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours lundi&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Cours sur la ligne de commande Linux -&amp;gt; chapitre 4 compris.&lt;/li&gt;
+&lt;li&gt;Découverte de Linux Ubuntu partie 2 -&amp;gt; QCM 5.&lt;/li&gt;
+&lt;li&gt;Fin de la recherche de pare-feux.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;TP groupe A&lt;/strong&gt; : TP W7&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Restauration du système (ITE 5.5.1.11).&lt;/li&gt;
+&lt;li&gt;Sauvegarde et restauration de données (ITE 10.3.1.4).&lt;/li&gt;
+&lt;li&gt;Bonus : gestion du menu Démarrer (ITE 5.5.1.2).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours mercredi&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Quizz sur W7 et Linux.&lt;/li&gt;
+&lt;li&gt;Fin de la recherche de pare-feux. CR à déposer sur le réseau au plus tard lundi 1er à 8h.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;toc_13&#34;&gt;Semaine 12 : 1er décembre&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours lundi&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Cours sur la ligne de commande Linux -&amp;gt; fin.&lt;/li&gt;
+&lt;li&gt;Découverte de Linux Ubuntu partie 2 -&amp;gt; QCM 5 et 6.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;TP groupe B&lt;/strong&gt; : cf semaine précédente.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours mercredi&lt;/strong&gt; : étude d&amp;rsquo;un problème de sécurité informatique (ITE 10.1.1.7).&lt;/p&gt;
+
+&lt;h2 id=&#34;toc_14&#34;&gt;Semaine 13 : 8 décembre&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours lundi&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Découverte de Linux Ubuntu partie 2 -&amp;gt; QCM 5 et 6.&lt;/li&gt;
+&lt;li&gt;Cours CISCO ITE 10.2.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;TP groupe A&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Sécurisation sous W7 (ITE 10.2.1.7).&lt;/li&gt;
+&lt;li&gt;Paramétrages avancés de W7.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours mercredi&lt;/strong&gt; : étude d&amp;rsquo;un problème de sécurité informatique.&lt;/p&gt;
+
+&lt;h2 id=&#34;toc_15&#34;&gt;Semaine 14 : 15 décembre&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours lundi&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Fin de l&amp;rsquo;étude d&amp;rsquo;un problème de sécurité informatique. CR à déposer sur le réseau avant 10h.&lt;/li&gt;
+&lt;li&gt;Création d&amp;rsquo;un diaporama sur les problèmes de sécurité pour les étudiants volontaires.&lt;/li&gt;
+&lt;li&gt;Cours CISCO ITE 10.2.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;TP groupe B&lt;/strong&gt; : cf. semaine précédente.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours mercredi&lt;/strong&gt; : TPDS Linux.&lt;/p&gt;
+
+&lt;h1 id=&#34;toc_16&#34;&gt;Noël - Hiver&lt;/h1&gt;
+
+&lt;h2 id=&#34;toc_17&#34;&gt;Semaine 15 : 5 janvier&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours lundi&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Correction TPDS Linux.&lt;/li&gt;
+&lt;li&gt;Cours sur la sécurité du poste de travail.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;TP 1h/1h&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Préparation diaporama sur la sécurité.&lt;/li&gt;
+&lt;li&gt;TP éléments d&amp;rsquo;administration Linux.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours mercredi&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Présentation des problèmes de sécurité par les étudiants volontaires.&lt;/li&gt;
+&lt;li&gt;Quizz récapitulatif.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Avancement SLAM5/PPE 2014/2015</title>
+      <link>http://prof.bpesquet.fr/avancement/2014/bts-sio-b2slam/</link>
+      <pubDate>Tue, 01 Jan 2008 00:00:00 UTC</pubDate>
+      
+      <guid>http://prof.bpesquet.fr/avancement/2014/bts-sio-b2slam/</guid>
+      <description>
+
+&lt;p&gt;Sauf indication contraire, les travaux à réaliser doivent être terminés pour la séance de la semaine suivante.&lt;/p&gt;
+
+&lt;h1 id=&#34;toc_0&#34;&gt;Rentrée - Toussaint&lt;/h1&gt;
+
+&lt;h2 id=&#34;toc_1&#34;&gt;Semaine 1 : 1er septembre&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Accueil des étudiants&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Présentation de SLAM5, des objectifs et de la &lt;a href=&#34;https://docs.google.com/spreadsheet/ccc?key=0Ai28xIJg0K-zdFhYV1p1UHc3T3ItaENkYWtEQnRWYkE&amp;amp;usp=sharing&#34;&gt;progression prévue sur l&amp;rsquo;année&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Démonstration du projet MusicStore (clients desktop et mobile)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;SLAM5&lt;/strong&gt; : pas de cours ni de TP cette semaine (rentrée scolaire)&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;PPE&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;TODO : rechercher des informations sur les méthodes agiles.&lt;/li&gt;
+&lt;li&gt;Initiation à SCRUM avec des LEGO (3h).&lt;/li&gt;
+&lt;li&gt;Initialisation de l&amp;rsquo;environnement de développement Web (Netbeans + XAMPP sur la partition M:).&lt;/li&gt;
+&lt;li&gt;Début de l&amp;rsquo;activité &lt;a href=&#34;/activite/acces-donnees-php&#34;&gt;Accès aux données avec PHP&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;toc_2&#34;&gt;Semaine 2 : 8 septembre&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;TP&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;TODO&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Etudier les cours de rappels sur &lt;a href=&#34;/cours/introduction-developpement-web/&#34;&gt;le développement Web&lt;/a&gt;, &lt;a href=&#34;/cours/html5-en-bref&#34;&gt;HTML5&lt;/a&gt; et &lt;a href=&#34;/cours/php-en-bref/&#34;&gt;PHP&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Terminer la partie 1 de l&amp;rsquo;activité &lt;a href=&#34;/activite/acces-donnees-php&#34;&gt;Accès aux données avec PHP&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Installation de XAMPP en salle 4009B (un par étudiant).&lt;/li&gt;
+&lt;li&gt;Tutoriel &lt;a href=&#34;/tutoriel/developpement-php-moderne/&#34;&gt;Développement PHP moderne&lt;/a&gt;, itérations 1 et 2.&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Tutoriel &lt;a href=&#34;/tutoriel/premiers-pas-framework-php-silex/&#34;&gt;Premiers pas avec Silex&lt;/a&gt;.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Remplacer &lt;code&gt;hello-world-silex&lt;/code&gt; par &lt;code&gt;localhost1&lt;/code&gt; dans la définition de l&amp;rsquo;hôte virtuel Apache (champ &lt;code&gt;ServerName&lt;/code&gt; uniquement).&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Retour sur le &lt;a href=&#34;/cours/modele-mvc&#34;&gt;modèle MVC&lt;/a&gt; et sur le &lt;a href=&#34;/tutoriel/premiers-pas-framework-php-silex/&#34;&gt;framework Silex&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Tutoriel &lt;a href=&#34;/tutoriel/developpement-php-moderne/&#34;&gt;Développement PHP moderne&lt;/a&gt;, itération 3.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;toc_3&#34;&gt;Semaine 3 : 15 septembre&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;TP&lt;/strong&gt; : tutoriel SDZ &lt;a href=&#34;http://fr.openclassrooms.com/informatique/cours/programmez-en-oriente-objet-en-php&#34;&gt;POO en PHP&lt;/a&gt;, chapitres &amp;ldquo;Introduction à la POO&amp;rdquo; et &amp;ldquo;Utiliser la classe&amp;rdquo; uniquement.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours&lt;/strong&gt; :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Retour sur la &lt;a href=&#34;/cours/poo-php-en-bref/&#34;&gt;POO avec PHP&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Activité &lt;a href=&#34;/activite/acces-donnees-php-silex/&#34;&gt;Accès aux données avec PHP et Silex&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;toc_4&#34;&gt;Semaine 4 : 22 septembre&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;TP&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;TODO&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Terminer le tutoriel &lt;a href=&#34;/tutoriel/developpement-php-moderne/&#34;&gt;Développement PHP moderne&lt;/a&gt;, itération 3.&lt;/li&gt;
+&lt;li&gt;Terminer l&amp;rsquo;activité &lt;a href=&#34;/activite/acces-donnees-php-silex/&#34;&gt;Accès aux données avec PHP et Silex&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Réunion profs à 11h : TP de 2x1h30.&lt;/li&gt;
+&lt;li&gt;Correction de l&amp;rsquo;activité &lt;a href=&#34;/activite/acces-donnees-php-silex/&#34;&gt;Accès aux données avec PHP et Silex&lt;/a&gt; disponible sur &lt;a href=&#34;https://github.com/lmdsio/MesNews-silex&#34;&gt;GitHub&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Tutoriel SDZ &lt;a href=&#34;http://fr.openclassrooms.com/informatique/cours/les-espaces-de-noms-en-php&#34;&gt;Espaces de noms en PHP&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Tutoriel &lt;a href=&#34;/tutoriel/developpement-php-moderne/&#34;&gt;Développement PHP moderne&lt;/a&gt;, itération 4.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Explications sur l&amp;rsquo;itération 4 du tutoriel &lt;a href=&#34;/tutoriel/developpement-php-moderne/&#34;&gt;Développement PHP moderne&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Tutoriel &lt;a href=&#34;/tutoriel/developpement-php-moderne/&#34;&gt;Développement PHP moderne&lt;/a&gt;, itérations 4 et 5.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;toc_5&#34;&gt;Semaine 5 : 29 septembre&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;TP&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Tutoriel &lt;a href=&#34;/tutoriel/developpement-php-moderne/&#34;&gt;Développement PHP moderne&lt;/a&gt;, itération 5.&lt;/li&gt;
+&lt;li&gt;Tutoriel &lt;a href=&#34;/tutoriel/premiers-pas-framework-bootstrap/&#34;&gt;Premiers pas avec le framework Bootstrap&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Tutoriel &lt;a href=&#34;/tutoriel/developpement-php-moderne/&#34;&gt;Développement PHP moderne&lt;/a&gt;, itération 6.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Retour sur les itérations 5 et 6 et sur le framework &lt;a href=&#34;http://getbootstrap.com&#34;&gt;Bootstrap&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Tutoriel &lt;a href=&#34;/tutoriel/developpement-php-moderne/&#34;&gt;Développement PHP moderne&lt;/a&gt;, itération 7.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;PPE&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;TODO : terminer le tutoriel &lt;a href=&#34;/tutoriel/developpement-php-moderne/&#34;&gt;Développement PHP moderne&lt;/a&gt;, itération 7.&lt;/li&gt;
+&lt;li&gt;Rappels sur les formulaires Web.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/activite/gsb-report-mission1&#34;&gt;GSB-Report : mission 1&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;toc_6&#34;&gt;Semaine 6 : 6 octobre&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;TP&lt;/strong&gt; : tutoriel &lt;a href=&#34;/tutoriel/developpement-php-moderne/&#34;&gt;Développement PHP moderne&lt;/a&gt;, itération 8.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Retour sur l&amp;rsquo;itération 8.&lt;/li&gt;
+&lt;li&gt;Quizz sur l&amp;rsquo;ensemble des notions étudiées depuis le début de l&amp;rsquo;année.&lt;/li&gt;
+&lt;li&gt;Tutoriel &lt;a href=&#34;/tutoriel/developpement-php-moderne/&#34;&gt;Développement PHP moderne&lt;/a&gt;, itération 9.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;PPE&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;TODO : terminer la mission 1 GSB-Report.&lt;/li&gt;
+&lt;li&gt;Correction de la mission 1 (&lt;a href=&#34;http://gsb-report-1.bpesquet.fr&#34;&gt;Résultat à obtenir&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/activite/gsb-report-mission2&#34;&gt;GSB-Report : mission 2&lt;/a&gt; (&lt;a href=&#34;http://gsb-report-2.bpesquet.fr&#34;&gt;Résultat à obtenir&lt;/a&gt;).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;toc_7&#34;&gt;Semaine 7 : 13 octobre&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;TP&lt;/strong&gt; : Rattrapage des tutoriels ou missions PPE, révisions ou appronfondissements (&lt;a href=&#34;http://fr.openclassrooms.com/informatique/cours/prenez-en-main-bootstrap&#34;&gt;idée 1&lt;/a&gt;, &lt;a href=&#34;http://fr.openclassrooms.com/informatique/cours/programmez-en-oriente-objet-en-php&#34;&gt;idée 2&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours&lt;/strong&gt; : TPDS 1 (refactorisation d&amp;rsquo;un site Web pour introduire l&amp;rsquo;architecture étudiée en cours).&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;PPE&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;TODO : terminer la mission 2 GSB-Report.&lt;/li&gt;
+&lt;li&gt;Intervention d&amp;rsquo;un professionnel sur la gestion de projet agile.&lt;/li&gt;
+&lt;li&gt;Correction de la mission 2 (&lt;a href=&#34;https://github.com/lmdsio/GSB-Report-correction&#34;&gt;Code source&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/activite/gsb-report-mission3&#34;&gt;GSB-Report : mission 3&lt;/a&gt; (&lt;a href=&#34;http://gsb-report-3.bpesquet.fr&#34;&gt;Résultat à obtenir&lt;/a&gt;).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;toc_8&#34;&gt;Toussaint - Noël&lt;/h1&gt;
+
+&lt;h2 id=&#34;toc_9&#34;&gt;Semaine 8 : 3 novembre&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;TP&lt;/strong&gt; : initialisation du projet agile e-commerce&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Constitution des équipes (deux personnes).&lt;/li&gt;
+&lt;li&gt;Choix du thème et du nom des projets (remplir &lt;a href=&#34;https://docs.google.com/spreadsheets/d/1sy6pItWwDct-MpJ9yaKjm9T4VAcN363ybROOIIaxN0U/edit?usp=sharing&#34;&gt;cette feuille&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Présentation de l&amp;rsquo;organisation, du backlog et des paramètres.&lt;/li&gt;
+&lt;li&gt;Inscription sur &lt;a href=&#34;http://trello.com&#34;&gt;Trello&lt;/a&gt;, création des planches et attribution des droits pour chaque projet.&lt;/li&gt;
+&lt;li&gt;Création des dépôts GitHub et attribution des droits pour chaque projet.&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Début du sprint 1&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Choix des stories du sprint.&lt;/li&gt;
+&lt;li&gt;Création des listes de tâches et de tests pour chaque story du sprint.&lt;/li&gt;
+&lt;li&gt;Début du développement.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Correction du TPDS 1.&lt;/li&gt;
+&lt;li&gt;Projet agile : sprint 1.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;toc_10&#34;&gt;Semaine 9 : 10 novembre&lt;/h2&gt;
+
+&lt;p&gt;Pas de TP (férié).&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours&lt;/strong&gt; : projet agile&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Récupération du répertoire &lt;code&gt;vendor&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Sprint 1.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;toc_11&#34;&gt;Semaine 10 : 17 novembre&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;TP&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Tutoriel &lt;a href=&#34;/tutoriel/developpement-php-moderne/&#34;&gt;Développement PHP moderne&lt;/a&gt;, itération 10.&lt;/li&gt;
+&lt;li&gt;Projet agile : sprint 1.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Retour sur l&amp;rsquo;itération 10.&lt;/li&gt;
+&lt;li&gt;Projet agile : sprint 1.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;toc_12&#34;&gt;Semaine 11 : 24 novembre&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;TP&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Tutoriel &lt;a href=&#34;/tutoriel/developpement-php-moderne/&#34;&gt;Développement PHP moderne&lt;/a&gt;, itération 11.&lt;/li&gt;
+&lt;li&gt;Projet agile : démo du sprint 1 et début du sprint 2.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Retour sur l&amp;rsquo;itération 11.&lt;/li&gt;
+&lt;li&gt;Démonstration du projet MusicStore.&lt;/li&gt;
+&lt;li&gt;Projet agile : fin des démos du sprint 1 et sprint 2 (choix et analyses des stories).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;toc_13&#34;&gt;Semaine 12 : 1er décembre&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;TP&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Tutoriel &lt;a href=&#34;/tutoriel/developpement-php-moderne/&#34;&gt;Développement PHP moderne&lt;/a&gt;, itération 12.&lt;/li&gt;
+&lt;li&gt;Projet agile : sprint 2.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours&lt;/strong&gt; : TPDS 2 (itération 12 non comprise).&lt;/p&gt;
+
+&lt;h2 id=&#34;toc_14&#34;&gt;Semaine 13 : 8 décembre&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;TP&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Projet agile : sprint 2.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Pas de cours (BTS blanc).&lt;/p&gt;
+
+&lt;h2 id=&#34;toc_15&#34;&gt;Semaine 14 : 15 décembre&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;TP&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Projet agile : sprint 2.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Correction TPDS 2 et BTS blanc.&lt;/li&gt;
+&lt;li&gt;Projet agile : livraison 1.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;toc_16&#34;&gt;Hiver - Pâques&lt;/h1&gt;
+
+&lt;h2 id=&#34;toc_17&#34;&gt;Semaine 15 : 23 février&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;TP&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Validation par les pairs de la livraison 1 des projets agiles.&lt;/li&gt;
+&lt;li&gt;Affectation des projets à valider : AgnamStore -&amp;gt; AppMusics -&amp;gt; CarLegends -&amp;gt; DreamHouses -&amp;gt; GameSpawn -&amp;gt; GamingStore -&amp;gt; InfoStore -&amp;gt; Items4Noob -&amp;gt; Med&amp;rsquo;Azur -&amp;gt; MoviesMarket -&amp;gt; MPMakeUp -&amp;gt; PokeStore -&amp;gt; AgnamStore.&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Processus de validation :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Installation locale du projet (clonage du dépôt GitHub).&lt;/li&gt;
+&lt;li&gt;Test des stories annoncées comme terminées (cf Trello).&lt;/li&gt;
+&lt;li&gt;Remplissage d&amp;rsquo;une fiche de validation par story terminée.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Cours Gestion des incidents&lt;/li&gt;
+&lt;li&gt;Validation des projets agiles : création d&amp;rsquo;une issue GitHub par défaut détecté.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;PPE&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Présentation des épreuves orales E4 et E6.&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Début de la préparation de l&amp;rsquo;épreuve E4.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Présentation du contexte PHP GSB et des missions possibles.&lt;/li&gt;
+&lt;li&gt;Constitution des équipes et création des dépôts GitHub.&lt;/li&gt;
+&lt;li&gt;Début du travail sur les projets.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;toc_18&#34;&gt;Semaine 16 : 2 mars&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;TP&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Projet agile : début du sprint 3.&lt;/li&gt;
+&lt;li&gt;Correction des incidents levés pendant la validation.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Explications sur les stories du sprint 3 (gestion du panier).&lt;/li&gt;
+&lt;li&gt;Projet agile : sprint 3.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;PPE&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Préparation de l&amp;rsquo;épreuve E4.&lt;/li&gt;
+&lt;li&gt;Remplir cette &lt;a href=&#34;https://docs.google.com/spreadsheets/d/1SsxEygZ34baoHsoimUihYbVTF2zkUV-oVUFZXj5Oy1k/edit?usp=sharing&#34;&gt;feuille Google&lt;/a&gt; pour indiquer vos choix de mission.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;toc_19&#34;&gt;Semaine 17 : 9 mars&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;TP&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Projet agile : sprint 3.&lt;/li&gt;
+&lt;li&gt;Modélisation de la gestion du panier en BD.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Conseils techniques pour les stories du sprint 3.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Démonstration du projet &lt;a href=&#34;http://oc-musicstore.herokuapp.com/&#34;&gt;MusicStore&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Modélisation de la gestion du panier en BD et dans l&amp;rsquo;application.&lt;/li&gt;
+&lt;li&gt;Centralisation du code contrôleur nécessaire pour toutes les vues.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Projet agile : sprint 3.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;PPE&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Préparation de l&amp;rsquo;épreuve E4.&lt;/li&gt;
+&lt;li&gt;Déploiement des projets sur les serveurs gsb-xyz.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;toc_20&#34;&gt;Semaine 18 : 16 mars&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;TP&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Projet agile : sprint 3.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Cours : documentation d&amp;rsquo;un logiciel.&lt;/li&gt;
+&lt;li&gt;Projet agile : sprint 3.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;toc_21&#34;&gt;Semaine 19 : 23 mars&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;TP&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Projet agile : sprint 3.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Projet agile : fin du sprint 3.&lt;/li&gt;
+&lt;li&gt;Consignes pour la livraison 2.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;toc_22&#34;&gt;Semaine 20 : 30 mars&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;TP&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Validation par les pairs de la livraison 2 des projets agiles (&lt;a href=&#34;/activite/validation-livraison2-projet&#34;&gt;consignes&lt;/a&gt;).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Cours&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Projet agile : correction des incidents levés pendant la validation.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;toc_23&#34;&gt;Semaine 21 : 7 avril&lt;/h2&gt;
+
+&lt;p&gt;(Pas de cours : formation académique + BTS blanc).&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

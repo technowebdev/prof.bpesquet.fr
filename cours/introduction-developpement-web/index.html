@@ -1,0 +1,402 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+
+    <link href="http://prof.bpesquet.fr/vendor/bootstrap-3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://prof.bpesquet.fr/vendor/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="http://prof.bpesquet.fr/vendor/highlight.js/styles/monokai.css" rel="stylesheet">
+    <link href="http://prof.bpesquet.fr/styles/style.css" rel="stylesheet">
+
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-39897312-3', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+    <link rel="shortcut icon" href="http://prof.bpesquet.fr/images/bpesquet.ico">
+
+    <title>Introduction au développement Web</title>
+</head>
+<body data-spy="scroll" data-target="#TableOfContents">
+    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="http://prof.bpesquet.fr/">
+                    <span class="glyphicon glyphicon-home"></span>
+                </a>
+            </div>
+
+            <div class="collapse navbar-collapse nav-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Ressources <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="http://prof.bpesquet.fr/livre/">Livres</a></li>
+                            <li><a href="http://prof.bpesquet.fr/cours/">Cours</a></li>
+                            <li><a href="http://prof.bpesquet.fr/tutoriel/">Tutoriels</a></li>
+                            <li><a href="http://prof.bpesquet.fr/activite/">Activités</a></li>
+                            <li><a href="http://prof.bpesquet.fr/article/">Articles</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="http://prof.bpesquet.fr/avancement/">Avancements</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="mailto:bpesquet@gmail.com" title="Contact"><i class="fa fa-envelope"></i></a></li>
+                    <li><a href="https://twitter.com/bpesquet" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="https://plus.google.com/110003637459679741050?rel=author"><i class="fa fa-google-plus" title="Google+"></i></a></li>
+                    <li><a href="https://github.com/bpesquet" title="GitHub"><i class="fa fa-github"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+
+<div class="row">
+
+    <div class="col-md-9">
+        <h1 class="pageTitle">Introduction au développement Web</h1>
+        
+
+<p>L&rsquo;objectif de ce cours est d&rsquo;acquérir les notions fondamentales liées au développement Web.</p>
+
+<div class="alert">
+    <strong>Remarque</strong>
+    <p><p>Ce cours s&rsquo;inspire pour partie de la <a href="http://symfony.com/doc/current/book/from_flat_php_to_symfony2.html">documentation du framework Symfony2</a>.</p>
+</p>
+</div>
+
+<h1 id="toc_0">Le fonctionnement du Web</h1>
+
+<p>Pour consulter un site Web sur Internet, il suffit de taper l&rsquo;adresse correcte du site dans la barre d&rsquo;adresse d&rsquo;un navigateur Web, et le site s&rsquo;affiche. Nous allons tenter de comprendre ce qui se cache derrière cette opération très simple en apparence.</p>
+
+<h2 id="toc_1">La notion de serveur Web</h2>
+
+<p>Pour être accessible, un site Web doit être publié sur un <strong>serveur</strong>.</p>
+
+<div class="alert alert-info">
+    <strong>Définition</strong>
+    <p><p>Un serveur est un type particulier d&rsquo;ordinateur dont le rôle est d&rsquo;attendre les demandes de clients, et d&rsquo;y répondre. Un serveur rend un service à ses clients.</p>
+</p>
+</div>
+
+<p>Il existe de nombreux types de serveurs, en fonction du service rendu : serveur de fichiers, de messagerie, d&rsquo;authentification&hellip; Un serveur qui permet de publier des sites Web est appelé serveur Web.</p>
+
+<div class="alert">
+    <strong>Remarque</strong>
+    <p><p>Une même machine peut rendre différents services (exemple : serveur Web et serveur de fichiers).</p>
+</p>
+</div>
+
+<p>Plus précisément, une machine serveur Web embarque et exécute un logiciel serveur, capable de répondre aux demandes de consultations de sites Web. Les logiciels serveurs Web les plus populaires sont <a href="http://httpd.apache.org/">Apache</a>, <a href="http://www.iis.net/">Microsoft IIS</a> et <a href="http://nginx.org/">nginx</a>.</p>
+
+<h2 id="toc_2">La notion de client Web</h2>
+
+<p>La machine qui permet la consultation du site Web demandé est appelé <strong>client Web</strong>. Il s&rsquo;agit d&rsquo;un abus de langage : en réalité, le véritable client est un logiciel qui s&rsquo;exécute sur cette machine et réalise l&rsquo;opération de consultation. Ce logiciel est le plus souvent un navigateur Web (<em>browser</em>). Les navigateurs Web les plus populaires sont <a href="http://windows.microsoft.com/fr-fr/internet-explorer/">Internet Explorer</a>, <a href="https://www.mozilla.org/fr/firefox">Mozilla Firefox</a>, <a href="https://www.google.fr/chrome/browser/">Chrome</a>, <a href="https://www.apple.com/fr/safari/">Safari</a> et <a href="http://www.opera.com/fr">Opera</a>.</p>
+
+<div class="alert">
+    <strong>Remarque</strong>
+    <p><p>D&rsquo;autres types de logiciels que les navigateurs peuvent jouer le rôle de clients Web en se connectant à des serveurs Web. Exemples : robots d&rsquo;indexation, aspirateurs Web, applications mobiles, etc.</p>
+</p>
+</div>
+
+<h2 id="toc_3">La communication entre client et serveur</h2>
+
+<p>La compréhension des échanges ayant lieu entre un client et un serveur Web lors de la consultation d&rsquo;un site est essentielle. Il s&rsquo;agit d&rsquo;un mécanisme de type <strong>requête/réponse</strong>.</p>
+
+<p><img src="http://prof.bpesquet.fr/images/content/web_http_echange.png" class="content centered" alt="web_http_echange.png" /></p>
+
+<ol>
+<li>L&rsquo;échange est initié par le client, qui envoie au serveur une requête pour consulter une ressource Web.</li>
+<li>Le serveur prépare la page HTML associée.</li>
+<li>Le serveur renvoie la page HTML au client, qui l&rsquo;affiche.</li>
+</ol>
+
+<p>Afin de se comprendre, client et serveur Web utilisent pendant leurs échanges un protocole commun : HTTP.</p>
+
+<h2 id="toc_4">Le protocole HTTP</h2>
+
+<p>HTTP (<em>HyperText Transfert Protocol</em>) est le protocole de transfert du Web. C&rsquo;est son invention en 1989 au CERN de Genève, en même temps que le langage HTML, qui a conduit à l&rsquo;apparition du World Wide Web : un immense réseau de réseaux, où on peut &ldquo;rebondir&rdquo; d&rsquo;une page Web à une autre en utilisant des liens sans avoir besoin de connaître l&rsquo;emplacement physique des serveurs et des ressources consultés.</p>
+
+<p>HTTP est fondamentalement un protocole très simple, basé sur des commandes textuelles.</p>
+
+<h3 id="toc_5">Anatomie d&rsquo;une requête HTTP</h3>
+
+<p>Prenons comme exemple la première étape de l&rsquo;échange décrit plus haut.</p>
+
+<p><img src="http://prof.bpesquet.fr/images/content/web_http_requete.png" class="content centered" alt="web_http_requete.png" /></p>
+
+<p>La requête HTTP envoyée par le navigateur prend une forme similaire à celle-ci :</p>
+
+<pre><code>GET / HTTP/1.1
+Host: xkcd.com
+Accept: text/html
+User-Agent: Mozilla/5.0 (Macintosh)
+</code></pre>
+
+<p>La première ligne de cette requête HTTP est la plus importante. Elle contient :</p>
+
+<ul>
+<li>La <strong>méthode</strong> associée à la requête : ici, <code>GET</code> signifie une demande de ressource.</li>
+<li>L&rsquo;identifiant de la <strong>ressource concernée</strong>. Ici, <code>/</code> (symbole de la racine, comme sous Linux) indique qu&rsquo;on souhaite accéder au document par défaut.</li>
+<li>La <strong>version</strong> du protocole HTTP, ici 1.1.</li>
+</ul>
+
+<p>Les autres lignes de la requête HTTP sont appelés champs d&rsquo;en-tête (<em>HTTP header fields</em> ou plus simplement <em>headers</em>). Ils précisent le site Web concerné (champ <code>Host</code>), les types de contenu acceptés par le client (champ <code>Accept</code>) et le logiciel client utilisé (champ <code>User-Agent</code>). Il existe d&rsquo;autres champs d&rsquo;en-tête, non présentés ici.</p>
+
+<p>Les méthodes HTTP les plus fréquemment utilisées sont <code>GET</code> (pour récupérer une ressource depuis le serveur) et <code>POST</code> (pour modifier une ressource sur le serveur). Il en existe d&rsquo;autres comme <code>HEAD</code>, <code>PUT</code> ou <code>DELETE</code>.</p>
+
+<h3 id="toc_6">Anatomie d&rsquo;une réponse HTTP</h3>
+
+<p>Lorsqu&rsquo;il reçoit une requête HTTP, le serveur Web y puise les informations nécessaires pour construire la réponse, puis la renvoie au client. Continuons avec notre exemple précédent.</p>
+
+<p><img src="http://prof.bpesquet.fr/images/content/web_http_echange.png" class="content centered" alt="web_http_echange.png" /></p>
+
+<p>La réponse HTTP renvoyée du serveur au client prend l&rsquo;aspect ci-dessous.</p>
+
+<pre><code>HTTP/1.1 200 OK
+Date: Mon, 14 Apr 2013 14:05:05 GMT
+Server: lighttpd/1.4.19
+Content-Type: text/html
+
+&lt;html&gt;
+    &lt;!-- code HTML de la page --&gt;
+    &lt;!-- ... --&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>La première ligne de la réponse contient son <strong>statut</strong> sous la forme d&rsquo;un code qui indique le résultat de la requête. Comme une requête, une réponse HTTP contient des champs d&rsquo;en-tête (<code>Date</code>, <code>Content-Type</code> et bien d&rsquo;autres) permettant de véhiculer des informations additionnelles. Par exemple, il est possible d&rsquo;utiliser certains champs pour mettre en place un mécanisme de cache.</p>
+
+<p>Enfin, la réponse HTTP contient éventuellement la ressource demandée par le client. Le plus souvent, il s&rsquo;agit d&rsquo;une page Web décrite sous la forme de balises HTML.</p>
+
+<h3 id="toc_7">Les codes HTTP</h3>
+
+<p>Les codes de retour HTTP peuvent être classés par familles en fonction du premier chiffre.</p>
+
+<table>
+<thead>
+<tr>
+<th>Famille</th>
+<th>Signification</th>
+<th>Exemples</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><strong>1xx</strong></td>
+<td>Information</td>
+<td></td>
+</tr>
+
+<tr>
+<td><strong>2xx</strong></td>
+<td>Succès</td>
+<td>200 : requête traitée avec succès</td>
+</tr>
+
+<tr>
+<td><strong>3xx</strong></td>
+<td>Redirection</td>
+<td></td>
+</tr>
+
+<tr>
+<td><strong>4xx</strong></td>
+<td>Erreur provenant du client</td>
+<td>400 : syntaxe de la requête erronée<br>404 : ressource demandée non trouvée</td>
+</tr>
+
+<tr>
+<td><strong>5xx</strong></td>
+<td>Erreur provenant du serveur</td>
+<td>500 : erreur interne du serveur<br>503 : service temporairement indisponible</td>
+</tr>
+</tbody>
+</table>
+
+<p><img src="http://prof.bpesquet.fr/images/content/http_error_404.jpg" class="content centered bordered" alt="http_error_404.jpg" /></p>
+
+<p>Vous trouverez sur <a href="http://fr.wikipedia.org/wiki/Hypertext_Transfer_Protocol">Wikipedia</a> plus de détails sur le protocole HTTP.</p>
+
+<h2 id="toc_8">La notion d&rsquo;adresse Web</h2>
+
+<p>On a l&rsquo;habitude d&rsquo;accéder à un site Web en utilisant son adresse. Celle-ci est de la forme :
+<a href="http://www.monsite.fr/mondossier/mapage.html">http://www.monsite.fr/mondossier/mapage.html</a>. On peut décomposer cette adresse en plusieurs sous-parties.</p>
+
+<ul>
+<li><code>http://</code> signifie qu&rsquo;on utilise le protocole HTTP.</li>
+<li><code>www.monsite.fr</code> est le nom de domaine du site Web visité.</li>
+<li>`/mondossier/mapage.html est le chemin de la ressource demandée au sein du site.</li>
+</ul>
+
+<p>La majorité des serveurs Web est configurée pour renvoyer une page par défaut (<code>index.html</code>, <code>index.php</code>, <code>Default.aspx</code>) lorsque le client ne précise pas explicitement quelle page il souhaite récupérer (exemples : <a href="http://www.monsite.fr">http://www.monsite.fr</a> ou <a href="http://www.monsite.fr/mondossier/">http://www.monsite.fr/mondossier/</a>).</p>
+
+<p>Une adresse Web telle que celle ci-dessus esr ce qu&rsquo;on appelle une <strong>URL</strong> ou <em>Uniform Resource Locator</em>. Elle permet de décrire l&rsquo;emplacement d&rsquo;une ressource Web et le moyen d&rsquo;y accéder.</p>
+
+<h1 id="toc_9">Sites statiques et sites dynamiques</h1>
+
+<p>Les évolutions technologiques récentes ont rendu la frontière entre sites statiques et dynamiques de plus en plus floue. Ce paragraphe présente ces deux concepts de manière générale</p>
+
+<h2 id="toc_10">Anatomie d&rsquo;un site Web statique</h2>
+
+<p>Un site Web statique se compose essentiellement de fichiers sources <strong>HTML</strong> (pour le contenu des pages) et <strong>CSS</strong> (pour la mise en forme). Il peut également intégrer d&rsquo;autres types de ressources comme par exemple des images.</p>
+
+<p>La consultation d&rsquo;un site Web statique met en jeu deux logiciels :</p>
+
+<ul>
+<li>Le logiciel client, le plus souvent un navigateur Web.</li>
+<li>Le logiciel serveur Web.</li>
+</ul>
+
+<p>Lorsqu&rsquo;un client envoie une requête au serveur Web hébergeant un site statique, le serveur se contente de la renvoyer la ressource demandée. Les pages HTML affichées ne peuvent pas évoluer automatiquement, d&rsquo;où le terme &ldquo;statique&rdquo;.</p>
+
+<p><img src="http://prof.bpesquet.fr/images/content/web_site_statique.png" class="content centered" alt="web_site_statique.png" /></p>
+
+<p>L&rsquo;accès à un site Web statique est un exemple d&rsquo;architecture <strong>client/serveur</strong>, appelée également architecture <strong>deux tiers</strong>.</p>
+
+<div class="alert alert-info">
+    <strong>Définition</strong>
+    <p><p>Un &ldquo;tier&rdquo; correspond à un processus (programme en cours d&rsquo;exécution) impliqué dans l&rsquo;utilisation d&rsquo;une application informatique.</p>
+</p>
+</div>
+
+<p>La mise à jour d&rsquo;un site Web statique nécessite l&rsquo;édition des fichiers sources, puis la mise en ligne des modifications (publication sur le serveur Web). Ce processus a plusieurs inconvénients :</p>
+
+<ul>
+<li>Il nécessite des connaissances techniques : langages HTML et/ou CSS, méthode de publication d&rsquo;un site, etc.</li>
+<li>Il devient vite contraignant dans le cas d&rsquo;un site qui change fréquemment.</li>
+<li>Il est inadapté aux sites dont le contenu est enrichi par ses utilisateurs (&ldquo;Web 2.0&rdquo;).</li>
+</ul>
+
+<p>Pour toutes les raisons précédentes, on emploie un site statique lorsque le seul besoin est de présenter des informations au visiteur, sans aucune interactivité. On parle également de site vitrine.</p>
+
+<h2 id="toc_11">Anatomie d&rsquo;un site Web dynamique</h2>
+
+<p>A l&rsquo;inverse d&rsquo;un site statique, un site dynamique est un type de site Web dans lequel le contenu des pages peut évoluer automatiquement.</p>
+
+<p>Lorsqu&rsquo;un client envoie une requête au serveur Web hébergeant un site dynamique, le serveur prépare la page HTML correspondant à cette requête, puis la renvoie au client pour affichage. Les pages Web affichées au visiteur ne sont pas codées &ldquo;en dur&rdquo; comme dans le cas d&rsquo;un site statique, mais <strong>générées</strong> au moment de leur consultation.</p>
+
+<p><img src="http://prof.bpesquet.fr/images/content/web_site_dynamique.png" class="content centered" alt="web_site_dynamique.png" /></p>
+
+<p>Les pages HTML obtenues peuvent être personnalisées en fonction du visiteur et/ou de données externes au site. Un cas très fréquent est celui où les pages Web renvoyées incluent des informations stockées dans une base de données. On obtient alors un exemple d&rsquo;architecture <strong>trois tiers</strong>.</p>
+
+<p><img src="http://prof.bpesquet.fr/images/content/web_3tiers.jpg" class="content centered" alt="web_3tiers.jpg" /></p>
+
+<div class="alert alert-warning">
+    <strong>Avertissement</strong>
+    <p><p>Il est très important de comprendre que le résultat renvoyé par le serveur Web et affiché par le client est toujours une page HTML.</p>
+</p>
+</div>
+
+<p>Contrairement à un site statique, un site dynamique ouvre la voie à des interactions quasiment illimitées avec ses visiteurs : identification, échange de données entre site et utilisateur, mise à jour du site par ses utilisateurs&hellip; Plus besoin de mettre à jour manuellement le code source des pages du site : il suffit que les données nécessaires soient stockées et accessibles par le serveur Web pour construire la page HTML affichée. Voici quelques types de sites Web dynamiques : sites de e-commerce, CMS, wikis, forums&hellip;</p>
+
+<p>Un site Web dynamique se compose de pages HTML, de fichiers CSS et d&rsquo;autres ressources comme des images, mais pas seulement. Il emploie nécessairement un langage capable de générer des pages HTML.</p>
+
+<h2 id="toc_12">Les langages serveur du Web dynamique</h2>
+
+<p>Lorsqu&rsquo;on souhaite créer soi-même un site Web dynamique, on doit commencer par choisir le langage utilisé pour la génération des pages HTML. Le diagramme ci-dessous rassemble les principaux acteurs de ce marché.</p>
+
+<p><img src="http://prof.bpesquet.fr/images/content/web_server_languages_chart.jpg" class="content centered" alt="web_server_languages_chart.jpg" /></p>
+
+<p>On constate que la technologie la plus populaire est PHP, suivie de loin par ASP.NET (Microsoft) et Java (ORACLE). PHP est particulièrement dominant dans le secteur des CMS (<em>Content Management System</em>) qui permettent de publier du contenu en ligne sans presque aucune connaissance technique. On peut citer comme exemples Wordpress, Drupal ou Joomla.</p>
+
+<p>Quelle que soit la technologie mise en oeuvre, il est essentiel de bien comprendre que ces langages sont toujours employés côté serveur et jamais côté client (d&rsquo;où le terme de langages &ldquo;serveur&rdquo;) Un navigateur Web ne sait pas exploiter directement une page PHP ou ASP.NET. En revanche, il sait afficher une page HTML qu&rsquo;un serveur Web aura préalablement générée en utilisant PHP ou ASP.NET.</p>
+
+<p><img src="http://prof.bpesquet.fr/images/content/web_php_htmlcss.png" class="content centered" alt="web_php_htmlcss.png" /></p>
+
+        <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'bpesquet';
+    var disqus_identifier = 'http:\/\/prof.bpesquet.fr\/cours\/introduction-developpement-web';
+    var disqus_title = 'Introduction au développement Web';
+    var disqus_url = 'http:\/\/prof.bpesquet.fr\/cours\/introduction-developpement-web';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+    <div class="col-md-3">
+        <nav id="TableOfContents">
+<ul>
+<li><a href="#toc_0">Le fonctionnement du Web</a>
+<ul>
+<li><a href="#toc_1">La notion de serveur Web</a></li>
+<li><a href="#toc_2">La notion de client Web</a></li>
+<li><a href="#toc_3">La communication entre client et serveur</a></li>
+<li><a href="#toc_4">Le protocole HTTP</a>
+<ul>
+<li><a href="#toc_5">Anatomie d&rsquo;une requête HTTP</a></li>
+<li><a href="#toc_6">Anatomie d&rsquo;une réponse HTTP</a></li>
+<li><a href="#toc_7">Les codes HTTP</a></li>
+</ul></li>
+<li><a href="#toc_8">La notion d&rsquo;adresse Web</a></li>
+</ul></li>
+<li><a href="#toc_9">Sites statiques et sites dynamiques</a>
+<ul>
+<li><a href="#toc_10">Anatomie d&rsquo;un site Web statique</a></li>
+<li><a href="#toc_11">Anatomie d&rsquo;un site Web dynamique</a></li>
+<li><a href="#toc_12">Les langages serveur du Web dynamique</a></li>
+</ul></li>
+</ul>
+</nav>
+    </div>
+
+</div>
+
+    </div> 
+
+    <footer class="footer">
+        <div class="container">
+            <p class="pull-right">
+                Créé avec <a href="http://hugo.spf13.com">Hugo</a> et <a href="http://getbootstrap.com">Bootstrap</a>.
+            </p>
+            <p>
+                <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/fr/"><img src="http://prof.bpesquet.fr/images/by-nc-sa.png" alt="Creative Commons logo" /></a>
+            </p>
+        </div>
+    </footer>
+
+    <script src="http://prof.bpesquet.fr/vendor/jquery-1.11.1/jquery.min.js"></script>
+    <script src="http://prof.bpesquet.fr/vendor/bootstrap-3.1.1/js/bootstrap.min.js"></script>
+    <script src="http://prof.bpesquet.fr/vendor/highlight.js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <script>
+        
+        $("img").addClass("img-responsive");
+        
+        
+        $("table").addClass("table");
+        
+        
+        $("#TableOfContents ul").addClass("nav");
+        $("#TableOfContents > ul").addClass("sidenav");
+        $("#TableOfContents").affix();
+
+        
+        
+        window.addEventListener("hashchange", function() { scrollBy(0, -60) });
+    </script>
+</body>
+</html>

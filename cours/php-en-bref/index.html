@@ -1,0 +1,294 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+
+    <link href="http://prof.bpesquet.fr/vendor/bootstrap-3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://prof.bpesquet.fr/vendor/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="http://prof.bpesquet.fr/vendor/highlight.js/styles/monokai.css" rel="stylesheet">
+    <link href="http://prof.bpesquet.fr/styles/style.css" rel="stylesheet">
+
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-39897312-3', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+    <link rel="shortcut icon" href="http://prof.bpesquet.fr/images/bpesquet.ico">
+
+    <title>Le langage PHP en bref</title>
+</head>
+<body data-spy="scroll" data-target="#TableOfContents">
+    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="http://prof.bpesquet.fr/">
+                    <span class="glyphicon glyphicon-home"></span>
+                </a>
+            </div>
+
+            <div class="collapse navbar-collapse nav-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Ressources <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="http://prof.bpesquet.fr/livre/">Livres</a></li>
+                            <li><a href="http://prof.bpesquet.fr/cours/">Cours</a></li>
+                            <li><a href="http://prof.bpesquet.fr/tutoriel/">Tutoriels</a></li>
+                            <li><a href="http://prof.bpesquet.fr/activite/">Activités</a></li>
+                            <li><a href="http://prof.bpesquet.fr/article/">Articles</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="http://prof.bpesquet.fr/avancement/">Avancements</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="mailto:bpesquet@gmail.com" title="Contact"><i class="fa fa-envelope"></i></a></li>
+                    <li><a href="https://twitter.com/bpesquet" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="https://plus.google.com/110003637459679741050?rel=author"><i class="fa fa-google-plus" title="Google+"></i></a></li>
+                    <li><a href="https://github.com/bpesquet" title="GitHub"><i class="fa fa-github"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+
+<div class="row">
+
+    <div class="col-md-9">
+        <h1 class="pageTitle">Le langage PHP en bref</h1>
+        
+
+<h1 id="toc_0">Introduction</h1>
+
+<p>Commençons par une définition de PHP issue de Wikipedia :</p>
+
+<blockquote>
+<p>&ldquo;PHP: Hypertext Preprocessor, plus connu sous son sigle PHP (acronyme récursif), est un langage de scripts libre principalement utilisé pour produire des pages Web dynamiques via un serveur HTTP, mais pouvant également fonctionner comme n&rsquo;importe quel langage interprété de façon locale, en exécutant les programmes en ligne de commande. PHP dispose depuis la version 5 de fonctionnalités objet complètes. En raison de la richesse de sa bibliothèque, on désigne parfois PHP comme une plate-forme plus qu&rsquo;un simple langage.&rdquo;</p>
+</blockquote>
+
+<p>Il y a beaucoup d&rsquo;informations dans ces quelques lignes, les plus importantes sont mises en évidence dans le texte :</p>
+
+<ul>
+<li>PHP est un langage <strong>libre</strong> (et gratuit).</li>
+<li>Il est principalement utilisé sur le Web pour générer des pages <strong>dynamiques</strong>.</li>
+<li>C&rsquo;est un langage <strong>interprété</strong> et non compilé comme Java ou C#.</li>
+<li>Depuis la version 5, il peut être utilisé de manière <strong>orientée objet</strong>.</li>
+<li>Il existe autour de PHP un <strong>écosystème</strong> très riche (bibliothèques, CMS, frameworks, etc).</li>
+</ul>
+
+<h1 id="toc_1">Histoire de PHP</h1>
+
+<p>Le langage PHP fut créé en 1994 par Rasmus Lerdorf pour son site web. C&rsquo;était à l&rsquo;origine une bibliothèque logicielle écrite d&rsquo;abord en langage Perl, pluis en langage C. Il s&rsquo;en servait pour conserver une trace des visiteurs qui venaient consulter son CV. PHP signifiait alors Personal Home Page tools. Le code source de PHP fut publié par son auteur en 1996. En 1997, deux étudiants, Andi Gutmans et Zeev Suraski, redéveloppèrent le cœur de PHP puis son moteur interne, aboutissant à ce qu&rsquo;on appelle le Zend Engine.</p>
+
+<p>Les versions du langage se sont succédées depuis, apportant leur lot d&rsquo;améliorations et corrigeant les (nombreuses) failles de sécurité apparues en chemin. La version 5 de PHP, sortie en 2004, utilise Zend Engine 2 et introduit un véritable modèle objet, une gestion des erreurs fondée sur le modèle des exceptions, ainsi que des fonctionnalités de gestion pour les entreprises.</p>
+
+<p>Contrairement à des langages comme Java et C#, pensés par des armées d&rsquo;ingénieurs chez Sun Microsystems et Microsoft, PHP a émergé du Web à partir d&rsquo;une idée personnelle, puis a évolué au fur et à mesure des besoins. Cela explique le côté un peu confus du langage et certaines mauvaises décisions de design, qui ont eu des conséquences néfastes en termes de sécurité. C&rsquo;est aussi pour cela que l&rsquo;offre logicielle autour de PHP est si riche et adaptée à pratiquement tous les besoins.</p>
+
+<h1 id="toc_2">Fonctionnement de PHP</h1>
+
+<p>Même s&rsquo;il peut être utilisé en ligne de commande, PHP est principalement associé à un serveur Web utilisant le protocole HTTP dans le cadre d&rsquo;une architecture client/serveur.</p>
+
+<p><img src="http://prof.bpesquet.fr/images/content/php_fonctionnement.png" class="content centered" alt="php_fonctionnement.png" /></p>
+
+<ol>
+<li>Le client, le plus souvent un navigateur Web, fait la demande au serveur d&rsquo;une page PHP au travers du protocole HTTP.</li>
+<li>Le serveur HTTP envoie la page PHP à son interpréteur.</li>
+<li>L&rsquo;interprétation de la page PHP produit une page HTML de résultat fournie au serveur.</li>
+<li>Le serveur Web renvoie cette page au client pour affichage.</li>
+</ol>
+
+<div class="alert alert-danger">
+    <strong>Danger !</strong>
+    <p><p>Attention à ne pas ouvrir directement une page PHP dans un navigateur (URL de type <code>file://</code>) au lieu d&rsquo;en faire la demande à un serveur Web (URL de type <code>http://</code>).</p>
+</p>
+</div>
+
+<p>Souvent, le code de la page PHP utilise les données stockées dans une base de données afin de générer le résultat HTML. On se trouve alors en présence d&rsquo;une architecture <strong>trois-tiers</strong> (navigateur Web, serveur Web/interpréteur PHP, SGBD). Les tiers serveur Web et SGBD peuvent être hébergés sur des machines distinctes ou regroupés sur une machine unique. Dans ce cas d&rsquo;une machine unique sous Linux avec Apache comme serveur Web et MySQL comme SGBD, on obtient ce qu&rsquo;on appelle un serveur <strong>LAMP</strong>.</p>
+
+<h1 id="toc_3">Principales caractéristiques de PHP</h1>
+
+<p>La page PHP ci-dessous offre un aperçu des principales caractéristiques du langage.</p>
+
+<pre><code>&lt;!doctype html&gt;
+&lt;html lang=&quot;fr&quot;&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;utf-8&quot; /&gt;
+        &lt;title&gt;Ma page de démonstration PHP&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;?php
+        $prenom = &quot;Bill&quot;;
+        $classe = 'BTS SIO';
+        $langages = array('C#', 'Java', 'ASP.NET', 'PHP');
+        $nbLangages = count($langages);
+        $qualite = &quot;débutant&quot;;
+        if ($nbLangages == 4) {
+            $qualite = &quot;débrouillé&quot;;
+        }
+        elseif ($nbLangages &gt; 4) {
+            $qualite = &quot;aguerri&quot;;
+        }
+        ?&gt;
+        &lt;h1&gt;Ma présentation&lt;/h1&gt;
+        &lt;p&gt;Bonjour, je m'appelle &lt;?php echo &quot;$prenom&quot; ?&gt; et je suis en &lt;?php echo &quot;$classe&quot; ?&gt;.&lt;/p&gt;
+        &lt;?php
+        echo 'Je suis un programmeur ' . $qualite . '. ';
+        echo 'Je connais ' . $nbLangages . ' langages de programmation :&lt;/p&gt;';
+        ?&gt;
+        &lt;ul&gt;
+            &lt;?php
+            foreach ($langages as $langage) {
+                echo &quot;&lt;li&gt;$langage&lt;/li&gt;&quot;;
+            }
+            ?&gt;
+        &lt;/ul&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>On peut faire les observations suivantes :</p>
+
+<ul>
+<li>On définit une portion de code PHP gràce aux balises <code>&lt;?php</code> et <code>?&gt;</code>.</li>
+<li>Les variables sont préfixées par le symbole <code>$</code> et leur typage est dynamique, contrairement à des langages comme C# ou Java où le typage est statique.</li>
+<li>On peut construire un résultat HTML en mélangeant balises HTML et code PHP, ou bien en utilisant l&rsquo;instruction PHP <code>echo</code> pour générer les balises HTML.</li>
+</ul>
+
+<h1 id="toc_4">Compléments sur PHP</h1>
+
+<h2 id="toc_5">Affichage abrégé</h2>
+
+<p>Dans une page PHP, il est possible de remplacer <code>&lt;?php echo ... ?&gt;</code> par <code>&lt;?= ... ?&gt;</code> pour un résultat identique. Cette alternative à <code>echo</code> permet d&rsquo;alléger le code de la page PHP. Elle est surtout utile dans les pages qui mélangent PHP et HTML. Voici un extrait de la page précédente, réécrit en utilisant cette syntaxe.</p>
+
+<pre><code>&lt;?php
+$prenom = &quot;Bill&quot;;
+$classe = 'BTS SIO';
+?&gt;
+&lt;h1&gt;Ma présentation&lt;/h1&gt;
+&lt;p&gt;Bonjour, je m'appelle &lt;?= $prenom ?&gt; et je suis en &lt;?= $classe ?&gt;.&lt;/p&gt;
+</code></pre>
+
+<div class="alert">
+    <strong>Remarque</strong>
+    <p><p>Depuis PHP 5.4, cette syntaxe est toujours disponible. Avec les versions précédentes, elle nécessite l&rsquo;activation de la directive <code>short_open_tag</code> dans le fichier de configuration de PHP.</p>
+</p>
+</div>
+
+<h2 id="toc_6">Syntaxe alternative pour les structures de contrôle</h2>
+
+<p>PHP propose une autre manière de rassembler des instructions à l&rsquo;intérieur d&rsquo;un bloc, pour les structures de contrôle <code>if</code>, <code>while</code>, <code>for</code>, <code>foreach</code> et <code>switch</code>. Dans chaque cas, le principe est de remplacer l&rsquo;accolade d&rsquo;ouverture par deux points (<code>:</code>) et l&rsquo;accolade de fermeture par, respectivement, <code>endif;</code>, <code>endwhile;</code>, <code>endfor;</code>, <code>endforeach;</code> ou <code>endswitch;</code>.</p>
+
+<p>Voici le même exemple écrit avec la syntaxe classique puis la syntaxe alternative.</p>
+
+<pre><code>&lt;?php if (!isset($user)) { ?&gt;
+    &lt;p&gt;Veuillez vous connecter&lt;/p&gt;
+&lt;?php }
+else { ?&gt;
+    &lt;h2&gt;Bienvenue &lt;?= $user ?&gt;&lt;/h2&gt;
+    &lt;span&gt;Vous avez &lt;?= count($messages) ?&gt; messages en attente&lt;/span&gt;
+    &lt;?php foreach ($messages as $message) { ?&gt;
+        &lt;p&gt;&lt;?= $message ?&gt;&lt;/p&gt;
+    &lt;?php } ?&gt;
+&lt;?php } ?&gt;
+</code></pre>
+
+<p></p>
+
+<pre><code>&lt;?php if (!isset($user)): ?&gt;
+    &lt;p&gt;Veuillez vous connecter&lt;/p&gt;
+&lt;?php else: ?&gt;
+    &lt;h2&gt;Bienvenue &lt;?= $user ?&gt;&lt;/h2&gt;
+    &lt;span&gt;Vous avez &lt;?= count($messages) ?&gt; messages en attente&lt;/span&gt;
+    &lt;?php foreach ($messages as $message): ?&gt;
+        &lt;p&gt;&lt;?= $message ?&gt;&lt;/p&gt;
+    &lt;?php endforeach; ?&gt;
+&lt;?php endif; ?&gt;
+</code></pre>
+
+<p>Plus le code HTML devient long, plus il devient difficile de savoir quel bloc PHP est fermé par la ligne <code>&lt;?php } ?&gt;</code>. La syntaxe alternative permet d&rsquo;utiliser des structures de contrôles avec la même sémantique (et aussi la même indentation) que le code HTML. Tout comme l&rsquo;affichage abrégé, elle est surtout utile dans les pages qui mélangent HTML et PHP.</p>
+
+        <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'bpesquet';
+    var disqus_identifier = 'http:\/\/prof.bpesquet.fr\/cours\/php-en-bref';
+    var disqus_title = 'Le langage PHP en bref';
+    var disqus_url = 'http:\/\/prof.bpesquet.fr\/cours\/php-en-bref';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+    <div class="col-md-3">
+        <nav id="TableOfContents">
+<ul>
+<li><a href="#toc_0">Introduction</a></li>
+<li><a href="#toc_1">Histoire de PHP</a></li>
+<li><a href="#toc_2">Fonctionnement de PHP</a></li>
+<li><a href="#toc_3">Principales caractéristiques de PHP</a></li>
+<li><a href="#toc_4">Compléments sur PHP</a>
+<ul>
+<li><a href="#toc_5">Affichage abrégé</a></li>
+<li><a href="#toc_6">Syntaxe alternative pour les structures de contrôle</a></li>
+</ul></li>
+</ul>
+</nav>
+    </div>
+
+</div>
+
+    </div> 
+
+    <footer class="footer">
+        <div class="container">
+            <p class="pull-right">
+                Créé avec <a href="http://hugo.spf13.com">Hugo</a> et <a href="http://getbootstrap.com">Bootstrap</a>.
+            </p>
+            <p>
+                <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/fr/"><img src="http://prof.bpesquet.fr/images/by-nc-sa.png" alt="Creative Commons logo" /></a>
+            </p>
+        </div>
+    </footer>
+
+    <script src="http://prof.bpesquet.fr/vendor/jquery-1.11.1/jquery.min.js"></script>
+    <script src="http://prof.bpesquet.fr/vendor/bootstrap-3.1.1/js/bootstrap.min.js"></script>
+    <script src="http://prof.bpesquet.fr/vendor/highlight.js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <script>
+        
+        $("img").addClass("img-responsive");
+        
+        
+        $("table").addClass("table");
+        
+        
+        $("#TableOfContents ul").addClass("nav");
+        $("#TableOfContents > ul").addClass("sidenav");
+        $("#TableOfContents").affix();
+
+        
+        
+        window.addEventListener("hashchange", function() { scrollBy(0, -60) });
+    </script>
+</body>
+</html>

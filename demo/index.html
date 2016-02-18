@@ -1,0 +1,345 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+
+    <link href="http://prof.bpesquet.fr/vendor/bootstrap-3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://prof.bpesquet.fr/vendor/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="http://prof.bpesquet.fr/vendor/highlight.js/styles/monokai.css" rel="stylesheet">
+    <link href="http://prof.bpesquet.fr/styles/style.css" rel="stylesheet">
+
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-39897312-3', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+    <link rel="shortcut icon" href="http://prof.bpesquet.fr/images/bpesquet.ico">
+
+    <title>Démonstration des possibilités d&#39;affichage</title>
+</head>
+<body data-spy="scroll" data-target="#TableOfContents">
+    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="http://prof.bpesquet.fr/">
+                    <span class="glyphicon glyphicon-home"></span>
+                </a>
+            </div>
+
+            <div class="collapse navbar-collapse nav-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Ressources <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="http://prof.bpesquet.fr/livre/">Livres</a></li>
+                            <li><a href="http://prof.bpesquet.fr/cours/">Cours</a></li>
+                            <li><a href="http://prof.bpesquet.fr/tutoriel/">Tutoriels</a></li>
+                            <li><a href="http://prof.bpesquet.fr/activite/">Activités</a></li>
+                            <li><a href="http://prof.bpesquet.fr/article/">Articles</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="http://prof.bpesquet.fr/avancement/">Avancements</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="mailto:bpesquet@gmail.com" title="Contact"><i class="fa fa-envelope"></i></a></li>
+                    <li><a href="https://twitter.com/bpesquet" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="https://plus.google.com/110003637459679741050?rel=author"><i class="fa fa-google-plus" title="Google+"></i></a></li>
+                    <li><a href="https://github.com/bpesquet" title="GitHub"><i class="fa fa-github"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+
+<div class="row">
+
+    <div class="col-md-9">
+        <h1 class="pageTitle">Démonstration des possibilités d&#39;affichage</h1>
+        
+
+<p>Cette page illustre les différentes possibilités d&rsquo;affichage du site.</p>
+
+<h1 id="toc_0">Texte et listes</h1>
+
+<p>Voici un texte <em>en italiques</em>, un autre <strong>en gras</strong> et un dernier <code>sous forme de code</code>.</p>
+
+<h2 id="toc_1">Liste non ordonnée</h2>
+
+<p>Voici une liste non ordonnée :</p>
+
+<ul>
+<li>Elément 1</li>
+<li>Elément 2</li>
+<li>Elément 3
+
+<ul>
+<li>Sous-élément 1</li>
+<li>Sous-élément 2</li>
+</ul></li>
+<li>&hellip;</li>
+</ul>
+
+<h2 id="toc_2">Liste ordonnée</h2>
+
+<p>Et voici une liste ordonnée :</p>
+
+<ol>
+<li>Elément 1</li>
+<li>Elément 2</li>
+<li>Etc</li>
+</ol>
+
+<h1 id="toc_3">Code source</h1>
+
+<p>Les extraits de code source sont mis en valeur selon le langage.</p>
+
+<p>Du PHP :</p>
+
+<pre><code>&lt;?php
+echo(&quot;Bonjour le monde.&quot;);
+?&gt;
+</code></pre>
+
+<p>Du C# :</p>
+
+<pre><code>class Program {
+    static void Main(string[] args) {
+        Console.WriteLine(&quot;Bonjour le monde.&quot;);
+    }
+}
+</code></pre>
+
+<p>Du Java :</p>
+
+<pre><code>public class Program {
+    public static void main(String[] args) {
+        System.out.println(&quot;Bonjour le monde.&quot;);
+    }
+}
+</code></pre>
+
+<h1 id="toc_4">Liens vers des ressources</h1>
+
+<h2 id="toc_5">Lien interne au document (ancre)</h2>
+
+<p>Attention, <a href="#toc_15">danger</a> !</p>
+
+<h2 id="toc_6">Lien vers un autre document</h2>
+
+<p><a href="http://prof.bpesquet.fr/site/">Cette page</a> présente ce site Web.</p>
+
+<h2 id="toc_7">Lien externe</h2>
+
+<p>Allons faire un tour sur <a href="http://fr.wikipedia.org/">Wikipedia</a>.</p>
+
+<h3 id="toc_8">Lien explicite</h3>
+
+<p>On peut aussi utiliser un lien explicite : <a href="http://fr.wikipedia.org">http://fr.wikipedia.org</a>.</p>
+
+<h2 id="toc_9">Images</h2>
+
+<p>Une image est insérée ci-dessous. Par défaut, les images sont centrées et possèdent une bordure 3D.</p>
+
+<p><img src="http://prof.bpesquet.fr/images/content/lemoncat.jpg" class="content centered bordered" alt="lemoncat.jpg" /></p>
+
+<p>On peut également insérer une image en choisissant ses attributs (bordure, centrage, etc).</p>
+
+<p><img src="http://prof.bpesquet.fr/images/content/lemoncat.jpg" class="content centered" alt="lemoncat.jpg" /></p>
+
+<p>L&rsquo;image ci-dessous ne possède aucun attribut.</p>
+
+<p><img src="http://prof.bpesquet.fr/images/content/lemoncat.jpg" class="content " alt="lemoncat.jpg" /></p>
+
+<h1 id="toc_10">Paragraphes spéciaux</h1>
+
+<h2 id="toc_11">Citation</h2>
+
+<blockquote>
+<p>C&rsquo;est au pied du mur qu&rsquo;on voit le mieux le mur.</p>
+</blockquote>
+
+<h2 id="toc_12">Définition</h2>
+
+<div class="alert alert-info">
+    <strong>Définition</strong>
+    <p><p>La <strong>procrastination</strong> est la tendance à remettre systématiquement au lendemain des actions.</p>
+</p>
+</div>
+
+<h2 id="toc_13">Remarque</h2>
+
+<div class="alert">
+    <strong>Remarque</strong>
+    <p><p>Rien de spécial.</p>
+</p>
+</div>
+
+<h2 id="toc_14">Conseil</h2>
+
+<div class="alert alert-success">
+    <strong>Conseil</strong>
+    <p><p>Faisez gaffe aux pigeons.</p>
+</p>
+</div>
+
+<h2 id="toc_15">Avertissement</h2>
+
+<div class="alert alert-warning">
+    <strong>Avertissement</strong>
+    <p><p>A long terme, nous serons tous morts.</p>
+</p>
+</div>
+
+<h2 id="toc_16">Danger</h2>
+
+<div class="alert alert-danger">
+    <strong>Danger !</strong>
+    <p><p>Ne jamais croiser les effluves !</p>
+</p>
+</div>
+
+<h1 id="toc_17">Tableaux</h1>
+
+<p>Les tableaux au format Markdown sont gérés.</p>
+
+<table>
+<thead>
+<tr>
+<th>Nom</th>
+<th>Age</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><strong>Julie</strong></td>
+<td>29</td>
+</tr>
+
+<tr>
+<td>Lionel</td>
+<td>47</td>
+</tr>
+
+<tr>
+<td>Martin</td>
+<td>32</td>
+</tr>
+</tbody>
+</table>
+
+<h1 id="toc_18">Questions/réponses</h1>
+
+<p>Il est possible d&rsquo;ajouter une question comme ci-dessous.</p>
+
+<p><button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#demo">
+    Quelle est la couleur du cheval blanc d&#39;Henri IV ?
+</button></p>
+
+<div id="demo" class="collapse out"><p>Il est blanc comme vous l&rsquo;aurez deviné.</p>
+</div>
+
+        <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'bpesquet';
+    var disqus_identifier = 'http:\/\/prof.bpesquet.fr\/demo';
+    var disqus_title = 'Démonstration des possibilités d\x27affichage';
+    var disqus_url = 'http:\/\/prof.bpesquet.fr\/demo';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+    <div class="col-md-3">
+        <nav id="TableOfContents">
+<ul>
+<li><a href="#toc_0">Texte et listes</a>
+<ul>
+<li><a href="#toc_1">Liste non ordonnée</a></li>
+<li><a href="#toc_2">Liste ordonnée</a></li>
+</ul></li>
+<li><a href="#toc_3">Code source</a></li>
+<li><a href="#toc_4">Liens vers des ressources</a>
+<ul>
+<li><a href="#toc_5">Lien interne au document (ancre)</a></li>
+<li><a href="#toc_6">Lien vers un autre document</a></li>
+<li><a href="#toc_7">Lien externe</a>
+<ul>
+<li><a href="#toc_8">Lien explicite</a></li>
+</ul></li>
+<li><a href="#toc_9">Images</a></li>
+</ul></li>
+<li><a href="#toc_10">Paragraphes spéciaux</a>
+<ul>
+<li><a href="#toc_11">Citation</a></li>
+<li><a href="#toc_12">Définition</a></li>
+<li><a href="#toc_13">Remarque</a></li>
+<li><a href="#toc_14">Conseil</a></li>
+<li><a href="#toc_15">Avertissement</a></li>
+<li><a href="#toc_16">Danger</a></li>
+</ul></li>
+<li><a href="#toc_17">Tableaux</a></li>
+<li><a href="#toc_18">Questions/réponses</a></li>
+</ul>
+</nav>
+    </div>
+
+</div>
+
+    </div> 
+
+    <footer class="footer">
+        <div class="container">
+            <p class="pull-right">
+                Créé avec <a href="http://hugo.spf13.com">Hugo</a> et <a href="http://getbootstrap.com">Bootstrap</a>.
+            </p>
+            <p>
+                <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/fr/"><img src="http://prof.bpesquet.fr/images/by-nc-sa.png" alt="Creative Commons logo" /></a>
+            </p>
+        </div>
+    </footer>
+
+    <script src="http://prof.bpesquet.fr/vendor/jquery-1.11.1/jquery.min.js"></script>
+    <script src="http://prof.bpesquet.fr/vendor/bootstrap-3.1.1/js/bootstrap.min.js"></script>
+    <script src="http://prof.bpesquet.fr/vendor/highlight.js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <script>
+        
+        $("img").addClass("img-responsive");
+        
+        
+        $("table").addClass("table");
+        
+        
+        $("#TableOfContents ul").addClass("nav");
+        $("#TableOfContents > ul").addClass("sidenav");
+        $("#TableOfContents").affix();
+
+        
+        
+        window.addEventListener("hashchange", function() { scrollBy(0, -60) });
+    </script>
+</body>
+</html>

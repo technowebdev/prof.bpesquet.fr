@@ -1,0 +1,839 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>Activites on  </title>
+      <generator uri="https://hugo.spf13.com">Hugo</generator>
+    <link>http://prof.bpesquet.fr/activite/index.xml/</link>
+    
+    
+    
+    <updated>Tue, 01 Jan 2008 00:00:00 UTC</updated>
+    
+    <item>
+      <title>Accès aux données avec PHP</title>
+      <link>http://prof.bpesquet.fr/activite/acces-donnees-php</link>
+      <pubDate>Tue, 01 Jan 2008 00:00:00 UTC</pubDate>
+      
+      <guid>http://prof.bpesquet.fr/activite/acces-donnees-php</guid>
+      <description>
+
+&lt;h1 id=&#34;toc_0&#34;&gt;Contexte&lt;/h1&gt;
+
+&lt;p&gt;On vous fournit le script SQL suivant qui définit une liste de news.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;drop table if exists T_NEWS;
+drop table if exists T_CATEGORIE;
+
+create table T_CATEGORIE (
+    CAT_ID integer primary key auto_increment,
+    CAT_NOM varchar(100) not null
+) ENGINE=INNODB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+
+create table T_NEWS (
+    NEWS_ID integer primary key auto_increment,
+    NEWS_TITRE varchar(100) not null,
+    NEWS_CONTENU varchar(500) not null,
+    CAT_ID integer not null,
+    constraint fk_news_cat foreign key(CAT_ID) references T_CATEGORIE(CAT_ID)
+) ENGINE=INNODB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+
+insert into T_CATEGORIE(CAT_NOM) values (&#39;Développement&#39;);
+insert into T_CATEGORIE(CAT_NOM) values (&#39;Système&#39;);
+insert into T_CATEGORIE(CAT_NOM) values (&#39;Internet&#39;);
+
+insert into T_NEWS(NEWS_TITRE, NEWS_CONTENU, CAT_ID) values
+(&#39;Le meilleur langage pour le développement cross-platform est-il le C++ ?&#39;,
+    &#39;Lorsqu\’il s\’agit de développement mobile, les langages mis en avant pour la création d\’applications multiplateformes sont couramment HTML et JavaScript.
+Pour le développement natif, en fonction des écosystèmes, les développeurs s\’orientent le plus souvent vers objective-c ou Java.
+Pourtant, ceux qui cherchent à créer des applications cross-platform tout en bénéficiant d\’une approche efficace pour la réduction des coûts peuvent trouver leur bonheur au sein du C++.&#39;, 1);
+insert into T_NEWS(NEWS_TITRE, NEWS_CONTENU, CAT_ID) values
+(&#39;Bousculé par Google et Apple, Windows n\&#39;anime plus qu\&#39;un terminal sur cinq&#39;,
+    &#39;Si Windows  peut se vanter d\&#39;être le système d\&#39;exploitation le plus présent sur les PC, il n\&#39;en n\&#39;est plus de même lorsque les calculs comparent l\&#39;ensemble des terminaux. Microsoft n\&#39;arrive alors qu\&#39;en troisième position après Google et Apple.&#39;, 2);
+insert into T_NEWS(NEWS_TITRE, NEWS_CONTENU, CAT_ID) values
+(&#39;Linux 3.7 sort en version stable&#39;, 
+&#39;Près de deux mois après la sortie du noyau Linux 3.6, Linus Torvalds annonce la publication de la version stable de Linux 3.7, avec un nombre important de nouvelles fonctionnalités : support de multiples plateformes ARM, améliorations de Btrfs, Ext4, TCP Fast Open et IPv6&#39;, 2);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;toc_1&#34;&gt;Travail à réaliser&lt;/h1&gt;
+
+&lt;h2 id=&#34;toc_2&#34;&gt;Partie 1&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Créez sous MySQL une base de données &lt;code&gt;mesnews&lt;/code&gt; puis implantez-y le schéma relationnel et les données d&amp;rsquo;exemple.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Créez l&amp;rsquo;utilisateur MySQL &lt;code&gt;mesnews_user&lt;/code&gt; avec le mot de passe &lt;code&gt;secret&lt;/code&gt; et tous les droits sur la base &lt;code&gt;mesnews&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Dans un dossier &lt;code&gt;MesNews&lt;/code&gt; à créer sur votre serveur Web, écrivez la page PHP &lt;code&gt;index.php&lt;/code&gt; qui récupère et affiche la liste des news issue de la base de données. Voici les contraintes techniques associées :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;La technologie de connexion à la BD doit être PDO.&lt;/li&gt;
+&lt;li&gt;L&amp;rsquo;utilisateur MySQL employé pour se connecter à la BD depuis &lt;code&gt;index.php&lt;/code&gt; doit être &lt;code&gt;mesnews_user&lt;/code&gt; et non pas &lt;code&gt;root&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Les balises HTML5 &lt;code&gt;&amp;lt;header&amp;gt;&lt;/code&gt;, &lt;code&gt;&amp;lt;article&amp;gt;&lt;/code&gt; et &lt;code&gt;&amp;lt;footer&amp;gt;&lt;/code&gt; doivent être utilisées.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Créez la feuille de style &lt;code&gt;mesnews.css&lt;/code&gt; afin de parvenir au résultat ci-dessous.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/content/mesnews.png&#34; class=&#34;content centered&#34; alt=&#34;mesnews.png&#34; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;toc_3&#34;&gt;Partie 2&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Ajoutez dans la page &lt;code&gt;index.php&lt;/code&gt; (entre le titre et les articles) un lien vers &lt;code&gt;ajout.php&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Dans votre dossier &lt;code&gt;MesNews&lt;/code&gt;, écrivez la page PHP &lt;code&gt;ajout.php&lt;/code&gt; qui affiche un formulaire permettant à l&amp;rsquo;utilisateur de saisir les propriétés d&amp;rsquo;une news. Voici les contraintes techniques associées :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Le formulaire renvoie vers la page &lt;code&gt;ajout_post.php&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Sa mise en forme est secondaire.&lt;/li&gt;
+&lt;li&gt;Les champs &lt;strong&gt;Titre&lt;/strong&gt; et &lt;strong&gt;Contenu&lt;/strong&gt; sont obligatoires.&lt;/li&gt;
+&lt;li&gt;La liste des catégories provient de la base de données.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/content/mesnews_ajout.png&#34; class=&#34;content centered&#34; alt=&#34;mesnews_ajout.png&#34; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Dans votre dossier &lt;code&gt;MesNews&lt;/code&gt;, écrivez la page PHP &lt;code&gt;ajout_post.php&lt;/code&gt; qui utilise les données reçues du formulaire afin d&amp;rsquo;ajouter une news dans la base de données. Elle affiche un message en fin d&amp;rsquo;opération, ainsi qu&amp;rsquo;un lien vers la page &lt;code&gt;index.php&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/content/mesnews_ajoutok.png&#34; class=&#34;content centered&#34; alt=&#34;mesnews_ajoutok.png&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Accès aux données avec PHP et Silex</title>
+      <link>http://prof.bpesquet.fr/activite/acces-donnees-php-silex</link>
+      <pubDate>Tue, 01 Jan 2008 00:00:00 UTC</pubDate>
+      
+      <guid>http://prof.bpesquet.fr/activite/acces-donnees-php-silex</guid>
+      <description>
+
+&lt;h1 id=&#34;toc_0&#34;&gt;Contexte&lt;/h1&gt;
+
+&lt;p&gt;Le contexte est identique à celui de l&amp;rsquo;activité &lt;a href=&#34;/activite/acces-donnees-php/&#34;&gt;Accès aux données avec PHP&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h1 id=&#34;toc_1&#34;&gt;Travail à réaliser&lt;/h1&gt;
+
+&lt;p&gt;Dans un dossier &lt;code&gt;MesNews-silex&lt;/code&gt; à créer sur votre serveur Web, écrivez l&amp;rsquo;application Web qui récupère et affiche la liste des news issue de la base de données en utilisant le framework Silex.&lt;/p&gt;
+
+&lt;p&gt;Vous devez parvenir au résultat ci-dessous.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/content/mesnews.png&#34; class=&#34;content centered&#34; alt=&#34;mesnews.png&#34; /&gt;&lt;/p&gt; 
+</description>
+    </item>
+    
+    <item>
+      <title>Composants matériels de l&#39;ordinateur</title>
+      <link>http://prof.bpesquet.fr/activite/composants-materiels-ordinateur</link>
+      <pubDate>Tue, 01 Jan 2008 00:00:00 UTC</pubDate>
+      
+      <guid>http://prof.bpesquet.fr/activite/composants-materiels-ordinateur</guid>
+      <description>
+
+&lt;p&gt;Créez un document bureautique nommé &lt;code&gt;VotreNom_SI1_ComposantsOrdi.xxx&lt;/code&gt; (&lt;code&gt;xxx&lt;/code&gt; est à remplacer par l&amp;rsquo;extension du logiciel utilisé, par exemple &lt;code&gt;docx&lt;/code&gt; ou &lt;code&gt;odt&lt;/code&gt;). Dans ce document, répondez aux questions ci-dessous.&lt;/p&gt;
+
+&lt;h1 id=&#34;toc_0&#34;&gt;Question 1&lt;/h1&gt;
+
+&lt;p&gt;Après avoir regardé &lt;a href=&#34;https://www.youtube.com/watch?v=yf8G90v2Rz4&#34;&gt;cette vidéo&lt;/a&gt;, trouvez les éléments ci-dessous pour la carte mère présentée :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Format&lt;/li&gt;
+&lt;li&gt;Chipset&lt;/li&gt;
+&lt;li&gt;Socket processeur&lt;/li&gt;
+&lt;li&gt;Nombre de ports SATA&lt;/li&gt;
+&lt;li&gt;Nombre de ports USB 3.0 à l&amp;rsquo;arrière&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;toc_1&#34;&gt;Question 2&lt;/h1&gt;
+
+&lt;p&gt;Trouvez et insérez dans votre document une image pour chacun des types d&amp;rsquo;ordinateurs suivants :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;PC de bureau&lt;/li&gt;
+&lt;li&gt;Ordinateur portable&lt;/li&gt;
+&lt;li&gt;Station de travail&lt;/li&gt;
+&lt;li&gt;Serveur&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;toc_2&#34;&gt;Question 3&lt;/h1&gt;
+
+&lt;p&gt;En quelles années sont sortis le premier IBM PC et le premier Macintosh Apple ?&lt;/p&gt;
+
+&lt;h1 id=&#34;toc_3&#34;&gt;Question 4&lt;/h1&gt;
+
+&lt;p&gt;On vous fournit la photo de la carte mère ci-dessous.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/content/carte_mere_mystere.jpg&#34; class=&#34;content centered bordered&#34; alt=&#34;carte_mere_mystere.jpg&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Insérez cette image dans votre document, puis identifiez (avec des flèches ou des numéros) les éléments ci-dessous :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Socket processeur&lt;/li&gt;
+&lt;li&gt;Supports mémoire (RAM)&lt;/li&gt;
+&lt;li&gt;Connecteur PCI Express&lt;/li&gt;
+&lt;li&gt;Connecteur PCI&lt;/li&gt;
+&lt;li&gt;Ports SATA&lt;/li&gt;
+&lt;li&gt;Connecteur VGA&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;toc_4&#34;&gt;Question 5&lt;/h1&gt;
+
+&lt;p&gt;Cette &lt;a href=&#34;http://www.ldlc.com/fiche/PB00166673.html&#34;&gt;carte mère&lt;/a&gt; peut-elle accueillir ce &lt;a href=&#34;http://www.ldlc.com/fiche/PB00148536.html&#34;&gt;processeur&lt;/a&gt; ? Justifiez votre réponse.&lt;/p&gt;
+
+&lt;p&gt;Même question avec cette &lt;a href=&#34;http://www.ldlc.com/fiche/PB00153454.html&#34;&gt;carte mère&lt;/a&gt; et ce &lt;a href=&#34;http://www.ldlc.com/fiche/PB00137881.html&#34;&gt;processeur&lt;/a&gt;. La réponse doit également être justifiée.&lt;/p&gt;
+
+&lt;h1 id=&#34;toc_5&#34;&gt;Question 6&lt;/h1&gt;
+
+&lt;p&gt;Réalisez un tableau dans lequel vous indiquerez les débits théoriques des standards suivants : PCI 2.0, PCI Express, PCI Express x16, PATA, SATA, SATA 2, SATA 3, eSATA, USB 1.1, USB 2.0, USB 3.0, câble réseau cat. 5, 6, 7, Wifi 802.11g, 802.11n, 802.11ac. Votre tableau aura la forme ci-dessous.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Standard&lt;/th&gt;
+&lt;th&gt;Débit théorique&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;PCI 2.0&lt;/td&gt;
+&lt;td&gt;&amp;hellip;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;PCI Express&lt;/td&gt;
+&lt;td&gt;&amp;hellip;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&amp;hellip;&lt;/td&gt;
+&lt;td&gt;&amp;hellip;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h1 id=&#34;toc_6&#34;&gt;Question 7&lt;/h1&gt;
+
+&lt;p&gt;Réalisez un tableau dans lequel vous rassemblerez des informations sur les processeurs suivants : Intel 8088, 80486, Pentium, Pentium 4, Core 2 Duo Penryn, Core i5 Sandy Bridge, Core i7 Haswell, Core M Broadwell, AMD Athlon, Athlon II. Votre tableau aura la forme ci-dessous.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Processeur&lt;/th&gt;
+&lt;th&gt;Année d&amp;rsquo;apparition&lt;/th&gt;
+&lt;th&gt;Nombre de coeurs&lt;/th&gt;
+&lt;th&gt;Fréquence&lt;/th&gt;
+&lt;th&gt;Mémoire cache&lt;/th&gt;
+&lt;th&gt;Finesse de gravure&lt;/th&gt;
+&lt;th&gt;Enveloppe thermique (TDP)&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;8088&lt;/td&gt;
+&lt;td&gt;&amp;hellip;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;80486&lt;/td&gt;
+&lt;td&gt;&amp;hellip;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&amp;hellip;&lt;/td&gt;
+&lt;td&gt;&amp;hellip;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h1 id=&#34;toc_7&#34;&gt;Question 8&lt;/h1&gt;
+
+&lt;p&gt;Votre cousin souhaite renouveler son ordinateur de bureau et se demande quel processeur choisir. Il utilise son PC
+pour naviguer sur Internet, regarder des films et jouer à des jeux peu gourmands. Son budget est limité.&lt;/p&gt;
+
+&lt;p&gt;Quel modèle de processeur lui conseillez-vous ? Justifier votre choix.&lt;/p&gt;
+
+&lt;h1 id=&#34;toc_8&#34;&gt;Question 9&lt;/h1&gt;
+
+&lt;p&gt;Réalisez un tableau dans lequel vous indiquerez les quantités minimales et recommandées de RAM pour les systèmes d&amp;rsquo;exploitation suivants : Windows 95, Windows 2000, Windows XP, Windows 7, Windows 8, Mac OS X 10.0 &amp;ldquo;Cheetah&amp;rdquo;, Mac OS X 10.9 &amp;ldquo;Mavericks&amp;rdquo;, Linux Ubuntu Desktop 14. Votre tableau aura la forme ci-dessous.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Système d&amp;rsquo;exploitation&lt;/th&gt;
+&lt;th&gt;Année de sortie&lt;/th&gt;
+&lt;th&gt;RAM minimale&lt;/th&gt;
+&lt;th&gt;RAM recommandée&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Windows 95&lt;/td&gt;
+&lt;td&gt;&amp;hellip;&lt;/td&gt;
+&lt;td&gt;&amp;hellip;&lt;/td&gt;
+&lt;td&gt;&amp;hellip;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Windows 2000&lt;/td&gt;
+&lt;td&gt;&amp;hellip;&lt;/td&gt;
+&lt;td&gt;&amp;hellip;&lt;/td&gt;
+&lt;td&gt;&amp;hellip;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&amp;hellip;&lt;/td&gt;
+&lt;td&gt;&amp;hellip;&lt;/td&gt;
+&lt;td&gt;&amp;hellip;&lt;/td&gt;
+&lt;td&gt;&amp;hellip;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h1 id=&#34;toc_9&#34;&gt;Question 10&lt;/h1&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/content/memoire-ecc.png&#34; class=&#34;content centered&#34; alt=&#34;memoire-ecc.png&#34; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;toc_10&#34;&gt;Question 11&lt;/h1&gt;
+
+&lt;p&gt;Un développeur Web auto-entrepeneur souhaite acheter son nouvel ordinateur de bureau. Sa machine doit être compacte et lui permettre d&amp;rsquo;exploiter au maximum ses logiciels de développement, gourmands en temps de calcul et en RAM. Son budget est de 1000 euros écran compris. Il souhaite faire monter son PC plutôt que d&amp;rsquo;acheter un modèle de marque.&lt;/p&gt;
+
+&lt;p&gt;Etablissez la liste de tous les composants nécessaires au montage de son nouveau PC, en respectant son budhet et ses exigences. Vous justifierez le choix de chaque composant.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>GSB-Report : mission 1</title>
+      <link>http://prof.bpesquet.fr/activite/gsb-report-mission1</link>
+      <pubDate>Tue, 01 Jan 2008 00:00:00 UTC</pubDate>
+      
+      <guid>http://prof.bpesquet.fr/activite/gsb-report-mission1</guid>
+      <description>
+
+&lt;h1 id=&#34;toc_0&#34;&gt;Objectifs&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Comprendre le fonctionnement de la version initiale de GSB-Report.&lt;/li&gt;
+&lt;li&gt;Ajouter à l&amp;rsquo;application les fonctionnalités de gestion des praticiens.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;toc_1&#34;&gt;Expression des besoins&lt;/h1&gt;
+
+&lt;p&gt;Les nouveaux besoins associés à la gestion des praticiens sont les suivants :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Consultation de la liste des praticiens. Les informations à afficher sont (dans cet ordre) : nom, prénom, ville et type de praticien.&lt;/li&gt;
+&lt;li&gt;Affichage des détails sur un praticien. A l&amp;rsquo;exception de son identifiant, toutes les informations sur le praticien sont à afficher, ainsi que son type.&lt;/li&gt;
+&lt;li&gt;Recherche de praticiens à partir de leur type.&lt;/li&gt;
+&lt;li&gt;(BONUS) Recherche avancée de praticiens à partir de leurs nom et ville.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;On attend un travail soigné jusque dans les détails : commentaires dans le code, orthographe correcte partout dans l&amp;rsquo;application, et surtout respect strict des choix effectués et du mode de fonctionnement existant.&lt;/p&gt;
+
+&lt;div class=&#34;alert alert-danger&#34;&gt;
+    &lt;strong&gt;Important !&lt;/strong&gt;
+    &lt;p&gt;&lt;p&gt;La version de l&amp;rsquo;application produite à la fin de cette mission doit donner l&amp;rsquo;impression d&amp;rsquo;avoir été réalisée par les mêmes développeurs que la version initiale, tant au niveau du code source que du résultat affiché à l&amp;rsquo;écran.&lt;/p&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;p&gt;La clé de la réussite consiste à comprendre le fonctionnement de la gestion des médicaments. Les fonctionnalités demandées pour les praticiens sont les mêmes et doivent être réalisées de la même manière.&lt;/p&gt;
+
+&lt;h1 id=&#34;toc_2&#34;&gt;Organisation&lt;/h1&gt;
+
+&lt;p&gt;Le travail est individuel. Le code source du projet est hébergé sur un dépôt GitHub nommé GSB-Report associé au compte GitHub du développeur. En fin de mission, une étiquette &lt;strong&gt;mission1&lt;/strong&gt; est posée sur le code source.&lt;/p&gt;
+
+&lt;h1 id=&#34;toc_3&#34;&gt;Etapes de travail&lt;/h1&gt;
+
+&lt;p&gt;L&amp;rsquo;ordre ci-dessous doit impérativement être respecté.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Lire attentivement les documents présentant le contexte métier et l&amp;rsquo;application Web.&lt;/li&gt;
+&lt;li&gt;Créer le dépôt GitHub GSB-Report puis le cloner dans un dossier local.&lt;/li&gt;
+&lt;li&gt;Copier le code source de la version initiale de GSB-Report dans le dossier local.&lt;/li&gt;
+&lt;li&gt;Créer localement la base de données gsb, y ajouter la structure puis les données de test.&lt;/li&gt;
+&lt;li&gt;Faire les paramétrages Apache nécessaires pour définir un hôte virtuel.&lt;/li&gt;
+&lt;li&gt;Vérifier le bon fonctionnement de l&amp;rsquo;application GSB-Report en local.&lt;/li&gt;
+&lt;li&gt;Analyser le code source de l&amp;rsquo;application afin de comprendre son fonctionnement.&lt;/li&gt;
+&lt;li&gt;Ajouter à l&amp;rsquo;application les fonctionnalités demandées en les testant au fur et à mesure.&lt;/li&gt;
+&lt;li&gt;Commiter, pousser vers le dépôt GitHub et poser l&amp;rsquo;étiquette mission1 en fin de mission.&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>GSB-Report : mission 2</title>
+      <link>http://prof.bpesquet.fr/activite/gsb-report-mission2</link>
+      <pubDate>Tue, 01 Jan 2008 00:00:00 UTC</pubDate>
+      
+      <guid>http://prof.bpesquet.fr/activite/gsb-report-mission2</guid>
+      <description>
+
+&lt;h1 id=&#34;toc_0&#34;&gt;Objectifs&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Ajouter la fonctionnalité d&amp;rsquo;authentification du visiteur.&lt;/li&gt;
+&lt;li&gt;(Bonus) Permettre au visiteur connecté de mettre à jour ses informations personnelles.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;toc_1&#34;&gt;Expression des besoins&lt;/h1&gt;
+
+&lt;p&gt;L&amp;rsquo;application actuelle n&amp;rsquo;est pas soumise à authentification. Il faut corriger ce problème et ne permettre l&amp;rsquo;accès qu&amp;rsquo;à un visiteur authentifié à l&amp;rsquo;aide de son nom d&amp;rsquo;utilisateur et de son mot de passe.&lt;/p&gt;
+
+&lt;p&gt;La barre de navigation de l&amp;rsquo;application affiche (en haut à droite) un menu déroulant indiquant le statut de l&amp;rsquo;utilisateur :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;S&amp;rsquo;il n&amp;rsquo;est pas connecté, le menu affiche &amp;ldquo;Non connecté&amp;rdquo; et comporte un lien &amp;ldquo;Se connnecter&amp;rdquo; renvoyant vers le formulaire de connexion.&lt;/li&gt;
+&lt;li&gt;S&amp;rsquo;il l&amp;rsquo;est, le menu déroulant affiche un message de bienvenue accompagné de son nom d&amp;rsquo;utilisateur. Le menu comporte un lien &amp;ldquo;Se déconnecter&amp;rdquo; permettant la déconnexion.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&#34;alert alert-danger&#34;&gt;
+    &lt;strong&gt;Important !&lt;/strong&gt;
+    &lt;p&gt;&lt;p&gt;La version de l&amp;rsquo;application produite à la fin de cette mission doit donner l&amp;rsquo;impression d&amp;rsquo;avoir été réalisée par les mêmes développeurs que la version initiale, tant au niveau du code source que du résultat affiché à l&amp;rsquo;écran.&lt;/p&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Voici l&amp;rsquo;extrait de code qui permet de configurer le pare-feu Silex.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$app-&amp;gt;register(new Silex\Provider\SecurityServiceProvider(), array(
+    &#39;security.firewalls&#39; =&amp;gt; array(
+        &#39;login&#39; =&amp;gt; array(
+            &#39;pattern&#39; =&amp;gt; &#39;^/login$&#39;,
+            &#39;anonymous&#39; =&amp;gt; true
+        ),
+        &#39;secured&#39; =&amp;gt; array(
+            &#39;pattern&#39; =&amp;gt; &#39;^.*$&#39;,
+            &#39;logout&#39; =&amp;gt; true,
+            &#39;form&#39; =&amp;gt; array(&#39;login_path&#39; =&amp;gt; &#39;/login&#39;, &#39;check_path&#39; =&amp;gt; &#39;/login_check&#39;),
+            &#39;users&#39; =&amp;gt; $app-&amp;gt;share(function () use ($app) {
+                return new GSB\DAO\VisitorDAO($app[&#39;db&#39;]);
+            }),
+        ),
+    ),
+));
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;toc_2&#34;&gt;Besoins optionnels (bonus)&lt;/h1&gt;
+
+&lt;p&gt;La barre de navigation comporte un lien &amp;ldquo;Profil&amp;rdquo; qui permet au visiteur connecté de visualiser et de modifier ses informations personnelles. Les données à afficher sont : nom, prénom, adresse, code postal, ville, date d&amp;rsquo;embauche, nom d&amp;rsquo;utilisateur, mot de passe. Un message de confirmation s&amp;rsquo;affiche lorsque les modifications sont enregistrées.&lt;/p&gt;
+
+&lt;h1 id=&#34;toc_3&#34;&gt;Organisation&lt;/h1&gt;
+
+&lt;p&gt;Le travail est individuel. Le code source du projet est hébergé sur le dépôt GitHub GSB-Report associé au compte GitHub du développeur. En fin de mission, une étiquette &lt;strong&gt;mission2&lt;/strong&gt; est posée sur le code source.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>GSB-Report : mission 3</title>
+      <link>http://prof.bpesquet.fr/activite/gsb-report-mission3</link>
+      <pubDate>Tue, 01 Jan 2008 00:00:00 UTC</pubDate>
+      
+      <guid>http://prof.bpesquet.fr/activite/gsb-report-mission3</guid>
+      <description>
+
+&lt;h1 id=&#34;toc_0&#34;&gt;Objectifs&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Ajouter la possibilité de consulter les comptes-rendus du visiteur connecté.&lt;/li&gt;
+&lt;li&gt;Ajouter la possibilité d&amp;rsquo;ajouter un nouveau rapport de visite.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;toc_1&#34;&gt;Expression des besoins&lt;/h1&gt;
+
+&lt;p&gt;L&amp;rsquo;application doit permettre au visiteur connecté de consulter les comptes-rendus qu&amp;rsquo;il a déjà saisis. Les informations à afficher sont la date du compte-rendu, le praticien concerné (nom et prénom), la ville du praticien et le motif de la visite. Un message d&amp;rsquo;information avertit le visiteur s&amp;rsquo;il n&amp;rsquo;a saisi aucun compte-rendu.&lt;/p&gt;
+
+&lt;p&gt;Le visiteur pourra également ajouter un nouveau compte-rendu de visite. Il devra choisir le praticien associé dans une liste déroulante et saisir les date, motif et bilan de la visite (champs obligatoires). Un clic sur le bouton Ajouter déclenche l&amp;rsquo;insertion du compte-rendu dans la base de données puis l&amp;rsquo;affichage d&amp;rsquo;un message indiquant le succès de l&amp;rsquo;opération.&lt;/p&gt;
+
+&lt;div class=&#34;alert alert-danger&#34;&gt;
+    &lt;strong&gt;Important !&lt;/strong&gt;
+    &lt;p&gt;&lt;p&gt;La version de l&amp;rsquo;application produite à la fin de cette mission doit donner l&amp;rsquo;impression d&amp;rsquo;avoir été réalisée par les mêmes développeurs que la version initiale, tant au niveau du code source que du résultat affiché à l&amp;rsquo;écran.&lt;/p&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;h1 id=&#34;toc_2&#34;&gt;Organisation&lt;/h1&gt;
+
+&lt;p&gt;Le travail est individuel. Le code source du projet est hébergé sur le dépôt GitHub GSB-Report associé au compte GitHub du développeur. En fin de mission, une étiquette &lt;strong&gt;mission3&lt;/strong&gt; est posée sur le code source.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Les logiciels libres</title>
+      <link>http://prof.bpesquet.fr/activite/logiciels-libres</link>
+      <pubDate>Tue, 01 Jan 2008 00:00:00 UTC</pubDate>
+      
+      <guid>http://prof.bpesquet.fr/activite/logiciels-libres</guid>
+      <description>
+
+&lt;h1 id=&#34;toc_0&#34;&gt;Partie 1 : conférence de Richard Stallman&lt;/h1&gt;
+
+&lt;p&gt;Regardez &lt;a href=&#34;http://webtv.ac-versailles.fr/spip.php?article871&#34;&gt;cette vidéo&lt;/a&gt; aux intervalles de temps ci-dessous.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Début -&amp;gt; 3&amp;rsquo;30&lt;/li&gt;
+&lt;li&gt;8&amp;rsquo;20 -&amp;gt; 10&amp;rsquo;&lt;/li&gt;
+&lt;li&gt;32&amp;rsquo;10 -&amp;gt; 37&amp;rsquo;50&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Répondez ensuite aux questions ci-dessous :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Qui est l&amp;rsquo;orateur ?&lt;/li&gt;
+&lt;li&gt;De quelle organisation est-il le président ?&lt;/li&gt;
+&lt;li&gt;Quelles sont les libertés associées à un logiciel libre ?&lt;/li&gt;
+&lt;li&gt;Comment l&amp;rsquo;orateur appelle-t-il un logiciel non libre ?&lt;/li&gt;
+&lt;li&gt;Quels sont les risques potentiels liés à un logiciel non libre ?&lt;/li&gt;
+&lt;li&gt;Quel est le nom du système d&amp;rsquo;exploitation libre qu&amp;rsquo;il a développé ?&lt;/li&gt;
+&lt;li&gt;Quel est le rapport entre ce système et Linux ?&lt;/li&gt;
+&lt;li&gt;Quelle est la licence de Linux ?&lt;/li&gt;
+&lt;li&gt;Comment devrait-on appeler Linux ?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;toc_1&#34;&gt;Partie 2 : article de l&amp;rsquo;APRIL&lt;/h1&gt;
+
+&lt;p&gt;Lisez l&amp;rsquo;article de l&amp;rsquo;APRIL, puis répondez aux questions ci-dessous :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Quelles sont les libertés associées à un logicle libre ?&lt;/li&gt;
+&lt;li&gt;Logiciel libre, freeware, shareware : quelles différences ?&lt;/li&gt;
+&lt;li&gt;Trouvez un exemple de logiciel freeware et un exemple de logiciel shareware.&lt;/li&gt;
+&lt;li&gt;Quels sont les intérêts des logiciels libres ?&lt;/li&gt;
+&lt;li&gt;Pourquoi tous les logiciels ne sont-ils pas libres ?&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Projet AdresseIP</title>
+      <link>http://prof.bpesquet.fr/activite/projet-adresse-ip</link>
+      <pubDate>Tue, 01 Jan 2008 00:00:00 UTC</pubDate>
+      
+      <guid>http://prof.bpesquet.fr/activite/projet-adresse-ip</guid>
+      <description>
+
+&lt;h1 id=&#34;toc_0&#34;&gt;Objectif&lt;/h1&gt;
+
+&lt;p&gt;Ce projet a pour objectif d&amp;rsquo;analyser une adresse IPv4 saisie par l&amp;rsquo;utilisateur.&lt;/p&gt;
+
+&lt;p&gt;L&amp;rsquo;adresse IP sera modélisée sous la forme d&amp;rsquo;une classe &lt;code&gt;AdresseIP&lt;/code&gt; dont voici le diagramme initial (seuls les membres publics sont affichés).&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/content/SLAM2_AdresseIP.png&#34; class=&#34;content centered&#34; alt=&#34;SLAM2_AdresseIP.png&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Le programme principal fait saisir les 4 octets de l&amp;rsquo;adresse, puis vérifie sa validité et affiche sa valeur binaire si elle est valide.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/content/slam2_adresseip_valbin.png&#34; class=&#34;content centered&#34; alt=&#34;slam2_adresseip_valbin.png&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/content/slam2_adresseip_invalid.png&#34; class=&#34;content centered&#34; alt=&#34;slam2_adresseip_invalid.png&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Vous trouverez plus bas le code source permettant de convertir un octet du décimal vers le binaire.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;BONUS&lt;/strong&gt; : ne pas utiliser ce code source.&lt;/p&gt;
+
+&lt;h1 id=&#34;toc_1&#34;&gt;Etapes de travail&lt;/h1&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Créez une nouvelle solution Visual Studio nommée &lt;strong&gt;AdresseIP&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Ajoutez à cette solution une application console nommée &lt;strong&gt;AppIP&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Ajoutez à cette solution une bibliothèque de classes nommée &lt;strong&gt;LibIP&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Créez dans &lt;strong&gt;LibIP&lt;/strong&gt; une nouvelle classe nommée &lt;code&gt;AdresseIP&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Codez les fonctionnalités demandées en les testant au fur et à mesure.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&#34;toc_2&#34;&gt;Bonus&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Calculer et afficher la classe de l&amp;rsquo;adresse. Valeurs possibles : A, B, C, D, E.&lt;/li&gt;
+&lt;li&gt;Calculer et afficher le type de l&amp;rsquo;adresse. Valeurs possibles : Publique, Privée, Réseau, Diffusion, Réservée, Multicast, Expérimentale.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/content/slam2_adresseip_bonus.png&#34; class=&#34;content centered&#34; alt=&#34;slam2_adresseip_bonus.png&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Le tableau ci-dessous regroupe quelques résultats possibles qui vous permettront de tester votre application.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Adresse&lt;/th&gt;
+&lt;th&gt;Classe&lt;/th&gt;
+&lt;th&gt;Type&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;10.0.0.0&lt;/td&gt;
+&lt;td&gt;A&lt;/td&gt;
+&lt;td&gt;Réseau&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;10.0.0.1&lt;/td&gt;
+&lt;td&gt;A&lt;/td&gt;
+&lt;td&gt;Privée&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;127.0.0.1&lt;/td&gt;
+&lt;td&gt;A&lt;/td&gt;
+&lt;td&gt;Réservée&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;172.16.0.0&lt;/td&gt;
+&lt;td&gt;B&lt;/td&gt;
+&lt;td&gt;Réseau&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;172.16.100.0&lt;/td&gt;
+&lt;td&gt;B&lt;/td&gt;
+&lt;td&gt;Privée&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;172.32.100.0&lt;/td&gt;
+&lt;td&gt;B&lt;/td&gt;
+&lt;td&gt;Publique&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;192.100.100.254&lt;/td&gt;
+&lt;td&gt;C&lt;/td&gt;
+&lt;td&gt;Publique&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;192.100.100.255&lt;/td&gt;
+&lt;td&gt;C&lt;/td&gt;
+&lt;td&gt;Diffusion&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;225.0.0.1&lt;/td&gt;
+&lt;td&gt;D&lt;/td&gt;
+&lt;td&gt;Multicast&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;240.0.0.1&lt;/td&gt;
+&lt;td&gt;E&lt;/td&gt;
+&lt;td&gt;Expérimentale&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h1 id=&#34;toc_3&#34;&gt;Annexe : code source de la méthode ConvertirEnBinaire&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;/// &amp;lt;summary&amp;gt;
+/// Calcule la valeur binaire d&#39;un octet décimal
+/// &amp;lt;/summary&amp;gt;
+/// &amp;lt;param name=&amp;quot;valeurDecimale&amp;quot;&amp;gt;L&#39;octet sous forme décimale&amp;lt;/param&amp;gt;
+/// &amp;lt;returns&amp;gt;L&#39;octet sous forme binaire&amp;lt;/returns&amp;gt;
+private string ConvertirEnBinaire(int valeurDecimale)
+{
+    string resultat = &amp;quot;&amp;quot;;
+
+    // Méthode de la division
+    // On divise le nombre décimal par 2 jusqu&#39;à ce que le quotient soit nul
+    // Les restes de chaque division constituent la valeur binaire
+    int d = valeurDecimale;
+    int r;
+    int nbBits = 0;
+    string valeurBit;
+    while (d &amp;gt; 0)
+    {
+        r = d % 2;
+        d = d / 2;
+        if (r != 0)
+            valeurBit = &amp;quot;1&amp;quot;;
+        else
+            valeurBit = &amp;quot;0&amp;quot;;
+        // On ajoute le bit résultat au début de la chaîne
+        resultat = valeurBit + resultat;
+        nbBits++;
+    }
+    // On complète la valeur binaire avec des 0 pour obtenir 8 bits
+    for (int i = nbBits; i &amp;lt; 8; i++)
+        resultat = &amp;quot;0&amp;quot; + resultat;
+
+    return resultat;
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Projet Atlantik</title>
+      <link>http://prof.bpesquet.fr/activite/projet-atlantik</link>
+      <pubDate>Tue, 01 Jan 2008 00:00:00 UTC</pubDate>
+      
+      <guid>http://prof.bpesquet.fr/activite/projet-atlantik</guid>
+      <description>
+
+&lt;h1 id=&#34;toc_0&#34;&gt;Objectif&lt;/h1&gt;
+
+&lt;p&gt;Ce projet a pour but de coder les classes et le programme principal associés au cas Atlantik.&lt;/p&gt;
+
+&lt;div class=&#34;alert alert-warning&#34;&gt;
+    &lt;strong&gt;Avertissement&lt;/strong&gt;
+    &lt;p&gt;&lt;p&gt;Il est important d&amp;rsquo;obtenir exactement le même résultat que dans les captures d&amp;rsquo;écran du DS, y compris concernant l&amp;rsquo;orthographe et les retours à la ligne.&lt;/p&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;h1 id=&#34;toc_1&#34;&gt;Bonus&lt;/h1&gt;
+
+&lt;p&gt;Trouver comment faire pour que le sous-programme &lt;code&gt;AfficherListeBateaux&lt;/code&gt; se résume au code source ci-dessous.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-csharp&#34;&gt;foreach (BateauVoyageur unBateauV in lesBateauxVoyageurs)       
+    Console.WriteLine(unBateauV.Decrire());
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Le résultat affiché doit être exactement le suivant.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/images/content/slam2_atlantik2015_bonus.png&#34; class=&#34;content centered&#34; alt=&#34;slam2_atlantik2015_bonus.png&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Validation de la livraison 2 des projets agiles</title>
+      <link>http://prof.bpesquet.fr/activite/validation-livraison2-projet</link>
+      <pubDate>Tue, 01 Jan 2008 00:00:00 UTC</pubDate>
+      
+      <guid>http://prof.bpesquet.fr/activite/validation-livraison2-projet</guid>
+      <description>
+
+&lt;h1 id=&#34;toc_0&#34;&gt;Objectif&lt;/h1&gt;
+
+&lt;p&gt;L&amp;rsquo;objectif de cette activité est de valider la seconde livraison des projets agiles réalisés en SLAM5. Cette validation est effectuée par les pairs (chaque équipe valide le projet d&amp;rsquo;une autre équipe) et en double correction (chaque projet est validé deux fois).&lt;/p&gt;
+
+&lt;h1 id=&#34;toc_1&#34;&gt;Répartition des projets à valider&lt;/h1&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Equipe&lt;/th&gt;
+&lt;th&gt;Projets à valider&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;AgnamStore&lt;/td&gt;
+&lt;td&gt;PokeStore et MPMakeUp&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;AppMusics&lt;/td&gt;
+&lt;td&gt;AgnamStore et PokeStore&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;CarLegends&lt;/td&gt;
+&lt;td&gt;AppMusics et AgnamStore&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;DreamHouses&lt;/td&gt;
+&lt;td&gt;CarLegends et AppMusics&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;GameSpawn&lt;/td&gt;
+&lt;td&gt;DreamHouses et CarLegends&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;GamingStore&lt;/td&gt;
+&lt;td&gt;GameSpawn et DreamHouses&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;InfoStore&lt;/td&gt;
+&lt;td&gt;GamingStore et GameSpawn&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Item4Noob&lt;/td&gt;
+&lt;td&gt;InfoStore et GamingStore&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Med&amp;rsquo;Azur&lt;/td&gt;
+&lt;td&gt;Item4Noob et InfoStore&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;MoviesMarket&lt;/td&gt;
+&lt;td&gt;Med&amp;rsquo;Azur et Item4Noob&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;MPMakeUp&lt;/td&gt;
+&lt;td&gt;MoviesMarket et Med&amp;rsquo;Azur&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;PokeStore&lt;/td&gt;
+&lt;td&gt;MPMakeUp et MoviesMarket&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h1 id=&#34;toc_2&#34;&gt;Consignes de validation&lt;/h1&gt;
+
+&lt;div class=&#34;alert alert-danger&#34;&gt;
+    &lt;strong&gt;Important !&lt;/strong&gt;
+    &lt;p&gt;&lt;p&gt;Pour effectuerz cette validation, mettez-vous dans la peau d&amp;rsquo;un acheteur du projet. Soyez exigeants, vous en voulez pour votre argent !&lt;/p&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Inscrire le nom de l&amp;rsquo;équipe sur la fiche d&amp;rsquo;évaluation du projet.&lt;/li&gt;
+&lt;li&gt;Récupérer le code source du projet sur &lt;a href=&#34;https://github.com/lmdsio&#34;&gt;GitHub&lt;/a&gt; par clonage ou téléchargement.&lt;/li&gt;
+&lt;li&gt;Installer le projet sur une machine locale et vérifier son bon fonctionnement (accès à la page d&amp;rsquo;accueil).&lt;/li&gt;
+&lt;li&gt;Tester en commun toutes les stories annoncées comme terminées sur &lt;a href=&#34;https://trello.com/lmdsio&#34;&gt;Trello&lt;/a&gt;. Pour chaque story, remplir une fichier de validation papier.&lt;/li&gt;
+&lt;li&gt;Compléter le rapport de validation papier.&lt;/li&gt;
+&lt;li&gt;Créer ou commenter sur &lt;a href=&#34;https://github.com/lmdsio&#34;&gt;GitHub&lt;/a&gt; les &lt;em&gt;issues&lt;/em&gt; correspondant aux incidents relevés pendant la validation (une &lt;em&gt;issue&lt;/em&gt; par défaut).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;toc_3&#34;&gt;Compléments&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Documentation du code : seules les méthodes doivent être documentées, pas les attributs ni les accesseurs.&lt;/li&gt;
+&lt;li&gt;Pas d&amp;rsquo;incident si le rôle de l&amp;rsquo;utilisateur connecté est modifiable.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;toc_4&#34;&gt;Consignes d&amp;rsquo;évaluation&lt;/h1&gt;
+
+&lt;p&gt;Une fois la seconde validation terminée, les deux équipes de validation se concertent puis remplissent ensemble la fiche d&amp;rsquo;évaluation comprenant la note attribuée au projet.&lt;/p&gt;
+
+&lt;div class=&#34;alert alert-warning&#34;&gt;
+    &lt;strong&gt;Avertissement&lt;/strong&gt;
+    &lt;p&gt;&lt;p&gt;Le barème d&amp;rsquo;évaluation est susceptible d&amp;rsquo;être modifié a posteriori.&lt;/p&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
